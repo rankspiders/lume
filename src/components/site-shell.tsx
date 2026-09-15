@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Menu, X, ArrowRight, ChevronRight } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -98,6 +98,21 @@ export function SiteHeader() {
   const [treatmentsOpen, setTreatmentsOpen] = useState(false);
   const [hoveredCategoryIndex, setHoveredCategoryIndex] = useState(0);
   const [hoveredServiceIndex, setHoveredServiceIndex] = useState(0);
+
+  // Lock body scroll on mobile when menu drawer is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [open]);
 
   const activeCategory = categoryPreviews[hoveredCategoryIndex] || categoryPreviews[0]!;
   const activeService = (activeCategory.treatments[hoveredServiceIndex] || activeCategory.treatments[0])!;
@@ -403,16 +418,16 @@ export function SiteHeader() {
                     </div>
 
                     {/* Active Service Showcase Card */}
-                    <div className="border border-copper/30 bg-background/90 p-3 space-y-2">
-                      <div className="flex items-baseline justify-between gap-2">
-                        <h5 className="font-display text-sm text-background font-light truncate">
+                    <div className="border border-copper/40 bg-foreground/95 p-3.5 space-y-2 text-background shadow-lg">
+                      <div className="flex items-baseline justify-between gap-2 border-b border-white/10 pb-2">
+                        <h5 className="font-display text-sm text-copper-light font-medium truncate">
                           {activeService.name}
                         </h5>
-                        <span className="text-xs text-copper-light font-medium shrink-0">
+                        <span className="text-xs text-copper-light font-semibold shrink-0">
                           {activeService.price}
                         </span>
                       </div>
-                      <p className="text-[11px] text-background/70 leading-4 line-clamp-2">
+                      <p className="text-[11px] text-background/80 leading-4 line-clamp-2 font-light">
                         {activeCategory.description}
                       </p>
                       <Button
