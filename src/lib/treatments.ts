@@ -200,36 +200,3 @@ export const addOns: Treatment[] = [
     summary: "Blue LED light therapy to destroy acne-causing bacteria, clear blemishes, and prevent future breakouts.",
   },
 ];
-
-export const teamMembers = [
-  {
-    name: "Lenda Murray",
-    role: "Founder & CEO",
-    specialty: "Aesthetic Direction & Master Treatments",
-    bio: "Pioneering holistic and clinical beauty experiences with over 15 years of industry leadership.",
-  },
-  {
-    name: "Emely Jonson",
-    role: "Manicure Expert",
-    specialty: "Nail Art & Lumé Polished Sets",
-    bio: "Specializing in precise nail shaping, custom couture art, and long-lasting luxury manicure rituals.",
-  },
-  {
-    name: "Arika Murray",
-    role: "Beautician & Skin Specialist",
-    specialty: "Facial Rituals & Glow Therapies",
-    bio: "Dedicated to skin barrier preservation, active botanicals, and personalized facial rejuvenation.",
-  },
-  {
-    name: "Lola Jonson",
-    role: "Spa Specialist",
-    specialty: "Body Contour & Gua Sha Rituals",
-    bio: "Expert in lymphatic drainage, body sculpting, and sensory relaxation experiences.",
-  },
-  {
-    name: "Rose Marian",
-    role: "Massage Expert",
-    specialty: "Therapeutic Bodywork & Reflexology",
-    bio: "Combines ancient bodywork traditions with modern relief techniques for deep restoration.",
-  },
-];

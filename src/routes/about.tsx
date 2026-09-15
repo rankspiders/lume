@@ -1,20 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 import interiorImage from "@/assets/advanced-aesthetics.jpg";
 import { PageIntro } from "@/components/site-shell";
-import { teamMembers } from "@/lib/treatments";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us & Team | Lumé Aesthetics" },
+      { title: "About Us | Lumé Aesthetics" },
       {
         name: "description",
         content:
-          "Discover Lumé’s considered approach to skin, beauty, body rituals, and team of master beauticians and specialists.",
+          "Discover Lumé’s considered approach to skin, beauty, body rituals, and bespoke aesthetics.",
       },
-      { property: "og:title", content: "About Lumé Aesthetics & Team" },
+      { property: "og:title", content: "About Lumé Aesthetics" },
       {
         property: "og:description",
         content: "A considered beauty destination where care, artistry, and precision meet.",
@@ -27,7 +26,7 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
-const fadeInVariant = {
+const fadeInVariant: Variants = {
   hidden: { opacity: 0, y: 25 },
   visible: (i: number = 0) => ({
     opacity: 1,
@@ -35,7 +34,7 @@ const fadeInVariant = {
     transition: {
       duration: 0.8,
       delay: i * 0.12,
-      ease: [0.25, 0.1, 0.25, 1],
+      ease: "easeInOut",
     },
   }),
 };
@@ -121,44 +120,6 @@ function AboutPage() {
                 The studio atmosphere is calm by design, giving every appointment the time, privacy, and undivided attention it deserves.
               </p>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Practitioner Team Showcase */}
-      <section className="px-5 py-24 sm:px-8 sm:py-32">
-        <div className="mx-auto max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <p className="eyebrow">Our Specialists</p>
-            <h2 className="mt-4 font-display text-5xl font-light sm:text-6xl">Meet the Experts Behind Your Care</h2>
-            <p className="mt-6 text-base leading-8 text-muted-foreground">
-              Our team brings together decades of expertise in skincare, nail couture, body sculpting, and advanced aesthetics.
-            </p>
-          </motion.div>
-
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {teamMembers.map((member, idx) => (
-              <motion.article
-                key={member.name}
-                custom={idx}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInVariant}
-                className="border border-copper/20 bg-background p-8 transition-colors duration-300 hover:border-copper"
-              >
-                <span className="text-[10px] uppercase tracking-[0.2em] text-copper font-semibold">{member.role}</span>
-                <h3 className="mt-2 font-display text-3xl font-light text-foreground">{member.name}</h3>
-                <p className="mt-2 text-xs font-medium text-copper">{member.specialty}</p>
-                <p className="mt-4 text-sm leading-6 text-muted-foreground">{member.bio}</p>
-              </motion.article>
-            ))}
           </div>
         </div>
       </section>

@@ -1,13 +1,13 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { Leaf, ShieldCheck, Sparkles, Award, ArrowRight } from "lucide-react";
+import { motion, type Variants } from "framer-motion";
+import { Leaf, ShieldCheck, Sparkles, Award } from "lucide-react";
 
 import advancedImage from "@/assets/advanced-aesthetics.jpg";
 import bodyImage from "@/assets/body-ritual.jpg";
 import facialImage from "@/assets/facial-ritual.jpg";
 import heroImage from "@/assets/lume-hero.jpg";
 import { Button } from "@/components/ui/button";
-import { spaPackages, teamMembers } from "@/lib/treatments";
+import { spaPackages } from "@/lib/treatments";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -73,7 +73,7 @@ const pillars = [
   },
 ];
 
-const fadeInVariants = {
+const fadeInVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number = 0) => ({
     opacity: 1,
@@ -81,7 +81,7 @@ const fadeInVariants = {
     transition: {
       duration: 0.8,
       delay: i * 0.15,
-      ease: [0.25, 0.1, 0.25, 1],
+      ease: "easeInOut",
     },
   }),
 };
@@ -268,41 +268,6 @@ function Index() {
                 <Button asChild variant="outline" className="mt-8 h-11 w-full rounded-none border-copper bg-transparent text-[10px] uppercase tracking-[0.18em] text-copper hover:bg-copper hover:text-primary-foreground">
                   <Link to="/treatments">View Menu & Book</Link>
                 </Button>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Specialist Team Preview */}
-      <section className="px-5 py-24 sm:px-8 sm:py-32">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <p className="eyebrow">Meet Our Team</p>
-              <h2 className="mt-3 font-display text-4xl font-light sm:text-6xl">Master Beauticians & Specialists</h2>
-            </div>
-            <Button asChild variant="link" className="p-0 text-xs uppercase tracking-widest text-copper">
-              <Link to="/about">Read Team Profiles <ArrowRight className="ml-1 inline size-4" /></Link>
-            </Button>
-          </div>
-
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            {teamMembers.map((member, idx) => (
-              <motion.div
-                key={member.name}
-                custom={idx}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInVariants}
-                className="border border-copper/20 bg-background p-6 flex flex-col justify-between transition-colors duration-300 hover:border-copper"
-              >
-                <div>
-                  <span className="text-[10px] uppercase tracking-widest text-copper font-medium">{member.role}</span>
-                  <h3 className="mt-2 font-display text-2xl font-light text-foreground">{member.name}</h3>
-                  <p className="mt-2 text-xs font-medium text-muted-foreground">{member.specialty}</p>
-                </div>
               </motion.div>
             ))}
           </div>

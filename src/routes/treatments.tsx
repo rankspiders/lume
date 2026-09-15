@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Sparkles, CheckCircle2 } from "lucide-react";
 
 import { PageIntro } from "@/components/site-shell";
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/treatments")({
   component: TreatmentsPage,
 });
 
-const fadeInVariant = {
+const fadeInVariant: Variants = {
   hidden: { opacity: 0, y: 25 },
   visible: (i: number = 0) => ({
     opacity: 1,
@@ -32,7 +32,7 @@ const fadeInVariant = {
     transition: {
       duration: 0.7,
       delay: i * 0.1,
-      ease: [0.25, 0.1, 0.25, 1],
+      ease: "easeInOut",
     },
   }),
 };
