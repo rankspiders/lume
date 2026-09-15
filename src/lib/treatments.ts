@@ -3,6 +3,35 @@ import bodyImage from "@/assets/body-ritual.jpg";
 import advancedImage from "@/assets/advanced-aesthetics.jpg";
 import heroImage from "@/assets/lume-hero.jpg";
 
+// Import downloaded local treatment photography assets
+import imgAquaLuxe from "@/assets/treatments/aqua-luxe.jpg";
+import imgPrimaGlow from "@/assets/treatments/prima-glow.jpg";
+import imgRadianceC from "@/assets/treatments/radiance-c.jpg";
+import imgCollagenLifting from "@/assets/treatments/collagen-lifting.jpg";
+import imgAcnePurify from "@/assets/treatments/acne-purify.jpg";
+import imgHydraGlow from "@/assets/treatments/hydra-glow.jpg";
+import imgSculptRenew from "@/assets/treatments/sculpt-renew.jpg";
+import imgMochaContour from "@/assets/treatments/mocha-contour.jpg";
+import imgAuraInfusion from "@/assets/treatments/aura-infusion.jpg";
+import imgDermaplaning from "@/assets/treatments/dermaplaning.jpg";
+
+import imgGlamChapter from "@/assets/treatments/glam-chapter.jpg";
+import imgPolishedNails from "@/assets/treatments/polished-nails.jpg";
+import imgLashCouture from "@/assets/treatments/lash-couture.jpg";
+import imgBodyWaxing from "@/assets/treatments/body-waxing.jpg";
+import imgThreading from "@/assets/treatments/precision-threading.jpg";
+import imgHennaArtistry from "@/assets/treatments/henna-artistry.jpg";
+
+import imgBotox from "@/assets/treatments/botox.jpg";
+import imgDermalFillers from "@/assets/treatments/dermal-fillers.jpg";
+import imgPRPMicroneedling from "@/assets/treatments/prp-microneedling.jpg";
+import imgExosomeMicroneedling from "@/assets/treatments/exosome-microneedling.jpg";
+import imgTeethWhitening from "@/assets/treatments/teeth-whitening.jpg";
+import imgIVInfusion from "@/assets/treatments/iv-infusion.jpg";
+
+import imgYouDeserveIt from "@/assets/treatments/you-deserve-it.jpg";
+import imgQueenForADay from "@/assets/treatments/queen-for-a-day.jpg";
+
 export type Treatment = {
   name: string;
   duration?: string;
@@ -18,35 +47,6 @@ export type TreatmentGroup = {
   introduction: string;
   treatments: Treatment[];
 };
-
-// High-resolution photography assets tailored to each specific service
-const imgAquaLuxe = "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80";
-const imgPrimaGlow = "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80";
-const imgRadianceC = "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80";
-const imgCollagenLifting = "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80";
-const imgAcnePurify = "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80";
-const imgHydraGlow = "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&w=800&q=80";
-const imgSculptRenew = "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80";
-const imgMochaContour = "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80";
-const imgAuraInfusion = "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80";
-const imgDermaplaning = "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=800&q=80";
-
-const imgGlamChapter = "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80";
-const imgPolishedNails = "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=80";
-const imgLashCouture = "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?auto=format&fit=crop&w=800&q=80";
-const imgBodyWaxing = "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?auto=format&fit=crop&w=800&q=80";
-const imgThreading = "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=800&q=80";
-const imgHennaArtistry = "https://images.unsplash.com/photo-1561053720-76cd73ff22c3?auto=format&fit=crop&w=800&q=80";
-
-const imgBotox = "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80";
-const imgDermalFillers = "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80";
-const imgPRPMicroneedling = "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80";
-const imgExosomeMicroneedling = "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80";
-const imgTeethWhitening = "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80";
-const imgIVInfusion = "https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=800&q=80";
-
-const imgYouDeserveIt = "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80";
-const imgQueenForADay = "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80";
 
 export const spaPackages: Treatment[] = [
   {
