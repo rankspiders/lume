@@ -40,6 +40,13 @@ import gal2 from "@/assets/lumeproject/gal-3-2.jpg";
 import gal3 from "@/assets/lumeproject/gal-3-3.jpg";
 import gal4 from "@/assets/lumeproject/gal-3-4.jpg";
 
+import brandLogo1 from "@/assets/lumeproject/b-2-1.png";
+import brandLogo2 from "@/assets/lumeproject/b-2-2.png";
+import brandLogo3 from "@/assets/lumeproject/b-2-3.png";
+import brandLogo4 from "@/assets/lumeproject/b-2-4.png";
+import brandLogo5 from "@/assets/lumeproject/b-2-5.png";
+import brandLogo6 from "@/assets/lumeproject/b-2-6.png";
+
 import plump2 from "@/assets/competitors/plump-2.jpg";
 import plump3 from "@/assets/competitors/plump-3.png";
 import rejuva2 from "@/assets/competitors/rejuva-2.jpg";
@@ -292,12 +299,16 @@ function IndexPage() {
   const activeDiagnostic = diagnosticOptions.find((d) => d.id === selectedDiagnostic) || diagnosticOptions[0]!;
 
   return (
-    <div className="bg-[#0A0908] text-[#FAF7F2] overflow-hidden">
-      {/* 1. HERO SECTION: Reimagined with ReactBits Aurora & SplitText Typography in Dark Luxury */}
-      <AuroraGlow variant="dark" className="pt-32 sm:pt-40 lg:pt-44 pb-20 sm:pb-28 border-b border-copper/25">
+    <div className="bg-[#FAF5F3] text-[#2A2124] overflow-hidden">
+      {/* 1. HERO SECTION: Dusty Pink Ambiance with Pure White Furniture Cards & Rose Gold Accents */}
+      <section className="relative pt-32 sm:pt-40 lg:pt-44 pb-20 sm:pb-28 border-b border-[#B76E79]/20 bg-gradient-to-b from-[#FAF5F3] via-[#F4E8E5] to-[#EEDBD7]">
+        {/* Soft atmospheric ambient glow */}
+        <div className="absolute top-0 right-1/3 w-[42rem] h-[42rem] rounded-full blur-3xl pointer-events-none bg-[#E8C5C8]/40 -mr-20 -mt-20" />
+        <div className="absolute bottom-0 left-10 w-96 h-96 rounded-full blur-3xl pointer-events-none bg-white/60" />
+
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 relative z-10">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            {/* Left Column: Typography, Luxury Status Pill & Floating Price Cards */}
+            {/* Left Column: Typography, Luxury Status Pill & Floating Pure White Cards */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -306,108 +317,101 @@ function IndexPage() {
             >
               {/* Top Refined Status Pill */}
               <div className="flex flex-wrap items-center gap-3">
-                <div className="inline-flex items-center gap-2.5 px-4 py-2 border border-[#F3C592]/70 bg-[#1A1715] backdrop-blur-md shadow-lg">
-                  <Sparkles className="size-3.5 text-[#F3C592]" />
-                  <ShinyText text="_skincare inspires • sherwood park" speed={4} className="text-xs uppercase tracking-[0.22em] font-bold" />
+                <div className="inline-flex items-center gap-2.5 px-4 py-2 border border-[#B76E79]/35 bg-white shadow-sm">
+                  <Sparkles className="size-3.5 text-[#B76E79]" />
+                  <span className="text-xs uppercase tracking-[0.22em] font-bold text-[#B76E79]">
+                    Sherwood Park • Medical Aesthetics Sanctuary
+                  </span>
                 </div>
-                <span className="text-xs uppercase tracking-[0.2em] text-[#F3C592]/80 font-bold hidden sm:inline">•</span>
-                <span className="dark-pill-badge">
-                  Specialty Atelier &amp; Spa
+                <span className="text-xs uppercase tracking-[0.2em] text-[#B76E79]/60 font-bold hidden sm:inline">•</span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FAF5F3] border border-[#B76E79]/30 text-[#B76E79] text-xs font-mono uppercase tracking-wider shadow-xs">
+                  Bioline Jatò Certified
                 </span>
               </div>
 
-              {/* Main Headline with high contrast */}
+              {/* Main Headline with high contrast & rose gold gradient */}
               <div className="space-y-3">
-                <h1 className="font-display text-4xl sm:text-6xl lg:text-[4.75rem] font-light leading-[1.02] text-[#FAF7F2] tracking-tight text-balance">
+                <h1 className="font-display text-4xl sm:text-6xl lg:text-[4.75rem] font-light leading-[1.02] text-[#2A2124] tracking-tight text-balance">
                   The Sanctuary for
                   <br />
-                  <span className="italic font-serif gold-gradient-text font-normal">
+                  <span className="italic font-serif rose-gold-gradient-text font-normal">
                     <SplitText text="Considered Beauty." delay={45} />
                   </span>
                 </h1>
-                <p className="font-serif italic text-lg sm:text-2xl text-[#F5D0A9] font-normal">
-                  "Where European skin rituals meet clinical precision in unhurried serenity."
+                <p className="font-serif italic text-lg sm:text-2xl text-[#8F4954] font-normal">
+                  "Where Italian botanical rituals meet clinical precision in unhurried serenity."
                 </p>
               </div>
 
               {/* Editorial Subtext */}
-              <p className="max-w-xl text-sm sm:text-base leading-6 sm:leading-7 text-[#E7E2DB] font-normal">
-                Discover bespoke facials, Bioline Jatò Italy 20% AHA botanical peels, multi-hour sanctuary spa packages, and consultation-led clinical aesthetics in Sherwood Park.
+              <p className="max-w-xl text-sm sm:text-base leading-relaxed sm:leading-7 text-[#5E5054] font-normal">
+                Experience bespoke facials, Italian Bioline Jatò 20% AHA peels, multi-hour sanctuary spa packages, and consultation-led clinical aesthetics ($10/unit Botox®) in private suites.
               </p>
 
-              {/* 2 Floating Overlaid Hero Treatment Cards with ReactBits SpotlightCard */}
+              {/* 2 Floating Overlaid Hero Treatment Cards in Pure Crisp White */}
               <div className="grid sm:grid-cols-2 gap-4 pt-2">
                 {/* Plan Card 1: Aqua Luxe */}
-                <SpotlightCard
-                  spotlightColor="rgba(197, 138, 88, 0.2)"
-                  className="bg-[#131211]/95 border border-copper/25 backdrop-blur-md p-5 shadow-2xl relative group transition-all duration-300 text-white"
-                >
-                  <div className="flex items-start justify-between border-b border-copper/20 pb-3">
+                <div className="bg-white border border-[#B76E79]/20 p-5 shadow-md hover:shadow-xl hover:border-[#B76E79] relative group transition-all duration-300">
+                  <div className="flex items-start justify-between border-b border-[#B76E79]/15 pb-3">
                     <div>
-                      <p className="text-[10px] uppercase tracking-wider text-copper-light">Skin &amp; Facial Ritual</p>
-                      <h3 className="font-display text-lg font-medium text-white">Aqua Luxe Facial</h3>
+                      <p className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold">Skin &amp; Facial Ritual</p>
+                      <h3 className="font-display text-lg font-medium text-[#2A2124]">Aqua Luxe Facial</h3>
                     </div>
                     <div className="text-right">
-                      <span className="font-display text-2xl font-light text-copper-light">$125</span>
-                      <p className="text-[9px] uppercase tracking-widest text-white/50">65 min</p>
+                      <span className="font-display text-2xl font-light text-[#B76E79]">$125</span>
+                      <p className="text-[9px] uppercase tracking-widest text-[#7D6F73]">65 min</p>
                     </div>
                   </div>
-                  <p className="mt-3 text-xs leading-5 text-white/70 font-light line-clamp-2">
-                    Multi-molecular hyaluronic acid infusion with Bioline nectar drop dermal massage.
+                  <p className="mt-3 text-xs leading-relaxed text-[#5E5054] font-normal line-clamp-2">
+                    Multi-molecular hyaluronic acid infusion with Bioline nectar drop dermal massage for instant bounce.
                   </p>
-                  <div className="mt-4 pt-3 border-t border-copper/20 flex items-center justify-between">
-                    <span className="text-[10px] uppercase tracking-wider text-copper-light font-semibold">Bioline Italy</span>
+                  <div className="mt-4 pt-3 border-t border-[#B76E79]/15 flex items-center justify-between">
+                    <span className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold">Bioline Italy</span>
                     <Link
                       to="/services/skin-and-body-rituals"
-                      className="text-[10px] uppercase tracking-[0.16em] text-copper-light hover:text-white font-medium flex items-center gap-1"
+                      className="text-[10px] uppercase tracking-[0.16em] text-[#B76E79] hover:text-[#8F4954] font-bold flex items-center gap-1"
                     >
                       Reserve Ritual →
                     </Link>
                   </div>
-                </SpotlightCard>
+                </div>
 
-                {/* Plan Card 2: Queen For A Day (Highlighted Flagship) */}
-                <SpotlightCard
-                  spotlightColor="rgba(223, 194, 157, 0.25)"
-                  borderColor="rgba(197, 138, 88, 0.6)"
-                  className="bg-[#181513] border border-copper/40 text-white p-5 shadow-2xl relative group transition-all duration-300"
-                >
-                  <div className="absolute top-0 right-0 bg-copper text-white text-[8px] uppercase tracking-[0.2em] px-2.5 py-0.5 font-semibold">
-                    Flagship
+                {/* Plan Card 2: Clinical Botox ($10/unit) */}
+                <div className="bg-white border border-[#B76E79]/30 p-5 shadow-md hover:shadow-xl hover:border-[#B76E79] relative group transition-all duration-300">
+                  <div className="absolute top-0 right-0 bg-[#B76E79] text-white text-[8px] uppercase tracking-[0.2em] px-2.5 py-0.5 font-bold">
+                    Specialist Rate
                   </div>
-                  <div className="flex items-start justify-between border-b border-white/10 pb-3">
+                  <div className="flex items-start justify-between border-b border-[#B76E79]/15 pb-3">
                     <div>
-                      <p className="text-[10px] uppercase tracking-wider text-copper-light">Signature Spa Package</p>
-                      <h3 className="font-display text-lg font-light text-white">Queen For A Day!</h3>
+                      <p className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold">Doctor-Led Aesthetic</p>
+                      <h3 className="font-display text-lg font-medium text-[#2A2124]">Botox® Neuromodulators</h3>
                     </div>
                     <div className="text-right">
-                      <span className="font-display text-2xl font-light text-copper-light">$395</span>
-                      <p className="text-[9px] uppercase tracking-widest text-white/60">3 Hours</p>
+                      <span className="font-display text-2xl font-light text-[#B76E79]">$10<span className="text-xs">/u</span></span>
+                      <p className="text-[9px] uppercase tracking-widest text-[#7D6F73]">Consult + Care</p>
                     </div>
                   </div>
-                  <p className="mt-3 text-xs leading-5 text-white/75 font-light line-clamp-2">
-                    Lifting Code facial, body exfoliating wrap, warm oil scalp therapy, foot ritual &amp; LED light.
+                  <p className="mt-3 text-xs leading-relaxed text-[#5E5054] font-normal line-clamp-2">
+                    Anatomical facial mapping and natural wrinkle smoothing administered by licensed medical practitioners.
                   </p>
-                  <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-[10px] uppercase tracking-wider text-copper-light font-semibold">
-                      Head-To-Toe
-                    </span>
+                  <div className="mt-4 pt-3 border-t border-[#B76E79]/15 flex items-center justify-between">
+                    <span className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold">Health Canada</span>
                     <Link
-                      to="/services/spa-packages"
-                      className="text-[10px] uppercase tracking-[0.16em] text-copper-light hover:text-white font-medium flex items-center gap-1"
+                      to="/services/advanced-aesthetics"
+                      className="text-[10px] uppercase tracking-[0.16em] text-[#B76E79] hover:text-[#8F4954] font-bold flex items-center gap-1"
                     >
-                      Full Itinerary →
+                      Book Consult →
                     </Link>
                   </div>
-                </SpotlightCard>
+                </div>
               </div>
 
-              {/* Action Buttons & Hotline with MagneticButton */}
+              {/* Action Buttons & Hotline */}
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                 <MagneticButton strength={0.25} pullStrength={0.25}>
                   <Button
                     asChild
-                    className="h-12 rounded-none bg-copper text-white px-8 text-[10px] uppercase tracking-[0.2em] shadow-xl hover:bg-copper-light hover:text-[#0A0908] transition-all duration-300 border border-copper/40 w-full sm:w-auto font-semibold"
+                    className="h-12 rounded-none bg-gradient-to-r from-[#C5838B] via-[#B76E79] to-[#8F4954] text-white px-8 text-[10px] uppercase tracking-[0.2em] shadow-md hover:opacity-95 transition-all duration-300 w-full sm:w-auto font-bold"
                   >
                     <Link to="/treatments">
                       Explore Treatment Menu (24+)
@@ -418,10 +422,10 @@ function IndexPage() {
 
                 <a
                   href="tel:+17804108278"
-                  className="inline-flex items-center justify-center gap-2 h-12 px-6 border border-copper/35 bg-white/[0.03] text-xs font-medium text-white hover:border-copper hover:text-copper-light transition-colors"
+                  className="inline-flex items-center justify-center gap-2 h-12 px-6 border border-[#B76E79]/35 bg-white text-xs font-bold text-[#2A2124] hover:border-[#B76E79] hover:text-[#B76E79] transition-colors shadow-xs"
                 >
-                  <Phone className="size-3.5 text-copper-light" />
-                  <span>Studio: (780) 410-8278</span>
+                  <Phone className="size-3.5 text-[#B76E79]" />
+                  <span>Studio Desk: (780) 410-8278</span>
                 </a>
               </div>
             </motion.div>
@@ -454,8 +458,8 @@ function IndexPage() {
               />
 
               <TiltedCard rotateAmplitude={8} scaleOnHover={1.01}>
-                <div className="relative overflow-hidden border-2 border-copper/35 shadow-2xl bg-gradient-to-b from-[#181513] to-[#0D0C0B] p-2 group">
-                  <div className="overflow-hidden bg-[#0A0908] relative">
+                <div className="relative overflow-hidden border-2 border-[#B76E79]/35 shadow-2xl bg-white p-2 group">
+                  <div className="overflow-hidden bg-[#FAF5F3] relative">
                     <img
                       src={heroFloralImg}
                       alt="Lumé Aesthetics Sanctuary Treatment"
@@ -463,20 +467,20 @@ function IndexPage() {
                     />
 
                     {/* Floating Glass Badges */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/95 via-transparent to-transparent flex flex-col justify-between p-6 sm:p-8">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#201317]/90 via-transparent to-transparent flex flex-col justify-between p-6 sm:p-8 text-white">
                       <div className="flex justify-between items-start">
-                        <span className="bg-[#131211]/90 backdrop-blur-md px-3 py-1 border border-copper/40 text-copper-light text-[9px] tracking-[0.24em] uppercase font-medium">
+                        <span className="bg-white/90 backdrop-blur-md px-3 py-1 border border-[#B76E79]/40 text-[#B76E79] text-[9px] tracking-[0.24em] uppercase font-bold">
                           Atelier No. 01
                         </span>
-                        <span className="bg-[#131211]/80 backdrop-blur-md px-3 py-1 border border-white/15 text-white/90 text-[9px] tracking-widest uppercase font-mono">
+                        <span className="bg-[#201317]/80 backdrop-blur-md px-3 py-1 border border-white/20 text-white text-[9px] tracking-widest uppercase font-mono">
                           Sherwood Park, AB
                         </span>
                       </div>
 
-                      <div className="space-y-2 text-white">
-                        <div className="flex items-center gap-1 text-copper-light">
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-1 text-[#E7B2A9]">
                           {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="size-3 fill-copper-light text-copper-light" />
+                            <Star key={i} className="size-3 fill-[#E7B2A9] text-[#E7B2A9]" />
                           ))}
                           <span className="text-[10px] text-white/90 ml-1.5 font-light">5.0 Star Guest Rating</span>
                         </div>
@@ -498,13 +502,13 @@ function IndexPage() {
                   text="LUXURY SKINCARE • VERIFIED EXCELLENCE • "
                   href="/about"
                   size={120}
-                  className="bg-[#131211]/95 backdrop-blur-md border border-copper/40 shadow-2xl rounded-full text-white"
+                  className="bg-white backdrop-blur-md border border-[#B76E79]/40 shadow-2xl rounded-full text-[#2A2124]"
                 />
               </div>
             </motion.div>
           </div>
         </div>
-      </AuroraGlow>
+      </section>
 
       {/* Infinite Luxury Ticker */}
       <HauteMarquee
@@ -513,66 +517,105 @@ function IndexPage() {
           "HEALTH CANADA PROTOCOLS",
           "20% AHA BOTANICAL PEELS",
           "100% PRIVATE 1-ON-1 SUITES",
-          "CLINICAL BOTOX® & PRP CENTRIFUGATION",
+          "CLINICAL BOTOX® ($10/UNIT) & PRP",
           "SHERWOOD PARK SANCTUARY",
         ]}
       />
 
       {/* 2. BRAND & STANDARDS STRIP with DecryptedText and CountUp */}
-      <section className="bg-[#0D0C0B] text-white py-10 border-b border-copper/20">
+      <section className="bg-white text-[#2A2124] py-10 border-b border-[#B76E79]/20 shadow-xs">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center text-center divide-y sm:divide-y-0 sm:divide-x divide-copper/20">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center text-center divide-y sm:divide-y-0 sm:divide-x divide-[#B76E79]/20">
             <div className="pt-2 sm:pt-0 sm:px-3">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-[#B76E79] font-bold block">
                 <DecryptedText text="Bioline Jatò" />
               </span>
-              <p className="text-xs text-white/80 font-light mt-0.5">Italy Certified Partner</p>
+              <p className="text-xs text-[#5E5054] font-medium mt-0.5">Italy Certified Partner</p>
             </div>
             <div className="pt-2 sm:pt-0 sm:px-3">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-[#B76E79] font-bold block">
                 <DecryptedText text="Health Canada" />
               </span>
-              <p className="text-xs text-white/80 font-light mt-0.5">Clinical Protocol</p>
+              <p className="text-xs text-[#5E5054] font-medium mt-0.5">Approved Protocol</p>
             </div>
             <div className="pt-2 sm:pt-0 sm:px-3">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-[#B76E79] font-bold block">
                 <DecryptedText text="Celluma LED" />
               </span>
-              <p className="text-xs text-white/80 font-light mt-0.5">Phototherapy Light</p>
+              <p className="text-xs text-[#5E5054] font-medium mt-0.5">Phototherapy Light</p>
             </div>
             <div className="pt-2 sm:pt-0 sm:px-3">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-[#B76E79] font-bold block">
                 <DecryptedText text="Autologous PRP" />
               </span>
-              <p className="text-xs text-white/80 font-light mt-0.5">Centrifugation Tech</p>
+              <p className="text-xs text-[#5E5054] font-medium mt-0.5">Centrifugation Care</p>
             </div>
             <div className="pt-2 sm:pt-0 sm:px-3">
-              <span className="font-display text-xl text-copper-light">
+              <span className="font-display text-xl text-[#B76E79] font-semibold">
                 <CountUp to={24} duration={2} suffix="+" />
               </span>
-              <p className="text-xs text-white/80 font-light mt-0.5">Exact PDF Brochure</p>
+              <p className="text-xs text-[#5E5054] font-medium mt-0.5">Treatment Menu</p>
             </div>
             <div className="pt-2 sm:pt-0 sm:px-3">
-              <span className="font-display text-xl text-copper-light">
+              <span className="font-display text-xl text-[#B76E79] font-semibold">
                 <CountUp to={100} duration={2} suffix="%" />
               </span>
-              <p className="text-xs text-white/80 font-light mt-0.5">Private Acoustic Suites</p>
+              <p className="text-xs text-[#5E5054] font-medium mt-0.5">Private Suites</p>
+            </div>
+          </div>
+
+          {/* Partner & Formulation Accreditations Logo Row */}
+          <div className="mt-8 pt-6 border-t border-[#B76E79]/15 flex flex-wrap items-center justify-center sm:justify-between gap-6 sm:gap-8 opacity-85">
+            <span className="text-[10px] uppercase tracking-[0.22em] text-[#8F4954] font-bold">
+              Atelier Formulation Partners:
+            </span>
+            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+              <img
+                src={brandLogo1}
+                alt="Brand Partner"
+                className="h-7 sm:h-8 w-auto object-contain filter invert opacity-70 hover:opacity-100 transition-opacity"
+              />
+              <img
+                src={brandLogo2}
+                alt="Boutique Partner"
+                className="h-7 sm:h-8 w-auto object-contain filter invert opacity-70 hover:opacity-100 transition-opacity"
+              />
+              <img
+                src={brandLogo3}
+                alt="Knightsbridge"
+                className="h-7 sm:h-8 w-auto object-contain filter invert opacity-70 hover:opacity-100 transition-opacity"
+              />
+              <img
+                src={brandLogo4}
+                alt="Boutique Script"
+                className="h-6 sm:h-7 w-auto object-contain filter invert opacity-70 hover:opacity-100 transition-opacity"
+              />
+              <img
+                src={brandLogo5}
+                alt="Rosaflora"
+                className="h-7 sm:h-8 w-auto object-contain filter invert opacity-70 hover:opacity-100 transition-opacity"
+              />
+              <img
+                src={brandLogo6}
+                alt="Clinical Formulation"
+                className="h-7 sm:h-8 w-auto object-contain filter invert opacity-70 hover:opacity-100 transition-opacity"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. 4 FEATURE DISCIPLINES with ReactBits SpotlightCard */}
-      <section className="py-24 sm:py-32 bg-[#0A0908] border-b border-copper/20">
+      {/* 3. 4 FEATURE DISCIPLINES in Pure White Luxury Cards */}
+      <section className="py-24 sm:py-32 bg-[#FAF5F3] border-b border-[#B76E79]/20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="eyebrow text-copper-light">
+            <span className="eyebrow text-[#B76E79]">
               <ShinyText text="Curated Atelier Collections" speed={4} />
             </span>
-            <h2 className="font-display text-4xl sm:text-6xl font-light text-[#FAF7F2]">
+            <h2 className="font-display text-4xl sm:text-6xl font-light text-[#2A2124]">
               Facials, Body &amp; Clinical Aesthetics
             </h2>
-            <p className="text-sm leading-7 text-white/70 font-light">
+            <p className="text-sm leading-relaxed text-[#5E5054] font-normal">
               Explore four dedicated treatment disciplines crafted around formulation purity, anatomical facial precision, and unhurried luxury.
             </p>
           </div>
@@ -587,51 +630,214 @@ function IndexPage() {
                 viewport={{ once: true }}
                 variants={fadeInVariants}
               >
-                <SpotlightCard
-                  spotlightColor="rgba(197, 138, 88, 0.2)"
-                  className="bg-[#131211] border border-copper/25 p-6 flex flex-col justify-between h-full shadow-lg hover:border-copper transition-all duration-300 text-white"
-                >
+                <div className="bg-white border border-[#B76E79]/20 p-6 flex flex-col justify-between h-full shadow-md hover:border-[#B76E79] hover:shadow-xl transition-all duration-300">
                   <div>
-                    <div className="overflow-hidden h-48 border border-copper/20 mb-6 relative">
+                    <div className="overflow-hidden h-48 border border-[#B76E79]/20 mb-6 relative">
                       <img
                         src={suite.image}
                         alt={suite.title}
                         className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                       />
-                      <div className="absolute top-3 left-3 bg-[#0A0908]/90 text-copper-light text-[9px] uppercase tracking-widest px-2 py-0.5 font-semibold border border-copper/30">
+                      <div className="absolute top-3 left-3 bg-white/95 text-[#B76E79] text-[9px] uppercase tracking-widest px-2.5 py-0.5 font-bold border border-[#B76E79]/30">
                         {suite.roman}
                       </div>
-                      <div className="absolute bottom-3 right-3 bg-copper text-white text-[9px] uppercase tracking-widest px-2 py-0.5 font-medium">
+                      <div className="absolute bottom-3 right-3 bg-[#B76E79] text-white text-[9px] uppercase tracking-widest px-2.5 py-0.5 font-bold">
                         {suite.count}
                       </div>
                     </div>
 
-                    <h3 className="font-display text-2xl font-light text-[#FAF7F2] group-hover:text-copper-light transition-colors">
+                    <h3 className="font-display text-2xl font-light text-[#2A2124] group-hover:text-[#B76E79] transition-colors">
                       {suite.title}
                     </h3>
-                    <p className="mt-3 text-xs leading-6 text-white/70 font-light">
+                    <p className="mt-3 text-xs leading-relaxed text-[#5E5054] font-normal">
                       {suite.copy}
                     </p>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-copper/20">
+                  <div className="mt-6 pt-4 border-t border-[#B76E79]/15">
                     <Link
                       to={suite.href as any}
-                      className="text-[10px] uppercase tracking-[0.18em] text-copper-light font-semibold flex items-center justify-between hover:underline"
+                      className="text-[10px] uppercase tracking-[0.18em] text-[#B76E79] font-bold flex items-center justify-between hover:underline"
                     >
                       <span>Explore Collection</span>
                       <span>→</span>
                     </Link>
                   </div>
-                </SpotlightCard>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 4. "DISCOVER A NEW YOU" PHILOSOPHY SPLIT with TrueFocus & TiltedCard */}
-      <section className="py-24 sm:py-32 bg-[#0E0D0C] border-b border-copper/20 relative overflow-hidden text-[#FAF7F2]">
+      {/* 4. DERMACE-INSPIRED INTERACTIVE SKIN CONCERN MATCHER */}
+      <section id="ritual-matcher" className="px-5 py-24 sm:px-8 sm:py-32 bg-white border-b border-[#B76E79]/20 text-[#2A2124]">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-2xl text-left mb-12">
+            <div className="flex items-center gap-3">
+              <Compass className="size-4 text-[#B76E79]" />
+              <span className="eyebrow text-[#B76E79]">Interactive Concern &amp; Goal Matcher</span>
+            </div>
+            <h2 className="mt-3 font-display text-4xl sm:text-6xl font-light text-[#2A2124]">
+              Discover your bespoke ritual.
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-[#5E5054] font-normal">
+              Select your primary skin or body objective below. Our atelier diagnostic reveals your recommended protocol, formulation actives, and duration.
+            </p>
+          </div>
+
+          <div className="grid gap-10 lg:grid-cols-12 items-start">
+            {/* Options List (Left Col) */}
+            <div className="lg:col-span-5 space-y-2.5">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-[#B76E79] font-bold block mb-3 pl-1 font-mono">
+                Select Your Goal / Concern:
+              </span>
+              {diagnosticOptions.map((opt, idx) => {
+                const isSelected = opt.id === selectedDiagnostic;
+                return (
+                  <button
+                    key={opt.id}
+                    type="button"
+                    onClick={() => setSelectedDiagnostic(opt.id)}
+                    className={cn(
+                      "w-full text-left p-4 transition-all duration-300 border flex items-center justify-between group cursor-pointer",
+                      isSelected
+                        ? "border-[#B76E79] bg-[#FAF5F3] text-[#2A2124] shadow-md ring-1 ring-[#B76E79]/40"
+                        : "border-[#B76E79]/20 bg-white text-[#5E5054] hover:border-[#B76E79]/50 hover:bg-[#FAF5F3]/50"
+                    )}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className={cn("font-display text-lg", isSelected ? "text-[#B76E79] font-bold" : "text-[#B76E79]")}>
+                        0{idx + 1}
+                      </span>
+                      <span className="text-xs sm:text-sm font-medium tracking-wide">{opt.label}</span>
+                    </div>
+                    <ChevronRight
+                      className={cn(
+                        "size-4 transition-transform duration-200",
+                        isSelected ? "translate-x-1 text-[#B76E79]" : "text-[#7D6F73] group-hover:translate-x-1"
+                      )}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Diagnostic Result Spotlight in Pure White Furniture Card */}
+            <div className="lg:col-span-7">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeDiagnostic.id}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                >
+                  <div className="bg-white border border-[#B76E79]/30 p-6 sm:p-8 shadow-xl relative overflow-hidden text-[#2A2124]">
+                    <div className="grid gap-6 sm:grid-cols-12 items-start">
+                      <div className="sm:col-span-5 overflow-hidden border border-[#B76E79]/25 relative group">
+                        <img
+                          src={activeDiagnostic.treatment.image}
+                          alt={activeDiagnostic.treatment.name}
+                          className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <span className="absolute top-3 left-3 text-[9px] uppercase tracking-widest bg-white/95 text-[#B76E79] px-2.5 py-1 font-bold border border-[#B76E79]/30">
+                          {activeDiagnostic.treatment.eyebrow}
+                        </span>
+                      </div>
+
+                      <div className="sm:col-span-7 space-y-4">
+                        <div>
+                          <div className="flex items-baseline justify-between gap-2 border-b border-[#B76E79]/15 pb-2">
+                            <h3 className="font-display text-2xl font-light text-[#2A2124]">
+                              {activeDiagnostic.treatment.name}
+                            </h3>
+                            <span className="font-display text-2xl font-light text-[#B76E79]">
+                              {activeDiagnostic.treatment.price}
+                            </span>
+                          </div>
+                          <p className="text-[10px] uppercase tracking-wider text-[#7D6F73] mt-1 font-medium">
+                            Duration: {activeDiagnostic.treatment.duration}
+                          </p>
+                        </div>
+
+                        <p className="text-xs leading-relaxed text-[#5E5054] font-normal">
+                          {activeDiagnostic.treatment.summary}
+                        </p>
+
+                        <div className="space-y-2 pt-2 border-t border-[#B76E79]/15">
+                          <span className="text-[9px] uppercase tracking-wider text-[#B76E79] font-bold block">
+                            Formulation Actives &amp; Protocol:
+                          </span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {activeDiagnostic.treatment.actives.map((act) => (
+                              <span
+                                key={act}
+                                className="text-[10px] bg-[#FAF5F3] px-2.5 py-1 border border-[#B76E79]/25 text-[#2A2124] font-medium"
+                              >
+                                {act}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="pt-3 grid grid-cols-2 gap-3">
+                          <Button
+                            asChild
+                            variant="outline"
+                            className="h-10 rounded-none border-[#B76E79]/40 bg-white text-[9px] uppercase tracking-[0.16em] text-[#B76E79] hover:bg-[#FAF5F3] font-bold transition-all duration-300"
+                          >
+                            <Link to={activeDiagnostic.treatment.href as any}>
+                              Ritual Details →
+                            </Link>
+                          </Button>
+                          <Button
+                            asChild
+                            className="h-10 rounded-none bg-gradient-to-r from-[#C5838B] via-[#B76E79] to-[#8F4954] text-white text-[9px] uppercase tracking-[0.16em] font-bold transition-all duration-300 shadow-md hover:opacity-95"
+                          >
+                            <Link to="/appointment">
+                              Reserve Ritual
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. ASTRA & SKIN MED INSPIRED INTERACTIVE BEFORE & AFTER SLIDER */}
+      <section className="py-24 sm:py-32 bg-[#FAF5F3] border-b border-[#B76E79]/20">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
+            <span className="eyebrow text-[#B76E79]">
+              <ShinyText text="Clinical Transformations" speed={4} />
+            </span>
+            <h2 className="font-display text-4xl sm:text-5xl font-light text-[#2A2124]">
+              Real Clinical Refinement
+            </h2>
+            <p className="text-sm leading-relaxed text-[#5E5054] font-normal">
+              Compare baseline vs post-protocol results. Drag the slider to observe dermal smoothing, pore refinement, and facial contour elevation.
+            </p>
+          </div>
+
+          <div className="bg-white border border-[#B76E79]/25 p-4 sm:p-6 shadow-xl">
+            <BeforeAfterInteractive
+              beforeImage={facialImage}
+              afterImage={advancedImage}
+              title="Bioline 20% AHA Peeling & Dermal Rejuvenation"
+              subtitle="4-week post-protocol cellular turnover & collagen firming"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* 6. "DISCOVER A NEW YOU" PHILOSOPHY SPLIT */}
+      <section className="py-24 sm:py-32 bg-white border-b border-[#B76E79]/20 relative overflow-hidden text-[#2A2124]">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-14 lg:grid-cols-12 items-center">
             {/* Left Column: Asymmetrical Photo Frame with TiltedCard */}
@@ -650,22 +856,22 @@ function IndexPage() {
               />
 
               <TiltedCard rotateAmplitude={10} scaleOnHover={1.01}>
-                <div className="border-2 border-copper/35 bg-[#0A0908] p-3 shadow-2xl relative">
+                <div className="border-2 border-[#B76E79]/35 bg-[#FAF5F3] p-3 shadow-2xl relative">
                   <img
                     src={aboutLumeImg}
                     alt="Lumé Aesthetics Botanical Formulation Philosophy"
                     className="w-full h-[460px] sm:h-[520px] object-cover transition-transform duration-700"
                   />
 
-                  {/* Floating Dark Glass Badge */}
-                  <div className="absolute -bottom-6 -left-6 bg-[#131211]/95 border border-copper/40 p-5 shadow-2xl max-w-[220px] hidden sm:block text-white backdrop-blur-md">
-                    <span className="text-copper-light font-display text-3xl font-light block">
+                  {/* Floating Pure White Glass Badge */}
+                  <div className="absolute -bottom-6 -left-6 bg-white/95 border border-[#B76E79]/40 p-5 shadow-2xl max-w-[220px] hidden sm:block text-[#2A2124] backdrop-blur-md">
+                    <span className="text-[#B76E79] font-display text-3xl font-light block">
                       <CountUp to={100} suffix="%" />
                     </span>
-                    <span className="text-[10px] uppercase tracking-[0.16em] text-white font-semibold block mt-1">
+                    <span className="text-[10px] uppercase tracking-[0.16em] text-[#2A2124] font-bold block mt-1">
                       Bespoke Formulations
                     </span>
-                    <p className="text-[11px] text-white/70 font-light mt-1">
+                    <p className="text-[11px] text-[#5E5054] font-normal mt-1">
                       Personalized skin mapping for every guest.
                     </p>
                   </div>
@@ -682,60 +888,50 @@ function IndexPage() {
               className="lg:col-span-6 space-y-6"
             >
               <div className="flex items-center gap-3">
-                <span className="eyebrow text-copper-light">The Lumé Sanctuary</span>
-                <span className="text-white/40 text-xs">•</span>
-                <span className="text-[10px] uppercase tracking-wider text-[#DFC29D] font-mono">Sherwood Park</span>
+                <span className="eyebrow text-[#B76E79]">The Lumé Sanctuary</span>
+                <span className="text-[#B76E79]/40 text-xs">•</span>
+                <span className="text-[10px] uppercase tracking-wider text-[#B76E79] font-mono font-bold">Sherwood Park</span>
               </div>
 
-              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-[#FAF7F2] leading-[1.08]">
-                DISCOVER A <span className="italic font-serif gold-gradient-text">RADIANT</span> YOU.
+              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-[#2A2124] leading-[1.08]">
+                DISCOVER A <span className="italic font-serif rose-gold-gradient-text">RADIANT</span> YOU.
               </h2>
 
-              <p className="text-sm leading-7 text-white/75 font-light">
-                We believe your skin should reflect health, vitality, and balance regardless of your busy lifestyle. Lumé Aesthetics was founded as an unhurried haven where centuries-old European botanical dermocosmetics converge with Health Canada certified clinical procedures.
+              <p className="text-sm leading-relaxed text-[#5E5054] font-normal">
+                We believe your skin should reflect health, vitality, and balance. Lumé Aesthetics was founded as an unhurried haven where European botanical dermocosmetics converge with Health Canada certified clinical procedures.
               </p>
 
-              {/* TrueFocus Dynamic Focus Highlight */}
-              <div className="py-2 border-y border-copper/20">
-                <TrueFocus
-                  words={["Anatomical Precision", "Botanical Purity", "Unhurried Serenity", "Private Suites"]}
-                  manualMode={false}
-                  animationDuration={0.6}
-                  pauseBetweenAnimations={1.5}
-                />
-              </div>
-
               {/* Spec Table */}
-              <div className="pt-2 divide-y divide-copper/15 text-xs">
+              <div className="pt-2 divide-y divide-[#B76E79]/15 text-xs">
                 <div className="py-3 flex items-center justify-between">
-                  <span className="font-semibold uppercase tracking-wider text-copper-light text-[10px]">Official Partner :</span>
-                  <span className="text-[#FAF7F2] font-light">Bioline Jatò Italy Certified</span>
+                  <span className="font-bold uppercase tracking-wider text-[#B76E79] text-[10px]">Official Partner :</span>
+                  <span className="text-[#2A2124] font-medium">Bioline Jatò Italy Certified</span>
                 </div>
                 <div className="py-3 flex items-center justify-between">
-                  <span className="font-semibold uppercase tracking-wider text-copper-light text-[10px]">Clinical Injectors :</span>
-                  <span className="text-[#FAF7F2] font-light">Certified Medical Nurses &amp; Botox® Protocol</span>
+                  <span className="font-bold uppercase tracking-wider text-[#B76E79] text-[10px]">Clinical Injectors :</span>
+                  <span className="text-[#2A2124] font-medium">Certified Medical Injectors &amp; Botox® Protocol</span>
                 </div>
                 <div className="py-3 flex items-center justify-between">
-                  <span className="font-semibold uppercase tracking-wider text-copper-light text-[10px]">Sanctuary Privacy :</span>
-                  <span className="text-[#FAF7F2] font-light">100% Private 1-on-1 Treatment Lounges</span>
+                  <span className="font-bold uppercase tracking-wider text-[#B76E79] text-[10px]">Sanctuary Privacy :</span>
+                  <span className="text-[#2A2124] font-medium">100% Private 1-on-1 Treatment Lounges</span>
                 </div>
                 <div className="py-3 flex items-center justify-between">
-                  <span className="font-semibold uppercase tracking-wider text-copper-light text-[10px]">Studio Location :</span>
-                  <span className="text-[#FAF7F2] font-light">2457 Broadmoor Blvd #121, Sherwood Park</span>
+                  <span className="font-bold uppercase tracking-wider text-[#B76E79] text-[10px]">Studio Location :</span>
+                  <span className="text-[#2A2124] font-medium">2457 Broadmoor Blvd #121, Sherwood Park</span>
                 </div>
               </div>
 
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <Button
                   asChild
-                  className="h-11 rounded-none bg-copper text-white text-[10px] uppercase tracking-[0.18em] hover:bg-copper-light hover:text-[#0A0908] px-8 font-semibold transition-all duration-300 shadow-lg"
+                  className="h-11 rounded-none bg-[#B76E79] hover:bg-[#8F4954] text-white text-[10px] uppercase tracking-[0.18em] px-8 font-bold transition-all duration-300 shadow-md"
                 >
                   <Link to="/about">Our Philosophy &amp; Team</Link>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
-                  className="h-11 rounded-none border-copper/40 bg-white/[0.03] text-[10px] uppercase tracking-[0.18em] text-copper-light hover:bg-copper hover:text-white transition-all duration-300"
+                  className="h-11 rounded-none border-[#B76E79]/40 bg-white text-[10px] uppercase tracking-[0.18em] text-[#B76E79] hover:bg-[#FAF5F3] font-bold transition-all duration-300"
                 >
                   <Link to="/contact">Book Consultation</Link>
                 </Button>
@@ -745,520 +941,167 @@ function IndexPage() {
         </div>
       </section>
 
-      {/* 5. 6-GRID SERVICE HIGHLIGHTS with ReactBits SpotlightCard */}
-      <section id="experience-menu" className="py-24 sm:py-32 bg-[#0A0908] border-b border-copper/20 text-[#FAF7F2]">
+      {/* 7. SIGNATURE SPA PACKAGES in Pure White Furniture Cards */}
+      <section className="py-24 sm:py-32 bg-[#FAF5F3] border-b border-[#B76E79]/20 text-[#2A2124]">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="eyebrow text-copper-light">
-              <ShinyText text="Signature Procedures" speed={4} />
-            </span>
-            <h2 className="font-display text-4xl sm:text-6xl font-light text-[#FAF7F2]">
-              Discover Our Atelier Menu
-            </h2>
-            <p className="text-sm leading-7 text-white/70 font-light">
-              Every treatment is unhurried, results-oriented, and personalized to your facial bone structure and skin barrier requirements.
-            </p>
-          </div>
-
-          <div className="grid gap-8 lg:grid-cols-12 items-center">
-            {/* Left 3 Services */}
-            <div className="lg:col-span-4 space-y-6">
-              <SpotlightCard
-                spotlightColor="rgba(197, 138, 88, 0.22)"
-                className="bg-[#131211] border border-copper/25 p-6 shadow-xl hover:border-copper transition-colors group text-white"
-              >
-                <div className="flex items-baseline justify-between border-b border-copper/20 pb-2">
-                  <h3 className="font-display text-xl font-light text-[#FAF7F2] group-hover:text-copper-light transition-colors">
-                    Lumé Aqua Luxe Facial
-                  </h3>
-                  <span className="font-display text-lg text-copper-light">$125</span>
-                </div>
-                <p className="text-[10px] uppercase tracking-wider text-white/50 mt-1">Duration: 65 min</p>
-                <p className="text-xs text-white/70 font-light mt-2">
-                  Nectar drop massage, hyaluronic acid cream mask, and barrier repair.
-                </p>
-              </SpotlightCard>
-
-              <SpotlightCard
-                spotlightColor="rgba(197, 138, 88, 0.22)"
-                className="bg-[#131211] border border-copper/25 p-6 shadow-xl hover:border-copper transition-colors group text-white"
-              >
-                <div className="flex items-baseline justify-between border-b border-copper/20 pb-2">
-                  <h3 className="font-display text-xl font-light text-[#FAF7F2] group-hover:text-copper-light transition-colors">
-                    Prima Glow (20% AHA)
-                  </h3>
-                  <span className="font-display text-lg text-copper-light">$135</span>
-                </div>
-                <p className="text-[10px] uppercase tracking-wider text-white/50 mt-1">Duration: 60 min</p>
-                <p className="text-xs text-white/70 font-light mt-2">
-                  Intensive botanical AHA peel for cellular turnover, tone &amp; clarity.
-                </p>
-              </SpotlightCard>
-
-              <SpotlightCard
-                spotlightColor="rgba(197, 138, 88, 0.22)"
-                className="bg-[#131211] border border-copper/25 p-6 shadow-xl hover:border-copper transition-colors group text-white"
-              >
-                <div className="flex items-baseline justify-between border-b border-copper/20 pb-2">
-                  <h3 className="font-display text-xl font-light text-[#FAF7F2] group-hover:text-copper-light transition-colors">
-                    Mocha Contour Gua Sha
-                  </h3>
-                  <span className="font-display text-lg text-copper-light">$145</span>
-                </div>
-                <p className="text-[10px] uppercase tracking-wider text-white/50 mt-1">Duration: 60 min</p>
-                <p className="text-xs text-white/70 font-light mt-2">
-                  Bioline Jatò Coffee wrap with Bian stone Gua Sha body contouring.
-                </p>
-              </SpotlightCard>
-            </div>
-
-            {/* Center Imagery Emblem */}
-            <div className="lg:col-span-4 text-center">
-              <TiltedCard rotateAmplitude={6}>
-                <div className="relative mx-auto max-w-sm overflow-hidden border-2 border-copper/35 shadow-2xl bg-[#0D0C0B]">
-                  <img
-                    src={plump2}
-                    alt="Lumé Aesthetics Private Sanctuary Suite"
-                    className="w-full h-[420px] object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/95 via-transparent to-transparent flex flex-col justify-end p-6 text-white text-center">
-                    <img src="/lume-emblem.svg" alt="Emblem" className="size-10 mx-auto mb-2 opacity-90" />
-                    <span className="text-[10px] uppercase tracking-[0.24em] text-copper-light font-semibold">
-                      The Art of Serenity
-                    </span>
-                    <p className="text-xs text-white/80 font-light mt-1">
-                      Book individual rituals or pair them in multi-hour packages.
-                    </p>
-                  </div>
-                </div>
-              </TiltedCard>
-            </div>
-
-            {/* Right 3 Services */}
-            <div className="lg:col-span-4 space-y-6">
-              <SpotlightCard
-                spotlightColor="rgba(197, 138, 88, 0.22)"
-                className="bg-[#131211] border border-copper/25 p-6 shadow-xl hover:border-copper transition-colors group text-white"
-              >
-                <div className="flex items-baseline justify-between border-b border-copper/20 pb-2">
-                  <h3 className="font-display text-xl font-light text-[#FAF7F2] group-hover:text-copper-light transition-colors">
-                    Aura Infusion (Glass Skin)
-                  </h3>
-                  <span className="font-display text-lg text-copper-light">$199</span>
-                </div>
-                <p className="text-[10px] uppercase tracking-wider text-white/50 mt-1">Duration: 60 min</p>
-                <p className="text-xs text-white/70 font-light mt-2">
-                  90%+ pure negative-ion oxygen dome with bioactive custom ampoules.
-                </p>
-              </SpotlightCard>
-
-              <SpotlightCard
-                spotlightColor="rgba(197, 138, 88, 0.22)"
-                className="bg-[#131211] border border-copper/25 p-6 shadow-xl hover:border-copper transition-colors group text-white"
-              >
-                <div className="flex items-baseline justify-between border-b border-copper/20 pb-2">
-                  <h3 className="font-display text-xl font-light text-[#FAF7F2] group-hover:text-copper-light transition-colors">
-                    Collagen Lifting Facial
-                  </h3>
-                  <span className="font-display text-lg text-copper-light">$195</span>
-                </div>
-                <p className="text-[10px] uppercase tracking-wider text-white/50 mt-1">Duration: 75 min</p>
-                <p className="text-xs text-white/70 font-light mt-2">
-                  Bioline Lifting Code bio-architectural firming &amp; microcurrent sculpt.
-                </p>
-              </SpotlightCard>
-
-              <SpotlightCard
-                spotlightColor="rgba(197, 138, 88, 0.22)"
-                className="bg-[#131211] border border-copper/25 p-6 shadow-xl hover:border-copper transition-colors group text-white"
-              >
-                <div className="flex items-baseline justify-between border-b border-copper/20 pb-2">
-                  <h3 className="font-display text-xl font-light text-[#FAF7F2] group-hover:text-copper-light transition-colors">
-                    Clinical Botox® &amp; Fillers
-                  </h3>
-                  <span className="font-display text-lg text-copper-light">$10 / Unit</span>
-                </div>
-                <p className="text-[10px] uppercase tracking-wider text-white/50 mt-1">
-                  Duration: In-Depth Consultation
-                </p>
-                <p className="text-xs text-white/70 font-light mt-2">
-                  Licensed clinical medical injectors adhering to Health Canada protocols.
-                </p>
-              </SpotlightCard>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. "YOUR PERFECT PACKAGE" PRICING PLANS with ReactBits SpotlightCard & StarBorder */}
-      <AuroraGlow variant="dark" className="py-24 sm:py-32 border-b border-copper/20 text-white">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="eyebrow text-copper-light">
+            <span className="eyebrow text-[#B76E79]">
               <ShinyText text="Signature Spa Packages" speed={3} />
             </span>
-            <h2 className="font-display text-4xl sm:text-6xl font-light text-white">
+            <h2 className="font-display text-4xl sm:text-6xl font-light text-[#2A2124]">
               Your Perfect Package
             </h2>
-            <p className="text-sm leading-7 text-white/75 font-light">
+            <p className="text-sm leading-relaxed text-[#5E5054] font-normal">
               Multi-hour head-to-toe luxury ceremonies crafted for milestone celebrations, bridal parties, or absolute restoration.
             </p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
             {/* Package 1: You Deserve It! */}
-            <SpotlightCard
-              spotlightColor="rgba(223, 194, 157, 0.22)"
-              borderColor="rgba(181, 126, 82, 0.4)"
-              className="bg-white/[0.04] border border-copper/30 backdrop-blur-md p-8 sm:p-10 flex flex-col justify-between shadow-2xl"
-            >
+            <div className="bg-white border border-[#B76E79]/25 p-8 sm:p-10 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300">
               <div>
-                <div className="flex justify-between items-baseline border-b border-white/10 pb-4">
+                <div className="flex justify-between items-baseline border-b border-[#B76E79]/15 pb-4">
                   <div>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#B76E79] font-bold">
                       2 Hour Ceremony
                     </span>
-                    <h3 className="font-display text-3xl font-light text-white mt-1">You Deserve It!</h3>
+                    <h3 className="font-display text-3xl font-light text-[#2A2124] mt-1">You Deserve It!</h3>
                   </div>
                   <div className="text-right">
-                    <span className="font-display text-4xl font-light text-copper-light">$265</span>
+                    <span className="font-display text-4xl font-light text-[#B76E79]">$265</span>
                   </div>
                 </div>
 
-                <p className="mt-4 text-xs leading-6 text-white/75 font-light">
+                <p className="mt-4 text-xs leading-relaxed text-[#5E5054] font-normal">
                   A deeply restorative head-to-toe package combining custom facial therapy, green coffee body contouring, and therapeutic LED light.
                 </p>
 
-                <div className="mt-6 pt-5 border-t border-white/10 space-y-3">
-                  <span className="text-[10px] uppercase tracking-wider text-copper-light font-semibold block">
+                <div className="mt-6 pt-5 border-t border-[#B76E79]/15 space-y-3">
+                  <span className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold block">
                     Included In Package:
                   </span>
-                  <ul className="space-y-2.5 text-xs text-white/85">
+                  <ul className="space-y-2.5 text-xs text-[#2A2124]">
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-copper-light shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
                       <span>Custom Bioline Facial (1 Hour)</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-copper-light shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
                       <span>Coffee Shape Body Treatment (1 Hour)</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-copper-light shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
                       <span>Celluma LED Light Healing Therapy</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-copper-light shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
                       <span>Complimentary Organic Herbal Tea Service</span>
                     </li>
                   </ul>
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/10">
+              <div className="mt-8 pt-6 border-t border-[#B76E79]/15">
                 <MagneticButton strength={0.2} pullStrength={0.2}>
                   <Button
                     asChild
-                    className="w-full h-12 rounded-none bg-copper text-white text-[10px] uppercase tracking-[0.18em] hover:bg-copper-light hover:text-[#0A0908] font-semibold transition-all duration-300"
+                    className="w-full h-12 rounded-none bg-[#B76E79] hover:bg-[#8F4954] text-white text-[10px] uppercase tracking-[0.18em] font-bold transition-all duration-300 shadow-md"
                   >
-                    <a href="mailto:info@lumeaesthetics.co?subject=Booking%20You%20Deserve%20It%20Package">
+                    <Link to="/appointment">
                       Reserve Package ($265)
-                    </a>
+                    </Link>
                   </Button>
                 </MagneticButton>
               </div>
-            </SpotlightCard>
+            </div>
 
-            {/* Package 2: Queen For A Day! with StarBorder */}
-            <SpotlightCard
-              spotlightColor="rgba(223, 194, 157, 0.3)"
-              borderColor="rgba(181, 126, 82, 0.8)"
-              className="bg-white/[0.07] border border-copper/50 backdrop-blur-md p-8 sm:p-10 flex flex-col justify-between shadow-2xl relative"
-            >
-              <div className="absolute top-0 right-0 bg-copper text-white text-[9px] uppercase tracking-[0.2em] px-3 py-1 font-semibold">
+            {/* Package 2: Queen For A Day! */}
+            <div className="bg-white border-2 border-[#B76E79]/40 p-8 sm:p-10 flex flex-col justify-between shadow-xl relative">
+              <div className="absolute top-0 right-0 bg-[#B76E79] text-white text-[9px] uppercase tracking-[0.2em] px-3 py-1 font-bold">
                 Royal Flagship
               </div>
               <div>
-                <div className="flex justify-between items-baseline border-b border-white/10 pb-4">
+                <div className="flex justify-between items-baseline border-b border-[#B76E79]/15 pb-4">
                   <div>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#B76E79] font-bold">
                       3 Hour Luxury Ritual
                     </span>
-                    <h3 className="font-display text-3xl font-light text-white mt-1">Queen For A Day!</h3>
+                    <h3 className="font-display text-3xl font-light text-[#2A2124] mt-1">Queen For A Day!</h3>
                   </div>
                   <div className="text-right">
-                    <span className="font-display text-4xl font-light text-copper-light">$395</span>
+                    <span className="font-display text-4xl font-light text-[#B76E79]">$395</span>
                   </div>
                 </div>
 
-                <p className="mt-4 text-xs leading-6 text-white/75 font-light">
+                <p className="mt-4 text-xs leading-relaxed text-[#5E5054] font-normal">
                   The ultimate Lumé sanctuary experience. Three unhurried hours of complete head-to-toe sensory pampering and visible facial lift.
                 </p>
 
-                <div className="mt-6 pt-5 border-t border-white/10 space-y-3">
-                  <span className="text-[10px] uppercase tracking-wider text-copper-light font-semibold block">
+                <div className="mt-6 pt-5 border-t border-[#B76E79]/15 space-y-3">
+                  <span className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold block">
                     Included In Package:
                   </span>
-                  <ul className="space-y-2.5 text-xs text-white/85">
+                  <ul className="space-y-2.5 text-xs text-[#2A2124]">
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-copper-light shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
                       <span>Seasonal Botanical Body Exfoliating Wrap</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-copper-light shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
                       <span>Bioline Lifting Code Non-Surgical Facelift</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-copper-light shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
                       <span>Therapeutic Warm Oil Scalp Treatment</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-copper-light shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
                       <span>Luxe Foot Reflexology Exfoliation</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-copper-light shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
                       <span>Full-Spectrum Celluma LED Phototherapy</span>
                     </li>
                   </ul>
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/10">
+              <div className="mt-8 pt-6 border-t border-[#B76E79]/15">
                 <MagneticButton strength={0.25} pullStrength={0.25}>
                   <Button
                     asChild
-                    className="w-full h-12 rounded-none bg-copper text-white text-[10px] uppercase tracking-[0.18em] hover:bg-copper-light hover:text-[#0A0908] shadow-lg font-semibold transition-all duration-300"
+                    className="w-full h-12 rounded-none bg-gradient-to-r from-[#C5838B] via-[#B76E79] to-[#8F4954] text-white text-[10px] uppercase tracking-[0.18em] hover:opacity-95 shadow-lg font-bold transition-all duration-300"
                   >
-                    <a href="mailto:info@lumeaesthetics.co?subject=Booking%20Queen%20For%20A%20Day%20Package">
+                    <Link to="/appointment">
                       Reserve Royal Day ($395)
-                    </a>
+                    </Link>
                   </Button>
                 </MagneticButton>
               </div>
-            </SpotlightCard>
-          </div>
-        </div>
-      </AuroraGlow>
-
-      {/* 7. INTERACTIVE GALLERY / LOOKBOOK with ReactBits TiltedCard */}
-      <section className="py-24 sm:py-32 bg-[#0A0908] border-b border-copper/20 overflow-hidden text-[#FAF7F2]">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-12 border-b border-copper/20 pb-6">
-            <div>
-              <span className="eyebrow text-copper-light">
-                <ShinyText text="Visual Lookbook" speed={4} />
-              </span>
-              <h2 className="mt-3 font-display text-4xl sm:text-6xl font-light text-[#FAF7F2]">
-                Atelier Portfolio &amp; Rituals
-              </h2>
-            </div>
-            <Link
-              to="/treatments"
-              className="text-xs uppercase tracking-widest text-copper-light hover:underline flex items-center gap-1 font-semibold"
-            >
-              Browse Complete Brochure (24+ Rituals) →
-            </Link>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {galleryItems.map((item, idx) => (
-              <SpotlightCard
-                key={item.title}
-                spotlightColor="rgba(197, 138, 88, 0.25)"
-                className="bg-[#131211] border border-copper/25 overflow-hidden relative shadow-xl hover:border-copper transition-all duration-300 text-white"
-              >
-                <div className="overflow-hidden h-72 relative group">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/90 via-transparent to-transparent flex items-end p-5">
-                    <div className="text-white w-full flex items-end justify-between">
-                      <div>
-                        <span className="text-[9px] uppercase tracking-widest text-copper-light font-semibold block">
-                          {item.category}
-                        </span>
-                        <h3 className="font-display text-xl font-light text-white">{item.title}</h3>
-                      </div>
-                      <span className="font-display text-xl font-light text-copper-light">{item.price}</span>
-                    </div>
-                  </div>
-                </div>
-              </SpotlightCard>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 8. INTERACTIVE AESTHETIC MATCHER (Interactive Diagnosis) */}
-      <section id="ritual-matcher" className="px-5 py-24 sm:px-8 sm:py-32 bg-[#0E0D0C] border-b border-copper/20 text-[#FAF7F2]">
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-2xl text-left mb-12">
-            <div className="flex items-center gap-3">
-              <Compass className="size-4 text-copper-light" />
-              <span className="eyebrow text-copper-light">Interactive Atelier Matcher</span>
-            </div>
-            <h2 className="mt-3 font-display text-4xl sm:text-6xl font-light text-[#FAF7F2]">
-              Discover your bespoke ritual.
-            </h2>
-            <p className="mt-4 text-sm leading-7 text-white/70 font-light">
-              Select your primary skin or body objective below. Our atelier matcher will instantly reveal your tailored treatment protocol and formulation active spotlight.
-            </p>
-          </div>
-
-          {/* Interactive Diagnostic Workspace */}
-          <div className="grid gap-10 lg:grid-cols-12 items-start">
-            {/* Options List (Left Col) */}
-            <div className="lg:col-span-5 space-y-2.5">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-white/60 font-semibold block mb-3 pl-1 font-mono">
-                Select Your Goal / Concern:
-              </span>
-              {diagnosticOptions.map((opt, idx) => {
-                const isSelected = opt.id === selectedDiagnostic;
-                return (
-                  <button
-                    key={opt.id}
-                    type="button"
-                    onClick={() => setSelectedDiagnostic(opt.id)}
-                    className={cn(
-                      "w-full text-left p-4 transition-all duration-300 border flex items-center justify-between group",
-                      isSelected
-                        ? "border-copper bg-copper/20 text-white shadow-xl"
-                        : "border-copper/25 bg-[#131211] text-white/90 hover:border-copper/60 hover:bg-white/[0.04]"
-                    )}
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className={cn("font-display text-lg", isSelected ? "text-copper-light font-bold" : "text-copper-light")}>
-                        0{idx + 1}
-                      </span>
-                      <span className="text-xs sm:text-sm font-light tracking-wide">{opt.label}</span>
-                    </div>
-                    <ChevronRight
-                      className={cn(
-                        "size-4 transition-transform duration-200",
-                        isSelected ? "translate-x-1 text-copper-light" : "text-white/40 group-hover:translate-x-1"
-                      )}
-                    />
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Diagnostic Result Spotlight (Right Col) */}
-            <div className="lg:col-span-7">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeDiagnostic.id}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.35, ease: "easeInOut" }}
-                >
-                  <SpotlightCard
-                    spotlightColor="rgba(197, 138, 88, 0.25)"
-                    borderColor="rgba(181, 126, 82, 0.5)"
-                    className="bg-[#131211] border border-copper/30 p-6 sm:p-8 shadow-2xl relative overflow-hidden text-white"
-                  >
-                    <div className="grid gap-6 sm:grid-cols-12 items-start">
-                      <div className="sm:col-span-5 overflow-hidden border border-copper/25 relative group">
-                        <img
-                          src={activeDiagnostic.treatment.image}
-                          alt={activeDiagnostic.treatment.name}
-                          className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <span className="absolute top-3 left-3 text-[9px] uppercase tracking-widest bg-[#0A0908]/90 text-copper-light px-2.5 py-1 font-semibold border border-copper/30">
-                          {activeDiagnostic.treatment.eyebrow}
-                        </span>
-                      </div>
-
-                      <div className="sm:col-span-7 space-y-4">
-                        <div>
-                          <div className="flex items-baseline justify-between gap-2 border-b border-copper/20 pb-2">
-                            <h3 className="font-display text-2xl font-light text-white">
-                              {activeDiagnostic.treatment.name}
-                            </h3>
-                            <span className="font-display text-2xl font-light text-copper-light">
-                              {activeDiagnostic.treatment.price}
-                            </span>
-                          </div>
-                          <p className="text-[10px] uppercase tracking-wider text-white/50 mt-1">
-                            Duration: {activeDiagnostic.treatment.duration}
-                          </p>
-                        </div>
-
-                        <p className="text-xs leading-6 text-white/75 font-light">
-                          {activeDiagnostic.treatment.summary}
-                        </p>
-
-                        <div className="space-y-2 pt-2 border-t border-copper/20">
-                          <span className="text-[9px] uppercase tracking-wider text-copper-light font-semibold block">
-                            Formulation Actives &amp; Protocol:
-                          </span>
-                          <div className="flex flex-wrap gap-1.5">
-                            {activeDiagnostic.treatment.actives.map((act) => (
-                              <span
-                                key={act}
-                                className="text-[10px] bg-white/[0.05] px-2.5 py-1 border border-copper/25 text-white/90 font-light"
-                              >
-                                {act}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="pt-3 grid grid-cols-2 gap-3">
-                          <Button
-                            asChild
-                            variant="outline"
-                            className="h-10 rounded-none border-copper/40 bg-transparent text-[9px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper hover:text-white transition-all duration-300"
-                          >
-                            <Link to={activeDiagnostic.treatment.href as any}>
-                              Ritual Details →
-                            </Link>
-                          </Button>
-                          <Button
-                            asChild
-                            className="h-10 rounded-none bg-copper text-white text-[9px] uppercase tracking-[0.16em] hover:bg-copper-light hover:text-[#0A0908] font-semibold transition-all duration-300 shadow-md"
-                          >
-                            <a
-                              href={`mailto:info@lumeaesthetics.co?subject=${encodeURIComponent(
-                                `Consultation Booking: ${activeDiagnostic.treatment.name}`
-                              )}`}
-                            >
-                              Reserve Ritual
-                            </a>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </SpotlightCard>
-                </motion.div>
-              </AnimatePresence>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 9. GUEST REVIEWS / TESTIMONIALS with ReactBits SpotlightCard */}
-      <section className="px-5 py-24 sm:px-8 sm:py-32 bg-[#0A0908] border-b border-copper/20 text-[#FAF7F2]">
+      {/* 8. GUEST REVIEWS / TESTIMONIALS in Pure White Furniture Cards */}
+      <section className="px-5 py-24 sm:px-8 sm:py-32 bg-white border-b border-[#B76E79]/20 text-[#2A2124]">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-12 items-center">
             <div className="lg:col-span-5 space-y-5">
-              <span className="eyebrow text-copper-light">
-                <ShinyText text="Client Experiences" speed={4} />
+              <span className="eyebrow text-[#B76E79]">
+                <ShinyText text="Verified Guest Experiences" speed={4} />
               </span>
-              <h2 className="font-display text-4xl sm:text-5xl font-light leading-tight text-[#FAF7F2]">
+              <h2 className="font-display text-4xl sm:text-5xl font-light leading-tight text-[#2A2124]">
                 Words from our guests.
               </h2>
-              <p className="text-sm leading-7 text-white/70 font-light">
+              <p className="text-sm leading-relaxed text-[#5E5054] font-normal">
                 Discover why clients trust Lumé Aesthetics for restorative skin rituals, bridal beauty, and clinical precision in Sherwood Park.
               </p>
               <div className="pt-2">
                 <Button
                   asChild
                   variant="outline"
-                  className="h-11 rounded-none border-copper/40 bg-white/[0.03] px-6 text-[10px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper hover:text-white transition-all duration-300"
+                  className="h-11 rounded-none border-[#B76E79]/40 bg-[#FAF5F3] px-6 text-[10px] uppercase tracking-[0.16em] text-[#B76E79] hover:bg-[#B76E79] hover:text-white font-bold transition-all duration-300"
                 >
                   <Link to="/contact">Speak With Our Specialists</Link>
                 </Button>
@@ -1266,50 +1109,49 @@ function IndexPage() {
             </div>
 
             <div className="lg:col-span-7 grid gap-6">
-              {clientStories.map((story, idx) => (
-                <SpotlightCard
+              {clientStories.map((story) => (
+                <div
                   key={story.author}
-                  spotlightColor="rgba(197, 138, 88, 0.2)"
-                  className="bg-[#131211] border border-copper/25 p-6 sm:p-7 space-y-3 relative shadow-xl text-white"
+                  className="bg-[#FAF5F3] border border-[#B76E79]/25 p-6 sm:p-7 space-y-3 relative shadow-md"
                 >
-                  <div className="flex items-center gap-1 text-copper-light">
+                  <div className="flex items-center gap-1 text-[#B76E79]">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="size-3.5 fill-copper-light text-copper-light" />
+                      <Star key={i} className="size-3.5 fill-[#B76E79] text-[#B76E79]" />
                     ))}
                   </div>
-                  <p className="text-xs sm:text-sm leading-6 text-white/90 font-light italic">
+                  <p className="text-xs sm:text-sm leading-relaxed text-[#2A2124] font-normal italic">
                     "{story.quote}"
                   </p>
-                  <div className="flex items-center justify-between pt-2 border-t border-copper/20 text-xs">
-                    <span className="font-medium text-white">{story.author}</span>
-                    <span className="text-[10px] uppercase tracking-wider text-copper-light font-semibold">
+                  <div className="flex items-center justify-between pt-3 border-t border-[#B76E79]/15 text-xs">
+                    <span className="font-bold text-[#2A2124]">{story.author}</span>
+                    <span className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold">
                       {story.ritual}
                     </span>
                   </div>
-                </SpotlightCard>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* 10. CTA BANNER with StarBorder & AuroraGlow */}
-      <AuroraGlow variant="dark" className="relative px-5 py-24 text-center sm:px-8 sm:py-32 text-white">
-        <div className="mx-auto max-w-3xl space-y-6">
+      {/* 9. CTA BANNER in Dusty Pink & Rose Gold */}
+      <section className="relative px-5 py-24 text-center sm:px-8 sm:py-32 bg-gradient-to-b from-[#FAF5F3] via-[#F4E8E5] to-[#EEDBD7] text-[#2A2124] border-t border-[#B76E79]/20">
+        <div className="mx-auto max-w-3xl space-y-6 relative z-10">
           <RotatingBadge
             text="RESERVE SANCTUARY • LUMÉ AESTHETICS • "
             href="tel:+17804108278"
             size={110}
-            className="mx-auto"
+            className="mx-auto bg-white border border-[#B76E79]/40 shadow-xl rounded-full text-[#2A2124]"
           />
 
-          <span className="eyebrow text-copper-light text-[11px] block">
+          <span className="eyebrow text-[#B76E79] text-[11px] block">
             <ShinyText text="Your Time at Lumé" speed={3} />
           </span>
-          <h2 className="font-display text-4xl sm:text-6xl font-light text-white leading-tight">
+          <h2 className="font-display text-4xl sm:text-6xl font-light text-[#2A2124] leading-tight">
             Begin with a personal consultation.
           </h2>
-          <p className="mx-auto max-w-xl leading-7 text-white/75 text-sm sm:text-base font-light">
+          <p className="mx-auto max-w-xl leading-relaxed text-[#5E5054] text-sm sm:text-base font-normal">
             Share what you would like to address. Our dermal specialists and clinical practitioners will design a tailored roadmap for your skin and wellbeing.
           </p>
 
@@ -1317,21 +1159,21 @@ function IndexPage() {
             <MagneticButton strength={0.25} pullStrength={0.25}>
               <Button
                 asChild
-                className="h-12 rounded-none bg-copper text-white px-10 text-xs uppercase tracking-[0.18em] hover:bg-copper-light hover:text-[#0A0908] shadow-2xl font-semibold w-full sm:w-auto transition-all duration-300"
+                className="h-12 rounded-none bg-gradient-to-r from-[#C5838B] via-[#B76E79] to-[#8F4954] text-white px-10 text-xs uppercase tracking-[0.18em] shadow-lg font-bold w-full sm:w-auto transition-all duration-300 hover:opacity-95"
               >
-                <a href="tel:+17804108278">Studio Call: (780) 410-8278</a>
+                <a href="tel:+17804108278">Studio Desk: (780) 410-8278</a>
               </Button>
             </MagneticButton>
             <Button
               asChild
               variant="outline"
-              className="h-12 rounded-none border-copper-light bg-transparent px-10 text-xs uppercase tracking-[0.18em] text-copper-light hover:bg-copper-light hover:text-[#0A0908] transition-all duration-300"
+              className="h-12 rounded-none border-[#B76E79] bg-white px-10 text-xs uppercase tracking-[0.18em] text-[#B76E79] hover:bg-[#FAF5F3] font-bold transition-all duration-300 shadow-xs"
             >
               <Link to="/contact">Book Atelier Visit</Link>
             </Button>
           </div>
         </div>
-      </AuroraGlow>
+      </section>
     </div>
   );
 }

@@ -53,38 +53,41 @@ function SpaPackagesPage() {
     >
       {/* Visual Banner with TiltedCard */}
       <TiltedCard rotateAmplitude={5}>
-        <div className="overflow-hidden border border-copper/30 shadow-lg relative group bg-[#131211]">
-          <img
-            src={price1Img}
-            alt="Spa Packages Luxury Sanctuary Rituals"
-            className="w-full h-[320px] sm:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#131211]/90 via-black/35 to-transparent flex items-end p-6 sm:p-8">
-            <div className="text-white">
-              <span className="eyebrow text-copper-light text-[10px]">
-                <ShinyText text="Sanctuary Retreat" speed={3} />
-              </span>
-              <h3 className="font-display text-2xl sm:text-3xl font-light">
-                Unhurried Multi-Hour Holistic Ceremonies
-              </h3>
+        <div className="overflow-hidden rounded-2xl border border-[#B76E79]/25 shadow-soft-card relative group bg-white p-2">
+          <div className="overflow-hidden rounded-xl relative">
+            <img
+              src={price1Img}
+              alt="Spa Packages Luxury Sanctuary Rituals"
+              className="w-full h-[320px] sm:h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-6 sm:p-8">
+              <div className="text-white">
+                <span className="eyebrow text-[#E7B2A9] text-[10px] tracking-[0.2em] font-semibold">
+                  <ShinyText text="Sanctuary Retreat" speed={3} />
+                </span>
+                <h3 className="font-display text-2xl sm:text-3xl font-light">
+                  Unhurried Multi-Hour Holistic Ceremonies
+                </h3>
+              </div>
             </div>
           </div>
         </div>
       </TiltedCard>
 
-      {/* Editorial Quote Box with SpotlightCard */}
+      {/* Editorial Quote Box with SpotlightCard - Pure White Card */}
       <SpotlightCard
-        spotlightColor="rgba(181, 126, 82, 0.16)"
-        className="bg-[#FAF7F2] p-6 sm:p-8 space-y-3"
+        spotlightColor="rgba(183, 110, 121, 0.12)"
+        borderColor="rgba(183, 110, 121, 0.22)"
+        className="bg-white rounded-2xl border border-[#B76E79]/20 shadow-soft-card p-6 sm:p-8 space-y-3 text-[#2A2124]"
       >
         <div className="flex items-center gap-2">
-          <Gift className="size-4 text-copper" />
-          <span className="eyebrow text-copper text-[10px]">The Lumé Milestone Experience</span>
+          <Gift className="size-4 text-[#B76E79]" />
+          <span className="eyebrow text-[#8F4954] text-[10px] tracking-[0.2em] font-semibold">The Lumé Milestone Experience</span>
         </div>
-        <p className="font-serif text-lg sm:text-xl italic text-[#131211] leading-relaxed">
+        <p className="font-serif text-lg sm:text-xl italic text-[#2A2124] leading-relaxed">
           "A sanctuary visit is never rushed. From herbal infusion welcome teas to warm botanical wraps and Celluma light, each hour is choreographed for absolute stillness."
         </p>
-        <div className="flex items-center gap-4 text-xs text-muted-foreground pt-2 border-t border-copper/15">
+        <div className="flex flex-wrap items-center gap-4 text-xs text-[#7A6B6E] pt-2 border-t border-[#B76E79]/15">
           <span>Private Treatment Suite</span>
           <span>•</span>
           <span>Complimentary Organic Herbal Tea Service</span>
@@ -93,8 +96,8 @@ function SpaPackagesPage() {
         </div>
       </SpotlightCard>
 
-      {/* Spa Packages Listing with SpotlightCard */}
-      <div className="space-y-10">
+      {/* Spa Packages Listing with Pure White Furniture Cards */}
+      <div className="space-y-8">
         {spaPackages.map((pkg, idx) => (
           <motion.div
             key={pkg.name}
@@ -105,36 +108,36 @@ function SpaPackagesPage() {
             variants={fadeInVariant}
           >
             <SpotlightCard
-              spotlightColor="rgba(243, 197, 146, 0.2)"
-              borderColor="rgba(243, 197, 146, 0.45)"
-              className="bg-[#131211] p-6 sm:p-10 shadow-2xl transition-all duration-300 hover:border-copper border border-copper/30 space-y-6 text-[#FAF7F2]"
+              spotlightColor="rgba(183, 110, 121, 0.15)"
+              borderColor="rgba(183, 110, 121, 0.25)"
+              className="bg-white rounded-2xl border border-[#B76E79]/20 p-6 sm:p-10 shadow-soft-card space-y-6 text-[#2A2124]"
             >
-              <div className="overflow-hidden border border-copper/20 relative group">
+              <div className="overflow-hidden rounded-xl border border-[#B76E79]/20 relative group shadow-xs">
                 <img
                   src={pkg.image}
                   alt={pkg.name}
                   className="w-full h-64 sm:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute top-4 right-4 bg-[#131211]/90 backdrop-blur-md px-3.5 py-1.5 border border-copper/40 text-[#F3C592] text-xs tracking-[0.2em] uppercase font-bold">
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#B76E79]/30 text-[#8F4954] text-xs tracking-[0.2em] uppercase font-bold shadow-xs">
                   {pkg.duration}
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-copper/20 pb-5">
+              <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-[#B76E79]/15 pb-5">
                 <div>
-                  <span className="text-xs uppercase tracking-[0.2em] text-[#F3C592] font-bold block">
+                  <span className="text-xs uppercase tracking-[0.2em] text-[#8F4954] font-bold block">
                     Signature Atelier Ceremony 0{idx + 1}
                   </span>
-                  <h3 className="mt-1 font-display text-3xl sm:text-4xl font-medium text-[#FAF7F2]">
+                  <h3 className="mt-1 font-display text-3xl sm:text-4xl font-light text-[#2A2124]">
                     {pkg.name}
                   </h3>
                 </div>
                 <div className="text-right">
-                  <span className="font-display text-3xl sm:text-4xl font-medium text-[#F3C592]">
+                  <span className="font-display text-3xl sm:text-4xl font-light text-[#8F4954]">
                     {pkg.price}
                   </span>
-                  <div className="flex items-center gap-1.5 text-[#F5D0A9] justify-end mt-1 font-medium">
-                    <Clock className="size-3.5 text-[#F3C592]" />
+                  <div className="flex items-center gap-1.5 text-[#7A6B6E] justify-end mt-1 font-medium">
+                    <Clock className="size-3.5 text-[#B76E79]" />
                     <span className="text-xs uppercase tracking-[0.16em]">
                       {pkg.duration} unhurried
                     </span>
@@ -142,26 +145,26 @@ function SpaPackagesPage() {
                 </div>
               </div>
 
-              <p className="text-sm leading-6 sm:leading-7 text-[#E7E2DB] font-normal">
+              <p className="text-sm leading-6 sm:leading-7 text-[#5E5054] font-normal">
                 {pkg.summary}
               </p>
 
               {pkg.detailedDescription && (
-                <div className="border-t border-copper/20 pt-5 space-y-3">
-                  <div className="font-bold text-xs uppercase tracking-[0.16em] text-[#F3C592] flex items-center gap-2 select-none">
-                    <Sparkles className="size-3.5 text-[#F3C592]" />
+                <div className="border-t border-[#B76E79]/15 pt-5 space-y-3">
+                  <div className="font-semibold text-xs uppercase tracking-[0.16em] text-[#8F4954] flex items-center gap-2 select-none">
+                    <Sparkles className="size-3.5 text-[#B76E79]" />
                     <span>The Ceremonial Journey</span>
                   </div>
-                  <p className="text-xs sm:text-sm leading-6 text-[#FAF7F2] font-normal">
+                  <p className="text-xs sm:text-sm leading-6 text-[#3A3033] font-normal">
                     {pkg.detailedDescription}
                   </p>
 
                   {pkg.procedureSteps && (
-                    <div className="space-y-2 pt-2 bg-[#1A1715] p-5 border border-copper/25">
-                      <span className="text-xs uppercase tracking-wider font-bold text-[#F3C592] block">
+                    <div className="space-y-2 pt-2 bg-[#FAF5F3] p-5 rounded-xl border border-[#B76E79]/20">
+                      <span className="text-xs uppercase tracking-wider font-semibold text-[#8F4954] block">
                         Itinerary &amp; Sequence of Care
                       </span>
-                      <ol className="space-y-1.5 text-xs text-[#E7E2DB] list-decimal list-inside">
+                      <ol className="space-y-1.5 text-xs text-[#5E5054] list-decimal list-inside">
                         {pkg.procedureSteps.map((step) => (
                           <li key={step} className="font-normal">
                             {step}
@@ -174,17 +177,17 @@ function SpaPackagesPage() {
               )}
 
               {pkg.includedItems && (
-                <div className="bg-[#1A1715] p-5 border border-copper/25 space-y-3">
-                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#F3C592]">
+                <div className="bg-[#FAF5F3] p-5 rounded-xl border border-[#B76E79]/20 space-y-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8F4954]">
                     Included Ritual Components:
                   </p>
                   <ul className="grid gap-2 sm:grid-cols-2">
                     {pkg.includedItems.map((item) => (
                       <li
                         key={item}
-                        className="flex items-center gap-2 text-xs leading-5 text-[#E7E2DB] font-normal"
+                        className="flex items-center gap-2 text-xs leading-5 text-[#5E5054] font-normal"
                       >
-                        <CheckCircle2 className="size-3.5 text-[#F3C592] shrink-0" />
+                        <CheckCircle2 className="size-3.5 text-[#B76E79] shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -196,7 +199,7 @@ function SpaPackagesPage() {
                 <MagneticButton pullStrength={0.25} className="flex-1">
                   <Button
                     asChild
-                    className="w-full h-12 rounded-none bg-copper text-[#0A0908] font-bold text-xs uppercase tracking-[0.2em] hover:bg-white transition-all duration-300 shadow-lg"
+                    className="w-full h-12 rounded-full bg-gradient-to-r from-[#8F4954] via-[#B76E79] to-[#8F4954] text-white font-semibold text-xs uppercase tracking-[0.16em] hover:opacity-95 transition-all duration-300 shadow-md"
                   >
                     <a
                       href={`mailto:info@lumeaesthetics.co?subject=${encodeURIComponent(
@@ -210,14 +213,14 @@ function SpaPackagesPage() {
                 <Button
                   asChild
                   variant="outline"
-                  className="h-12 rounded-none border-copper/60 text-xs uppercase tracking-[0.16em] text-[#F3C592] font-bold hover:bg-copper hover:text-[#0A0908] transition-all duration-300"
+                  className="h-12 rounded-full border-[#B76E79]/40 bg-white text-xs uppercase tracking-[0.16em] text-[#8F4954] hover:bg-[#FAF0F0] hover:text-[#2A2124] transition-all duration-300 font-semibold"
                 >
                   <a
                     href={`mailto:info@lumeaesthetics.co?subject=${encodeURIComponent(
                       `Gift Certificate Request: ${pkg.name}`
                     )}`}
                   >
-                    <HeartHandshake className="size-3.5 mr-2 text-[#F3C592]" />
+                    <HeartHandshake className="size-3.5 mr-2 text-[#B76E79]" />
                     Gift This Package
                   </a>
                 </Button>

@@ -38,66 +38,87 @@
   --color-copper: var(--copper);
   --color-copper-light: var(--copper-light);
   --color-copper-dark: var(--copper-dark);
+  --color-rose-gold: var(--rose-gold);
+  --color-rose-gold-light: var(--rose-gold-light);
+  --color-rose-gold-dark: var(--rose-gold-dark);
+  --color-dusty-pink: var(--dusty-pink);
+  --color-dusty-pink-soft: var(--dusty-pink-soft);
+  --color-dusty-pink-wall: var(--dusty-pink-wall);
   --color-champagne: var(--champagne);
   --color-obsidian: var(--obsidian);
   --color-travertine: var(--travertine);
   --color-cashmere: var(--cashmere);
+  --color-plum-noir: var(--plum-noir);
 }
 
 :root {
   --radius: 0px;
-  /* Dark Luxury Obsidian & Espresso Theme */
-  --background: #0A0908;
-  --foreground: #FAF7F2;
-  --card: #131211;
-  --card-foreground: #FAF7F2;
-  --popover: #131211;
-  --popover-foreground: #FAF7F2;
-  --primary: #C58A58;
-  --primary-foreground: #0A0908;
-  --secondary: #1C1917;
-  --secondary-foreground: #FAF7F2;
-  --muted: #181615;
-  --muted-foreground: #A8A29E;
-  --accent: #DFC29D;
-  --accent-foreground: #0A0908;
-  --destructive: #E5484D;
-  --destructive-foreground: #FAF7F2;
-  --border: rgba(197, 138, 88, 0.22);
-  --input: rgba(197, 138, 88, 0.35);
-  --ring: #C58A58;
-  --copper: #C58A58;
-  --copper-dark: #8F5524;
-  --copper-light: #DFC29D;
-  --champagne: #F5EBE4;
-  --obsidian: #0A0908;
-  --travertine: #FAF7F2;
-  --cashmere: #EDE7DE;
-  --sand-light: #FBF8F4;
-  --sand-medium: #F3ECE2;
-  --stone-dark: #1C1917;
+  /* Dusty Pink Walls, Rose Gold Logos/Accents & Pure White Furniture */
+  --background: #FAF5F3;
+  --foreground: #2A2124;
+  --card: #FFFFFF;
+  --card-foreground: #2A2124;
+  --popover: #FFFFFF;
+  --popover-foreground: #2A2124;
+  --primary: #B76E79;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F4E8E5;
+  --secondary-foreground: #2A2124;
+  --muted: #EFE2DF;
+  --muted-foreground: #7D6F73;
+  --accent: #E8C5C8;
+  --accent-foreground: #2A2124;
+  --destructive: #D9485C;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(183, 110, 121, 0.22);
+  --input: rgba(183, 110, 121, 0.35);
+  --ring: #B76E79;
+  
+  /* Brand Tokens */
+  --rose-gold: #B76E79;
+  --rose-gold-light: #E7B2A9;
+  --rose-gold-dark: #8F4954;
+  --dusty-pink: #E8C5C8;
+  --dusty-pink-soft: #FAF5F3;
+  --dusty-pink-wall: #F0DFDA;
+  --plum-noir: #201317;
+  
+  /* Backwards compatibility aliases seamlessly mapped to Rose Gold & Cream */
+  --copper: #B76E79;
+  --copper-dark: #8F4954;
+  --copper-light: #E7B2A9;
+  --champagne: #F5EAE7;
+  --obsidian: #201317;
+  --travertine: #FFFFFF;
+  --cashmere: #F4E8E5;
+  --sand-light: #FAF5F3;
+  --sand-medium: #F0DFDA;
+  --stone-dark: #2A2124;
 }
 
 .dark {
-  --background: #0A0908;
-  --foreground: #FAF7F2;
-  --card: #131211;
-  --card-foreground: #FAF7F2;
-  --popover: #131211;
-  --popover-foreground: #FAF7F2;
-  --primary: #C58A58;
-  --primary-foreground: #0A0908;
-  --secondary: #1C1917;
-  --secondary-foreground: #FAF7F2;
-  --muted: #181615;
-  --muted-foreground: #A8A29E;
-  --accent: #DFC29D;
-  --accent-foreground: #0A0908;
+  --background: #1C1215;
+  --foreground: #FAF4F2;
+  --card: #25181C;
+  --card-foreground: #FAF4F2;
+  --popover: #25181C;
+  --popover-foreground: #FAF4F2;
+  --primary: #E7B2A9;
+  --primary-foreground: #1C1215;
+  --secondary: #2C1B21;
+  --secondary-foreground: #FAF4F2;
+  --muted: #27191E;
+  --muted-foreground: #B5A4A8;
+  --accent: #C5838B;
+  --accent-foreground: #FAF4F2;
   --destructive: #E5484D;
-  --destructive-foreground: #FAF7F2;
-  --border: rgba(197, 138, 88, 0.25);
-  --input: rgba(197, 138, 88, 0.35);
-  --ring: #C58A58;
+  --destructive-foreground: #FAF4F2;
+  --border: rgba(231, 178, 169, 0.25);
+  --input: rgba(231, 178, 169, 0.35);
+  --ring: #E7B2A9;
+  --copper: #E7B2A9;
+  --copper-light: #F2D2CB;
+  --copper-dark: #B76E79;
 }
 
 @layer base {
@@ -133,23 +154,23 @@
 
   /* Luxury Fine Scrollbar */
   ::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: rgba(19, 18, 17, 0.95);
+    background: #FAF5F3;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-copper);
-    border-radius: 0px;
+    background: var(--color-rose-gold);
+    border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-copper-light);
+    background: var(--color-rose-gold-dark);
   }
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-copper) rgba(19, 18, 17, 0.95);
+    scrollbar-color: var(--color-rose-gold) #FAF5F3;
   }
 }
 
@@ -161,13 +182,14 @@
   line-height: 1.5;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #F3C592;
+  color: var(--color-rose-gold);
   display: inline-flex;
   align-items: center;
 }
 
-.gold-gradient-text {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F5D0A9 45%, #E5A976 100%);
+.gold-gradient-text,
+.rose-gold-gradient-text {
+  background: linear-gradient(135deg, #7A2838 0%, #A35260 35%, #8F4954 70%, #682230 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -182,10 +204,10 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  background: #1C1917;
-  border: 1px solid rgba(243, 197, 146, 0.65);
-  color: #F3C592;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  background: #FFFFFF;
+  border: 1px solid rgba(183, 110, 121, 0.4);
+  color: var(--color-rose-gold);
+  box-shadow: 0 4px 12px rgba(183, 110, 121, 0.1);
 }
 
 .dark-pill-badge {
@@ -197,29 +219,31 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  background: #1A1715;
-  border: 1px solid rgba(243, 197, 146, 0.7);
-  color: #F5D0A9;
+  background: #FAF5F3;
+  border: 1px solid rgba(183, 110, 121, 0.45);
+  color: var(--color-rose-gold);
   font-family: var(--font-mono, monospace);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 8px rgba(183, 110, 121, 0.08);
 }
 
 .card-luxury {
   position: relative;
-  background: var(--color-card);
-  border: 1px solid rgba(181, 126, 82, 0.22);
+  background: #FFFFFF;
+  border: 1px solid rgba(183, 110, 121, 0.2);
+  box-shadow: 0 8px 24px -6px rgba(183, 110, 121, 0.08);
   transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .card-luxury:hover {
-  border-color: var(--color-copper);
-  box-shadow: 0 20px 40px -15px rgba(181, 126, 82, 0.12);
+  border-color: var(--color-rose-gold);
+  box-shadow: 0 20px 40px -15px rgba(183, 110, 121, 0.18);
+  transform: translateY(-2px);
 }
 
 .hairline-b {
-  border-bottom: 1px solid rgba(181, 126, 82, 0.2);
+  border-bottom: 1px solid rgba(183, 110, 121, 0.2);
 }
 .hairline-t {
-  border-top: 1px solid rgba(181, 126, 82, 0.2);
+  border-top: 1px solid rgba(183, 110, 121, 0.2);
 }
 
 /* Luxury Keyframe Animations from lumeproject */

@@ -3,18 +3,20 @@ import React from "react";
 interface AuroraGlowProps {
   className?: string;
   children?: React.ReactNode;
-  variant?: "dark" | "light";
+  variant?: "dark" | "light" | "rose";
 }
 
 export function AuroraGlow({
   className = "",
   children,
-  variant = "dark",
+  variant = "rose",
 }: AuroraGlowProps) {
   const gradient =
     variant === "dark"
       ? "linear-gradient(135deg, #131211 0%, #201a17 25%, #2a201c 50%, #1c1815 75%, #131211 100%)"
-      : "linear-gradient(135deg, #FAF7F2 0%, #F5ECE3 25%, #EFE5DB 50%, #F8F3ED 75%, #FAF7F2 100%)";
+      : variant === "rose"
+      ? "linear-gradient(135deg, #FAF5F3 0%, #F5EAE7 30%, #EEDCD9 60%, #FAF5F3 100%)"
+      : "linear-gradient(135deg, #FAF5F3 0%, #F4E8E5 25%, #E8C5C8 50%, #F8F3ED 75%, #FAF5F3 100%)";
 
   return (
     <div
@@ -26,12 +28,12 @@ export function AuroraGlow({
       {/* Soft Ambient Radial Accents */}
       <div
         className={`absolute -top-24 -left-24 w-96 h-96 rounded-full blur-3xl pointer-events-none ${
-          variant === "dark" ? "bg-copper/15" : "bg-copper/10"
+          variant === "dark" ? "bg-copper/15" : "bg-[#B76E79]/15"
         }`}
       />
       <div
         className={`absolute -bottom-24 -right-24 w-96 h-96 rounded-full blur-3xl pointer-events-none ${
-          variant === "dark" ? "bg-[#DFC29D]/10" : "bg-[#B57E52]/10"
+          variant === "dark" ? "bg-[#DFC29D]/10" : "bg-[#E7B2A9]/20"
         }`}
       />
       <div className="relative z-10 w-full">{children}</div>

@@ -55,26 +55,28 @@ function BeautyAtelierPage() {
     >
       {/* Visual Header Banner with TiltedCard */}
       <TiltedCard rotateAmplitude={5}>
-        <div className="overflow-hidden border border-copper/30 shadow-lg relative group bg-[#131211]">
-          <img
-            src={plump3}
-            alt="Beauty Atelier Artistry"
-            className="w-full h-[320px] sm:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#131211]/90 via-black/30 to-transparent flex items-end p-6 sm:p-8">
-            <div className="text-white">
-              <span className="eyebrow text-copper-light text-[10px]">
-                <ShinyText text="Artistry & Anatomical Precision" speed={3} />
-              </span>
-              <h3 className="font-display text-2xl sm:text-3xl font-light">
-                Custom Makeup, Lash Couture &amp; Statement Gel Nails
-              </h3>
+        <div className="overflow-hidden rounded-2xl border border-[#B76E79]/25 shadow-soft-card relative group bg-white p-2">
+          <div className="overflow-hidden rounded-xl relative">
+            <img
+              src={plump3}
+              alt="Beauty Atelier Artistry"
+              className="w-full h-[320px] sm:h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-6 sm:p-8">
+              <div className="text-white">
+                <span className="eyebrow text-[#E7B2A9] text-[10px] tracking-[0.2em] font-semibold">
+                  <ShinyText text="Artistry &amp; Anatomical Precision" speed={3} />
+                </span>
+                <h3 className="font-display text-2xl sm:text-3xl font-light">
+                  Custom Makeup, Lash Couture &amp; Statement Gel Nails
+                </h3>
+              </div>
             </div>
           </div>
         </div>
       </TiltedCard>
 
-      {/* Grid of Beauty Services with SpotlightCard */}
+      {/* Grid of Beauty Services with Pure White Furniture Cards */}
       <div className="grid gap-6 sm:grid-cols-2">
         {group?.treatments.map((treatment, idx) => (
           <motion.div
@@ -86,54 +88,54 @@ function BeautyAtelierPage() {
             variants={fadeInVariant}
           >
             <SpotlightCard
-              spotlightColor="rgba(243, 197, 146, 0.2)"
-              borderColor="rgba(243, 197, 146, 0.4)"
-              className="group flex flex-col justify-between border border-copper/30 bg-[#131211] p-6 shadow-xl transition-all duration-300 hover:border-copper h-full"
+              spotlightColor="rgba(183, 110, 121, 0.12)"
+              borderColor="rgba(183, 110, 121, 0.22)"
+              className="group flex flex-col justify-between rounded-2xl border border-[#B76E79]/20 bg-white p-6 shadow-soft-card transition-all duration-300 hover:border-[#B76E79]/50 hover:shadow-lg h-full text-[#2A2124]"
             >
               <div>
-                <div className="overflow-hidden mb-5 border-b border-copper/20 -mx-6 -mt-6">
+                <div className="overflow-hidden mb-5 rounded-xl border border-[#B76E79]/20 -mx-1 -mt-1 shadow-xs">
                   <img
                     src={treatment.image}
                     alt={treatment.name}
                     className="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
-                <div className="flex justify-between items-baseline gap-2 border-b border-copper/20 pb-2">
-                  <h4 className="font-display text-2xl font-medium text-[#FAF7F2]">
+                <div className="flex justify-between items-baseline gap-2 border-b border-[#B76E79]/15 pb-2">
+                  <h4 className="font-display text-2xl font-light text-[#2A2124]">
                     {treatment.name}
                   </h4>
-                  <span className="font-display text-2xl font-medium text-[#F3C592]">
+                  <span className="font-display text-2xl font-light text-[#8F4954]">
                     {treatment.price}
                   </span>
                 </div>
                 {treatment.duration && (
-                  <p className="text-xs text-[#F5D0A9] font-medium uppercase tracking-widest mt-1">
+                  <p className="text-xs text-[#7A6B6E] font-medium uppercase tracking-wider mt-1">
                     Duration: {treatment.duration}
                   </p>
                 )}
-                <p className="mt-3 text-sm leading-6 text-[#E7E2DB] font-normal">
+                <p className="mt-3 text-sm leading-6 text-[#5E5054] font-normal">
                   {treatment.summary}
                 </p>
 
                 {treatment.detailedDescription && (
-                  <div className="border-t border-copper/20 pt-3 mt-3 text-xs space-y-2">
-                    <div className="font-bold text-xs uppercase tracking-[0.16em] text-[#F3C592] flex items-center gap-1.5 select-none">
-                      <Sparkles className="size-3.5 text-[#F3C592]" />
+                  <div className="border-t border-[#B76E79]/15 pt-3 mt-3 text-xs space-y-2">
+                    <div className="font-semibold text-xs uppercase tracking-[0.16em] text-[#8F4954] flex items-center gap-1.5 select-none">
+                      <Sparkles className="size-3.5 text-[#B76E79]" />
                       <span>Artistry Protocol Breakdown</span>
                     </div>
-                    <p className="text-xs sm:text-sm leading-5 text-[#FAF7F2] font-normal">
+                    <p className="text-xs sm:text-sm leading-5 text-[#3A3033] font-normal">
                       {treatment.detailedDescription}
                     </p>
 
                     {treatment.keyBenefits && (
                       <div className="space-y-1 pt-1">
-                        <span className="text-xs uppercase tracking-wider font-bold text-[#F3C592] block">
+                        <span className="text-xs uppercase tracking-wider font-semibold text-[#8F4954] block">
                           Key Highlights
                         </span>
-                        <ul className="space-y-1 text-xs text-[#E7E2DB]">
+                        <ul className="space-y-1.5 text-xs text-[#5E5054]">
                           {treatment.keyBenefits.map((b) => (
                             <li key={b} className="flex items-center gap-1.5">
-                              <CheckCircle2 className="size-3.5 text-[#F3C592] shrink-0" />
+                              <CheckCircle2 className="size-3.5 text-[#B76E79] shrink-0" />
                               <span>{b}</span>
                             </li>
                           ))}
@@ -147,8 +149,7 @@ function BeautyAtelierPage() {
               <MagneticButton pullStrength={0.2} className="w-full mt-6">
                 <Button
                   asChild
-                  variant="outline"
-                  className="h-11 w-full rounded-none border-copper/60 text-xs uppercase tracking-[0.16em] text-[#F3C592] font-bold hover:bg-copper hover:text-[#0A0908] transition-all duration-300"
+                  className="h-11 w-full rounded-full bg-gradient-to-r from-[#8F4954] via-[#B76E79] to-[#8F4954] text-white text-xs uppercase tracking-[0.16em] font-semibold hover:opacity-95 transition-all duration-300 shadow-md"
                 >
                   <a
                     href={`mailto:info@lumeaesthetics.co?subject=${encodeURIComponent(

@@ -97,20 +97,22 @@ function SkinAndBodyPage() {
     >
       {/* Visual Header Feature Banner with TiltedCard */}
       <TiltedCard rotateAmplitude={5}>
-        <div className="overflow-hidden border border-copper/30 shadow-lg relative group bg-[#131211]">
-          <img
-            src={aboutLumeImg}
-            alt="Facial & Body Rituals"
-            className="w-full h-[320px] sm:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent flex items-end p-6 sm:p-8">
-            <div className="text-background">
-              <span className="eyebrow text-copper-light text-[10px]">
-                <ShinyText text="Bioline Professional Skincare" speed={4} />
-              </span>
-              <h3 className="font-display text-2xl sm:text-3xl font-light">
-                Tailored to your individual skin barrier
-              </h3>
+        <div className="overflow-hidden rounded-2xl border border-[#B76E79]/25 shadow-soft-card relative group bg-white p-2">
+          <div className="overflow-hidden rounded-xl relative">
+            <img
+              src={aboutLumeImg}
+              alt="Facial & Body Rituals"
+              className="w-full h-[320px] sm:h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-6 sm:p-8">
+              <div className="text-white">
+                <span className="eyebrow text-[#E7B2A9] text-[10px] tracking-[0.2em] font-semibold">
+                  <ShinyText text="Bioline Professional Skincare" speed={4} />
+                </span>
+                <h3 className="font-display text-2xl sm:text-3xl font-light">
+                  Tailored to your individual skin barrier
+                </h3>
+              </div>
             </div>
           </div>
         </div>
@@ -122,32 +124,32 @@ function SkinAndBodyPage() {
         steps={signatureAquaLuxeSteps}
       />
 
-      {/* Clinical Highlights Strip with SpotlightCard */}
-      <div className="grid gap-4 sm:grid-cols-3 border-y border-copper/20 py-6">
-        <div className="flex items-center gap-2.5 text-xs text-foreground">
-          <ShieldCheck className="size-4 text-copper shrink-0" />
-          <span>20% AHA &amp; Vitamin C Actives</span>
+      {/* Clinical Highlights Strip with Pure White Furniture Card */}
+      <div className="grid gap-4 sm:grid-cols-3 rounded-2xl border border-[#B76E79]/20 bg-white p-5 shadow-soft-card text-[#2A2124]">
+        <div className="flex items-center gap-2.5 text-xs">
+          <ShieldCheck className="size-4 text-[#B76E79] shrink-0" />
+          <span className="font-medium text-[#2A2124]">20% AHA &amp; Vitamin C Actives</span>
         </div>
-        <div className="flex items-center gap-2.5 text-xs text-foreground">
-          <ShieldCheck className="size-4 text-copper shrink-0" />
-          <span>Bioline Jatò Coffee Body Sculpt</span>
+        <div className="flex items-center gap-2.5 text-xs">
+          <ShieldCheck className="size-4 text-[#B76E79] shrink-0" />
+          <span className="font-medium text-[#2A2124]">Bioline Jatò Coffee Body Sculpt</span>
         </div>
-        <div className="flex items-center gap-2.5 text-xs text-foreground">
-          <ShieldCheck className="size-4 text-copper shrink-0" />
-          <span>Negative-Ion Oxygen Dome</span>
+        <div className="flex items-center gap-2.5 text-xs">
+          <ShieldCheck className="size-4 text-[#B76E79] shrink-0" />
+          <span className="font-medium text-[#2A2124]">Negative-Ion Oxygen Dome</span>
         </div>
       </div>
 
-      {/* Treatments List with SpotlightCard */}
+      {/* Treatments List with Pure White Furniture Cards */}
       <div className="space-y-6">
-        <div className="flex justify-between items-baseline border-b border-copper/15 pb-3">
-          <h3 className="font-display text-2xl font-light text-foreground">Curated Facial &amp; Body Menu</h3>
-          <span className="text-xs uppercase tracking-widest text-muted-foreground">
+        <div className="flex justify-between items-baseline border-b border-[#B76E79]/20 pb-3">
+          <h3 className="font-display text-2xl font-light text-[#2A2124]">Curated Facial &amp; Body Menu</h3>
+          <span className="text-xs uppercase tracking-widest text-[#7A6B6E]">
             {group?.treatments.length} Rituals
           </span>
         </div>
 
-        <div className="grid gap-8">
+        <div className="grid gap-6">
           {group?.treatments.map((t, idx) => (
             <motion.div
               key={t.name}
@@ -158,11 +160,11 @@ function SkinAndBodyPage() {
               variants={fadeInVariant}
             >
               <SpotlightCard
-                spotlightColor="rgba(243, 197, 146, 0.2)"
-                borderColor="rgba(243, 197, 146, 0.4)"
-                className="bg-[#131211] p-6 shadow-xl transition-all duration-300 hover:border-copper border border-copper/30 grid gap-6 sm:grid-cols-12 items-start"
+                spotlightColor="rgba(183, 110, 121, 0.12)"
+                borderColor="rgba(183, 110, 121, 0.22)"
+                className="bg-white p-6 sm:p-7 shadow-soft-card rounded-2xl transition-all duration-300 hover:border-[#B76E79]/50 hover:shadow-lg border border-[#B76E79]/20 grid gap-6 sm:grid-cols-12 items-start text-[#2A2124]"
               >
-                <div className="sm:col-span-4 overflow-hidden border border-copper/20">
+                <div className="sm:col-span-4 overflow-hidden rounded-xl border border-[#B76E79]/20 shadow-xs">
                   <img
                     src={t.image}
                     alt={t.name}
@@ -171,34 +173,34 @@ function SkinAndBodyPage() {
                 </div>
                 <div className="sm:col-span-8 flex flex-col justify-between h-full space-y-3">
                   <div>
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <h4 className="font-display text-2xl font-medium text-[#FAF7F2]">{t.name}</h4>
-                      <span className="font-display text-2xl font-medium text-[#F3C592]">{t.price}</span>
+                    <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-[#B76E79]/15 pb-2">
+                      <h4 className="font-display text-2xl font-light text-[#2A2124]">{t.name}</h4>
+                      <span className="font-display text-2xl font-light text-[#8F4954]">{t.price}</span>
                     </div>
                     {t.duration && (
-                      <p className="text-xs uppercase tracking-wider text-[#F5D0A9] font-medium mt-0.5">
+                      <p className="text-xs uppercase tracking-wider text-[#7A6B6E] font-medium mt-1">
                         Duration: {t.duration}
                       </p>
                     )}
-                    <p className="mt-2 text-sm leading-6 text-[#E7E2DB] font-normal">{t.summary}</p>
+                    <p className="mt-2 text-xs leading-6 text-[#5E5054] font-normal">{t.summary}</p>
                   </div>
 
                   {/* Permanent Full Description & Procedure Breakdown */}
                   {t.detailedDescription && (
-                    <div className="border-t border-copper/20 pt-3 mt-2 text-xs">
-                      <div className="font-bold text-xs uppercase tracking-[0.16em] text-[#F3C592] flex items-center gap-2 py-1 select-none">
-                        <Sparkles className="size-3.5 text-[#F3C592]" />
+                    <div className="border-t border-[#B76E79]/15 pt-3 mt-2 text-xs">
+                      <div className="font-semibold text-xs uppercase tracking-[0.16em] text-[#8F4954] flex items-center gap-2 py-1 select-none">
+                        <Sparkles className="size-3.5 text-[#B76E79]" />
                         <span>Full Procedure &amp; Treatment Breakdown</span>
                       </div>
-                      <div className="mt-2 space-y-3 pt-2 text-xs sm:text-sm text-[#FAF7F2] leading-6 border-t border-copper/15 font-normal">
+                      <div className="mt-2 space-y-3 pt-2 text-xs sm:text-sm text-[#3A3033] leading-6 border-t border-[#B76E79]/10 font-normal">
                         <p>{t.detailedDescription}</p>
 
                         {t.keyBenefits && (
                           <div className="space-y-1.5 pt-1">
-                            <span className="text-xs uppercase tracking-wider font-bold text-[#F3C592] block">
+                            <span className="text-xs uppercase tracking-wider font-semibold text-[#8F4954] block">
                               Key Benefits
                             </span>
-                            <ul className="grid grid-cols-1 gap-1 text-xs text-[#E7E2DB] list-disc list-inside">
+                            <ul className="grid grid-cols-1 gap-1 text-xs text-[#5E5054] list-disc list-inside">
                               {t.keyBenefits.map((b) => (
                                 <li key={b}>{b}</li>
                               ))}
@@ -208,10 +210,10 @@ function SkinAndBodyPage() {
 
                         {t.procedureSteps && (
                           <div className="space-y-1.5 pt-1">
-                            <span className="text-xs uppercase tracking-wider font-bold text-[#F3C592] block">
+                            <span className="text-xs uppercase tracking-wider font-semibold text-[#8F4954] block">
                               Step-by-Step Procedure
                             </span>
-                            <ol className="space-y-1 text-xs text-[#E7E2DB] list-decimal list-inside">
+                            <ol className="space-y-1 text-xs text-[#5E5054] list-decimal list-inside">
                               {t.procedureSteps.map((step) => (
                                 <li key={step}>{step}</li>
                               ))}
@@ -226,8 +228,7 @@ function SkinAndBodyPage() {
                     <MagneticButton pullStrength={0.2}>
                       <Button
                         asChild
-                        variant="outline"
-                        className="h-10 rounded-none border-copper/60 bg-transparent px-5 text-xs uppercase tracking-[0.16em] text-[#F3C592] font-bold hover:bg-copper hover:text-[#0A0908] transition-all duration-300 shadow-md"
+                        className="h-10 rounded-full bg-gradient-to-r from-[#8F4954] via-[#B76E79] to-[#8F4954] text-white px-6 text-xs uppercase tracking-[0.16em] font-semibold hover:opacity-95 transition-all duration-300 shadow-md"
                       >
                         <a
                           href={`mailto:info@lumeaesthetics.co?subject=${encodeURIComponent(
@@ -246,20 +247,21 @@ function SkinAndBodyPage() {
         </div>
       </div>
 
-      {/* Secondary Feature Card with SpotlightCard */}
+      {/* Secondary Feature Card with Pure White Furniture Card */}
       <SpotlightCard
-        spotlightColor="rgba(181, 126, 82, 0.18)"
-        className="grid gap-6 sm:grid-cols-12 bg-secondary/30 p-6 sm:p-8 items-center"
+        spotlightColor="rgba(183, 110, 121, 0.12)"
+        borderColor="rgba(183, 110, 121, 0.22)"
+        className="grid gap-6 sm:grid-cols-12 bg-white rounded-2xl border border-[#B76E79]/20 shadow-soft-card p-6 sm:p-8 items-center text-[#2A2124]"
       >
-        <div className="sm:col-span-5 overflow-hidden border border-copper/20">
+        <div className="sm:col-span-5 overflow-hidden rounded-xl border border-[#B76E79]/20">
           <img src={bodyImage} alt="Body Ritual Sculpting" className="w-full h-48 object-cover" />
         </div>
         <div className="sm:col-span-7 space-y-3">
-          <span className="eyebrow text-copper text-[10px]">Body Work Speciality</span>
-          <h4 className="font-display text-2xl font-light text-foreground">
+          <span className="eyebrow text-[#8F4954] text-[10px] tracking-[0.2em] font-semibold">Body Work Speciality</span>
+          <h4 className="font-display text-2xl font-light text-[#2A2124]">
             Jatò Coffee Shape &amp; Retinol Lift
           </h4>
-          <p className="text-xs leading-6 text-muted-foreground">
+          <p className="text-xs leading-6 text-[#5E5054] font-normal">
             Combine rhythmic Gua Sha bodywork with specialized collagen-boosting retinol wraps to sculpt, drain, and firm.
           </p>
         </div>

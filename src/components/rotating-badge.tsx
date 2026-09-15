@@ -31,7 +31,7 @@ export function RotatingBadge({
             d="M 80, 80 m -60, 0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0"
           />
         </defs>
-        <text className="text-[10px] uppercase font-medium tracking-[0.24em] fill-[#131211] dark:fill-[#DFC29D]">
+        <text className="text-[10px] uppercase font-semibold tracking-[0.24em] fill-[#8F4954]">
           <textPath href={`#${id}`} startOffset="0%">
             {text}
           </textPath>
@@ -42,14 +42,14 @@ export function RotatingBadge({
       {href.startsWith("http") || href.startsWith("tel:") || href.startsWith("mailto:") ? (
         <a
           href={href}
-          className="relative z-10 size-12 rounded-full bg-[#131211] text-[#DFC29D] border border-copper/40 flex items-center justify-center transition-all duration-300 hover:bg-copper hover:text-white hover:scale-110 shadow-lg"
+          className="relative z-10 size-12 rounded-full bg-white text-[#8F4954] border border-[#B76E79]/40 flex items-center justify-center transition-all duration-300 hover:bg-[#B76E79] hover:text-white hover:scale-110 shadow-md"
         >
           <ArrowUpRight className="size-4" />
         </a>
       ) : (
         <Link
           to={href as any}
-          className="relative z-10 size-12 rounded-full bg-[#131211] text-[#DFC29D] border border-copper/40 flex items-center justify-center transition-all duration-300 hover:bg-copper hover:text-white hover:scale-110 shadow-lg"
+          className="relative z-10 size-12 rounded-full bg-white text-[#8F4954] border border-[#B76E79]/40 flex items-center justify-center transition-all duration-300 hover:bg-[#B76E79] hover:text-white hover:scale-110 shadow-md"
         >
           <ArrowUpRight className="size-4" />
         </Link>

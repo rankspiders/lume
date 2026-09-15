@@ -121,23 +121,23 @@ const fadeInVariant: Variants = {
 
 function TeamPage() {
   return (
-    <div className="bg-[#0A0908] text-[#FAF7F2]">
+    <div className="bg-[#FAF5F3] text-[#2A2124]">
       {/* Bespoke Practitioners Hero with AuroraGlow */}
-      <AuroraGlow variant="dark" className="pt-32 pb-16 sm:pt-40 sm:pb-24 border-b border-copper/20">
+      <AuroraGlow variant="rose" className="pt-32 pb-16 sm:pt-40 sm:pb-24 border-b border-[#B76E79]/20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7 space-y-6">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="eyebrow text-xs sm:text-sm font-bold tracking-[0.2em]">
+                <span className="eyebrow text-xs sm:text-sm font-bold tracking-[0.2em] text-[#B76E79]">
                   <ShinyText text="Haute Practitioners Dossier" speed={4} />
                 </span>
-                <span className="h-px w-8 bg-[#F3C592]/70" />
-                <span className="dark-pill-badge">
+                <span className="h-px w-8 bg-[#B76E79]/40" />
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-semibold tracking-wider uppercase bg-white/80 border border-[#B76E79]/30 text-[#8F4954] shadow-sm">
                   <DecryptedText text="LICENSED CLINICIANS" />
                 </span>
               </div>
 
-              <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-light leading-[1.05] text-[#FAF7F2] text-balance">
+              <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-light leading-[1.05] text-[#2A2124] text-balance">
                 Mastery behind
                 <br />
                 <span className="italic font-serif gold-gradient-text font-normal">
@@ -145,7 +145,7 @@ function TeamPage() {
                 </span>
               </h1>
 
-              <p className="max-w-2xl text-sm sm:text-base sm:leading-7 text-[#E7E2DB] font-normal leading-relaxed">
+              <p className="max-w-2xl text-sm sm:text-base sm:leading-7 text-[#5E5054] font-normal leading-relaxed">
                 Lumé Aesthetics brings together licensed medical injectors, Italian Bioline certified estheticians, and couture beauty artists united by a single ethos: unhurried, anatomical precision in a tranquil sanctuary.
               </p>
 
@@ -154,7 +154,7 @@ function TeamPage() {
                 <MagneticButton pullStrength={0.25}>
                   <Button
                     asChild
-                    className="h-11 rounded-none bg-copper text-[#0A0908] font-bold px-6 text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-[#0A0908] transition-all duration-300 shadow-lg"
+                    className="h-11 rounded-none bg-[#B76E79] text-white font-bold px-6 text-xs uppercase tracking-[0.2em] hover:bg-[#8F4954] transition-all duration-300 shadow-md"
                   >
                     <Link to="/appointment">Schedule Consultation</Link>
                   </Button>
@@ -164,16 +164,16 @@ function TeamPage() {
 
             {/* Bespoke Right Highlight Frame with TiltedCard */}
             <div className="lg:col-span-5 relative">
-              <TiltedCard rotateAmplitude={8}>
-                <div className="border border-copper/35 bg-[#131211] p-3 shadow-2xl relative">
+              <TiltedCard rotateAmplitude={6}>
+                <div className="border border-[#B76E79]/30 bg-white p-3 shadow-soft-card relative">
                   <div className="overflow-hidden relative group">
                     <img
                       src={team1}
                       alt="Clinical Director & Lead Nurse"
-                      className="w-full h-80 sm:h-96 object-contain object-bottom bg-[#161412] transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-80 sm:h-96 object-contain object-bottom bg-[#FAF5F3] transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#131211] via-transparent to-transparent flex flex-col justify-end p-6 text-white">
-                      <span className="text-[9px] uppercase tracking-widest text-copper font-mono">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-white">
+                      <span className="text-[9px] uppercase tracking-widest text-[#E7B2A9] font-mono">
                         <DecryptedText text="Health Canada Certified" />
                       </span>
                       <p className="font-display text-xl text-white mt-1">
@@ -200,29 +200,29 @@ function TeamPage() {
       />
 
       {/* Standards & Certifications Bar with CountUp */}
-      <section className="px-5 py-8 bg-[#070605] text-white border-b border-copper/20">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+      <section className="px-5 py-8 bg-white border-y border-[#B76E79]/20 text-[#2A2124] shadow-sm">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-[#B76E79]/20">
           <div className="pt-2 md:pt-0">
-            <span className="font-display text-2xl text-copper-light">
+            <span className="font-display text-2xl text-[#8F4954] font-semibold">
               <CountUp to={100} suffix="%" />
             </span>
-            <p className="text-[10px] uppercase tracking-wider text-white/70 mt-1">Licensed &amp; Certified</p>
+            <p className="text-[10px] uppercase tracking-wider text-[#5E5054] mt-1 font-semibold">Licensed &amp; Certified</p>
           </div>
           <div className="pt-2 md:pt-0">
-            <span className="font-display text-2xl text-copper-light">
+            <span className="font-display text-2xl text-[#8F4954] font-semibold">
               <DecryptedText text="Bioline" />
             </span>
-            <p className="text-[10px] uppercase tracking-wider text-white/70 mt-1">Italy Official Master</p>
+            <p className="text-[10px] uppercase tracking-wider text-[#5E5054] mt-1 font-semibold">Italy Official Master</p>
           </div>
           <div className="pt-2 md:pt-0">
-            <span className="font-display text-2xl text-copper-light">
+            <span className="font-display text-2xl text-[#8F4954] font-semibold">
               <DecryptedText text="Health Canada" />
             </span>
-            <p className="text-[10px] uppercase tracking-wider text-white/70 mt-1">Clinical Sterilization</p>
+            <p className="text-[10px] uppercase tracking-wider text-[#5E5054] mt-1 font-semibold">Clinical Sterilization</p>
           </div>
           <div className="pt-2 md:pt-0">
-            <span className="font-display text-2xl text-copper-light">1-on-1</span>
-            <p className="text-[10px] uppercase tracking-wider text-white/70 mt-1">Unhurried Care</p>
+            <span className="font-display text-2xl text-[#8F4954] font-semibold">1-on-1</span>
+            <p className="text-[10px] uppercase tracking-wider text-[#5E5054] mt-1 font-semibold">Unhurried Care</p>
           </div>
         </div>
       </section>
@@ -240,40 +240,40 @@ function TeamPage() {
               variants={fadeInVariant}
             >
               <SpotlightCard
-                spotlightColor="rgba(181, 126, 82, 0.22)"
-                borderColor="rgba(181, 126, 82, 0.3)"
-                className="bg-[#131211] text-white p-6 sm:p-8 flex flex-col justify-between h-full shadow-xl hover:border-copper transition-all duration-300 border border-copper/25"
+                spotlightColor="rgba(183, 110, 121, 0.15)"
+                borderColor="rgba(183, 110, 121, 0.25)"
+                className="bg-white text-[#2A2124] p-6 sm:p-8 flex flex-col justify-between h-full shadow-soft-card hover:border-[#B76E79] transition-all duration-300 border border-[#B76E79]/20"
               >
                 <div>
-                  <div className="overflow-hidden h-72 border border-copper/20 mb-6 relative bg-[#161412]">
+                  <div className="overflow-hidden h-72 border border-[#B76E79]/20 mb-6 relative bg-[#FAF5F3]">
                     <img
                       src={member.image}
                       alt={member.role}
                       className="w-full h-full object-contain object-bottom transition-transform duration-700 hover:scale-105"
                     />
-                    <span className="absolute bottom-3 left-3 bg-[#0A0908]/90 text-copper-light text-[9px] uppercase tracking-widest px-3 py-1 font-semibold border border-copper/30">
+                    <span className="absolute bottom-3 left-3 bg-white/95 text-[#8F4954] text-[9px] uppercase tracking-widest px-3 py-1 font-bold border border-[#B76E79]/30 shadow-sm">
                       {member.credentials}
                     </span>
                   </div>
 
                   <div className="space-y-1">
-                    <span className="eyebrow text-copper text-[10px] uppercase tracking-[0.2em]">
+                    <span className="eyebrow text-[#B76E79] text-[10px] uppercase tracking-[0.2em] font-bold">
                       {member.role}
                     </span>
-                    <h3 className="font-display text-2xl font-light text-white">{member.name}</h3>
+                    <h3 className="font-display text-2xl font-light text-[#2A2124]">{member.name}</h3>
                   </div>
 
-                  <p className="mt-3 text-xs leading-6 text-white/70 font-light">{member.bio}</p>
+                  <p className="mt-3 text-xs leading-6 text-[#5E5054] font-normal">{member.bio}</p>
 
-                  <div className="mt-5 pt-4 border-t border-copper/15 space-y-2">
-                    <span className="text-[10px] uppercase tracking-wider text-copper font-semibold block">
+                  <div className="mt-5 pt-4 border-t border-[#B76E79]/15 space-y-2">
+                    <span className="text-[10px] uppercase tracking-wider text-[#8F4954] font-bold block">
                       Key Clinical Disciplines:
                     </span>
                     <div className="flex flex-wrap gap-1.5">
                       {member.specialties.map((spec) => (
                         <span
                           key={spec}
-                          className="text-[10px] bg-[#161412] px-2.5 py-1 text-white/90 font-light border border-copper/20"
+                          className="text-[10px] bg-[#FAF5F3] px-2.5 py-1 text-[#2A2124] font-medium border border-[#B76E79]/20"
                         >
                           {spec}
                         </span>
@@ -282,14 +282,14 @@ function TeamPage() {
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-copper/15 flex items-center justify-between">
-                  <span className="text-[10px] uppercase tracking-wider text-white/50 font-light">
+                <div className="mt-6 pt-4 border-t border-[#B76E79]/15 flex items-center justify-between">
+                  <span className="text-[10px] uppercase tracking-wider text-[#7D6B70] font-light">
                     Sherwood Park Studio
                   </span>
                   <Button
                     asChild
                     variant="outline"
-                    className="h-9 rounded-none border-copper bg-transparent text-[9px] uppercase tracking-[0.14em] text-copper-light hover:bg-copper hover:text-[#0A0908]"
+                    className="h-9 rounded-none border-[#B76E79] bg-white text-[9px] uppercase tracking-[0.14em] text-[#8F4954] hover:bg-[#B76E79] hover:text-white"
                   >
                     <Link to="/appointment">Book Session →</Link>
                   </Button>
@@ -301,7 +301,7 @@ function TeamPage() {
       </section>
 
       {/* Join the Sanctuary Consultation CTA */}
-      <AuroraGlow variant="dark" className="text-white py-20 text-center px-5 sm:px-8 border-t border-copper/20">
+      <AuroraGlow variant="rose" className="py-20 text-center px-5 sm:px-8 border-t border-[#B76E79]/20">
         <div className="max-w-2xl mx-auto space-y-4">
           <RotatingBadge
             text="MEET OUR TEAM • LUMÉ AESTHETICS • "
@@ -309,17 +309,17 @@ function TeamPage() {
             size={100}
             className="mx-auto mb-3"
           />
-          <h2 className="font-display text-3xl sm:text-5xl font-light text-white">
+          <h2 className="font-display text-3xl sm:text-5xl font-light text-[#2A2124]">
             Schedule a personal consultation.
           </h2>
-          <p className="text-xs sm:text-sm text-white/75 font-light leading-6">
+          <p className="text-xs sm:text-sm text-[#5E5054] font-normal leading-6">
             Meet with our practitioners for an in-depth skin assessment, facial contour plan, or treatment roadmap.
           </p>
           <div className="pt-4 flex flex-col sm:flex-row justify-center gap-4">
             <MagneticButton pullStrength={0.25}>
               <Button
                 asChild
-                className="h-11 rounded-none bg-copper text-[#0A0908] font-semibold text-xs uppercase tracking-[0.18em] hover:bg-white px-8 w-full sm:w-auto"
+                className="h-11 rounded-none bg-[#B76E79] text-white font-semibold text-xs uppercase tracking-[0.18em] hover:bg-[#8F4954] px-8 w-full sm:w-auto shadow-md"
               >
                 <Link to="/appointment">Book Appointment</Link>
               </Button>
@@ -327,7 +327,7 @@ function TeamPage() {
             <Button
               asChild
               variant="outline"
-              className="h-11 rounded-none border-copper-light bg-transparent text-xs uppercase tracking-[0.18em] text-copper-light hover:bg-copper-light hover:text-[#0A0908]"
+              className="h-11 rounded-none border-[#B76E79] bg-white text-xs uppercase tracking-[0.18em] text-[#8F4954] hover:bg-[#FAF5F3]"
             >
               <a href="tel:+17804108278">Call Studio: (780) 410-8278</a>
             </Button>
