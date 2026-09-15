@@ -125,10 +125,10 @@ function AboutPage() {
             <div className="lg:col-span-7 space-y-6">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="eyebrow text-xs sm:text-sm font-bold tracking-[0.2em] text-[#8F4954]">
-                  <ShinyText text="Monograph — The Lumé Story" speed={4} />
+                  Monograph — The Lumé Story
                 </span>
                 <span className="h-px w-8 bg-[#B76E79]/40" />
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase bg-white border border-[#B76E79]/30 text-[#8F4954] shadow-xs">
+                <span className="inline-flex items-center px-3 py-1 text-[10px] font-bold tracking-wider uppercase bg-white border border-[#B76E79]/40 text-[#8F4954] shadow-xs">
                   EST. SHERWOOD PARK
                 </span>
               </div>
@@ -136,7 +136,7 @@ function AboutPage() {
               <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-light leading-[1.05] text-[#2A2124] text-balance">
                 Beauty, considered
                 <br />
-                <span className="italic font-serif bg-gradient-to-r from-[#8F4954] via-[#B76E79] to-[#8F4954] bg-clip-text text-transparent font-normal">from every angle.</span>
+                <span className="italic font-serif text-[#8F4954] font-medium">from every angle.</span>
               </h1>
 
               <p className="max-w-2xl text-sm sm:text-base sm:leading-7 text-[#5E5054] font-normal leading-relaxed">
@@ -148,7 +148,7 @@ function AboutPage() {
                 <MagneticButton strength={0.2} pullStrength={0.2}>
                   <Button
                     asChild
-                    className="h-11 rounded-full bg-gradient-to-r from-[#8F4954] via-[#B76E79] to-[#8F4954] text-white px-7 text-xs uppercase tracking-[0.16em] hover:opacity-95 font-semibold transition-all duration-300 shadow-md"
+                    className="h-11 rounded-none bg-gradient-to-r from-[#8F4954] via-[#A35260] to-[#7A2838] hover:from-[#7A2838] hover:to-[#682230] text-white px-7 text-xs uppercase tracking-[0.16em] hover:opacity-95 font-bold transition-all duration-300 shadow-md"
                   >
                     <Link to="/appointment">Reserve Private Suite</Link>
                   </Button>
@@ -159,15 +159,15 @@ function AboutPage() {
             {/* Bespoke 3D Tilted Architectural Hero Plate - Pure White Frame */}
             <div className="lg:col-span-5 relative">
               <TiltedCard rotateAmplitude={8} scaleOnHover={1.03}>
-                <div className="rounded-2xl border border-[#B76E79]/25 bg-white p-3 sm:p-4 shadow-soft-card relative">
-                  <div className="overflow-hidden rounded-xl relative group">
+                <div className="border border-[#B76E79]/25 bg-white p-3 sm:p-4 shadow-soft-card relative">
+                  <div className="overflow-hidden relative group">
                     <img
                       src={aboutLumeImg}
                       alt="Lumé bespoke botanical facial session"
                       className="w-full h-80 sm:h-96 object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
-                      <span className="text-[9px] uppercase tracking-widest text-[#E7B2A9] font-mono">
+                      <span className="text-[9px] uppercase tracking-widest text-[#E7B2A9] font-mono font-bold">
                         Haute Medispa Atelier
                       </span>
                       <p className="font-display text-xl text-white mt-1">
@@ -179,12 +179,12 @@ function AboutPage() {
               </TiltedCard>
 
               {/* Floating Italian Bioline Seal - Pure White Card */}
-              <div className="absolute -bottom-6 -left-6 bg-white/95 border border-[#B76E79]/30 rounded-2xl p-4 shadow-soft-card hidden sm:block text-[#2A2124] backdrop-blur-md">
-                <span className="text-[9px] uppercase tracking-widest text-[#8F4954] font-semibold block">
+              <div className="absolute -bottom-6 -left-6 bg-white/95 border border-[#B76E79]/30 p-4 shadow-soft-card hidden sm:block text-[#2A2124] backdrop-blur-md">
+                <span className="text-[9px] uppercase tracking-widest text-[#8F4954] font-bold block">
                   Official Partner
                 </span>
-                <p className="font-display text-lg text-[#2A2124] font-light">
-                  <ShinyText text="Bioline Jatò Italy" speed={4} />
+                <p className="font-display text-lg text-[#8F4954] font-semibold">
+                  Bioline Jatò Italy
                 </p>
               </div>
             </div>
@@ -224,8 +224,8 @@ function AboutPage() {
               className="absolute -top-10 -right-6 size-24 pointer-events-none animate-jump hidden sm:block z-20 opacity-80"
             />
 
-            <div className="overflow-hidden rounded-2xl border border-[#B76E79]/25 shadow-soft-card relative group bg-white p-2">
-              <div className="overflow-hidden rounded-xl relative">
+            <div className="overflow-hidden border border-[#B76E79]/25 shadow-soft-card relative group bg-white p-2">
+              <div className="overflow-hidden relative">
                 <img
                   src={aboutLumeImg}
                   alt="Lumé bespoke botanical facial session"
@@ -237,18 +237,18 @@ function AboutPage() {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="overflow-hidden rounded-2xl border border-[#B76E79]/20 group bg-white p-1.5 shadow-xs">
+              <div className="overflow-hidden border border-[#B76E79]/20 group bg-white p-1.5 shadow-xs">
                 <img
                   src={plump2}
                   alt="Spa suite interior"
-                  className="w-full h-44 rounded-xl object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="overflow-hidden rounded-2xl border border-[#B76E79]/20 group bg-white p-1.5 shadow-xs">
+              <div className="overflow-hidden border border-[#B76E79]/20 group bg-white p-1.5 shadow-xs">
                 <img
                   src={rejuva4}
                   alt="Clinical aesthetics suite"
-                  className="w-full h-44 rounded-xl object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             </div>
@@ -262,13 +262,13 @@ function AboutPage() {
             className="lg:col-span-6 lg:pl-6 space-y-6"
           >
             <div className="flex items-center gap-2">
-              <span className="h-px w-8 bg-[#B76E79]" />
-              <span className="eyebrow text-[#8F4954] text-[10px] tracking-[0.2em] font-semibold">The Atelier Philosophy</span>
+              <span className="h-px w-8 bg-[#8F4954]" />
+              <span className="eyebrow text-[#8F4954] text-[10px] tracking-[0.2em] font-bold">The Atelier Philosophy</span>
             </div>
             <h2 className="font-display text-4xl sm:text-5xl font-light leading-tight text-[#2A2124]">
               Space to pause.
               <br />
-              <span className="italic font-serif bg-gradient-to-r from-[#8F4954] via-[#B76E79] to-[#8F4954] bg-clip-text text-transparent">Care with intention.</span>
+              <span className="italic font-serif text-[#8F4954] font-medium">Care with intention.</span>
             </h2>
             <div className="space-y-4 text-xs sm:text-sm leading-7 text-[#5E5054] font-normal">
               <p>
@@ -284,18 +284,18 @@ function AboutPage() {
 
             <div className="pt-4 border-t border-[#B76E79]/20 grid grid-cols-2 gap-6">
               <div>
-                <span className="font-display text-3xl sm:text-4xl text-[#8F4954] font-light block">
+                <span className="font-display text-3xl sm:text-4xl text-[#8F4954] font-semibold block">
                   <CountUp to={100} suffix="%" duration={1.8} />
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.16em] text-[#7A6B6E] mt-1 block font-medium">
+                <span className="text-[10px] uppercase tracking-[0.16em] text-[#5E5054] mt-1 block font-bold">
                   Private 1-on-1 Suites
                 </span>
               </div>
               <div>
-                <span className="font-display text-3xl sm:text-4xl text-[#8F4954] font-light block">
-                  <ShinyText text="Bioline" speed={4} />
+                <span className="font-display text-3xl sm:text-4xl text-[#8F4954] font-serif font-semibold block">
+                  Bioline
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.16em] text-[#7A6B6E] mt-1 block font-medium">
+                <span className="text-[10px] uppercase tracking-[0.16em] text-[#5E5054] mt-1 block font-bold">
                   Italian Formulations
                 </span>
               </div>
@@ -309,11 +309,11 @@ function AboutPage() {
         <div className="mx-auto max-w-7xl space-y-16">
           <div className="max-w-2xl space-y-3">
             <div className="flex items-center gap-2">
-              <span className="h-px w-8 bg-[#B76E79]" />
-              <span className="eyebrow text-[#8F4954] text-[10px] tracking-[0.2em] font-semibold">Mastery &amp; Credentials</span>
+              <span className="h-px w-8 bg-[#8F4954]" />
+              <span className="eyebrow text-[#8F4954] text-[10px] tracking-[0.2em] font-bold">Mastery &amp; Credentials</span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-light text-[#2A2124]">
-              Four Pillars of <ShinyText text="Atelier Excellence" speed={5} />
+              Four Pillars of <span className="italic font-serif font-semibold text-[#8F4954]">Atelier Excellence</span>
             </h2>
             <p className="text-xs sm:text-sm text-[#5E5054] font-normal leading-relaxed">
               Our multidisciplinary team unites certified medical nurse injectors, licensed dermal therapists, and master beauty artists to deliver comprehensive aesthetic care.

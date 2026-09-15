@@ -20,7 +20,7 @@ export function ShinyText({
       className={`inline-block font-bold bg-clip-text text-transparent ${disabled ? "" : "animate-shine"} ${className}`}
       style={{
         backgroundImage:
-          "linear-gradient(120deg, #8F4954 0%, #B76E79 35%, #4D1A25 65%, #8F4954 100%)",
+          "linear-gradient(120deg, #682230 0%, #8F4954 30%, #B76E79 50%, #682230 80%, #8F4954 100%)",
         backgroundSize: "200% 100%",
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",

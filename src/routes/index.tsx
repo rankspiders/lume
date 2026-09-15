@@ -317,14 +317,14 @@ function IndexPage() {
             >
               {/* Top Refined Status Pill */}
               <div className="flex flex-wrap items-center gap-3">
-                <div className="inline-flex items-center gap-2.5 px-4 py-2 border border-[#B76E79]/35 bg-white shadow-sm">
-                  <Sparkles className="size-3.5 text-[#B76E79]" />
-                  <span className="text-xs uppercase tracking-[0.22em] font-bold text-[#B76E79]">
+                <div className="inline-flex items-center gap-2.5 px-4 py-2 border border-[#B76E79]/40 bg-white shadow-sm">
+                  <Sparkles className="size-3.5 text-[#8F4954]" />
+                  <span className="text-xs uppercase tracking-[0.22em] font-bold text-[#8F4954]">
                     Sherwood Park • Medical Aesthetics Sanctuary
                   </span>
                 </div>
-                <span className="text-xs uppercase tracking-[0.2em] text-[#B76E79]/60 font-bold hidden sm:inline">•</span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FAF5F3] border border-[#B76E79]/30 text-[#B76E79] text-xs font-mono uppercase tracking-wider shadow-xs">
+                <span className="text-xs uppercase tracking-[0.2em] text-[#8F4954]/60 font-bold hidden sm:inline">•</span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FAF5F3] border border-[#B76E79]/40 text-[#8F4954] text-xs font-mono font-bold uppercase tracking-wider shadow-xs">
                   Bioline Jatò Certified
                 </span>
               </div>
@@ -609,8 +609,8 @@ function IndexPage() {
       <section className="py-24 sm:py-32 bg-[#FAF5F3] border-b border-[#B76E79]/20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="eyebrow text-[#B76E79]">
-              <ShinyText text="Curated Atelier Collections" speed={4} />
+            <span className="eyebrow text-[#8F4954] font-bold">
+              Curated Atelier Collections
             </span>
             <h2 className="font-display text-4xl sm:text-6xl font-light text-[#2A2124]">
               Facials, Body &amp; Clinical Aesthetics
@@ -675,8 +675,8 @@ function IndexPage() {
         <div className="mx-auto max-w-7xl">
           <div className="max-w-2xl text-left mb-12">
             <div className="flex items-center gap-3">
-              <Compass className="size-4 text-[#B76E79]" />
-              <span className="eyebrow text-[#B76E79]">Interactive Concern &amp; Goal Matcher</span>
+              <Compass className="size-4 text-[#8F4954]" />
+              <span className="eyebrow text-[#8F4954] font-bold">Interactive Concern &amp; Goal Matcher</span>
             </div>
             <h2 className="mt-3 font-display text-4xl sm:text-6xl font-light text-[#2A2124]">
               Discover your bespoke ritual.
@@ -814,8 +814,8 @@ function IndexPage() {
       <section className="py-24 sm:py-32 bg-[#FAF5F3] border-b border-[#B76E79]/20">
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-            <span className="eyebrow text-[#B76E79]">
-              <ShinyText text="Clinical Transformations" speed={4} />
+            <span className="eyebrow text-[#8F4954] font-bold">
+              Clinical Transformations
             </span>
             <h2 className="font-display text-4xl sm:text-5xl font-light text-[#2A2124]">
               Real Clinical Refinement
@@ -865,7 +865,7 @@ function IndexPage() {
 
                   {/* Floating Pure White Glass Badge */}
                   <div className="absolute -bottom-6 -left-6 bg-white/95 border border-[#B76E79]/40 p-5 shadow-2xl max-w-[220px] hidden sm:block text-[#2A2124] backdrop-blur-md">
-                    <span className="text-[#B76E79] font-display text-3xl font-light block">
+                    <span className="text-[#8F4954] font-display text-3xl font-semibold block">
                       <CountUp to={100} suffix="%" />
                     </span>
                     <span className="text-[10px] uppercase tracking-[0.16em] text-[#2A2124] font-bold block mt-1">
@@ -888,13 +888,13 @@ function IndexPage() {
               className="lg:col-span-6 space-y-6"
             >
               <div className="flex items-center gap-3">
-                <span className="eyebrow text-[#B76E79]">The Lumé Sanctuary</span>
-                <span className="text-[#B76E79]/40 text-xs">•</span>
-                <span className="text-[10px] uppercase tracking-wider text-[#B76E79] font-mono font-bold">Sherwood Park</span>
+                <span className="eyebrow text-[#8F4954] font-bold">The Lumé Sanctuary</span>
+                <span className="text-[#8F4954]/40 text-xs">•</span>
+                <span className="text-[10px] uppercase tracking-wider text-[#8F4954] font-mono font-bold">Sherwood Park</span>
               </div>
 
               <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-[#2A2124] leading-[1.08]">
-                DISCOVER A <span className="italic font-serif rose-gold-gradient-text">RADIANT</span> YOU.
+                DISCOVER A <span className="italic font-serif rose-gold-gradient-text font-semibold">RADIANT</span> YOU.
               </h2>
 
               <p className="text-sm leading-relaxed text-[#5E5054] font-normal">
@@ -904,19 +904,19 @@ function IndexPage() {
               {/* Spec Table */}
               <div className="pt-2 divide-y divide-[#B76E79]/15 text-xs">
                 <div className="py-3 flex items-center justify-between">
-                  <span className="font-bold uppercase tracking-wider text-[#B76E79] text-[10px]">Official Partner :</span>
+                  <span className="font-bold uppercase tracking-wider text-[#8F4954] text-[10px]">Official Partner :</span>
                   <span className="text-[#2A2124] font-medium">Bioline Jatò Italy Certified</span>
                 </div>
                 <div className="py-3 flex items-center justify-between">
-                  <span className="font-bold uppercase tracking-wider text-[#B76E79] text-[10px]">Clinical Injectors :</span>
+                  <span className="font-bold uppercase tracking-wider text-[#8F4954] text-[10px]">Clinical Injectors :</span>
                   <span className="text-[#2A2124] font-medium">Certified Medical Injectors &amp; Botox® Protocol</span>
                 </div>
                 <div className="py-3 flex items-center justify-between">
-                  <span className="font-bold uppercase tracking-wider text-[#B76E79] text-[10px]">Sanctuary Privacy :</span>
+                  <span className="font-bold uppercase tracking-wider text-[#8F4954] text-[10px]">Sanctuary Privacy :</span>
                   <span className="text-[#2A2124] font-medium">100% Private 1-on-1 Treatment Lounges</span>
                 </div>
                 <div className="py-3 flex items-center justify-between">
-                  <span className="font-bold uppercase tracking-wider text-[#B76E79] text-[10px]">Studio Location :</span>
+                  <span className="font-bold uppercase tracking-wider text-[#8F4954] text-[10px]">Studio Location :</span>
                   <span className="text-[#2A2124] font-medium">2457 Broadmoor Blvd #121, Sherwood Park</span>
                 </div>
               </div>
@@ -924,14 +924,14 @@ function IndexPage() {
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <Button
                   asChild
-                  className="h-11 rounded-none bg-[#B76E79] hover:bg-[#8F4954] text-white text-[10px] uppercase tracking-[0.18em] px-8 font-bold transition-all duration-300 shadow-md"
+                  className="h-11 rounded-none bg-[#8F4954] hover:bg-[#682230] text-white text-[10px] uppercase tracking-[0.18em] px-8 font-bold transition-all duration-300 shadow-md"
                 >
                   <Link to="/about">Our Philosophy &amp; Team</Link>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
-                  className="h-11 rounded-none border-[#B76E79]/40 bg-white text-[10px] uppercase tracking-[0.18em] text-[#B76E79] hover:bg-[#FAF5F3] font-bold transition-all duration-300"
+                  className="h-11 rounded-none border-[#8F4954]/40 bg-white text-[10px] uppercase tracking-[0.18em] text-[#8F4954] hover:bg-[#FAF5F3] font-bold transition-all duration-300"
                 >
                   <Link to="/contact">Book Consultation</Link>
                 </Button>
@@ -945,8 +945,8 @@ function IndexPage() {
       <section className="py-24 sm:py-32 bg-[#FAF5F3] border-b border-[#B76E79]/20 text-[#2A2124]">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="eyebrow text-[#B76E79]">
-              <ShinyText text="Signature Spa Packages" speed={3} />
+            <span className="eyebrow text-[#8F4954] font-bold">
+              Signature Spa Packages
             </span>
             <h2 className="font-display text-4xl sm:text-6xl font-light text-[#2A2124]">
               Your Perfect Package
@@ -962,13 +962,13 @@ function IndexPage() {
               <div>
                 <div className="flex justify-between items-baseline border-b border-[#B76E79]/15 pb-4">
                   <div>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#B76E79] font-bold">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#8F4954] font-bold">
                       2 Hour Ceremony
                     </span>
                     <h3 className="font-display text-3xl font-light text-[#2A2124] mt-1">You Deserve It!</h3>
                   </div>
                   <div className="text-right">
-                    <span className="font-display text-4xl font-light text-[#B76E79]">$265</span>
+                    <span className="font-display text-4xl font-semibold text-[#8F4954]">$265</span>
                   </div>
                 </div>
 
@@ -977,24 +977,24 @@ function IndexPage() {
                 </p>
 
                 <div className="mt-6 pt-5 border-t border-[#B76E79]/15 space-y-3">
-                  <span className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold block">
+                  <span className="text-[10px] uppercase tracking-wider text-[#8F4954] font-bold block">
                     Included In Package:
                   </span>
                   <ul className="space-y-2.5 text-xs text-[#2A2124]">
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
                       <span>Custom Bioline Facial (1 Hour)</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
                       <span>Coffee Shape Body Treatment (1 Hour)</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
                       <span>Celluma LED Light Healing Therapy</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
                       <span>Complimentary Organic Herbal Tea Service</span>
                     </li>
                   </ul>
@@ -1005,7 +1005,7 @@ function IndexPage() {
                 <MagneticButton strength={0.2} pullStrength={0.2}>
                   <Button
                     asChild
-                    className="w-full h-12 rounded-none bg-[#B76E79] hover:bg-[#8F4954] text-white text-[10px] uppercase tracking-[0.18em] font-bold transition-all duration-300 shadow-md"
+                    className="w-full h-12 rounded-none bg-[#8F4954] hover:bg-[#682230] text-white text-[10px] uppercase tracking-[0.18em] font-bold transition-all duration-300 shadow-md"
                   >
                     <Link to="/appointment">
                       Reserve Package ($265)
@@ -1017,19 +1017,19 @@ function IndexPage() {
 
             {/* Package 2: Queen For A Day! */}
             <div className="bg-white border-2 border-[#B76E79]/40 p-8 sm:p-10 flex flex-col justify-between shadow-xl relative">
-              <div className="absolute top-0 right-0 bg-[#B76E79] text-white text-[9px] uppercase tracking-[0.2em] px-3 py-1 font-bold">
+              <div className="absolute top-0 right-0 bg-[#8F4954] text-white text-[9px] uppercase tracking-[0.2em] px-3 py-1 font-bold">
                 Royal Flagship
               </div>
               <div>
                 <div className="flex justify-between items-baseline border-b border-[#B76E79]/15 pb-4">
                   <div>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#B76E79] font-bold">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#8F4954] font-bold">
                       3 Hour Luxury Ritual
                     </span>
                     <h3 className="font-display text-3xl font-light text-[#2A2124] mt-1">Queen For A Day!</h3>
                   </div>
                   <div className="text-right">
-                    <span className="font-display text-4xl font-light text-[#B76E79]">$395</span>
+                    <span className="font-display text-4xl font-semibold text-[#8F4954]">$395</span>
                   </div>
                 </div>
 
@@ -1038,28 +1038,28 @@ function IndexPage() {
                 </p>
 
                 <div className="mt-6 pt-5 border-t border-[#B76E79]/15 space-y-3">
-                  <span className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold block">
+                  <span className="text-[10px] uppercase tracking-wider text-[#8F4954] font-bold block">
                     Included In Package:
                   </span>
                   <ul className="space-y-2.5 text-xs text-[#2A2124]">
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
                       <span>Seasonal Botanical Body Exfoliating Wrap</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
                       <span>Bioline Lifting Code Non-Surgical Facelift</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
                       <span>Therapeutic Warm Oil Scalp Treatment</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
                       <span>Luxe Foot Reflexology Exfoliation</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#B76E79] shrink-0" />
+                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
                       <span>Full-Spectrum Celluma LED Phototherapy</span>
                     </li>
                   </ul>
@@ -1070,7 +1070,7 @@ function IndexPage() {
                 <MagneticButton strength={0.25} pullStrength={0.25}>
                   <Button
                     asChild
-                    className="w-full h-12 rounded-none bg-gradient-to-r from-[#C5838B] via-[#B76E79] to-[#8F4954] text-white text-[10px] uppercase tracking-[0.18em] hover:opacity-95 shadow-lg font-bold transition-all duration-300"
+                    className="w-full h-12 rounded-none bg-gradient-to-r from-[#8F4954] via-[#A35260] to-[#7A2838] hover:from-[#7A2838] hover:to-[#682230] text-white text-[10px] uppercase tracking-[0.18em] hover:opacity-95 shadow-lg font-bold transition-all duration-300"
                   >
                     <Link to="/appointment">
                       Reserve Royal Day ($395)
@@ -1088,8 +1088,8 @@ function IndexPage() {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-12 items-center">
             <div className="lg:col-span-5 space-y-5">
-              <span className="eyebrow text-[#B76E79]">
-                <ShinyText text="Verified Guest Experiences" speed={4} />
+              <span className="eyebrow text-[#8F4954] font-bold">
+                Verified Guest Experiences
               </span>
               <h2 className="font-display text-4xl sm:text-5xl font-light leading-tight text-[#2A2124]">
                 Words from our guests.
@@ -1101,7 +1101,7 @@ function IndexPage() {
                 <Button
                   asChild
                   variant="outline"
-                  className="h-11 rounded-none border-[#B76E79]/40 bg-[#FAF5F3] px-6 text-[10px] uppercase tracking-[0.16em] text-[#B76E79] hover:bg-[#B76E79] hover:text-white font-bold transition-all duration-300"
+                  className="h-11 rounded-none border-[#8F4954]/40 bg-[#FAF5F3] px-6 text-[10px] uppercase tracking-[0.16em] text-[#8F4954] hover:bg-[#8F4954] hover:text-white font-bold transition-all duration-300"
                 >
                   <Link to="/contact">Speak With Our Specialists</Link>
                 </Button>
@@ -1114,9 +1114,9 @@ function IndexPage() {
                   key={story.author}
                   className="bg-[#FAF5F3] border border-[#B76E79]/25 p-6 sm:p-7 space-y-3 relative shadow-md"
                 >
-                  <div className="flex items-center gap-1 text-[#B76E79]">
+                  <div className="flex items-center gap-1 text-[#8F4954]">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="size-3.5 fill-[#B76E79] text-[#B76E79]" />
+                      <Star key={i} className="size-3.5 fill-[#8F4954] text-[#8F4954]" />
                     ))}
                   </div>
                   <p className="text-xs sm:text-sm leading-relaxed text-[#2A2124] font-normal italic">
@@ -1124,7 +1124,7 @@ function IndexPage() {
                   </p>
                   <div className="flex items-center justify-between pt-3 border-t border-[#B76E79]/15 text-xs">
                     <span className="font-bold text-[#2A2124]">{story.author}</span>
-                    <span className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold">
+                    <span className="text-[10px] uppercase tracking-wider text-[#8F4954] font-bold">
                       {story.ritual}
                     </span>
                   </div>
@@ -1145,8 +1145,8 @@ function IndexPage() {
             className="mx-auto bg-white border border-[#B76E79]/40 shadow-xl rounded-full text-[#2A2124]"
           />
 
-          <span className="eyebrow text-[#B76E79] text-[11px] block">
-            <ShinyText text="Your Time at Lumé" speed={3} />
+          <span className="eyebrow text-[#8F4954] text-[11px] block font-bold">
+            Your Time at Lumé
           </span>
           <h2 className="font-display text-4xl sm:text-6xl font-light text-[#2A2124] leading-tight">
             Begin with a personal consultation.
@@ -1159,7 +1159,7 @@ function IndexPage() {
             <MagneticButton strength={0.25} pullStrength={0.25}>
               <Button
                 asChild
-                className="h-12 rounded-none bg-gradient-to-r from-[#C5838B] via-[#B76E79] to-[#8F4954] text-white px-10 text-xs uppercase tracking-[0.18em] shadow-lg font-bold w-full sm:w-auto transition-all duration-300 hover:opacity-95"
+                className="h-12 rounded-none bg-gradient-to-r from-[#8F4954] via-[#A35260] to-[#7A2838] hover:from-[#7A2838] hover:to-[#682230] text-white px-10 text-xs uppercase tracking-[0.18em] shadow-lg font-bold w-full sm:w-auto transition-all duration-300 hover:opacity-95"
               >
                 <a href="tel:+17804108278">Studio Desk: (780) 410-8278</a>
               </Button>
@@ -1167,7 +1167,7 @@ function IndexPage() {
             <Button
               asChild
               variant="outline"
-              className="h-12 rounded-none border-[#B76E79] bg-white px-10 text-xs uppercase tracking-[0.18em] text-[#B76E79] hover:bg-[#FAF5F3] font-bold transition-all duration-300 shadow-xs"
+              className="h-12 rounded-none border-[#8F4954] bg-white px-10 text-xs uppercase tracking-[0.18em] text-[#8F4954] hover:bg-[#FAF5F3] font-bold transition-all duration-300 shadow-xs"
             >
               <Link to="/contact">Book Atelier Visit</Link>
             </Button>

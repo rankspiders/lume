@@ -179,7 +179,6 @@ export function PageIntro({
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [serviceMenuOpen, setServiceMenuOpen] = useState(false);
-  const [pagesMenuOpen, setPagesMenuOpen] = useState(false);
   const [activeMenuTab, setActiveMenuTab] = useState<"categories" | "concerns">("categories");
 
   useEffect(() => {
@@ -201,20 +200,20 @@ export function SiteHeader() {
       {/* Top Global Atelier Announcement Strip */}
       <div className="bg-[#FAF5F3] text-[#2A2124] py-1.5 px-5 sm:px-8 text-center text-[10px] tracking-[0.2em] uppercase font-medium flex items-center justify-center gap-3 border-b border-[#B76E79]/15">
         <span className="flex items-center gap-1.5">
-          <Sparkles className="size-3 text-[#B76E79]" />
-          <span className="font-semibold text-[#B76E79]">Sherwood Park Sanctuary</span>
-          <span className="text-[#B76E79]/40">|</span>
-          <span className="text-[#5E5054]">Bioline Jatò Italy Certified</span>
+          <Sparkles className="size-3 text-[#8F4954]" />
+          <span className="font-bold text-[#8F4954]">Sherwood Park Sanctuary</span>
+          <span className="text-[#8F4954]/40">|</span>
+          <span className="text-[#5E5054] font-medium">Bioline Jatò Italy Certified</span>
         </span>
-        <span className="hidden md:inline text-[#B76E79]/40">•</span>
+        <span className="hidden md:inline text-[#8F4954]/40">•</span>
         <span className="hidden md:inline text-[#5E5054]">
           Direct Concierge:{" "}
-          <a href="tel:+17804108278" className="text-[#B76E79] font-bold underline hover:text-[#8F4954] transition-colors">
+          <a href="tel:+17804108278" className="text-[#8F4954] font-bold underline hover:text-[#682230] transition-colors">
             (780) 410-8278
           </a>
         </span>
-        <span className="hidden lg:inline text-[#B76E79]/40">•</span>
-        <span className="hidden lg:inline text-[#5E5054]">100% Private Clinical Suites</span>
+        <span className="hidden lg:inline text-[#8F4954]/40">•</span>
+        <span className="hidden lg:inline text-[#5E5054] font-medium">100% Private Clinical Suites</span>
       </div>
 
       <div className="relative mx-auto flex h-16 sm:h-20 max-w-[1480px] items-center justify-between px-5 sm:px-8">
@@ -223,27 +222,18 @@ export function SiteHeader() {
           <BrandLogo size="md" variant="light" />
         </Link>
 
-        {/* Center: Dermace-style High-End Navigation Menu */}
-        <nav aria-label="Primary navigation" className="hidden items-center gap-7 lg:flex">
+        {/* Center: Dermace / SkinMed Style Direct Luxury Navigation */}
+        <nav aria-label="Primary navigation" className="hidden items-center gap-5 xl:gap-7 lg:flex">
           {/* 1. HOME */}
           <Link
             to="/"
-            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#B76E79]"
-            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-[#B76E79]" }}
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#8F4954]"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-[#8F4954]" }}
           >
             HOME
           </Link>
 
-          {/* 2. ABOUT US */}
-          <Link
-            to="/about"
-            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#B76E79]"
-            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-[#B76E79]" }}
-          >
-            ABOUT US
-          </Link>
-
-          {/* 3. DERMACE-STYLE SERVICES & CONCERNS MEGA MENU */}
+          {/* 2. SERVICES & PROTOCOLS MEGA MENU */}
           <div
             className="relative py-6"
             onMouseEnter={() => setServiceMenuOpen(true)}
@@ -251,10 +241,10 @@ export function SiteHeader() {
           >
             <button
               type="button"
-              className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#B76E79] flex items-center gap-1 cursor-pointer"
+              className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#8F4954] flex items-center gap-1 cursor-pointer"
             >
               <span>SERVICES &amp; PROTOCOLS</span>
-              <ChevronDown className="size-3 text-[#B76E79]" />
+              <ChevronDown className="size-3 text-[#8F4954]" />
             </button>
 
             <AnimatePresence>
@@ -273,8 +263,8 @@ export function SiteHeader() {
                         onClick={() => setActiveMenuTab("categories")}
                         className={`text-[10px] uppercase tracking-[0.18em] font-bold px-3 py-1.5 transition-all ${
                           activeMenuTab === "categories"
-                            ? "bg-[#B76E79] text-white shadow-sm"
-                            : "bg-[#FAF5F3] text-[#5E5054] hover:text-[#B76E79]"
+                            ? "bg-[#8F4954] text-white shadow-sm"
+                            : "bg-[#FAF5F3] text-[#5E5054] hover:text-[#8F4954]"
                         }`}
                       >
                         Browse By Category
@@ -283,8 +273,8 @@ export function SiteHeader() {
                         onClick={() => setActiveMenuTab("concerns")}
                         className={`text-[10px] uppercase tracking-[0.18em] font-bold px-3 py-1.5 transition-all ${
                           activeMenuTab === "concerns"
-                            ? "bg-[#B76E79] text-white shadow-sm"
-                            : "bg-[#FAF5F3] text-[#5E5054] hover:text-[#B76E79]"
+                            ? "bg-[#8F4954] text-white shadow-sm"
+                            : "bg-[#FAF5F3] text-[#5E5054] hover:text-[#8F4954]"
                         }`}
                       >
                         Shop By Skin Concern
@@ -294,7 +284,7 @@ export function SiteHeader() {
                     <Link
                       to="/treatments"
                       onClick={() => setServiceMenuOpen(false)}
-                      className="text-[10px] uppercase tracking-[0.18em] font-bold text-[#B76E79] hover:underline flex items-center gap-1"
+                      className="text-[10px] uppercase tracking-[0.18em] font-bold text-[#8F4954] hover:underline flex items-center gap-1"
                     >
                       View All 24+ Menu <ChevronRight className="size-3" />
                     </Link>
@@ -309,17 +299,17 @@ export function SiteHeader() {
                             key={item.title}
                             to={item.href}
                             onClick={() => setServiceMenuOpen(false)}
-                            className="p-3 border border-[#B76E79]/15 bg-[#FAF5F3] hover:bg-white hover:border-[#B76E79] transition-all group block shadow-xs"
+                            className="p-3 border border-[#B76E79]/15 bg-[#FAF5F3] hover:bg-white hover:border-[#8F4954] transition-all group block shadow-xs"
                           >
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-[8.5px] uppercase tracking-wider text-[#B76E79] font-mono font-bold">
+                              <span className="text-[8.5px] uppercase tracking-wider text-[#8F4954] font-mono font-bold">
                                 {item.eyebrow}
                               </span>
-                              <span className="text-[8px] px-1.5 py-0.5 bg-[#B76E79]/10 text-[#B76E79] font-medium uppercase tracking-wider">
+                              <span className="text-[8px] px-1.5 py-0.5 bg-[#8F4954]/10 text-[#8F4954] font-bold uppercase tracking-wider">
                                 {item.tag}
                               </span>
                             </div>
-                            <h4 className="text-xs font-bold text-[#2A2124] group-hover:text-[#B76E79] transition-colors">
+                            <h4 className="text-xs font-bold text-[#2A2124] group-hover:text-[#8F4954] transition-colors">
                               {item.title}
                             </h4>
                             <p className="text-[11px] text-[#5E5054] font-normal mt-0.5 line-clamp-1 leading-snug">
@@ -330,7 +320,7 @@ export function SiteHeader() {
                       </div>
                     ) : (
                       <div className="col-span-8 space-y-2">
-                        <p className="text-[10px] uppercase tracking-[0.18em] text-[#B76E79] font-bold mb-2">
+                        <p className="text-[10px] uppercase tracking-[0.18em] text-[#8F4954] font-bold mb-2">
                           Targeted Aesthetic Goals &amp; Concerns
                         </p>
                         <div className="grid grid-cols-1 gap-2">
@@ -339,17 +329,17 @@ export function SiteHeader() {
                               key={concern.name}
                               to={concern.href}
                               onClick={() => setServiceMenuOpen(false)}
-                              className="p-3 border border-[#B76E79]/15 bg-[#FAF5F3] hover:bg-white hover:border-[#B76E79] transition-all flex items-center justify-between group shadow-xs"
+                              className="p-3 border border-[#B76E79]/15 bg-[#FAF5F3] hover:bg-white hover:border-[#8F4954] transition-all flex items-center justify-between group shadow-xs"
                             >
                               <div>
-                                <p className="text-xs font-bold text-[#2A2124] group-hover:text-[#B76E79] transition-colors">
+                                <p className="text-xs font-bold text-[#2A2124] group-hover:text-[#8F4954] transition-colors">
                                   {concern.name}
                                 </p>
                                 <p className="text-[11px] text-[#5E5054] font-normal mt-0.5">
-                                  Recommended: <span className="text-[#B76E79] font-medium">{concern.treatment}</span>
+                                  Recommended: <span className="text-[#8F4954] font-semibold">{concern.treatment}</span>
                                 </p>
                               </div>
-                              <ArrowRight className="size-3.5 text-[#B76E79] transform group-hover:translate-x-1 transition-transform" />
+                              <ArrowRight className="size-3.5 text-[#8F4954] transform group-hover:translate-x-1 transition-transform" />
                             </Link>
                           ))}
                         </div>
@@ -359,26 +349,34 @@ export function SiteHeader() {
                     {/* Right Column: Spotlight Feature Card */}
                     <div className="col-span-4 bg-gradient-to-br from-[#FAF5F3] to-[#F0DFDA] p-4 border border-[#B76E79]/25 flex flex-col justify-between">
                       <div>
-                        <span className="text-[9px] uppercase tracking-[0.2em] text-[#B76E79] font-bold block mb-1">
+                        <span className="text-[9px] uppercase tracking-[0.2em] text-[#8F4954] font-bold block mb-1">
                           Flagship Protocol
                         </span>
-                        <h4 className="font-display text-base font-medium text-[#2A2124] leading-snug">
+                        <h4 className="font-display text-base font-semibold text-[#2A2124] leading-snug">
                           Botox® ($10/Unit) &amp; Bioline 20% AHA Rejuvenation
                         </h4>
-                        <p className="text-[11px] text-[#5E5054] mt-2 leading-relaxed">
+                        <p className="text-[11px] text-[#5E5054] mt-2 leading-relaxed font-normal">
                           Doctor-administered neuromodulators paired with Italian glycolic exfoliation for immediate radiance.
                         </p>
                       </div>
 
-                      <div className="pt-4 border-t border-[#B76E79]/20 mt-4">
+                      <div className="pt-4 border-t border-[#B76E79]/20 mt-4 space-y-2">
                         <Button
                           asChild
-                          className="w-full h-9 rounded-none bg-[#B76E79] hover:bg-[#8F4954] text-white text-[10px] uppercase tracking-[0.16em] font-bold shadow-md"
+                          className="w-full h-9 rounded-none bg-[#8F4954] hover:bg-[#682230] text-white text-[10px] uppercase tracking-[0.16em] font-bold shadow-md"
                         >
                           <Link to="/appointment" onClick={() => setServiceMenuOpen(false)}>
                             Book Consultation
                           </Link>
                         </Button>
+                        <a
+                          href="/Brochure.pdf"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-[10px] uppercase tracking-wider text-[#8F4954] hover:underline font-bold text-center block"
+                        >
+                          Download Brochure (PDF)
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -387,135 +385,65 @@ export function SiteHeader() {
             </AnimatePresence>
           </div>
 
-          {/* 4. PRICE PLAN */}
+          {/* 3. BEFORE & AFTER GALLERY */}
+          <Link
+            to="/gallery"
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#8F4954]"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-[#8F4954]" }}
+          >
+            BEFORE &amp; AFTER
+          </Link>
+
+          {/* 4. PRICING */}
           <Link
             to="/price-plan"
-            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#B76E79]"
-            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-[#B76E79]" }}
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#8F4954]"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-[#8F4954]" }}
           >
-            PRICE PLAN
+            PRICING
           </Link>
 
-          {/* 5. BLOGS */}
+          {/* 5. OUR TEAM */}
+          <Link
+            to="/team"
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#8F4954]"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-[#8F4954]" }}
+          >
+            OUR TEAM
+          </Link>
+
+          {/* 6. ABOUT US */}
+          <Link
+            to="/about"
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#8F4954]"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-[#8F4954]" }}
+          >
+            ABOUT US
+          </Link>
+
+          {/* 7. JOURNAL */}
           <Link
             to="/blogs"
-            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#B76E79]"
-            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-[#B76E79]" }}
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#8F4954]"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-[#8F4954]" }}
           >
-            BLOGS
+            JOURNAL
           </Link>
 
-          {/* 6. PAGES Dropdown */}
-          <div
-            className="relative py-6"
-            onMouseEnter={() => setPagesMenuOpen(true)}
-            onMouseLeave={() => setPagesMenuOpen(false)}
-          >
-            <button
-              type="button"
-              className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#B76E79] flex items-center gap-1 cursor-pointer"
-            >
-              <span>PAGES</span>
-              <ChevronDown className="size-3 text-[#B76E79]" />
-            </button>
-
-            <AnimatePresence>
-              {pagesMenuOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 8 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute top-16 -left-36 w-[640px] rounded-none border border-[#B76E79]/30 bg-white p-6 shadow-2xl backdrop-blur-3xl grid grid-cols-3 gap-6 text-[#2A2124]"
-                >
-                  <div className="space-y-3 border-r border-[#B76E79]/15 pr-4">
-                    <span className="text-[9px] uppercase tracking-[0.24em] text-[#B76E79] font-bold block">
-                      01 • Clinic Story
-                    </span>
-                    <ul className="space-y-2 text-xs font-normal">
-                      <li>
-                        <Link to="/about" onClick={() => setPagesMenuOpen(false)} className="text-[#5E5054] hover:text-[#B76E79] transition-colors block py-0.5">
-                          Our Story &amp; Philosophy
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/team" onClick={() => setPagesMenuOpen(false)} className="text-[#5E5054] hover:text-[#B76E79] transition-colors block py-0.5">
-                          Medical Practitioners
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/blogs" onClick={() => setPagesMenuOpen(false)} className="text-[#5E5054] hover:text-[#B76E79] transition-colors block py-0.5">
-                          Dermal Research Journal
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="space-y-3 border-r border-[#B76E79]/15 pr-4">
-                    <span className="text-[9px] uppercase tracking-[0.24em] text-[#B76E79] font-bold block">
-                      02 • Suites &amp; Rates
-                    </span>
-                    <ul className="space-y-2 text-xs font-normal">
-                      <li>
-                        <Link to="/price-plan" onClick={() => setPagesMenuOpen(false)} className="text-[#5E5054] hover:text-[#B76E79] transition-colors block py-0.5">
-                          Transparent Price Menu
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/treatments" onClick={() => setPagesMenuOpen(false)} className="text-[#5E5054] hover:text-[#B76E79] transition-colors block py-0.5">
-                          All 24+ Treatments
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/service-details" onClick={() => setPagesMenuOpen(false)} className="text-[#5E5054] hover:text-[#B76E79] transition-colors block py-0.5">
-                          Monographs &amp; Formulation
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="space-y-3">
-                    <span className="text-[9px] uppercase tracking-[0.24em] text-[#B76E79] font-bold block">
-                      03 • Results &amp; Desk
-                    </span>
-                    <ul className="space-y-2 text-xs font-normal">
-                      <li>
-                        <Link to="/gallery" onClick={() => setPagesMenuOpen(false)} className="text-[#5E5054] hover:text-[#B76E79] transition-colors block py-0.5">
-                          Before &amp; After Transformations
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/contact" onClick={() => setPagesMenuOpen(false)} className="text-[#5E5054] hover:text-[#B76E79] transition-colors block py-0.5">
-                          Sherwood Park Studio Desk
-                        </Link>
-                      </li>
-                      <li>
-                        <a href="/Brochure.pdf" target="_blank" rel="noreferrer" className="text-[#B76E79] hover:underline block py-0.5 font-bold flex items-center justify-between">
-                          <span>Brochure (PDF)</span>
-                          <span className="text-[9px] bg-[#B76E79]/10 px-1.5 py-0.5 border border-[#B76E79]/30">Download</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* 7. CONTACT US */}
+          {/* 8. CONTACT */}
           <Link
             to="/contact"
-            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#B76E79]"
-            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-[#B76E79]" }}
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2A2124] transition-colors hover:text-[#8F4954]"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-[#8F4954]" }}
           >
-            CONTACT US
+            CONTACT
           </Link>
         </nav>
 
         {/* Right: Booking CTA & Mobile Toggle */}
         <div className="flex items-center gap-3 sm:gap-4">
           <MagneticButton strength={0.2} pullStrength={0.2}>
-            <Button asChild className="h-10 sm:h-11 rounded-none bg-gradient-to-r from-[#C5838B] via-[#B76E79] to-[#8F4954] text-white px-5 sm:px-7 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] shadow-md hover:opacity-95 transition-all duration-300 font-bold">
+            <Button asChild className="h-10 sm:h-11 rounded-none bg-gradient-to-r from-[#8F4954] via-[#A35260] to-[#7A2838] hover:from-[#7A2838] hover:to-[#682230] text-white px-5 sm:px-7 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] shadow-md hover:opacity-95 transition-all duration-300 font-bold">
               <Link to="/appointment">Book Appointment</Link>
             </Button>
           </MagneticButton>
@@ -548,94 +476,104 @@ export function SiteHeader() {
                 <Link
                   to="/"
                   onClick={() => setOpen(false)}
-                  className="font-display text-2xl font-light text-[#2A2124] hover:text-[#B76E79] transition-colors block"
+                  className="font-display text-2xl font-light text-[#2A2124] hover:text-[#8F4954] transition-colors block"
                 >
                   HOME
                 </Link>
-                <Link
-                  to="/about"
-                  onClick={() => setOpen(false)}
-                  className="font-display text-2xl font-light text-[#2A2124] hover:text-[#B76E79] transition-colors block"
-                >
-                  ABOUT US
-                </Link>
 
                 <div className="border-y border-[#B76E79]/20 py-4 space-y-3">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#B76E79] font-bold block">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#8F4954] font-bold block">
                     SERVICES &amp; PROTOCOLS
                   </span>
-                  <div className="grid grid-cols-2 gap-2 text-xs font-medium">
-                    <Link to="/treatments" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#B76E79] shadow-xs">
-                      All Treatments (24+)
+                  <div className="grid grid-cols-2 gap-2 text-xs font-semibold">
+                    <Link to="/treatments" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#8F4954] shadow-xs text-[#2A2124]">
+                      All 24+ Treatments
                     </Link>
-                    <Link to="/service-details" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#B76E79] shadow-xs">
-                      Service Details
+                    <Link to="/service-details" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#8F4954] shadow-xs text-[#2A2124]">
+                      Monographs &amp; Steps
                     </Link>
-                    <Link to="/services/skin-and-body-rituals" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#B76E79] shadow-xs">
+                    <Link to="/services/skin-and-body-rituals" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#8F4954] shadow-xs text-[#2A2124]">
                       Skin &amp; Body Rituals
                     </Link>
-                    <Link to="/services/spa-packages" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#B76E79] shadow-xs">
+                    <Link to="/services/spa-packages" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#8F4954] shadow-xs text-[#2A2124]">
                       Spa Packages
                     </Link>
-                    <Link to="/services/beauty-atelier" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#B76E79] shadow-xs">
+                    <Link to="/services/beauty-atelier" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#8F4954] shadow-xs text-[#2A2124]">
                       Beauty Atelier
                     </Link>
-                    <Link to="/services/advanced-aesthetics" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#B76E79] shadow-xs">
+                    <Link to="/services/advanced-aesthetics" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#8F4954] shadow-xs text-[#2A2124]">
                       Advanced Aesthetics
                     </Link>
                   </div>
                 </div>
 
                 <Link
+                  to="/gallery"
+                  onClick={() => setOpen(false)}
+                  className="font-display text-2xl font-light text-[#2A2124] hover:text-[#8F4954] transition-colors block"
+                >
+                  BEFORE &amp; AFTER
+                </Link>
+
+                <Link
                   to="/price-plan"
                   onClick={() => setOpen(false)}
-                  className="font-display text-2xl font-light text-[#2A2124] hover:text-[#B76E79] transition-colors block"
+                  className="font-display text-2xl font-light text-[#2A2124] hover:text-[#8F4954] transition-colors block"
                 >
-                  PRICE PLAN
+                  PRICING
+                </Link>
+
+                <Link
+                  to="/team"
+                  onClick={() => setOpen(false)}
+                  className="font-display text-2xl font-light text-[#2A2124] hover:text-[#8F4954] transition-colors block"
+                >
+                  OUR TEAM
+                </Link>
+
+                <Link
+                  to="/about"
+                  onClick={() => setOpen(false)}
+                  className="font-display text-2xl font-light text-[#2A2124] hover:text-[#8F4954] transition-colors block"
+                >
+                  ABOUT US
                 </Link>
 
                 <Link
                   to="/blogs"
                   onClick={() => setOpen(false)}
-                  className="font-display text-2xl font-light text-[#2A2124] hover:text-[#B76E79] transition-colors block"
+                  className="font-display text-2xl font-light text-[#2A2124] hover:text-[#8F4954] transition-colors block"
                 >
-                  BLOGS
+                  JOURNAL
                 </Link>
-
-                <div className="border-b border-[#B76E79]/20 pb-4 space-y-3">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#B76E79] font-bold block">
-                    ALL PAGES
-                  </span>
-                  <div className="grid grid-cols-2 gap-2 text-xs font-medium">
-                    <Link to="/appointment" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#B76E79] shadow-xs">
-                      Book Appointment
-                    </Link>
-                    <Link to="/gallery" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#B76E79] shadow-xs">
-                      Transformation Gallery
-                    </Link>
-                    <Link to="/team" onClick={() => setOpen(false)} className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#B76E79] shadow-xs">
-                      Clinicians &amp; Team
-                    </Link>
-                    <a href="/Brochure.pdf" target="_blank" rel="noreferrer" className="p-2.5 bg-white border border-[#B76E79]/20 hover:border-[#B76E79] shadow-xs text-[#B76E79] font-bold">
-                      Brochure (PDF)
-                    </a>
-                  </div>
-                </div>
 
                 <Link
                   to="/contact"
                   onClick={() => setOpen(false)}
-                  className="font-display text-2xl font-light text-[#2A2124] hover:text-[#B76E79] transition-colors block"
+                  className="font-display text-2xl font-light text-[#2A2124] hover:text-[#8F4954] transition-colors block"
                 >
                   CONTACT US
                 </Link>
               </div>
 
-              {/* Mobile Direct Line Callout */}
-              <div className="pt-2 border-t border-[#B76E79]/20 space-y-3">
-                <Button asChild className="w-full h-12 rounded-none bg-[#B76E79] text-white text-xs uppercase tracking-[0.18em] font-bold shadow-md">
+              {/* Mobile Direct Action Buttons */}
+              <div className="pt-2 border-t border-[#B76E79]/20 space-y-2">
+                <Button asChild className="w-full h-11 rounded-none bg-[#8F4954] hover:bg-[#7A2838] text-white text-xs uppercase tracking-[0.18em] font-bold shadow-md">
+                  <Link to="/appointment" onClick={() => setOpen(false)}>
+                    Book Appointment
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="w-full h-11 rounded-none border-[#8F4954]/40 text-[#8F4954] text-xs uppercase tracking-[0.18em] font-bold">
                   <a href="tel:+17804108278">Call Studio: (780) 410-8278</a>
                 </Button>
+                <a
+                  href="/Brochure.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs uppercase tracking-wider text-[#8F4954] hover:underline font-bold text-center block pt-1"
+                >
+                  Download Atelier Brochure (PDF)
+                </a>
               </div>
             </nav>
           </motion.div>
