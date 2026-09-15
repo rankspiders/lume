@@ -4,8 +4,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Bodoni Moda", "Playfair Display", "Italiana", serif;
+  --font-serif: "Italiana", "Bodoni Moda", serif;
+  --font-sans: "Plus Jakarta Sans", "Syne", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-editorial: "Italiana", "Bodoni Moda", serif;
   --radius-sm: 0px;
   --radius-md: 0px;
   --radius-lg: 0px;
@@ -44,50 +46,31 @@
 
 :root {
   --radius: 0px;
-  /* Warm Travertine & Alabaster Light Mode */
-  --background: oklch(0.978 0.01 75);
-  --foreground: oklch(0.18 0.015 50);
-  --card: oklch(0.99 0.005 80);
-  --card-foreground: oklch(0.18 0.015 50);
-  --popover: oklch(0.99 0.005 80);
-  --popover-foreground: oklch(0.18 0.015 50);
-  --primary: oklch(0.18 0.015 50);
-  --primary-foreground: oklch(0.978 0.01 75);
-  --secondary: oklch(0.945 0.015 72);
-  --secondary-foreground: oklch(0.18 0.015 50);
-  --muted: oklch(0.945 0.015 72);
-  --muted-foreground: oklch(0.48 0.02 55);
-  --accent: oklch(0.68 0.085 45);
-  --accent-foreground: oklch(0.978 0.01 75);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.85 0.022 60 / 0.5);
-  --input: oklch(0.85 0.022 60 / 0.7);
-  --ring: oklch(0.68 0.085 45);
-  --background: 40 25% 97%;
-  --foreground: 30 10% 10%;
-  --card: 40 20% 99%;
-  --card-foreground: 30 10% 10%;
-  --popover: 40 20% 99%;
-  --popover-foreground: 30 10% 10%;
-  --primary: 28 45% 42%;
-  --primary-foreground: 40 25% 98%;
-  --secondary: 36 20% 92%;
-  --secondary-foreground: 30 10% 10%;
-  --muted: 36 15% 90%;
-  --muted-foreground: 30 10% 45%;
-  --accent: 32 60% 52%;
-  --accent-foreground: 40 25% 98%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 30 15% 82%;
-  --input: 30 15% 82%;
-  --ring: 28 45% 42%;
-  --copper: #B87333;
+  /* Dark Luxury Obsidian & Espresso Theme */
+  --background: #0A0908;
+  --foreground: #FAF7F2;
+  --card: #131211;
+  --card-foreground: #FAF7F2;
+  --popover: #131211;
+  --popover-foreground: #FAF7F2;
+  --primary: #C58A58;
+  --primary-foreground: #0A0908;
+  --secondary: #1C1917;
+  --secondary-foreground: #FAF7F2;
+  --muted: #181615;
+  --muted-foreground: #A8A29E;
+  --accent: #DFC29D;
+  --accent-foreground: #0A0908;
+  --destructive: #E5484D;
+  --destructive-foreground: #FAF7F2;
+  --border: rgba(197, 138, 88, 0.22);
+  --input: rgba(197, 138, 88, 0.35);
+  --ring: #C58A58;
+  --copper: #C58A58;
   --copper-dark: #8F5524;
-  --copper-light: #E0A96D;
-  --champagne: oklch(0.86 0.055 75);
-  --obsidian: #1C1917;
+  --copper-light: #DFC29D;
+  --champagne: #F5EBE4;
+  --obsidian: #0A0908;
   --travertine: #FAF7F2;
   --cashmere: #EDE7DE;
   --sand-light: #FBF8F4;
@@ -96,25 +79,25 @@
 }
 
 .dark {
-  --background: oklch(0.13 0.015 50);
-  --foreground: oklch(0.97 0.008 75);
-  --card: oklch(0.17 0.015 50);
-  --card-foreground: oklch(0.97 0.008 75);
-  --popover: oklch(0.17 0.015 50);
-  --popover-foreground: oklch(0.97 0.008 75);
-  --primary: oklch(0.97 0.008 75);
-  --primary-foreground: oklch(0.13 0.015 50);
-  --secondary: oklch(0.22 0.018 50);
-  --secondary-foreground: oklch(0.97 0.008 75);
-  --muted: oklch(0.22 0.018 50);
-  --muted-foreground: oklch(0.68 0.02 55);
-  --accent: oklch(0.79 0.075 52);
-  --accent-foreground: oklch(0.13 0.015 50);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 16%);
-  --ring: oklch(0.79 0.075 52);
+  --background: #0A0908;
+  --foreground: #FAF7F2;
+  --card: #131211;
+  --card-foreground: #FAF7F2;
+  --popover: #131211;
+  --popover-foreground: #FAF7F2;
+  --primary: #C58A58;
+  --primary-foreground: #0A0908;
+  --secondary: #1C1917;
+  --secondary-foreground: #FAF7F2;
+  --muted: #181615;
+  --muted-foreground: #A8A29E;
+  --accent: #DFC29D;
+  --accent-foreground: #0A0908;
+  --destructive: #E5484D;
+  --destructive-foreground: #FAF7F2;
+  --border: rgba(197, 138, 88, 0.25);
+  --input: rgba(197, 138, 88, 0.35);
+  --ring: #C58A58;
 }
 
 @layer base {
@@ -173,16 +156,18 @@
 /* Haute Editorial Utility Classes */
 .eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.625rem;
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: 0.24em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-copper);
+  color: #F3C592;
+  display: inline-flex;
+  align-items: center;
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #dfc29d 0%, #b57e52 50%, #e8d0b5 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F5D0A9 45%, #E5A976 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -191,15 +176,32 @@
 .sensory-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.375rem;
-  padding: 0.25rem 0.625rem;
-  font-size: 0.5625rem;
-  font-weight: 600;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  background: rgba(181, 126, 82, 0.08);
-  border: 1px solid rgba(181, 126, 82, 0.25);
-  color: var(--color-copper);
+  background: #1C1917;
+  border: 1px solid rgba(243, 197, 146, 0.65);
+  color: #F3C592;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.dark-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: #1A1715;
+  border: 1px solid rgba(243, 197, 146, 0.7);
+  color: #F5D0A9;
+  font-family: var(--font-mono, monospace);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .card-luxury {
@@ -244,6 +246,15 @@
 @keyframes pulseGlow {
   0%, 100% { opacity: 0.8; transform: scale(1); }
   50% { opacity: 0.4; transform: scale(1.08); }
+}
+
+@keyframes shine {
+  0% { background-position: 100%; }
+  100% { background-position: -100%; }
+}
+
+.animate-shine {
+  animation: shine 4s linear infinite;
 }
 
 .animate-spin-slow {
@@ -305,6 +316,83 @@
   transform: scale(1.08);
 }
 
+/* Marquee Infinite Scroll */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.font-serif-luxury {
+  font-family: var(--font-serif);
+}
+
+.spotlight-glow {
+  background: radial-gradient(circle at 50% 30%, rgba(181, 126, 82, 0.18), transparent 70%);
+}
+
+.spotlight-dark-glow {
+  background: radial-gradient(circle at 50% 20%, rgba(223, 194, 157, 0.12), rgba(19, 18, 17, 0.95) 75%);
+}
+
+.glass-copper {
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(181, 126, 82, 0.25);
+}
+
+.glass-dark {
+  background: rgba(19, 18, 17, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(223, 194, 157, 0.2);
+}
+
+@keyframes star-movement-bottom {
+  0% { transform: translate(0%, 0%); opacity: 1; }
+  100% { transform: translate(-100%, 0%); opacity: 0; }
+}
+
+@keyframes star-movement-top {
+  0% { transform: translate(0%, 0%); opacity: 1; }
+  100% { transform: translate(100%, 0%); opacity: 0; }
+}
+
+.animate-star-movement-bottom {
+  animation: star-movement-bottom 4s linear infinite alternate;
+}
+
+.animate-star-movement-top {
+  animation: star-movement-top 4s linear infinite alternate;
+}
+
+@keyframes aurora-mesh {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-aurora {
+  background-size: 200% 200%;
+  animation: aurora-mesh 14s ease infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
@@ -313,5 +401,3 @@
     transition-duration: 0.01ms !important;
   }
 }
-
-

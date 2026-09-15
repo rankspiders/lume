@@ -6,6 +6,17 @@ import { Sparkles, ArrowRight, Eye, CheckCircle2 } from "lucide-react";
 import { PageIntro } from "@/components/site-shell";
 import { RotatingBadge } from "@/components/rotating-badge";
 import { Button } from "@/components/ui/button";
+import { HauteMarquee, LiveSuiteClock } from "@/components/luxury-motion";
+import {
+  SpotlightCard,
+  ShinyText,
+  MagneticButton,
+  TiltedCard,
+  DecryptedText,
+  CountUp,
+  AuroraGlow,
+  SplitText,
+} from "@/components/reactbits";
 
 import facialImage from "@/assets/facial-ritual.jpg";
 import bodyImage from "@/assets/body-ritual.jpg";
@@ -93,7 +104,7 @@ const galleryData = [
   { title: "Mocha Contour Bian Stone Gua Sha", category: "Skin & Body", price: "$145", image: imgMochaContour, tag: "Body Sculpt" },
   { title: "Aura Infusion Negative-Ion Dome", category: "Skin & Body", price: "$199", image: imgAuraInfusion, tag: "Oxygen Dome" },
   { title: "Dermal Fillers Volume Sculpting", category: "Advanced Clinical", price: "From $550", image: imgDermalFillers, tag: "Volume" },
-  { title: "You Deserve It! Spa Ceremony", category: "Spa Packages", price: "$265", image: imgYouDeserveIt, tag: "2 Hours" },
+  { title: "You Deserve It! Spa Ceremony", category: "Spa Packages", price: "$265", image: gal3, tag: "2 Hours" },
 ];
 
 const filterTabs = ["All Works", "Skin & Body", "Spa Packages", "Beauty Atelier", "Advanced Clinical"];
@@ -115,21 +126,81 @@ function GalleryPage() {
   );
 
   return (
-    <div className="bg-[#FAF7F2] text-[#131211]">
-      <PageIntro
-        eyebrow="Visual Portfolio"
-        title={
-          <>
-            The artistry of
-            <br />
-            <em>Lumé Aesthetics.</em>
-          </>
-        }
-      >
-        A curated visual monograph showcasing bespoke facial rituals, Italian Bioline formulations, couture event makeup, structured gel nails, and clinical aesthetic transformations.
-      </PageIntro>
+    <div className="bg-[#0A0908] text-[#FAF7F2]">
+      {/* Bespoke Lookbook Hero with AuroraGlow */}
+      <AuroraGlow variant="dark" className="pt-32 pb-16 sm:pt-40 sm:pb-24 border-b border-copper/20">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="eyebrow text-xs sm:text-sm font-bold tracking-[0.2em]">
+                  <ShinyText text="Haute Visual Monograph" speed={4} />
+                </span>
+                <span className="h-px w-8 bg-[#F3C592]/70" />
+                <span className="dark-pill-badge">
+                  <DecryptedText text="LOOKBOOK 2026" />
+                </span>
+              </div>
 
-      {/* Filter Tabs & Gallery Grid */}
+              <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-light leading-[1.05] text-[#FAF7F2] text-balance">
+                The artistry of
+                <br />
+                <span className="italic font-serif gold-gradient-text font-normal">
+                  <SplitText text="Lumé Aesthetics." delay={45} />
+                </span>
+              </h1>
+
+              <p className="max-w-2xl text-sm sm:text-base sm:leading-7 text-[#E7E2DB] font-normal leading-relaxed">
+                A curated visual lookbook showcasing bespoke facial rituals, Italian Bioline formulations, couture event makeup, structured gel nails, and clinical aesthetic transformations.
+              </p>
+
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <LiveSuiteClock />
+                <span className="text-xs text-[#FAF7F2]/80 font-medium">
+                  <CountUp to={galleryData.length} /> Photographic Works Cataloged
+                </span>
+              </div>
+            </div>
+
+            {/* Bespoke Right Highlight Frame with TiltedCard */}
+            <div className="lg:col-span-5 relative">
+              <TiltedCard rotateAmplitude={8}>
+                <div className="border border-copper/35 bg-[#131211] p-3 shadow-2xl relative">
+                  <div className="overflow-hidden relative group">
+                    <img
+                      src={gal1}
+                      alt="Lumé Sanctuary Experience"
+                      className="w-full h-80 sm:h-96 object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#131211] via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+                      <span className="text-[9px] uppercase tracking-widest text-copper font-mono">
+                        <DecryptedText text="Haute Lookbook" />
+                      </span>
+                      <p className="font-display text-xl text-white mt-1">
+                        Skinscent &amp; Botanical Sanctuary
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </TiltedCard>
+            </div>
+          </div>
+        </div>
+      </AuroraGlow>
+
+      {/* Infinite Luxury Ticker */}
+      <HauteMarquee
+        items={[
+          "LOOKBOOK 2026",
+          "EUROPEAN FACIALS",
+          "THE GLAM CHAPTER",
+          "AUTOLOGOUS PRP",
+          "BIOLINE JATÒ",
+          "SHERWOOD PARK SANCTUARY",
+        ]}
+      />
+
+      {/* Filter Tabs & Gallery Grid with SpotlightCard */}
       <section className="px-5 py-16 sm:px-8 sm:py-24 max-w-7xl mx-auto">
         {/* Filter Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-12 border-b border-copper/20 pb-4">
@@ -140,8 +211,8 @@ function GalleryPage() {
               onClick={() => setActiveFilter(tab)}
               className={`px-4 py-2 text-xs transition-all border ${
                 activeFilter === tab
-                  ? "bg-copper text-white border-copper font-medium shadow-sm"
-                  : "bg-background text-muted-foreground border-copper/20 hover:border-copper hover:text-foreground"
+                  ? "bg-copper text-[#0A0908] border-copper font-bold shadow-md"
+                  : "bg-[#131211] text-white/60 border-copper/20 hover:border-copper/40 hover:text-white"
               }`}
             >
               {tab}
@@ -149,7 +220,7 @@ function GalleryPage() {
           ))}
         </div>
 
-        {/* 3-Column Responsive Masonry/Grid */}
+        {/* 3-Column Responsive Masonry/Grid with SpotlightCard */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredItems.map((item, idx) => (
             <motion.div
@@ -159,55 +230,69 @@ function GalleryPage() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInVariant}
-              className="group border border-copper/25 bg-background overflow-hidden relative shadow-md hover:border-copper transition-all duration-500"
             >
-              <div className="overflow-hidden h-72 sm:h-80 relative">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#131211]/90 via-black/20 to-transparent flex flex-col justify-between p-5">
-                  <div className="flex justify-between items-start">
-                    <span className="bg-[#131211]/80 backdrop-blur-md px-2.5 py-1 text-[9px] uppercase tracking-widest text-copper-light font-semibold border border-copper/30">
-                      {item.tag}
-                    </span>
-                    <span className="bg-copper text-white px-2.5 py-1 text-[10px] font-semibold tracking-wider">
-                      {item.price}
-                    </span>
-                  </div>
+              <SpotlightCard
+                spotlightColor="rgba(181, 126, 82, 0.22)"
+                borderColor="rgba(181, 126, 82, 0.3)"
+                className="bg-[#131211] overflow-hidden relative shadow-xl hover:border-copper transition-all duration-500 border border-copper/25"
+              >
+                <div className="overflow-hidden h-72 sm:h-80 relative group">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
 
-                  <div className="space-y-1 text-white">
-                    <span className="text-[10px] uppercase tracking-wider text-copper-light/80 block font-light">
-                      {item.category}
-                    </span>
-                    <h3 className="font-display text-xl font-light text-white leading-tight">
-                      {item.title}
-                    </h3>
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#131211] via-black/30 to-transparent flex flex-col justify-between p-5">
+                    <div className="flex justify-between items-start">
+                      <span className="bg-[#0A0908]/90 backdrop-blur-md px-2.5 py-1 text-[9px] uppercase tracking-widest text-copper-light font-semibold border border-copper/30">
+                        {item.tag}
+                      </span>
+                      <span className="bg-copper text-[#0A0908] px-2.5 py-1 text-[10px] font-bold tracking-wider">
+                        {item.price}
+                      </span>
+                    </div>
+
+                    <div className="space-y-1 text-white">
+                      <span className="text-[10px] uppercase tracking-wider text-copper-light/80 block font-light">
+                        {item.category}
+                      </span>
+                      <h3 className="font-display text-xl font-light text-white leading-tight">
+                        {item.title}
+                      </h3>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="p-4 bg-background border-t border-copper/15 flex items-center justify-between text-xs">
-                <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-light">Sherwood Park Atelier</span>
-                <a
-                  href={`mailto:info@lumeaesthetics.co?subject=${encodeURIComponent(`Portfolio Booking: ${item.title}`)}`}
-                  className="text-[10px] uppercase tracking-[0.16em] text-copper font-semibold flex items-center gap-1 hover:underline"
-                >
-                  Book Ritual →
-                </a>
-              </div>
+                <div className="p-4 bg-[#131211] border-t border-copper/15 flex items-center justify-between text-xs">
+                  <span className="text-[10px] uppercase tracking-wider text-white/50 font-light">
+                    Sherwood Park Atelier
+                  </span>
+                  <a
+                    href={`mailto:info@lumeaesthetics.co?subject=${encodeURIComponent(
+                      `Portfolio Booking: ${item.title}`
+                    )}`}
+                    className="text-[10px] uppercase tracking-[0.16em] text-copper-light font-semibold flex items-center gap-1 hover:underline hover:text-white"
+                  >
+                    Book Ritual →
+                  </a>
+                </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* Portfolio CTA */}
-      <section className="bg-[#131211] text-white py-20 text-center px-5 sm:px-8 border-t border-copper/20">
+      <AuroraGlow variant="dark" className="text-white py-20 text-center px-5 sm:px-8 border-t border-copper/20">
         <div className="max-w-2xl mx-auto space-y-4">
-          <RotatingBadge text="CUSTOM ATELIER ARTISTRY • LUMÉ • " href="/contact" size={100} className="mx-auto mb-3" />
+          <RotatingBadge
+            text="CUSTOM ATELIER ARTISTRY • LUMÉ • "
+            href="/contact"
+            size={100}
+            className="mx-auto mb-3"
+          />
           <h2 className="font-display text-3xl sm:text-5xl font-light text-white">
             Ready to experience Lumé?
           </h2>
@@ -215,15 +300,24 @@ function GalleryPage() {
             Reserve your consultation or custom treatment session at our private Sherwood Park sanctuary.
           </p>
           <div className="pt-4 flex flex-col sm:flex-row justify-center gap-4">
-            <Button asChild className="h-11 rounded-none bg-copper text-white text-xs uppercase tracking-[0.18em] hover:bg-copper/90 px-8">
-              <Link to="/contact">Reserve An Appointment</Link>
-            </Button>
-            <Button asChild variant="outline" className="h-11 rounded-none border-copper-light bg-transparent text-xs uppercase tracking-[0.18em] text-copper-light hover:bg-copper-light hover:text-[#131211]">
+            <MagneticButton pullStrength={0.25}>
+              <Button
+                asChild
+                className="h-11 rounded-none bg-copper text-[#0A0908] font-semibold text-xs uppercase tracking-[0.18em] hover:bg-white px-8 w-full sm:w-auto"
+              >
+                <Link to="/contact">Reserve An Appointment</Link>
+              </Button>
+            </MagneticButton>
+            <Button
+              asChild
+              variant="outline"
+              className="h-11 rounded-none border-copper-light bg-transparent text-xs uppercase tracking-[0.18em] text-copper-light hover:bg-copper-light hover:text-[#0A0908]"
+            >
               <Link to="/treatments">Explore Full Menu</Link>
             </Button>
           </div>
         </div>
-      </section>
+      </AuroraGlow>
     </div>
   );
 }

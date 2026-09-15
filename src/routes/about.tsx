@@ -19,8 +19,10 @@ import rejuva2 from "@/assets/competitors/rejuva-2.jpg";
 import rejuva4 from "@/assets/competitors/rejuva-4.png";
 import rejuva5 from "@/assets/competitors/rejuva-5.jpg";
 
+import { HauteMarquee, LiveSuiteClock } from "@/components/luxury-motion";
 import { PageIntro } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
+import { SpotlightCard, ShinyText, TiltedCard, CountUp, MagneticButton, BlurText } from "@/components/reactbits";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -105,22 +107,88 @@ const masterPractitioners = [
 
 function AboutPage() {
   return (
-    <>
-      <PageIntro
-        eyebrow="Monograph — The Lumé Story"
-        title={
-          <>
-            Beauty, considered
-            <br />
-            <em>from every angle.</em>
-          </>
-        }
-      >
-        Lumé Aesthetics was conceived as an antidote to the rushed, clinical med-spa experience. We combine centuries-old European botanical skincare heritage with cutting-edge non-invasive clinical aesthetics in an unhurried, private atelier sanctuary.
-      </PageIntro>
+    <div className="bg-[#0A0908] text-[#FAF7F2]">
+      {/* Bespoke Editorial Hero in Dark Luxury */}
+      <section className="relative overflow-hidden px-5 pt-32 pb-16 sm:px-8 sm:pt-40 sm:pb-24 border-b border-copper/25 bg-gradient-to-b from-[#161412] via-[#0E0D0C] to-[#0A0908]">
+        <div className="absolute top-0 right-1/4 w-[36rem] h-[36rem] bg-copper/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="mx-auto max-w-7xl relative z-10">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="eyebrow text-xs sm:text-sm font-bold tracking-[0.2em]">
+                  <ShinyText text="Monograph — The Lumé Story" speed={4} />
+                </span>
+                <span className="h-px w-8 bg-[#F3C592]/70" />
+                <span className="dark-pill-badge">
+                  EST. SHERWOOD PARK
+                </span>
+              </div>
+
+              <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-light leading-[1.05] text-[#FAF7F2] text-balance">
+                Beauty, considered
+                <br />
+                <span className="italic font-serif gold-gradient-text font-normal">from every angle.</span>
+              </h1>
+
+              <p className="max-w-2xl text-sm sm:text-base sm:leading-7 text-[#E7E2DB] font-normal leading-relaxed">
+                Lumé Aesthetics was conceived as an antidote to the rushed, clinical med-spa experience. We combine centuries-old European botanical skincare heritage with cutting-edge non-invasive clinical aesthetics in an unhurried, private atelier sanctuary.
+              </p>
+
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <LiveSuiteClock />
+                <MagneticButton strength={0.2} pullStrength={0.2}>
+                  <Button
+                    asChild
+                    className="h-11 rounded-none bg-copper text-[#0A0908] px-6 text-xs uppercase tracking-[0.2em] hover:bg-white font-bold transition-all duration-300 shadow-xl"
+                  >
+                    <Link to="/appointment">Reserve Private Suite</Link>
+                  </Button>
+                </MagneticButton>
+              </div>
+            </div>
+
+            {/* Bespoke 3D Tilted Architectural Hero Plate */}
+            <div className="lg:col-span-5 relative">
+              <TiltedCard rotateAmplitude={8} scaleOnHover={1.03}>
+                <div className="border border-copper/35 bg-[#0D0C0B] p-2 sm:p-3 shadow-2xl relative">
+                  <div className="overflow-hidden relative group">
+                    <img
+                      src={aboutLumeImg}
+                      alt="Lumé bespoke botanical facial session"
+                      className="w-full h-80 sm:h-96 object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/95 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+                      <span className="text-[9px] uppercase tracking-widest text-copper-light font-mono">
+                        Haute Medispa Atelier
+                      </span>
+                      <p className="font-display text-xl text-white mt-1">
+                        100% Private 1-on-1 Sanctuary Suites
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </TiltedCard>
+
+              {/* Floating Italian Bioline Seal */}
+              <div className="absolute -bottom-6 -left-6 bg-[#131211]/95 border border-copper/40 p-4 shadow-2xl hidden sm:block text-white backdrop-blur-md">
+                <span className="text-[9px] uppercase tracking-widest text-copper-light font-semibold block">
+                  Official Partner
+                </span>
+                <p className="font-display text-lg text-white font-light">
+                  <ShinyText text="Bioline Jatò Italy" speed={4} />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Infinite Luxury Ticker */}
+      <HauteMarquee />
 
       {/* Origin Story Section */}
-      <section className="px-5 py-20 sm:px-8 sm:py-28 max-w-7xl mx-auto">
+      <section className="px-5 py-20 sm:px-8 sm:py-28 max-w-7xl mx-auto bg-[#0A0908] text-[#FAF7F2]">
         <div className="grid gap-14 lg:grid-cols-12 items-center">
           <div className="lg:col-span-6 space-y-6 relative">
             {/* Decorative leaf motif */}
@@ -128,28 +196,28 @@ function AboutPage() {
               src={leaf13}
               alt=""
               aria-hidden="true"
-              className="absolute -top-10 -right-6 size-24 pointer-events-none animate-jump hidden sm:block z-20"
+              className="absolute -top-10 -right-6 size-24 pointer-events-none animate-jump hidden sm:block z-20 opacity-80"
             />
 
-            <div className="overflow-hidden border-2 border-copper/35 shadow-xl relative group bg-[#131211]">
+            <div className="overflow-hidden border-2 border-copper/35 shadow-2xl relative group bg-[#0D0C0B]">
               <img
                 src={aboutLumeImg}
                 alt="Lumé bespoke botanical facial session"
                 className="w-full h-[460px] object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#131211]/80 via-transparent to-transparent flex items-end p-6">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/90 via-transparent to-transparent flex items-end p-6">
                 <p className="text-white text-xs tracking-widest uppercase font-light">The Lumé Sanctuary • Sherwood Park</p>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="overflow-hidden border border-copper/20 group">
+              <div className="overflow-hidden border border-copper/25 group bg-[#0D0C0B]">
                 <img
                   src={plump2}
                   alt="Spa suite interior"
                   className="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="overflow-hidden border border-copper/20 group">
+              <div className="overflow-hidden border border-copper/25 group bg-[#0D0C0B]">
                 <img
                   src={rejuva4}
                   alt="Clinical aesthetics suite"
@@ -168,14 +236,14 @@ function AboutPage() {
           >
             <div className="flex items-center gap-2">
               <span className="h-px w-8 bg-copper" />
-              <span className="eyebrow text-copper text-[10px]">The Atelier Philosophy</span>
+              <span className="eyebrow text-copper-light text-[10px]">The Atelier Philosophy</span>
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl font-light leading-tight text-foreground">
+            <h2 className="font-display text-4xl sm:text-5xl font-light leading-tight text-[#FAF7F2]">
               Space to pause.
               <br />
-              <span className="italic font-serif text-copper">Care with intention.</span>
+              <span className="italic font-serif gold-gradient-text">Care with intention.</span>
             </h2>
-            <div className="space-y-4 text-xs sm:text-sm leading-7 text-muted-foreground font-light">
+            <div className="space-y-4 text-xs sm:text-sm leading-7 text-white/75 font-light">
               <p>
                 Founded on the belief that genuine aesthetic enhancement should feel effortless and deeply restorative, Lumé rejects one-size-fits-all treatments. Every client journey begins with comprehensive dialogue—listening to your skin history, lifestyle, and aesthetic intentions before a single active formulation is chosen.
               </p>
@@ -189,13 +257,17 @@ function AboutPage() {
 
             <div className="pt-4 border-t border-copper/15 grid grid-cols-2 gap-6">
               <div>
-                <span className="font-display text-3xl sm:text-4xl text-copper font-light block">100%</span>
+                <span className="font-display text-3xl sm:text-4xl text-copper font-light block">
+                  <CountUp to={100} suffix="%" duration={1.8} />
+                </span>
                 <span className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground mt-1 block">
                   Private 1-on-1 Suites
                 </span>
               </div>
               <div>
-                <span className="font-display text-3xl sm:text-4xl text-copper font-light block">Bioline</span>
+                <span className="font-display text-3xl sm:text-4xl text-copper font-light block">
+                  <ShinyText text="Bioline" speed={4} />
+                </span>
                 <span className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground mt-1 block">
                   Italian Formulations
                 </span>
@@ -214,7 +286,7 @@ function AboutPage() {
               <span className="eyebrow text-copper-light text-[10px]">Mastery & Credentials</span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-light text-white">
-              Four Pillars of Atelier Excellence
+              Four Pillars of <ShinyText text="Atelier Excellence" speed={5} />
             </h2>
             <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed">
               Our multidisciplinary team unites certified medical nurse injectors, licensed dermal therapists, and master beauty artists to deliver comprehensive aesthetic care.
@@ -223,15 +295,19 @@ function AboutPage() {
 
           <div className="grid gap-8 md:grid-cols-2">
             {disciplines.map((item, idx) => (
-              <motion.article
+              <motion.div
                 key={item.role}
                 custom={idx}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeInVariant}
-                className="group border border-copper/30 bg-white/5 p-6 sm:p-8 transition-all duration-300 hover:border-copper hover:bg-white/[0.08] flex flex-col justify-between"
               >
+                <SpotlightCard
+                  spotlightColor="rgba(223, 194, 157, 0.2)"
+                  borderColor="rgba(181, 126, 82, 0.3)"
+                  className="bg-white/5 p-6 sm:p-8 hover:bg-white/[0.08] flex flex-col justify-between h-full group"
+                >
                 <div className="space-y-5">
                   <div className="overflow-hidden border border-copper/20 relative">
                     <img
@@ -263,28 +339,29 @@ function AboutPage() {
                     ))}
                   </ul>
                 </div>
-              </motion.article>
-            ))}
+              </SpotlightCard>
+            </motion.div>
+          ))}
           </div>
         </div>
       </section>
 
       {/* Master Practitioner Spotlight */}
-      <section className="px-5 py-24 sm:px-8 bg-secondary/40 border-b border-copper/15">
+      <section className="px-5 py-24 sm:px-8 bg-[#0D0C0B] border-b border-copper/20 text-[#FAF7F2]">
         <div className="mx-auto max-w-7xl space-y-12">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-xl">
-              <span className="eyebrow text-copper text-[10px]">Specialist Collective</span>
-              <h2 className="mt-3 font-display text-4xl sm:text-5xl font-light text-foreground">
+              <span className="eyebrow text-copper-light text-[10px]">Specialist Collective</span>
+              <h2 className="mt-3 font-display text-4xl sm:text-5xl font-light text-[#FAF7F2]">
                 Meet our master clinicians.
               </h2>
-              <p className="mt-4 text-xs sm:text-sm text-muted-foreground font-light">
+              <p className="mt-4 text-xs sm:text-sm text-white/70 font-light">
                 Consultation-led care delivered by medical nurse injectors and master European skincare specialists.
               </p>
             </div>
             <Link
               to="/team"
-              className="text-xs uppercase tracking-widest text-copper hover:underline flex items-center gap-1 font-semibold"
+              className="text-xs uppercase tracking-widest text-copper-light hover:underline flex items-center gap-1 font-semibold"
             >
               View Full Team &amp; Credentials →
             </Link>
@@ -294,26 +371,26 @@ function AboutPage() {
             {masterPractitioners.map((practitioner) => (
               <div
                 key={practitioner.name}
-                className="border border-copper/25 bg-background p-6 shadow-sm hover:border-copper transition-colors flex flex-col justify-between"
+                className="border border-copper/25 bg-[#131211] p-6 shadow-xl hover:border-copper transition-colors flex flex-col justify-between text-white"
               >
                 <div>
-                  <div className="overflow-hidden bg-[#FAF7F2] border border-copper/20 mb-5 relative group">
+                  <div className="overflow-hidden bg-[#0A0908] border border-copper/20 mb-5 relative group">
                     <img
                       src={practitioner.image}
                       alt={practitioner.name}
                       className="w-full h-64 object-contain object-bottom transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="font-display text-xl font-light text-foreground">{practitioner.name}</h3>
-                  <span className="text-[10px] uppercase tracking-wider text-copper font-semibold block mt-0.5">
+                  <h3 className="font-display text-xl font-light text-[#FAF7F2]">{practitioner.name}</h3>
+                  <span className="text-[10px] uppercase tracking-wider text-copper-light font-semibold block mt-0.5">
                     {practitioner.role}
                   </span>
-                  <p className="mt-3 text-xs leading-6 text-muted-foreground font-light">{practitioner.bio}</p>
+                  <p className="mt-3 text-xs leading-6 text-white/70 font-light">{practitioner.bio}</p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-copper/15">
+                <div className="mt-6 pt-4 border-t border-copper/20">
                   <Link
                     to="/appointment"
-                    className="text-[10px] uppercase tracking-[0.16em] text-foreground hover:text-copper font-medium flex items-center justify-between"
+                    className="text-[10px] uppercase tracking-[0.16em] text-copper-light hover:text-white font-medium flex items-center justify-between"
                   >
                     <span>Schedule With {practitioner.name.split(" ")[0]}</span>
                     <span>→</span>
@@ -326,47 +403,47 @@ function AboutPage() {
       </section>
 
       {/* House Standards & Formulations */}
-      <section className="px-5 py-24 sm:px-8 bg-background">
+      <section className="px-5 py-24 sm:px-8 bg-[#0A0908] text-[#FAF7F2]">
         <div className="mx-auto max-w-7xl space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="eyebrow text-copper text-[10px]">Uncompromising Integrity</span>
-            <h2 className="font-display text-4xl sm:text-5xl font-light text-foreground">
+            <span className="eyebrow text-copper-light text-[10px]">Uncompromising Integrity</span>
+            <h2 className="font-display text-4xl sm:text-5xl font-light text-[#FAF7F2]">
               The Lumé Quality Charter
             </h2>
-            <p className="text-xs sm:text-sm text-muted-foreground font-light">
+            <p className="text-xs sm:text-sm text-white/70 font-light">
               Every product, needle, laser wavelength, and formulation active in our studio is curated with non-negotiable safety standards.
             </p>
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="border border-copper/20 bg-[#FAF7F2] p-6 space-y-4 hover:border-copper transition-all">
-              <ShieldCheck className="size-7 text-copper" />
-              <h3 className="font-display text-xl font-light text-foreground">Health Canada Adherence</h3>
-              <p className="text-xs leading-6 text-muted-foreground font-light">
+            <div className="border border-copper/25 bg-[#131211] p-6 space-y-4 hover:border-copper transition-all text-white">
+              <ShieldCheck className="size-7 text-copper-light" />
+              <h3 className="font-display text-xl font-light text-[#FAF7F2]">Health Canada Adherence</h3>
+              <p className="text-xs leading-6 text-white/70 font-light">
                 All neuromodulators, dermal fillers, and sterile microneedling cartridges are 100% Health Canada approved and traceable.
               </p>
             </div>
 
-            <div className="border border-copper/20 bg-[#FAF7F2] p-6 space-y-4 hover:border-copper transition-all">
-              <Droplets className="size-7 text-copper" />
-              <h3 className="font-display text-xl font-light text-foreground">Italian Dermocosmetics</h3>
-              <p className="text-xs leading-6 text-muted-foreground font-light">
+            <div className="border border-copper/25 bg-[#131211] p-6 space-y-4 hover:border-copper transition-all text-white">
+              <Droplets className="size-7 text-copper-light" />
+              <h3 className="font-display text-xl font-light text-[#FAF7F2]">Italian Dermocosmetics</h3>
+              <p className="text-xs leading-6 text-white/70 font-light">
                 Partnered with Bioline Jatò Italy, delivering bio-compatible plant actives, hyaluronic nectar drops, and patented peptides.
               </p>
             </div>
 
-            <div className="border border-copper/20 bg-[#FAF7F2] p-6 space-y-4 hover:border-copper transition-all">
-              <Award className="size-7 text-copper" />
-              <h3 className="font-display text-xl font-light text-foreground">Celluma Phototherapy</h3>
-              <p className="text-xs leading-6 text-muted-foreground font-light">
+            <div className="border border-copper/25 bg-[#131211] p-6 space-y-4 hover:border-copper transition-all text-white">
+              <Award className="size-7 text-copper-light" />
+              <h3 className="font-display text-xl font-light text-[#FAF7F2]">Celluma Phototherapy</h3>
+              <p className="text-xs leading-6 text-white/70 font-light">
                 Medical FDA-cleared LED phototherapy for rapid cellular ATP stimulation, acne healing, and deep tissue anti-aging.
               </p>
             </div>
 
-            <div className="border border-copper/20 bg-[#FAF7F2] p-6 space-y-4 hover:border-copper transition-all">
-              <Leaf className="size-7 text-copper" />
-              <h3 className="font-display text-xl font-light text-foreground">Clean & Mindful Formulations</h3>
-              <p className="text-xs leading-6 text-muted-foreground font-light">
+            <div className="border border-copper/25 bg-[#131211] p-6 space-y-4 hover:border-copper transition-all text-white">
+              <Leaf className="size-7 text-copper-light" />
+              <h3 className="font-display text-xl font-light text-[#FAF7F2]">Clean &amp; Mindful Formulations</h3>
+              <p className="text-xs leading-6 text-white/70 font-light">
                 Free of harsh parabens, sulfates, synthetic fragrances, and aggressive abrasives that compromise delicate barrier function.
               </p>
             </div>
@@ -375,54 +452,54 @@ function AboutPage() {
       </section>
 
       {/* Studio Sanctuary Details */}
-      <section className="px-5 py-24 sm:px-8 bg-secondary/30 border-t border-copper/15">
+      <section className="px-5 py-24 sm:px-8 bg-[#0E0D0C] border-t border-copper/20 text-[#FAF7F2]">
         <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-12 items-center">
           <div className="lg:col-span-7 space-y-8">
             <div>
-              <span className="eyebrow text-copper text-[10px]">Atelier Residence</span>
-              <h2 className="mt-3 font-display text-4xl sm:text-5xl font-light text-foreground">
+              <span className="eyebrow text-copper-light text-[10px]">Atelier Residence</span>
+              <h2 className="mt-3 font-display text-4xl sm:text-5xl font-light text-[#FAF7F2]">
                 Visit our Sherwood Park sanctuary.
               </h2>
-              <p className="mt-4 text-xs sm:text-sm leading-7 text-muted-foreground font-light max-w-xl">
+              <p className="mt-4 text-xs sm:text-sm leading-7 text-white/70 font-light max-w-xl">
                 Located conveniently in Sherwood Park, Alberta. We welcome you for tailored clinical consultations, restorative multi-hour spa days, and bespoke beauty artistry in private acoustic suites.
               </p>
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2 pt-2">
-              <div className="border border-copper/20 bg-background p-6 space-y-3 shadow-sm">
-                <div className="flex items-center gap-2.5 text-copper font-medium">
+              <div className="border border-copper/25 bg-[#131211] p-6 space-y-3 shadow-md text-white">
+                <div className="flex items-center gap-2.5 text-copper-light font-medium">
                   <MapPin className="size-4" />
-                  <span className="text-[10px] uppercase tracking-widest text-foreground font-semibold">Location</span>
+                  <span className="text-[10px] uppercase tracking-widest text-[#FAF7F2] font-semibold">Location</span>
                 </div>
-                <p className="text-xs leading-6 text-muted-foreground font-light">
+                <p className="text-xs leading-6 text-white/70 font-light">
                   Sherwood Park, AB, Canada
                   <br />
-                  <span className="text-[11px] text-copper font-medium">Private Dedicated Studio Suite</span>
+                  <span className="text-[11px] text-copper-light font-medium font-mono">Private Dedicated Studio Suite</span>
                 </p>
               </div>
 
-              <div className="border border-copper/20 bg-background p-6 space-y-3 shadow-sm">
-                <div className="flex items-center gap-2.5 text-copper font-medium">
+              <div className="border border-copper/25 bg-[#131211] p-6 space-y-3 shadow-md text-white">
+                <div className="flex items-center gap-2.5 text-copper-light font-medium">
                   <Phone className="size-4" />
-                  <span className="text-[10px] uppercase tracking-widest text-foreground font-semibold">Direct Atelier Hotline</span>
+                  <span className="text-[10px] uppercase tracking-widest text-[#FAF7F2] font-semibold">Direct Atelier Hotline</span>
                 </div>
-                <p className="text-xs leading-6 text-muted-foreground font-light">
-                  <a href="tel:+17804108278" className="hover:text-copper transition-colors font-medium">
+                <p className="text-xs leading-6 text-white/70 font-light">
+                  <a href="tel:+17804108278" className="hover:text-copper-light transition-colors font-medium text-white">
                     (780) 410-8278
                   </a>
                   <br />
-                  <a href="mailto:info@lumeaesthetics.co" className="hover:text-copper transition-colors">
+                  <a href="mailto:info@lumeaesthetics.co" className="hover:text-copper-light transition-colors text-white/60">
                     info@lumeaesthetics.co
                   </a>
                 </p>
               </div>
 
-              <div className="border border-copper/20 bg-background p-6 space-y-3 shadow-sm">
-                <div className="flex items-center gap-2.5 text-copper font-medium">
+              <div className="border border-copper/25 bg-[#131211] p-6 space-y-3 shadow-md text-white">
+                <div className="flex items-center gap-2.5 text-copper-light font-medium">
                   <Clock className="size-4" />
-                  <span className="text-[10px] uppercase tracking-widest text-foreground font-semibold">Hours of Care</span>
+                  <span className="text-[10px] uppercase tracking-widest text-[#FAF7F2] font-semibold">Hours of Care</span>
                 </div>
-                <p className="text-xs leading-5 text-muted-foreground font-light">
+                <p className="text-xs leading-5 text-white/70 font-light">
                   Mon – Fri: 10:00 AM – 7:00 PM
                   <br />
                   Saturday: 10:00 AM – 5:00 PM
@@ -431,12 +508,12 @@ function AboutPage() {
                 </p>
               </div>
 
-              <div className="border border-copper/20 bg-background p-6 space-y-3 shadow-sm">
-                <div className="flex items-center gap-2.5 text-copper font-medium">
+              <div className="border border-copper/25 bg-[#131211] p-6 space-y-3 shadow-md text-white">
+                <div className="flex items-center gap-2.5 text-copper-light font-medium">
                   <Sparkles className="size-4" />
-                  <span className="text-[10px] uppercase tracking-widest text-foreground font-semibold">Client Experience</span>
+                  <span className="text-[10px] uppercase tracking-widest text-[#FAF7F2] font-semibold">Client Experience</span>
                 </div>
-                <p className="text-xs leading-5 text-muted-foreground font-light">
+                <p className="text-xs leading-5 text-white/70 font-light">
                   Complimentary herbal infusions
                   <br />
                   Acoustic sound conditioning
@@ -449,14 +526,14 @@ function AboutPage() {
             <div className="pt-4 flex flex-wrap gap-4">
               <Button
                 asChild
-                className="h-12 rounded-none bg-copper px-8 text-[10px] uppercase tracking-[0.2em] text-primary-foreground hover:bg-copper/90 transition-all duration-300"
+                className="h-12 rounded-none bg-copper px-8 text-[10px] uppercase tracking-[0.2em] text-white hover:bg-copper-light hover:text-[#0A0908] font-semibold transition-all duration-300 shadow-xl"
               >
                 <a href="tel:+17804108278">Direct Line: (780) 410-8278</a>
               </Button>
               <Button
                 asChild
                 variant="outline"
-                className="h-12 rounded-none border-copper/40 px-8 text-[10px] uppercase tracking-[0.16em] text-copper hover:bg-copper hover:text-white transition-all duration-300"
+                className="h-12 rounded-none border-copper/40 px-8 text-[10px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper hover:text-white transition-all duration-300"
               >
                 <a href="mailto:info@lumeaesthetics.co?subject=Atelier%20Consultation%20Inquiry">
                   Email Studio Concierge
@@ -466,13 +543,13 @@ function AboutPage() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="overflow-hidden border border-copper/30 shadow-2xl relative group">
+            <div className="overflow-hidden border border-copper/35 shadow-2xl relative group bg-[#0A0908]">
               <img
                 src={heroImage}
                 alt="Lumé Aesthetics Sherwood Park Studio"
                 className="w-full h-[520px] object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#131211]/90 via-transparent to-transparent flex items-end p-8">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/95 via-transparent to-transparent flex items-end p-8">
                 <div className="text-white">
                   <span className="eyebrow text-copper-light text-[10px]">Sherwood Park Sanctuary</span>
                   <h4 className="font-display text-2xl font-light">Where European Care Meets Science</h4>
@@ -482,6 +559,6 @@ function AboutPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

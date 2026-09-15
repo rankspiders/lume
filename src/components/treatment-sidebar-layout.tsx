@@ -64,20 +64,20 @@ export function TreatmentSidebarLayout({
         {description}
       </PageIntro>
 
-      <section className="px-5 py-12 sm:px-8 sm:py-20 bg-background min-h-screen">
+      <section className="px-5 py-12 sm:px-8 sm:py-20 bg-[#0A0908] min-h-screen text-[#FAF7F2]">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-12 items-start">
             {/* Persistent Sidebar (Top on mobile, Sticky on desktop) */}
             <aside className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
               {/* Service Navigation Box */}
-              <div className="border border-copper/30 bg-secondary/40 p-5 sm:p-6 shadow-sm">
-                <div className="flex items-center justify-between border-b border-copper/15 pb-3">
-                  <p className="eyebrow text-copper text-[10px] tracking-[0.24em] uppercase font-semibold">
+              <div className="border border-copper/25 bg-[#131211] p-5 sm:p-6 shadow-xl text-white">
+                <div className="flex items-center justify-between border-b border-copper/20 pb-3">
+                  <p className="eyebrow text-copper-light text-[10px] tracking-[0.24em] uppercase font-semibold">
                     Menu Navigation
                   </p>
-                  <span className="text-[10px] text-muted-foreground lg:hidden">Select view</span>
+                  <span className="text-[10px] text-white/60 lg:hidden">Select view</span>
                 </div>
-                <h3 className="mt-3 font-display text-2xl font-light text-foreground">
+                <h3 className="mt-3 font-display text-2xl font-light text-[#FAF7F2]">
                   The Treatment Suites
                 </h3>
                 <nav className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5" aria-label="Treatment categories sidebar">
@@ -90,8 +90,8 @@ export function TreatmentSidebarLayout({
                         resetScroll={false}
                         className={`group flex items-center justify-between p-3.5 text-xs transition-all duration-300 border ${
                           isActive
-                            ? "border-copper bg-foreground text-background font-medium shadow-md"
-                            : "border-copper/20 bg-background text-foreground hover:border-copper/50 hover:bg-copper/5"
+                            ? "border-copper bg-copper/20 text-white font-medium shadow-md"
+                            : "border-copper/20 bg-[#0D0C0B] text-white/90 hover:border-copper/50 hover:bg-white/[0.04]"
                         }`}
                       >
                         <div className="flex items-center gap-2.5 truncate pr-2">
@@ -103,15 +103,15 @@ export function TreatmentSidebarLayout({
                             }`}
                           />
                           <div className="truncate">
-                            <span className="text-[9px] uppercase tracking-wider text-muted-foreground block">{cat.eyebrow}</span>
-                            <span className="truncate font-medium">{cat.title}</span>
+                            <span className="text-[9px] uppercase tracking-wider text-copper-light block font-mono">{cat.eyebrow}</span>
+                            <span className="truncate font-medium text-white">{cat.title}</span>
                           </div>
                         </div>
                         <span
                           className={`text-[9px] tracking-wider uppercase px-2 py-0.5 shrink-0 ${
                             isActive
-                              ? "bg-copper text-primary-foreground font-semibold"
-                              : "bg-copper/10 text-copper"
+                              ? "bg-copper text-white font-semibold"
+                              : "bg-copper/15 text-copper-light"
                           }`}
                         >
                           {cat.count}
@@ -122,25 +122,25 @@ export function TreatmentSidebarLayout({
                 </nav>
 
                 {/* PDF Download Link */}
-                <div className="mt-5 pt-4 border-t border-copper/15">
+                <div className="mt-5 pt-4 border-t border-copper/20">
                   <a
                     href="/Brochure.pdf"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center justify-between text-xs text-copper hover:underline p-2 font-medium"
+                    className="flex items-center justify-between text-xs text-copper-light hover:underline p-2 font-medium"
                   >
                     <span className="flex items-center gap-2">
-                      <FileText className="size-3.5" /> Download PDF Brochure
+                      <FileText className="size-3.5 text-copper-light" /> Download PDF Brochure
                     </span>
-                    <span className="text-[10px] text-muted-foreground">PDF</span>
+                    <span className="text-[10px] text-white/50 font-mono">PDF</span>
                   </a>
                 </div>
               </div>
 
               {/* Consultation & Booking Callout Widget */}
-              <div className="border border-copper/30 bg-[#131211] text-white p-6 sm:p-7 space-y-4 shadow-xl">
+              <div className="border border-copper/30 bg-[#161412] text-white p-6 sm:p-7 space-y-4 shadow-2xl">
                 <div className="flex items-center gap-2 text-copper-light text-xs font-semibold uppercase tracking-widest">
-                  <Sparkles className="size-4" />
+                  <Sparkles className="size-4 text-copper-light" />
                   <span>Bespoke Consultation</span>
                 </div>
                 <h4 className="font-display text-2xl font-light text-white">
@@ -153,7 +153,7 @@ export function TreatmentSidebarLayout({
                   <Button
                     asChild
                     variant="outline"
-                    className="w-full h-11 rounded-none border-copper-light bg-transparent text-[10px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper-light hover:text-[#131211] transition-all duration-300"
+                    className="w-full h-11 rounded-none border-copper/40 bg-transparent text-[10px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper hover:text-white transition-all duration-300"
                   >
                     <a href="tel:+17804108278" className="flex items-center justify-center gap-2">
                       <Phone className="size-3.5" /> Call Atelier: (780) 410-8278
@@ -161,7 +161,7 @@ export function TreatmentSidebarLayout({
                   </Button>
                   <Button
                     asChild
-                    className="w-full h-11 rounded-none bg-copper text-primary-foreground text-[10px] uppercase tracking-[0.16em] hover:bg-copper/90 transition-all duration-300"
+                    className="w-full h-11 rounded-none bg-copper text-white text-[10px] uppercase tracking-[0.16em] hover:bg-copper-light hover:text-[#0A0908] font-semibold transition-all duration-300 shadow-md"
                   >
                     <a
                       href="mailto:info@lumeaesthetics.co?subject=Requesting%20Treatment%20Consultation"
@@ -174,12 +174,12 @@ export function TreatmentSidebarLayout({
               </div>
 
               {/* Clinical Standard & Guarantee Badge */}
-              <div className="border border-copper/20 bg-background p-5 space-y-2.5 text-xs text-muted-foreground">
-                <div className="flex items-center gap-2 text-foreground font-medium">
-                  <ShieldCheck className="size-4 text-copper shrink-0" />
-                  <span>Bioline Jatò Italy & Health Canada Protocol</span>
+              <div className="border border-copper/25 bg-[#131211] p-5 space-y-2.5 text-xs text-white/75 shadow-lg">
+                <div className="flex items-center gap-2 text-white font-medium">
+                  <ShieldCheck className="size-4 text-copper-light shrink-0" />
+                  <span className="text-white font-medium">Bioline Jatò Italy &amp; Health Canada Protocol</span>
                 </div>
-                <p className="text-[11px] leading-5 font-light">
+                <p className="text-[11px] leading-5 font-light text-white/65">
                   All facial rituals feature authentic Bioline professional formulations. Advanced aesthetics treatments are performed by licensed clinical practitioners.
                 </p>
               </div>

@@ -23,6 +23,8 @@ import { useState, useEffect, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { MagneticButton, ShinyText } from "@/components/reactbits";
+import { BrandLogo } from "@/components/BrandLogo";
 import facialImage from "@/assets/facial-ritual.jpg";
 import bodyImage from "@/assets/body-ritual.jpg";
 import advancedImage from "@/assets/advanced-aesthetics.jpg";
@@ -72,33 +74,48 @@ export function PageIntro({
   eyebrow,
   title,
   children,
+  rightSlot,
+  dark = true,
+  badgeText,
 }: {
   eyebrow: string;
   title: ReactNode;
   children: ReactNode;
+  rightSlot?: ReactNode;
+  dark?: boolean;
+  badgeText?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#F5EBE4] via-[#FAF7F2] to-[#FAF7F2] px-5 pb-16 pt-32 sm:px-8 sm:pb-20 sm:pt-40 border-b border-copper/20">
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-copper/5 rounded-full blur-3xl pointer-events-none" />
+    <section
+      className="relative overflow-hidden px-5 pb-16 pt-32 sm:px-8 sm:pb-24 sm:pt-40 border-b bg-gradient-to-b from-[#161412] via-[#0F0E0D] to-[#0A0908] text-[#FAF7F2] border-copper/25"
+    >
+      {/* Ambient background glow */}
+      <div
+        className="absolute top-0 right-1/4 w-[36rem] h-[36rem] rounded-full blur-3xl pointer-events-none bg-copper/10"
+      />
 
       <div className="mx-auto max-w-7xl relative z-10">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-          {/* Main Title & Description Column */}
-          <div className="lg:col-span-7">
+        <div className={`grid gap-10 ${rightSlot ? "lg:grid-cols-12 lg:items-end" : "max-w-4xl"}`}>
+          <div className={rightSlot ? "lg:col-span-7" : ""}>
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="flex items-center gap-3"
             >
-              <span className="eyebrow text-copper">{eyebrow}</span>
-              <span className="h-px w-8 bg-copper/30" />
+              <span className="eyebrow text-xs sm:text-sm font-bold tracking-[0.2em]">{eyebrow}</span>
+              <span className="h-px w-8 bg-[#F3C592]/70" />
+              {badgeText && (
+                <span className="dark-pill-badge">
+                  {badgeText}
+                </span>
+              )}
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="mt-4 font-display text-4xl font-light leading-[1.05] sm:text-6xl lg:text-7xl text-foreground text-balance"
+              className="mt-4 font-display text-4xl font-light leading-[1.05] sm:text-6xl lg:text-7xl text-[#FAF7F2] text-balance"
             >
               {title}
             </motion.h1>
@@ -106,55 +123,25 @@ export function PageIntro({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="mt-6 max-w-2xl text-xs leading-6 sm:text-sm sm:leading-7 text-muted-foreground font-light"
+              className={`mt-6 text-sm leading-6 sm:text-base sm:leading-7 font-normal ${
+                rightSlot ? "max-w-2xl" : "max-w-3xl"
+              } text-[#E7E2DB]`}
             >
               {children}
             </motion.div>
           </div>
 
-          {/* Right-Side Feature Atelier Badge */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:col-span-5 border border-copper/30 bg-background/90 backdrop-blur-md p-6 sm:p-7 space-y-4 shadow-sm"
-          >
-            <div className="flex items-center justify-between border-b border-copper/15 pb-3">
-              <span className="text-[10px] uppercase tracking-[0.22em] text-copper font-semibold">
-                Lumé Clinical Atelier
-              </span>
-              <span className="text-[9px] uppercase tracking-widest text-copper bg-copper/10 px-2.5 py-1 font-medium">
-                Sherwood Park, AB
-              </span>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 pt-1">
-              <div>
-                <p className="font-display text-2xl font-light text-foreground">24+ Rituals</p>
-                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-0.5">Bespoke Formulations</p>
-              </div>
-              <div>
-                <p className="font-display text-2xl font-light text-foreground">Bioline Jatò</p>
-                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-0.5">Italy Certified Partner</p>
-              </div>
-            </div>
-
-            <div className="pt-3 border-t border-copper/15 flex flex-col sm:flex-row items-center gap-3">
-              <Button
-                asChild
-                variant="outline"
-                className="w-full h-10 rounded-none border-copper/50 bg-transparent text-[10px] uppercase tracking-[0.16em] text-copper hover:bg-copper hover:text-white transition-all duration-300"
-              >
-                <a href="tel:+17804108278">Direct Line: (780) 410-8278</a>
-              </Button>
-              <Button
-                asChild
-                className="w-full h-10 rounded-none bg-foreground text-background text-[10px] uppercase tracking-[0.16em] hover:bg-copper hover:text-white transition-all duration-300"
-              >
-                <Link to="/appointment">Book Appointment</Link>
-              </Button>
-            </div>
-          </motion.div>
+          {/* Right-Side Slot (Only rendered when explicitly provided) */}
+          {rightSlot && (
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="lg:col-span-5"
+            >
+              {rightSlot}
+            </motion.div>
+          )}
         </div>
       </div>
     </section>
@@ -182,12 +169,12 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-xl border-b border-copper/20 transition-all duration-300 shadow-sm">
+    <header className="fixed inset-x-0 top-0 z-50 bg-[#0A0908]/92 backdrop-blur-2xl border-b border-copper/25 transition-all duration-300 shadow-xl">
       {/* Top Global Atelier Announcement Strip */}
-      <div className="bg-[#131211] text-copper-light py-1.5 px-5 sm:px-8 text-center text-[10px] tracking-[0.2em] uppercase font-medium flex items-center justify-center gap-3 border-b border-copper/15">
+      <div className="bg-[#0D0C0B] text-copper-light py-1.5 px-5 sm:px-8 text-center text-[10px] tracking-[0.2em] uppercase font-medium flex items-center justify-center gap-3 border-b border-copper/15">
         <span className="flex items-center gap-1.5">
           <Sparkles className="size-3 text-copper-light" />
-          <span>Bespoke Medispa Atelier</span>
+          <ShinyText text="Bespoke Medispa Atelier" speed={3} className="text-[10px] uppercase tracking-[0.2em]" />
           <span className="text-white/30">|</span>
           <span className="text-white/80">Sherwood Park, AB</span>
         </span>
@@ -203,13 +190,9 @@ export function SiteHeader() {
       </div>
 
       <div className="relative mx-auto flex h-16 sm:h-20 max-w-[1480px] items-center justify-between px-5 sm:px-8">
-        {/* Left: Brand Logo */}
-        <Link to="/" aria-label="Lumé Aesthetics home" onClick={() => setOpen(false)} className="flex items-center gap-3">
-          <img
-            src="/lume-logo-full.svg"
-            alt="Lumé Aesthetics"
-            className="h-8 w-auto sm:h-11 object-contain transition-opacity hover:opacity-90"
-          />
+        {/* Left: Brand Logo (Razor Sharp Vector Typography & Crest) */}
+        <Link to="/" aria-label="Lumé Aesthetics home" onClick={() => setOpen(false)} className="flex items-center">
+          <BrandLogo size="md" />
         </Link>
 
         {/* Center: Exact Navigation matching the user requested screenshot:
@@ -218,8 +201,8 @@ export function SiteHeader() {
           {/* 1. HOME */}
           <Link
             to="/"
-            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#131211] transition-colors hover:text-copper"
-            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper" }}
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#FAF7F2] transition-colors hover:text-copper-light"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper-light" }}
           >
             HOME
           </Link>
@@ -227,8 +210,8 @@ export function SiteHeader() {
           {/* 2. ABOUT US */}
           <Link
             to="/about"
-            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#131211] transition-colors hover:text-copper"
-            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper" }}
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#FAF7F2] transition-colors hover:text-copper-light"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper-light" }}
           >
             ABOUT US
           </Link>
@@ -241,11 +224,11 @@ export function SiteHeader() {
           >
             <Link
               to="/treatments"
-              className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#131211] transition-colors hover:text-copper flex items-center gap-1"
-              activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper" }}
+              className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#FAF7F2] transition-colors hover:text-copper-light flex items-center gap-1"
+              activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper-light" }}
             >
               <span>SERVICE</span>
-              <ChevronDown className="size-3 text-copper" />
+              <ChevronDown className="size-3 text-copper-light" />
             </Link>
 
             <AnimatePresence>
@@ -281,8 +264,8 @@ export function SiteHeader() {
           {/* 4. BLOGS */}
           <Link
             to="/blogs"
-            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#131211] transition-colors hover:text-copper"
-            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper" }}
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#FAF7F2] transition-colors hover:text-copper-light"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper-light" }}
           >
             BLOGS
           </Link>
@@ -295,10 +278,10 @@ export function SiteHeader() {
           >
             <button
               type="button"
-              className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#131211] transition-colors hover:text-copper flex items-center gap-1"
+              className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#FAF7F2] transition-colors hover:text-copper-light flex items-center gap-1"
             >
               <span>PAGES</span>
-              <ChevronDown className="size-3 text-copper" />
+              <ChevronDown className="size-3 text-copper-light" />
             </button>
 
             <AnimatePresence>
@@ -390,8 +373,8 @@ export function SiteHeader() {
           {/* 6. CONTACT US */}
           <Link
             to="/contact"
-            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#131211] transition-colors hover:text-copper"
-            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper" }}
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#FAF7F2] transition-colors hover:text-copper-light"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper-light" }}
           >
             CONTACT US
           </Link>
@@ -399,9 +382,11 @@ export function SiteHeader() {
 
         {/* Right: Book Button & Mobile Toggle */}
         <div className="flex items-center gap-3 sm:gap-4">
-          <Button asChild className="h-10 sm:h-11 rounded-none bg-[#131211] text-white px-5 sm:px-7 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] shadow-md hover:bg-copper hover:text-white transition-all duration-300">
-            <Link to="/appointment">Book Appointment</Link>
-          </Button>
+          <MagneticButton strength={0.2} pullStrength={0.2}>
+            <Button asChild className="h-10 sm:h-11 rounded-none bg-copper text-white px-5 sm:px-7 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] shadow-lg hover:bg-copper-light hover:text-[#0A0908] transition-all duration-300 font-semibold">
+              <Link to="/appointment">Book Appointment</Link>
+            </Button>
+          </MagneticButton>
 
           <Button
             variant="ghost"
@@ -409,7 +394,7 @@ export function SiteHeader() {
             aria-label={open ? "Close navigation" : "Open navigation"}
             aria-expanded={open}
             onClick={() => setOpen((value) => !value)}
-            className="rounded-none text-[#131211] hover:bg-copper/10 lg:hidden"
+            className="rounded-none text-[#FAF7F2] hover:bg-white/10 lg:hidden"
           >
             {open ? <X className="size-6" /> : <Menu className="size-6" />}
           </Button>
@@ -522,18 +507,14 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-copper/25 bg-[#131211] text-white">
+    <footer className="border-t border-copper/25 bg-[#070605] text-white">
       <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
         <div className="grid gap-12 lg:grid-cols-12 items-start">
           
           {/* Brand & About Column */}
           <div className="lg:col-span-4 space-y-6">
             <Link to="/" aria-label="Lumé Aesthetics Home" className="inline-block">
-              <img
-                src="/lume-logo-full.svg"
-                alt="Lumé Aesthetics"
-                className="h-12 w-auto object-contain"
-              />
+              <BrandLogo size="lg" />
             </Link>
             <p className="text-xs leading-7 text-white/70 max-w-sm font-light">
               A private beauty atelier in Sherwood Park, Alberta. Unhurried facial &amp; body rituals, quietly polished beauty artistry, and consultation-led clinical aesthetics.
@@ -600,37 +581,37 @@ export function SiteFooter() {
 
           {/* Categories Column (matching lumeproject footer layout) */}
           <div className="lg:col-span-2 space-y-4">
-            <p className="eyebrow text-copper-light text-[10px] uppercase tracking-[0.22em] font-semibold">
+            <p className="eyebrow text-[#F3C592] text-xs uppercase tracking-[0.22em] font-bold">
               Categories
             </p>
-            <ul className="space-y-2 text-xs text-white/75 font-light">
+            <ul className="space-y-2 text-xs text-[#E7E2DB] font-medium">
               <li>
-                <Link to="/services/skin-and-body-rituals" className="hover:text-copper-light transition-colors">
+                <Link to="/services/skin-and-body-rituals" className="hover:text-[#F3C592] transition-colors">
                   Skin &amp; Body Rituals
                 </Link>
               </li>
               <li>
-                <Link to="/services/spa-packages" className="hover:text-copper-light transition-colors">
+                <Link to="/services/spa-packages" className="hover:text-[#F3C592] transition-colors">
                   Spa Packages
                 </Link>
               </li>
               <li>
-                <Link to="/services/beauty-atelier" className="hover:text-copper-light transition-colors">
+                <Link to="/services/beauty-atelier" className="hover:text-[#F3C592] transition-colors">
                   Beauty Atelier
                 </Link>
               </li>
               <li>
-                <Link to="/services/advanced-aesthetics" className="hover:text-copper-light transition-colors">
+                <Link to="/services/advanced-aesthetics" className="hover:text-[#F3C592] transition-colors">
                   Advanced Clinical
                 </Link>
               </li>
               <li>
-                <Link to="/service-details" className="hover:text-copper-light transition-colors">
+                <Link to="/service-details" className="hover:text-[#F3C592] transition-colors">
                   Service Details
                 </Link>
               </li>
               <li>
-                <a href="/Brochure.pdf" target="_blank" rel="noreferrer" className="hover:text-copper-light transition-colors text-copper-light font-medium">
+                <a href="/Brochure.pdf" target="_blank" rel="noreferrer" className="hover:text-white transition-colors text-[#F3C592] font-bold">
                   Brochure (PDF)
                 </a>
               </li>
@@ -638,20 +619,20 @@ export function SiteFooter() {
           </div>
 
           {/* Studio Hours & Location Column */}
-          <div className="lg:col-span-3 space-y-5 border-l border-white/10 pl-0 lg:pl-8">
+          <div className="lg:col-span-3 space-y-5 border-l border-copper/20 pl-0 lg:pl-8">
             <div className="flex items-center gap-3">
               <img src="/lume-emblem.svg" alt="Lumé Emblem" className="h-8 w-8 object-contain" />
               <div>
-                <p className="text-xs text-white font-medium">Sherwood Park Atelier</p>
-                <p className="text-[11px] text-white/60">2457 Broadmoor Blvd #121, AB</p>
+                <p className="text-xs text-[#FAF7F2] font-bold">Sherwood Park Atelier</p>
+                <p className="text-xs text-[#E7E2DB]">2457 Broadmoor Blvd #121, AB</p>
               </div>
             </div>
-            <p className="text-[11px] leading-5 text-white/60">
+            <p className="text-xs leading-5 text-[#E7E2DB]">
               Hours of Care: Mon–Fri 10am–7pm | Sat 10am–5pm | Sun By Appointment
             </p>
             <Button
               asChild
-              className="w-full h-10 rounded-none bg-copper text-white text-[10px] uppercase tracking-[0.16em] hover:bg-copper/90 transition-all duration-300"
+              className="w-full h-11 rounded-none bg-copper text-[#0A0908] text-xs uppercase tracking-[0.16em] hover:bg-white font-bold transition-all duration-300 shadow-md"
             >
               <Link to="/appointment">Book Appointment</Link>
             </Button>
@@ -659,10 +640,10 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom Copyright Strip */}
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-white/50 font-light">
+        <div className="mt-16 pt-8 border-t border-copper/20 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-[#E7E2DB] font-normal">
           <p>© {new Date().getFullYear()} Lumé Aesthetics. Design inspired by Lumé Project.</p>
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5"><ShieldCheck className="size-3 text-copper-light" /> Bioline Jatò Italy Partner</span>
+          <div className="flex items-center gap-6 text-xs text-[#FAF7F2]">
+            <span className="flex items-center gap-1.5"><ShieldCheck className="size-3.5 text-[#F3C592]" /> Bioline Jatò Italy Partner</span>
             <span>Health Canada Approved Clinicals</span>
           </div>
         </div>

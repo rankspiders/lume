@@ -13,9 +13,18 @@ import blog2 from "@/assets/lumeproject/blog-1-2.jpg";
 import blog3 from "@/assets/lumeproject/blog-1-3.jpg";
 import blog4 from "@/assets/lumeproject/blog-1-4.jpg";
 
-import { PageIntro } from "@/components/site-shell";
+import { HauteMarquee, LiveSuiteClock } from "@/components/luxury-motion";
 import { RotatingBadge } from "@/components/rotating-badge";
 import { Button } from "@/components/ui/button";
+import {
+  SpotlightCard,
+  ShinyText,
+  MagneticButton,
+  TiltedCard,
+  DecryptedText,
+  AuroraGlow,
+  SplitText,
+} from "@/components/reactbits";
 
 export const Route = createFileRoute("/blogs")({
   head: () => ({
@@ -108,74 +117,92 @@ function BlogsPage() {
   const featuredPost = blogPosts[0]!;
 
   return (
-    <div className="bg-[#FAF7F2] text-[#131211]">
-      <PageIntro
-        eyebrow="Editorial Journal"
-        title={
-          <>
-            Skincare insights &
-            <br />
-            <em>clinical knowledge.</em>
-          </>
-        }
-      >
-        Explore expert articles on clinical dermatology, European formulation biotechnology, pre-treatment care, and bridal beauty guides curated by our licensed practitioners.
-      </PageIntro>
+    <div className="bg-[#0A0908] text-[#FAF7F2]">
+      {/* Bespoke Gazette Hero with AuroraGlow */}
+      <AuroraGlow variant="dark" className="pt-32 pb-16 sm:pt-40 sm:pb-24 border-b border-copper/20">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="eyebrow text-xs sm:text-sm font-bold tracking-[0.2em]">
+                  <ShinyText text="Haute Editorial Gazette" speed={4} />
+                </span>
+                <span className="h-px w-8 bg-[#F3C592]/70" />
+                <span className="dark-pill-badge">
+                  <DecryptedText text="VOL. IV • CLINICAL MONOGRAPHS" />
+                </span>
+              </div>
 
-      {/* Featured Editorial Article */}
-      <section className="px-5 py-16 sm:px-8 sm:py-20 border-b border-copper/15 max-w-7xl mx-auto">
-        <div className="border border-copper/30 bg-background overflow-hidden shadow-lg grid gap-8 lg:grid-cols-12 items-center">
-          <div className="lg:col-span-7 overflow-hidden h-[340px] sm:h-[440px] relative group">
-            <img
-              src={featuredPost.image}
-              alt={featuredPost.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <span className="absolute top-4 left-4 bg-[#131211]/90 text-copper-light text-[9px] uppercase tracking-[0.2em] px-3 py-1 font-semibold">
-              Featured Editorial
-            </span>
-          </div>
+              <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-light leading-[1.05] text-[#FAF7F2] text-balance">
+                Skincare insights &amp;
+                <br />
+                <span className="italic font-serif gold-gradient-text font-normal">
+                  <SplitText text="clinical knowledge." delay={45} />
+                </span>
+              </h1>
 
-          <div className="lg:col-span-5 p-6 sm:p-10 space-y-4">
-            <div className="flex items-center gap-3 text-xs text-muted-foreground">
-              <span className="text-copper uppercase tracking-wider text-[10px] font-semibold">{featuredPost.category}</span>
-              <span>•</span>
-              <span className="flex items-center gap-1 font-light"><Clock className="size-3 text-copper" /> {featuredPost.readTime}</span>
+              <p className="max-w-2xl text-sm sm:text-base sm:leading-7 text-[#E7E2DB] font-normal leading-relaxed">
+                Explore expert monographs on clinical dermatology, European formulation biotechnology, pre-treatment care, and bridal beauty roadmaps curated by our licensed practitioners.
+              </p>
+
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <LiveSuiteClock />
+                <span className="text-xs text-[#FAF7F2]/80 font-normal">
+                  Updated weekly from our Sherwood Park clinical suite
+                </span>
+              </div>
             </div>
 
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-light text-foreground leading-tight">
-              {featuredPost.title}
-            </h2>
-
-            <p className="text-xs sm:text-sm text-muted-foreground leading-6 font-light">
-              {featuredPost.summary}
-            </p>
-
-            <div className="pt-4 border-t border-copper/15 flex items-center justify-between text-xs">
-              <span className="text-muted-foreground font-light">{featuredPost.date}</span>
-              <Button asChild className="h-10 rounded-none bg-[#131211] text-white text-[10px] uppercase tracking-[0.16em] hover:bg-copper hover:text-white">
-                <Link to="/treatments">
-                  Read Journal →
-                </Link>
-              </Button>
+            {/* Bespoke Right Highlight Frame with TiltedCard */}
+            <div className="lg:col-span-5 relative">
+              <TiltedCard rotateAmplitude={8}>
+                <div className="border border-copper/35 bg-[#131211] p-3 shadow-2xl relative">
+                  <div className="overflow-hidden relative group">
+                    <img
+                      src={blog1}
+                      alt="Featured Monograph"
+                      className="w-full h-80 sm:h-96 object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#131211] via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+                      <span className="text-[9px] uppercase tracking-widest text-copper font-mono">
+                        <DecryptedText text="Featured Clinical Monograph" />
+                      </span>
+                      <p className="font-display text-xl text-white mt-1">
+                        AHA Chemical Resurfacing Science
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </TiltedCard>
             </div>
           </div>
         </div>
-      </section>
+      </AuroraGlow>
 
-      {/* Category Pills & Blog Grid */}
-      <section className="px-5 py-16 sm:px-8 sm:py-24 max-w-7xl mx-auto">
-        {/* Filter Pills */}
-        <div className="flex flex-wrap gap-2 mb-12 border-b border-copper/20 pb-4">
+      {/* Infinite Luxury Ticker */}
+      <HauteMarquee
+        items={[
+          "20% AHA CHEMICAL RESURFACING",
+          "AUTOLOGOUS PRP CENTRIFUGATION",
+          "BIOLINE JATÒ ITALY PROTOCOLS",
+          "BRIDAL BEAUTY ROADMAPS",
+          "CELLUMA LED PHOTOTHERAPY",
+        ]}
+      />
+
+      {/* Main Journal Section */}
+      <section className="px-5 py-16 sm:px-8 sm:py-24 max-w-7xl mx-auto space-y-16">
+        {/* Category Filters */}
+        <div className="flex flex-wrap items-center justify-center gap-2 border-b border-copper/20 pb-4">
           {categories.map((cat) => (
             <button
               key={cat}
               type="button"
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 text-xs transition-all border ${
+              className={`px-4 py-2 text-xs transition-all border font-medium ${
                 activeCategory === cat
-                  ? "bg-copper text-white border-copper font-medium shadow-sm"
-                  : "bg-background text-muted-foreground border-copper/20 hover:border-copper hover:text-foreground"
+                  ? "bg-copper text-[#0A0908] border-copper font-bold shadow-md"
+                  : "bg-[#131211] text-[#FAF7F2]/80 border-copper/30 hover:border-copper hover:text-white"
               }`}
             >
               {cat}
@@ -183,81 +210,143 @@ function BlogsPage() {
           ))}
         </div>
 
-        {/* 3-Column Posts Grid */}
+        {/* Featured Post SpotlightCard */}
+        {activeCategory === "All Insights" && (
+          <SpotlightCard
+            spotlightColor="rgba(243, 197, 146, 0.22)"
+            borderColor="rgba(243, 197, 146, 0.4)"
+            className="border border-copper/40 bg-[#131211] text-white p-6 sm:p-10 shadow-2xl relative overflow-hidden"
+          >
+            <div className="grid gap-8 lg:grid-cols-12 items-center">
+              <div className="lg:col-span-7 overflow-hidden border border-copper/30 relative group">
+                <img
+                  src={featuredPost.image}
+                  alt={featuredPost.title}
+                  className="w-full h-80 sm:h-96 object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <span className="absolute top-3 left-3 bg-copper text-[#0A0908] text-[10px] uppercase tracking-widest px-3 py-1 font-bold shadow-md">
+                  Featured Monograph
+                </span>
+              </div>
+
+              <div className="lg:col-span-5 space-y-4">
+                <div className="flex items-center gap-3 text-xs text-[#F3C592]">
+                  <span className="eyebrow text-[#F3C592] text-xs uppercase tracking-[0.2em] font-bold">
+                    {featuredPost.category}
+                  </span>
+                  <span>•</span>
+                  <span className="text-[#E7E2DB] flex items-center gap-1 font-medium">
+                    <Clock className="size-3 text-[#F3C592]" /> {featuredPost.readTime}
+                  </span>
+                </div>
+
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-light text-[#FAF7F2] leading-tight">
+                  {featuredPost.title}
+                </h2>
+
+                <p className="text-sm leading-6 text-[#E7E2DB] font-normal">
+                  {featuredPost.summary}
+                </p>
+
+                <div className="pt-4 border-t border-copper/25 flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs text-[#E7E2DB] font-medium">
+                    <User className="size-3.5 text-[#F3C592]" />
+                    <span>{featuredPost.author}</span>
+                  </div>
+                  <Button
+                    asChild
+                    className="h-10 rounded-none bg-copper text-[#0A0908] font-bold text-[10px] uppercase tracking-[0.16em] hover:bg-white transition-all duration-300"
+                  >
+                    <Link to="/contact">Read Clinical Monograph →</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </SpotlightCard>
+        )}
+
+        {/* Article Grid with SpotlightCard */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredPosts.map((post, idx) => (
-            <motion.article
+            <motion.div
               key={post.id}
               custom={idx}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInVariant}
-              className="border border-copper/25 bg-background overflow-hidden flex flex-col justify-between hover:border-copper transition-all duration-300 shadow-sm group"
             >
-              <div>
-                <div className="overflow-hidden h-56 relative border-b border-copper/15">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <span className="absolute top-3 left-3 bg-[#131211]/90 text-copper-light text-[9px] uppercase tracking-widest px-2.5 py-0.5 font-semibold">
-                    {post.category}
-                  </span>
-                </div>
+              <SpotlightCard
+                spotlightColor="rgba(243, 197, 146, 0.2)"
+                borderColor="rgba(243, 197, 146, 0.35)"
+                className="bg-[#131211] text-white p-6 flex flex-col justify-between h-full shadow-xl hover:border-copper transition-all duration-300 border border-copper/30"
+              >
+                <div>
+                  <div className="overflow-hidden h-52 border border-copper/25 mb-5 relative group">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <span className="absolute top-2 left-2 bg-[#0A0908] text-[#F3C592] text-[10px] uppercase tracking-widest px-2.5 py-1 font-bold border border-copper/50">
+                      {post.category}
+                    </span>
+                  </div>
 
-                <div className="p-6 space-y-3">
-                  <div className="flex items-center gap-2 text-[11px] text-muted-foreground font-light">
+                  <div className="flex items-center gap-2 text-xs text-[#E7E2DB] mb-2 font-medium">
+                    <Calendar className="size-3.5 text-[#F3C592]" />
                     <span>{post.date}</span>
                     <span>•</span>
+                    <Clock className="size-3.5 text-[#F3C592]" />
                     <span>{post.readTime}</span>
                   </div>
 
-                  <h3 className="font-display text-xl font-light text-foreground group-hover:text-copper transition-colors leading-snug">
+                  <h3 className="font-display text-xl font-medium text-[#FAF7F2] group-hover:text-[#F3C592] transition-colors leading-snug">
                     {post.title}
                   </h3>
 
-                  <p className="text-xs text-muted-foreground leading-6 font-light line-clamp-3">
+                  <p className="mt-2.5 text-xs sm:text-sm leading-6 text-[#E7E2DB] font-normal line-clamp-3">
                     {post.summary}
                   </p>
                 </div>
-              </div>
 
-              <div className="p-6 pt-0 mt-auto">
-                <div className="border-t border-copper/15 pt-3 flex items-center justify-between text-xs">
-                  <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-light">{post.author}</span>
-                  <Link to="/treatments" className="text-[10px] uppercase tracking-[0.16em] text-copper font-semibold flex items-center gap-1 group-hover:underline">
-                    Read More →
+                <div className="mt-6 pt-4 border-t border-copper/25 flex items-center justify-between text-xs">
+                  <span className="text-xs text-[#FAF7F2]/80 font-medium">{post.author}</span>
+                  <Link
+                    to="/contact"
+                    className="text-xs uppercase tracking-[0.14em] text-[#F3C592] font-bold hover:underline flex items-center gap-1 hover:text-white"
+                  >
+                    Read Monograph →
                   </Link>
                 </div>
-              </div>
-            </motion.article>
+              </SpotlightCard>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Skincare Consultation CTA */}
-      <section className="bg-[#131211] text-white py-20 border-t border-copper/20 text-center px-5 sm:px-8">
-        <div className="max-w-3xl mx-auto space-y-4">
-          <RotatingBadge text="SKIN CONSULTATION • LUMÉ AESTHETICS • " href="/contact" size={100} className="mx-auto mb-4" />
-          <span className="eyebrow text-copper-light text-[10px]">Personalized Advice</span>
+      {/* Gazette Newsletter / Consultation CTA */}
+      <AuroraGlow variant="dark" className="text-white py-20 text-center px-5 sm:px-8 border-t border-copper/20">
+        <div className="max-w-2xl mx-auto space-y-4">
+          <RotatingBadge text="SKINCARE GAZETTE • LUMÉ AESTHETICS • " href="/contact" size={100} className="mx-auto mb-3" />
           <h2 className="font-display text-3xl sm:text-5xl font-light text-white">
-            Have questions regarding your skin?
+            Have questions about clinical skin health?
           </h2>
-          <p className="text-xs sm:text-sm leading-6 text-white/75 max-w-xl mx-auto font-light">
-            Book a dedicated one-on-one dermal consultation at our Sherwood Park studio for personalized product recommendations and custom treatment protocols.
+          <p className="text-xs sm:text-sm text-white/75 font-light leading-6">
+            Consult directly with our licensed injectors and Italian Bioline dermal specialists in Sherwood Park.
           </p>
           <div className="pt-4 flex flex-col sm:flex-row justify-center gap-4">
-            <Button asChild className="h-11 rounded-none bg-copper text-white text-xs uppercase tracking-[0.18em] hover:bg-copper/90 px-8">
-              <Link to="/contact">Book Consultation</Link>
-            </Button>
-            <Button asChild variant="outline" className="h-11 rounded-none border-copper-light bg-transparent text-xs uppercase tracking-[0.18em] text-copper-light hover:bg-copper-light hover:text-[#131211]">
-              <a href="tel:+17804108278">Direct Line: (780) 410-8278</a>
+            <MagneticButton pullStrength={0.25}>
+              <Button asChild className="h-11 rounded-none bg-copper text-[#0A0908] font-semibold text-xs uppercase tracking-[0.18em] hover:bg-white px-8 w-full sm:w-auto">
+                <Link to="/contact">Book Clinical Consultation</Link>
+              </Button>
+            </MagneticButton>
+            <Button asChild variant="outline" className="h-11 rounded-none border-copper-light bg-transparent text-xs uppercase tracking-[0.18em] text-copper-light hover:bg-copper-light hover:text-[#0A0908]">
+              <Link to="/treatments">Explore Full Menu (24+)</Link>
             </Button>
           </div>
         </div>
-      </section>
+      </AuroraGlow>
     </div>
   );
 }
