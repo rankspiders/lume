@@ -8,6 +8,7 @@ import facialImage from "@/assets/facial-ritual.jpg";
 import bodyImage from "@/assets/body-ritual.jpg";
 import advancedImage from "@/assets/advanced-aesthetics.jpg";
 import heroImage from "@/assets/lume-hero.jpg";
+import { treatmentGroups, spaPackages } from "@/lib/treatments";
 
 const links = [
   { to: "/treatments" as const, label: "Treatments" },
@@ -22,13 +23,7 @@ const categoryPreviews = [
     href: "/services/skin-and-body-rituals" as const,
     image: facialImage,
     description: "Tailored 20% AHA peels, Bioline facial rituals, and Mocha Gua Sha body contouring.",
-    treatments: [
-      { name: "Lumé Aqua Luxe Facial", price: "$125" },
-      { name: "Lumé Prima Glow 20% AHA", price: "$135" },
-      { name: "Lumé Radiance C Facial", price: "$145" },
-      { name: "Lumé Collagen Lifting Facial", price: "$195" },
-      { name: "Lumé Mocha Contour", price: "$145" },
-    ],
+    treatments: treatmentGroups[0]?.treatments ?? [],
   },
   {
     title: "Spa Packages",
@@ -36,10 +31,7 @@ const categoryPreviews = [
     href: "/services/spa-packages" as const,
     image: heroImage,
     description: "Multi-hour head-to-toe luxury experiences combining facials, body wraps & scalp treatments.",
-    treatments: [
-      { name: "You Deserve It!", price: "$265" },
-      { name: "Queen For A Day!", price: "$395" },
-    ],
+    treatments: spaPackages,
   },
   {
     title: "Beauty Atelier",
@@ -47,12 +39,7 @@ const categoryPreviews = [
     href: "/services/beauty-atelier" as const,
     image: bodyImage,
     description: "Quietly polished makeup, gel nail artistry, lash couture lifts & silk waxing.",
-    treatments: [
-      { name: "The Glam Chapter", price: "$110+" },
-      { name: "Lumé Polished Nails", price: "$65+" },
-      { name: "Lumé Lash Couture", price: "$99" },
-      { name: "Lumé Silk Body Waxing", price: "$45+" },
-    ],
+    treatments: treatmentGroups[1]?.treatments ?? [],
   },
   {
     title: "Advanced Aesthetics",
@@ -60,14 +47,9 @@ const categoryPreviews = [
     href: "/services/advanced-aesthetics" as const,
     image: advancedImage,
     description: "Consultation-led clinical injectables, PRP microneedling & IV wellness therapies.",
-    treatments: [
-      { name: "Lumé Botox®", price: "$10/unit" },
-      { name: "Lumé Dermal Fillers", price: "$550+" },
-      { name: "Lumé PRP Microneedling", price: "$450" },
-      { name: "Lumé Exosome Microneedling", price: "$550" },
-    ],
+    treatments: treatmentGroups[2]?.treatments ?? [],
   },
-] as const;
+];
 
 export function PageIntro({
   eyebrow,
@@ -99,8 +81,8 @@ export function SiteHeader() {
   const [hoveredCategoryIndex, setHoveredCategoryIndex] = useState(0);
   const [hoveredServiceIndex, setHoveredServiceIndex] = useState(0);
 
-  const activeCategory = categoryPreviews[hoveredCategoryIndex] ?? categoryPreviews[0];
-  const activeService = activeCategory.treatments[hoveredServiceIndex] ?? activeCategory.treatments[0];
+  const activeCategory = categoryPreviews[hoveredCategoryIndex] || categoryPreviews[0]!;
+  const activeService = (activeCategory.treatments[hoveredServiceIndex] || activeCategory.treatments[0])!;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-foreground/95 backdrop-blur-xl">
@@ -208,7 +190,7 @@ export function SiteHeader() {
                   <div>
                     <div className="overflow-hidden border border-copper/30 h-48 mb-4 relative group">
                       <img
-                        src={activeCategory.image}
+                        src={activeService.image || activeCategory.image}
                         alt={activeService.name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />

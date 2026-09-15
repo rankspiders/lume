@@ -19,6 +19,35 @@ export type TreatmentGroup = {
   treatments: Treatment[];
 };
 
+// High-resolution photography assets tailored to each specific service
+const imgAquaLuxe = "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80";
+const imgPrimaGlow = "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80";
+const imgRadianceC = "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80";
+const imgCollagenLifting = "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80";
+const imgAcnePurify = "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80";
+const imgHydraGlow = "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&w=800&q=80";
+const imgSculptRenew = "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80";
+const imgMochaContour = "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80";
+const imgAuraInfusion = "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80";
+const imgDermaplaning = "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=800&q=80";
+
+const imgGlamChapter = "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80";
+const imgPolishedNails = "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=80";
+const imgLashCouture = "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?auto=format&fit=crop&w=800&q=80";
+const imgBodyWaxing = "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?auto=format&fit=crop&w=800&q=80";
+const imgThreading = "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=800&q=80";
+const imgHennaArtistry = "https://images.unsplash.com/photo-1561053720-76cd73ff22c3?auto=format&fit=crop&w=800&q=80";
+
+const imgBotox = "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80";
+const imgDermalFillers = "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80";
+const imgPRPMicroneedling = "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80";
+const imgExosomeMicroneedling = "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80";
+const imgTeethWhitening = "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80";
+const imgIVInfusion = "https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=800&q=80";
+
+const imgYouDeserveIt = "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80";
+const imgQueenForADay = "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80";
+
 export const spaPackages: Treatment[] = [
   {
     name: "You Deserve It!",
@@ -26,7 +55,7 @@ export const spaPackages: Treatment[] = [
     price: "$265",
     summary: "A luxurious 2-hour pampering ritual combining deep facial rejuvenation, body sculpting, and therapeutic LED light.",
     includedItems: ["Custom Facial (1 hr)", "Coffee Shape Body Treatment (1 hr)", "Celluma LED Therapy"],
-    image: heroImage,
+    image: imgYouDeserveIt,
   },
   {
     name: "Queen For A Day!",
@@ -40,7 +69,7 @@ export const spaPackages: Treatment[] = [
       "Luxe Foot Ritual",
       "Celluma LED Therapy",
     ],
-    image: bodyImage,
+    image: imgQueenForADay,
   },
 ];
 
@@ -55,70 +84,70 @@ export const treatmentGroups: TreatmentGroup[] = [
         duration: "65 min",
         price: "$125",
         summary: "Tailored for skin needing deep moisturization. Features nectar drop massage, hyaluronic acid cream mask, and a firming finish.",
-        image: facialImage,
+        image: imgAquaLuxe,
       },
       {
         name: "Lumé Prima Glow",
         duration: "60 min",
         price: "$135",
         summary: "Brightening 20% AHA peel ritual to improve hyperpigmentation, fine lines, scarring, and impurities for sensitive and all skin types.",
-        image: heroImage,
+        image: imgPrimaGlow,
       },
       {
         name: "Lumé Radiance C Facial",
         duration: "60 min",
         price: "$145",
         summary: "Concentrated 20% Vitamin C treatment restoring luminosity, elasticity, and firmness while preventing glycation.",
-        image: advancedImage,
+        image: imgRadianceC,
       },
       {
         name: "Lumé Collagen Lifting Facial",
         duration: "75 min",
         price: "$195",
         summary: "Event-ready Bioline Lifting Code facial pairing advanced massage and microcurrent therapy for visibly lifted, youthful skin.",
-        image: facialImage,
+        image: imgCollagenLifting,
       },
       {
         name: "Lumé Acne Purify Ritual",
         duration: "60 min",
         price: "$125",
         summary: "Deep cleansing, extractions, high frequency, blue LED therapy, and lymphatic drainage for pure, clear skin.",
-        image: bodyImage,
+        image: imgAcnePurify,
       },
       {
         name: "Lumé Hydra Glow Treatment",
         duration: "60 min",
         price: "$150",
         summary: "Hydra dermabrasion, skin scrubber cleansing, radio frequency, facial massage, and spray infusion deep serum delivery.",
-        image: heroImage,
+        image: imgHydraGlow,
       },
       {
         name: "Lumé Sculpt & Renew Body Treatment",
         duration: "60 min",
         price: "$145",
         summary: "Bioline professional Retinol Lift body renewal treatment for cellular renewal, improved skin texture, tone, and firmness.",
-        image: bodyImage,
+        image: imgSculptRenew,
       },
       {
         name: "Lumé Mocha Contour",
         duration: "60 min",
         price: "$145",
         summary: "Bioline Jatò Coffee Shape paired with rhythmic Body Gua Sha massage to promote circulation, lymphatic drainage, and sculpting.",
-        image: bodyImage,
+        image: imgMochaContour,
       },
       {
         name: "Lumé Aura Infusion Treatment",
         duration: "60 min",
         price: "$199",
         summary: "AKA Glass Skin Facial. High purity oxygen, negative-ion dome infusion, personalized serums, and LED light therapy.",
-        image: advancedImage,
+        image: imgAuraInfusion,
       },
       {
         name: "Lumé Signature Dermaplaning",
         duration: "30 min",
         price: "$75",
         summary: "Gentle resurfacing to remove surface buildup and fine facial hair (peach fuzz), followed by a soothing mask, hydration, and SPF.",
-        image: facialImage,
+        image: imgDermaplaning,
       },
     ],
   },
@@ -131,39 +160,39 @@ export const treatmentGroups: TreatmentGroup[] = [
         name: "Lumé The Glam Chapter",
         price: "Starting from $110",
         summary: "Bespoke makeup services tailored to enhance natural features. Soft Glam, Full Glam, Special Occasions, and Bridal & Event Makeup.",
-        image: heroImage,
+        image: imgGlamChapter,
       },
       {
         name: "Lumé Polished",
         duration: "90 min",
         price: "Starting from $65",
         summary: "Customized shapes, lengths, colours, and nail art for an impeccably finished, statement set.",
-        image: bodyImage,
+        image: imgPolishedNails,
       },
       {
         name: "Lumé Lash Couture",
         duration: "60 min",
         price: "$99",
         summary: "Lash Lift + Tint creating darker-looking, fuller, and naturally defined lashes without extensions.",
-        image: facialImage,
+        image: imgLashCouture,
       },
       {
         name: "Lumé Silk Body Waxing",
         price: "Starting from $45",
         summary: "Signature body waxing experience designed to leave skin soft, smooth, and impeccably groomed with maximum comfort.",
-        image: bodyImage,
+        image: imgBodyWaxing,
       },
       {
         name: "Lumé Precision Threading",
         price: "Starting from $25",
         summary: "Delicate eyebrow shaping and upper-lip threading performed with meticulous attention to detail for clean definition.",
-        image: facialImage,
+        image: imgThreading,
       },
       {
         name: "Lumé Henna Artistry",
         price: "Starting from $50",
         summary: "Bespoke henna from minimalist modern details to intricate traditional creations for weddings, celebrations, and special occasions.",
-        image: bodyImage,
+        image: imgHennaArtistry,
       },
     ],
   },
@@ -176,41 +205,41 @@ export const treatmentGroups: TreatmentGroup[] = [
         name: "Lumé Botox®",
         price: "$10 / unit",
         summary: "Customized injectable treatment designed to temporarily relax targeted facial muscles and soften expression lines.",
-        image: advancedImage,
+        image: imgBotox,
       },
       {
         name: "Lumé Dermal Fillers",
         price: "Starting from $550",
         summary: "Personalized injectable treatments to restore or add volume and subtly enhance facial contours.",
-        image: advancedImage,
+        image: imgDermalFillers,
       },
       {
         name: "Lumé PRP Microneedling",
         duration: "60 min",
         price: "$450",
         summary: "Advanced skin-renewal combining controlled microchanneling with platelet-rich plasma prepared from your own blood.",
-        image: facialImage,
+        image: imgPRPMicroneedling,
       },
       {
         name: "Lumé Exosome Microneedling",
         duration: "60 min",
         price: "$550",
         summary: "Sophisticated microneedling experience paired with exosome-based topical formulations for radiance and texture.",
-        image: advancedImage,
+        image: imgExosomeMicroneedling,
       },
       {
         name: "Lumé Bright Teeth Whitening",
         duration: "45 min",
         price: "$199",
         summary: "Professional cosmetic whitening experience designed to reduce surface staining for a luminous smile.",
-        image: heroImage,
+        image: imgTeethWhitening,
       },
       {
         name: "Lumé Infusion Therapies",
         duration: "45 min",
         price: "Starting from $175",
         summary: "Personalized IV wellness therapies administered following appropriate health screening and clinical assessment.",
-        image: advancedImage,
+        image: imgIVInfusion,
       },
     ],
   },
@@ -222,13 +251,13 @@ export const addOns: Treatment[] = [
     duration: "30 min",
     price: "$55",
     summary: "LED light therapy using scientifically proven wavelengths to stimulate fibroblasts, collagen, and elastin.",
-    image: facialImage,
+    image: imgCollagenLifting,
   },
   {
     name: "Celluma Add-on for Acne",
     duration: "30 min",
     price: "$55",
     summary: "Blue LED light therapy to destroy acne-causing bacteria, clear blemishes, and prevent future breakouts.",
-    image: facialImage,
+    image: imgAcnePurify,
   },
 ];
