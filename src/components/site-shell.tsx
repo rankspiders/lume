@@ -1,11 +1,13 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { useState } from "react";
 
-import logoMark from "@/assets/lume-mark.svg.asset.json";
-import logoWordmark from "@/assets/lume-wordmark.svg.asset.json";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import facialImage from "@/assets/facial-ritual.jpg";
+import bodyImage from "@/assets/body-ritual.jpg";
+import advancedImage from "@/assets/advanced-aesthetics.jpg";
+import heroImage from "@/assets/lume-hero.jpg";
 
 const links = [
   { to: "/treatments" as const, label: "Treatments" },
@@ -13,9 +15,47 @@ const links = [
   { to: "/contact" as const, label: "Contact" },
 ];
 
+const categoryPreviews = [
+  {
+    title: "Skin & Body Rituals",
+    eyebrow: "Category 01",
+    href: "/services/skin-and-body-rituals" as const,
+    image: facialImage,
+    description: "Tailored 20% AHA peels, Bioline facial rituals, and Mocha Gua Sha body contouring.",
+    treatments: ["Lumé Aqua Luxe ($125)", "Prima Glow 20% AHA ($135)", "Radiance C ($145)", "Collagen Lifting ($195)", "Mocha Contour ($145)"],
+  },
+  {
+    title: "Spa Packages",
+    eyebrow: "Category 02",
+    href: "/services/spa-packages" as const,
+    image: heroImage,
+    description: "Multi-hour head-to-toe luxury experiences combining facials, body wraps & scalp treatments.",
+    treatments: ["You Deserve It! — 2 hrs ($265)", "Queen For A Day! — 3 hrs ($395)"],
+  },
+  {
+    title: "Beauty Atelier",
+    eyebrow: "Category 03",
+    href: "/services/beauty-atelier" as const,
+    image: bodyImage,
+    description: "Quietly polished makeup, gel nail artistry, lash couture lifts & silk waxing.",
+    treatments: ["The Glam Chapter ($110+)", "Polished Gel Nails ($65+)", "Lash Couture ($99)", "Silk Body Waxing"],
+  },
+  {
+    title: "Advanced Aesthetics",
+    eyebrow: "Category 04",
+    href: "/services/advanced-aesthetics" as const,
+    image: advancedImage,
+    description: "Consultation-led clinical injectables, PRP microneedling & IV wellness therapies.",
+    treatments: ["Lumé Botox® ($10/unit)", "Dermal Fillers ($550+)", "PRP Microneedling ($450)", "Exosome Therapy ($550)"],
+  },
+] as const;
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [treatmentsOpen, setTreatmentsOpen] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(0);
+
+  const activeCategory = categoryPreviews[hoveredIndex] ?? categoryPreviews[0];
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-foreground/95 backdrop-blur-xl">
@@ -31,7 +71,7 @@ export function SiteHeader() {
 
         {/* Center: Centered Primary Navigation */}
         <nav aria-label="Primary navigation" className="absolute left-1/2 -translate-x-1/2 hidden items-center gap-10 md:flex">
-          {/* Treatments Nav Item with Hover/Click Mega Menu */}
+          {/* Treatments Nav Item with Interactive Hover Mega Menu */}
           <div
             className="relative py-6"
             onMouseEnter={() => setTreatmentsOpen(true)}
@@ -46,43 +86,96 @@ export function SiteHeader() {
               <span className="text-[8px] text-copper-light">▼</span>
             </Link>
 
-            {/* Treatments Mega Menu Dropdown */}
+            {/* Enhanced Mega Menu Dropdown with Dynamic Hover Preview Image */}
             {treatmentsOpen && (
-              <div className="absolute top-16 -left-32 w-[680px] rounded-none border border-copper/30 bg-foreground/98 p-7 shadow-2xl backdrop-blur-2xl grid grid-cols-2 gap-7 animate-in fade-in slide-in-from-top-2 duration-200">
-                <div>
-                  <p className="eyebrow text-copper-light text-[10px] pb-2 border-b border-white/10">01. Skin & Body Rituals</p>
-                  <ul className="mt-3 space-y-2 text-xs text-background/80">
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Aqua Luxe Facial ($125)</Link></li>
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Prima Glow ($135)</Link></li>
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Radiance C Facial ($145)</Link></li>
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Collagen Lifting Facial ($195)</Link></li>
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Aura Infusion Glass Skin ($199)</Link></li>
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Mocha Contour & Body Gua Sha ($145)</Link></li>
-                  </ul>
-                  
-                  <p className="eyebrow text-copper-light text-[10px] mt-5 pb-2 border-b border-white/10">02. Spa Packages</p>
-                  <ul className="mt-3 space-y-2 text-xs text-background/80">
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light font-medium transition-colors">You Deserve It! — 2 hrs ($265)</Link></li>
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light font-medium transition-colors">Queen For A Day! — 3 hrs ($395)</Link></li>
-                  </ul>
+              <div className="absolute top-16 -left-64 w-[840px] rounded-none border border-copper/30 bg-foreground p-7 shadow-2xl backdrop-blur-2xl grid grid-cols-12 gap-7 animate-in fade-in slide-in-from-top-2 duration-200 text-background">
+                
+                {/* 4 Category Column List */}
+                <div className="col-span-7 space-y-3">
+                  <div className="flex justify-between items-center pb-2 border-b border-white/10">
+                    <p className="eyebrow text-copper-light text-[10px] tracking-[0.2em] uppercase font-semibold">
+                      Service Categories
+                    </p>
+                    <Link
+                      to="/treatments"
+                      onClick={() => setTreatmentsOpen(false)}
+                      className="text-[9px] uppercase tracking-wider text-copper-light hover:underline flex items-center gap-1"
+                    >
+                      All Rituals →
+                    </Link>
+                  </div>
+
+                  <div className="space-y-2">
+                    {categoryPreviews.map((cat, idx) => {
+                      const isHovered = hoveredIndex === idx;
+                      return (
+                        <div
+                          key={cat.title}
+                          onMouseEnter={() => setHoveredIndex(idx)}
+                          className={`group p-3 border transition-all duration-200 cursor-pointer ${
+                            isHovered
+                              ? "border-copper bg-copper/15 shadow-sm"
+                              : "border-white/5 bg-white/5 hover:border-copper/40"
+                          }`}
+                        >
+                          <Link
+                            to={cat.href}
+                            onClick={() => setTreatmentsOpen(false)}
+                            className="flex items-center justify-between"
+                          >
+                            <div>
+                              <span className="text-[9px] uppercase tracking-widest text-copper-light">{cat.eyebrow}</span>
+                              <h4 className="font-display text-lg font-light text-background group-hover:text-copper-light transition-colors">
+                                {cat.title}
+                              </h4>
+                            </div>
+                            <ArrowRight className={`size-4 transition-transform duration-200 ${isHovered ? "text-copper-light translate-x-1" : "text-background/40"}`} />
+                          </Link>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
 
-                <div>
-                  <p className="eyebrow text-copper-light text-[10px] pb-2 border-b border-white/10">03. Beauty Atelier</p>
-                  <ul className="mt-3 space-y-2 text-xs text-background/80">
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">The Glam Chapter (Makeup)</Link></li>
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Polished Nails ($65+)</Link></li>
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Lash Couture Lift & Tint ($99)</Link></li>
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Silk Waxing & Precision Threading</Link></li>
-                  </ul>
+                {/* Live Dynamic Preview Card Column */}
+                <div className="col-span-5 flex flex-col justify-between border-l border-white/10 pl-7 space-y-4">
+                  <div>
+                    <div className="overflow-hidden border border-copper/30 h-44 mb-3 relative group">
+                      <img
+                        src={activeCategory.image}
+                        alt={activeCategory.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground via-transparent to-transparent flex items-end p-3">
+                        <span className="text-[10px] uppercase tracking-wider text-copper-light font-semibold">
+                          {activeCategory.eyebrow}
+                        </span>
+                      </div>
+                    </div>
+                    <h4 className="font-display text-xl font-light text-background">{activeCategory.title}</h4>
+                    <p className="mt-1 text-xs text-background/70 leading-5">{activeCategory.description}</p>
+                    
+                    <ul className="mt-3 space-y-1 text-[11px] text-copper-light">
+                      {activeCategory.treatments.slice(0, 3).map((item) => (
+                        <li key={item} className="flex items-center gap-1.5">
+                          <span className="size-1 bg-copper-light rounded-full shrink-0" />
+                          <span className="truncate">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                  <p className="eyebrow text-copper-light text-[10px] mt-5 pb-2 border-b border-white/10">04. Advanced Aesthetics</p>
-                  <ul className="mt-3 space-y-2 text-xs text-background/80">
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Botox® ($10/unit) & Dermal Fillers</Link></li>
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">PRP & Exosome Microneedling</Link></li>
-                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Teeth Whitening ($199) & IV Therapies</Link></li>
-                  </ul>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full h-9 rounded-none border-copper-light bg-transparent text-[9px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper-light hover:text-foreground transition-all duration-300"
+                  >
+                    <Link to={activeCategory.href} onClick={() => setTreatmentsOpen(false)}>
+                      Explore {activeCategory.title}
+                    </Link>
+                  </Button>
                 </div>
+
               </div>
             )}
           </div>
@@ -136,9 +229,6 @@ export function SiteHeader() {
               <span className="inline-block border-b border-transparent pb-1 transition-colors group-hover:border-copper">{link.label}</span>
             </Link>
           ))}
-          <Button asChild className="mt-4 h-12 rounded-none bg-copper-light text-[11px] uppercase tracking-[0.18em] text-foreground shadow-none hover:bg-copper hover:text-background">
-            <a href="tel:+17804108278">Call to book</a>
-          </Button>
         </nav>
       </div>
     </header>
@@ -147,94 +237,16 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-copper/20 bg-foreground text-background px-5 py-16 sm:px-8">
-      <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-4">
-        <div className="md:col-span-1">
-          <img src="/lume-logo-full.svg" alt="Lumé Aesthetics" className="h-16 w-auto object-contain" />
-          <p className="mt-4 font-display text-2xl font-light italic text-background">
-            Beautiful skin.
-            <br />
-            <span className="text-copper-light">Confidence within.</span>
-          </p>
-          <p className="mt-4 text-xs leading-6 text-background/65">
-            A sanctuary of bespoke skincare, body rituals, and consultation-led advanced aesthetics.
-          </p>
-        </div>
-
+    <footer className="border-t border-copper/20 bg-foreground text-background py-16 px-5 sm:px-8">
+      <div className="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
         <div>
-          <p className="eyebrow text-copper-light">Open Hours</p>
-          <p className="mt-4 text-sm leading-7 text-background/70">
-            Monday to Saturday
-            <br />
-            <strong className="font-semibold text-background">9:00 AM – 6:00 PM</strong>
-            <br />
-            Sunday by appointment
-          </p>
+          <h3 className="font-display text-2xl font-light text-background">Lumé Aesthetics</h3>
+          <p className="mt-1 text-xs text-background/60">Beautiful skin. Confidence within.</p>
         </div>
-
-        <div>
-          <p className="eyebrow text-copper-light">Location & Contact</p>
-          <address className="mt-4 text-sm not-italic leading-7 text-background/70">
-            2457 Broadmoor Blvd #121
-            <br />
-            Sherwood Park, AB T8H 0Y6, Canada
-          </address>
-          <div className="mt-3 space-y-1 text-sm text-background/80">
-            <a className="block hover:text-copper-light transition-colors" href="tel:+17804108278">
-              +1 780-410-8278
-            </a>
-            <a className="block hover:text-copper-light transition-colors" href="tel:+919872325444">
-              +91 9872325444
-            </a>
-            <a className="block hover:text-copper-light transition-colors" href="mailto:info@lumeaesthetics.co">
-              info@lumeaesthetics.co
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <p className="eyebrow text-copper-light">Categories</p>
-          <ul className="mt-4 space-y-2 text-xs uppercase tracking-widest text-background/70">
-            <li>
-              <Link to="/treatments" className="hover:text-copper-light transition-colors">
-                Skincare & Facials
-              </Link>
-            </li>
-            <li>
-              <Link to="/treatments" className="hover:text-copper-light transition-colors">
-                Body Rituals & Sculpting
-              </Link>
-            </li>
-            <li>
-              <Link to="/treatments" className="hover:text-copper-light transition-colors">
-                Beauty Atelier & Nails
-              </Link>
-            </li>
-            <li>
-              <Link to="/treatments" className="hover:text-copper-light transition-colors">
-                Advanced Aesthetics & IV
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="mx-auto mt-14 flex max-w-7xl flex-col gap-3 border-t border-background/15 pt-7 text-[10px] uppercase tracking-[0.16em] text-background/50 sm:flex-row sm:justify-between">
-        <span>© 2026 Lumé Aesthetics. All rights reserved.</span>
-        <span>Relax · Rejuvenate · Glow</span>
+        <p className="text-xs text-background/50">
+          © {new Date().getFullYear()} Lumé Aesthetics. All rights reserved.
+        </p>
       </div>
     </footer>
-  );
-}
-
-export function PageIntro({ eyebrow, title, children }: { eyebrow: string; title: ReactNode; children: ReactNode }) {
-  return (
-    <section className="border-b border-copper/15 px-5 pb-20 pt-40 sm:px-8 sm:pb-28 sm:pt-48">
-      <div className="mx-auto max-w-7xl">
-        <p className="eyebrow">{eyebrow}</p>
-        <h1 className="mt-7 max-w-5xl font-display text-5xl font-light leading-[0.98] sm:text-7xl lg:text-8xl">{title}</h1>
-        <div className="mt-8 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">{children}</div>
-      </div>
-    </section>
   );
 }

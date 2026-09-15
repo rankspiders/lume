@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, type Variants } from "framer-motion";
 
 import interiorImage from "@/assets/advanced-aesthetics.jpg";
+import facialImage from "@/assets/facial-ritual.jpg";
+import bodyImage from "@/assets/body-ritual.jpg";
 import { PageIntro } from "@/components/site-shell";
 
 export const Route = createFileRoute("/about")({
@@ -58,17 +60,30 @@ function AboutPage() {
       {/* Interior & Approach Section */}
       <section className="px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2 lg:items-center">
-          <motion.img
-            initial={{ opacity: 0, scale: 0.97 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            src={interiorImage}
-            alt="Serene Lumé treatment room"
-            width={800}
-            height={1000}
-            className="aspect-[4/5] w-full object-cover"
-          />
+          <div className="space-y-6">
+            <motion.img
+              initial={{ opacity: 0, scale: 0.97 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              src={facialImage}
+              alt="Lumé bespoke facial treatment session"
+              width={800}
+              height={600}
+              className="w-full h-[400px] object-cover border border-copper/20 shadow-lg"
+            />
+            <motion.img
+              initial={{ opacity: 0, scale: 0.97 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.2 }}
+              src={bodyImage}
+              alt="Lumé modern spa sanctuary interior"
+              width={800}
+              height={500}
+              className="w-full h-[280px] object-cover border border-copper/20 shadow-md"
+            />
+          </div>
           <motion.div
             initial={{ opacity: 0, x: 25 }}
             whileInView={{ opacity: 1, x: 0 }}

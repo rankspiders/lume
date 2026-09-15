@@ -13,6 +13,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as TreatmentsRouteImport } from './routes/treatments'
+import { Route as ServicesAdvancedAestheticsRouteImport } from './routes/services/advanced-aesthetics'
+import { Route as ServicesBeautyAtelierRouteImport } from './routes/services/beauty-atelier'
+import { Route as ServicesSkinAndBodyRitualsRouteImport } from './routes/services/skin-and-body-rituals'
+import { Route as ServicesSpaPackagesRouteImport } from './routes/services/spa-packages'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +38,48 @@ const TreatmentsRoute = TreatmentsRouteImport.update({
   path: '/treatments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesAdvancedAestheticsRoute =
+  ServicesAdvancedAestheticsRouteImport.update({
+    id: '/services/advanced-aesthetics',
+    path: '/services/advanced-aesthetics',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesBeautyAtelierRoute = ServicesBeautyAtelierRouteImport.update({
+  id: '/services/beauty-atelier',
+  path: '/services/beauty-atelier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSkinAndBodyRitualsRoute =
+  ServicesSkinAndBodyRitualsRouteImport.update({
+    id: '/services/skin-and-body-rituals',
+    path: '/services/skin-and-body-rituals',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesSpaPackagesRoute = ServicesSpaPackagesRouteImport.update({
+  id: '/services/spa-packages',
+  path: '/services/spa-packages',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/treatments': typeof TreatmentsRoute
+  '/services/advanced-aesthetics': typeof ServicesAdvancedAestheticsRoute
+  '/services/beauty-atelier': typeof ServicesBeautyAtelierRoute
+  '/services/skin-and-body-rituals': typeof ServicesSkinAndBodyRitualsRoute
+  '/services/spa-packages': typeof ServicesSpaPackagesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/treatments': typeof TreatmentsRoute
+  '/services/advanced-aesthetics': typeof ServicesAdvancedAestheticsRoute
+  '/services/beauty-atelier': typeof ServicesBeautyAtelierRoute
+  '/services/skin-and-body-rituals': typeof ServicesSkinAndBodyRitualsRoute
+  '/services/spa-packages': typeof ServicesSpaPackagesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +87,42 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/treatments': typeof TreatmentsRoute
+  '/services/advanced-aesthetics': typeof ServicesAdvancedAestheticsRoute
+  '/services/beauty-atelier': typeof ServicesBeautyAtelierRoute
+  '/services/skin-and-body-rituals': typeof ServicesSkinAndBodyRitualsRoute
+  '/services/spa-packages': typeof ServicesSpaPackagesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/treatments'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/treatments'
+    | '/services/advanced-aesthetics'
+    | '/services/beauty-atelier'
+    | '/services/skin-and-body-rituals'
+    | '/services/spa-packages'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/treatments'
-  id: '__root__' | '/' | '/about' | '/contact' | '/treatments'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/treatments'
+    | '/services/advanced-aesthetics'
+    | '/services/beauty-atelier'
+    | '/services/skin-and-body-rituals'
+    | '/services/spa-packages'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/treatments'
+    | '/services/advanced-aesthetics'
+    | '/services/beauty-atelier'
+    | '/services/skin-and-body-rituals'
+    | '/services/spa-packages'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +130,10 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   TreatmentsRoute: typeof TreatmentsRoute
+  ServicesAdvancedAestheticsRoute: typeof ServicesAdvancedAestheticsRoute
+  ServicesBeautyAtelierRoute: typeof ServicesBeautyAtelierRoute
+  ServicesSkinAndBodyRitualsRoute: typeof ServicesSkinAndBodyRitualsRoute
+  ServicesSpaPackagesRoute: typeof ServicesSpaPackagesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +166,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TreatmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/advanced-aesthetics': {
+      id: '/services/advanced-aesthetics'
+      path: '/services/advanced-aesthetics'
+      fullPath: '/services/advanced-aesthetics'
+      preLoaderRoute: typeof ServicesAdvancedAestheticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/beauty-atelier': {
+      id: '/services/beauty-atelier'
+      path: '/services/beauty-atelier'
+      fullPath: '/services/beauty-atelier'
+      preLoaderRoute: typeof ServicesBeautyAtelierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/skin-and-body-rituals': {
+      id: '/services/skin-and-body-rituals'
+      path: '/services/skin-and-body-rituals'
+      fullPath: '/services/skin-and-body-rituals'
+      preLoaderRoute: typeof ServicesSkinAndBodyRitualsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/spa-packages': {
+      id: '/services/spa-packages'
+      path: '/services/spa-packages'
+      fullPath: '/services/spa-packages'
+      preLoaderRoute: typeof ServicesSpaPackagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +202,10 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   TreatmentsRoute: TreatmentsRoute,
+  ServicesAdvancedAestheticsRoute: ServicesAdvancedAestheticsRoute,
+  ServicesBeautyAtelierRoute: ServicesBeautyAtelierRoute,
+  ServicesSkinAndBodyRitualsRoute: ServicesSkinAndBodyRitualsRoute,
+  ServicesSpaPackagesRoute: ServicesSpaPackagesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

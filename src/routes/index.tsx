@@ -35,18 +35,21 @@ const highlights = [
     label: "Advanced Aesthetics",
     title: "Refined, consultation-led care",
     copy: "Personalized injectables, microneedling, whitening, and infusion therapies shaped around your goals.",
+    link: "/services/advanced-aesthetics",
   },
   {
     image: facialImage,
     label: "Facial Rituals",
     title: "The art of luminous skin",
     copy: "Thoughtful facials bringing together touch, technology, and Bioline professional skincare in one experience.",
+    link: "/services/skin-and-body-rituals",
   },
   {
     image: bodyImage,
     label: "Body Rituals",
     title: "A moment of total renewal",
     copy: "Sculpting Jatò Coffee Shape, retinol lift, and Gua Sha bodywork designed to leave you feeling restored.",
+    link: "/services/skin-and-body-rituals",
   },
 ];
 
@@ -220,11 +223,61 @@ function Index() {
                     variant="link"
                     className={index === 2 ? "mt-5 h-auto p-0 text-[10px] uppercase tracking-[0.16em] text-copper-light" : "mt-5 h-auto p-0 text-[10px] uppercase tracking-[0.16em] text-copper"}
                   >
-                    <Link to="/treatments">View Treatments Menu →</Link>
+                    <Link to={item.link}>Explore {item.label} →</Link>
                   </Button>
                 </div>
               </motion.article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Sanctuary Lounge Visual Feature */}
+      <section className="relative overflow-hidden bg-foreground py-28 text-background sm:py-36">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-12">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9 }}
+              className="lg:col-span-5"
+            >
+              <p className="eyebrow text-copper-light">Sanctuary Atmosphere</p>
+              <h2 className="mt-4 font-display text-5xl font-light leading-tight sm:text-6xl">
+                An unhurried space designed for pure comfort.
+              </h2>
+              <p className="mt-6 leading-7 text-background/75 text-sm">
+                Stepping into Lumé is an immediate escape from the daily rhythm. Warm natural stone, ambient copper lighting, and private serene lounges prepare you for a transformative session.
+              </p>
+              <div className="mt-8 flex items-center gap-6">
+                <div>
+                  <p className="font-display text-3xl font-light text-copper-light">100%</p>
+                  <p className="text-[10px] uppercase tracking-[0.16em] text-background/60">Bespoke Consultations</p>
+                </div>
+                <div className="h-10 w-px bg-background/20" />
+                <div>
+                  <p className="font-display text-3xl font-light text-copper-light">Bioline</p>
+                  <p className="text-[10px] uppercase tracking-[0.16em] text-background/60">Professional Care</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="relative lg:col-span-7"
+            >
+              <div className="overflow-hidden border border-copper/30 shadow-2xl">
+                <img
+                  src={advancedImage}
+                  alt="Lumé Aesthetics sanctuary interior"
+                  className="w-full h-[460px] object-cover transition-transform duration-1000 hover:scale-105"
+                />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
