@@ -93,7 +93,7 @@ function Index() {
   return (
     <>
       {/* Hero Section */}
-      <header className="relative flex min-h-[85svh] items-center justify-center overflow-hidden px-5 pb-16 pt-24 text-center sm:min-h-[92svh] sm:px-8 sm:pt-28">
+      <header className="relative flex min-h-[85svh] items-center justify-center overflow-hidden px-4 pb-12 pt-24 text-center sm:min-h-[92svh] sm:px-8 sm:pt-28">
         <motion.img
           initial={{ scale: 1.08, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -111,32 +111,32 @@ function Index() {
           transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
           className="mx-auto max-w-5xl"
         >
-          <p className="eyebrow text-copper font-medium tracking-[0.25em]">Lumé Aesthetics · Sanctuary of Renewal</p>
-          <h1 className="mt-7 font-display text-6xl font-light leading-[0.91] text-foreground text-balance sm:text-8xl lg:text-[7.5rem]">
+          <p className="eyebrow text-copper font-medium tracking-[0.2em] text-[10px] sm:text-xs">Lumé Aesthetics · Sanctuary of Renewal</p>
+          <h1 className="mt-5 sm:mt-7 font-display text-4xl sm:text-7xl lg:text-[7.5rem] font-light leading-[0.95] text-foreground text-balance">
             Beautiful skin.
             <br />
             <em className="font-light italic">Confidence within.</em>
           </h1>
-          <p className="mx-auto mt-8 max-w-xl text-base font-medium leading-7 text-foreground/85 sm:text-lg">
+          <p className="mx-auto mt-6 sm:mt-8 max-w-xl text-sm font-medium leading-6 sm:leading-7 text-foreground/85 sm:text-lg">
             A private beauty destination where curated skin rituals, refined artistry, and consultation-led advanced aesthetics come together.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 max-w-xs sm:max-w-none mx-auto">
             <Button
               asChild
               variant="outline"
-              className="h-12 rounded-none border-copper bg-background/80 px-8 text-[11px] uppercase tracking-[0.18em] text-copper shadow-none backdrop-blur-sm hover:bg-copper hover:text-primary-foreground transition-all duration-300"
+              className="h-11 sm:h-12 rounded-none border-copper bg-background/80 px-6 sm:px-8 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-copper shadow-none backdrop-blur-sm hover:bg-copper hover:text-primary-foreground transition-all duration-300"
             >
-              <Link to="/treatments">Explore Treatments & Menu</Link>
+              <Link to="/treatments">Explore Treatments Menu</Link>
             </Button>
             <Button
               asChild
-              className="h-12 rounded-none bg-foreground px-8 text-[11px] uppercase tracking-[0.18em] text-background hover:bg-copper-light hover:text-foreground transition-all duration-300"
+              className="h-11 sm:h-12 rounded-none bg-foreground px-6 sm:px-8 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-background hover:bg-copper-light hover:text-foreground transition-all duration-300"
             >
               <a href="tel:+17804108278">Book Appointment</a>
             </Button>
           </div>
         </motion.div>
-        <span className="absolute bottom-8 text-[9px] uppercase tracking-[0.3em] text-foreground/50 animate-pulse">Scroll to discover</span>
+        <span className="absolute bottom-6 text-[8px] sm:text-[9px] uppercase tracking-[0.3em] text-foreground/50 animate-pulse">Scroll to discover</span>
       </header>
 
       {/* Brand Pillars / Values */}

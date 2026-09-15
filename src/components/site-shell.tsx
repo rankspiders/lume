@@ -289,43 +289,205 @@ export function SiteHeader() {
           animate={{ opacity: 1, height: "calc(100dvh - 5rem)" }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.35, ease: "easeInOut" }}
-          className="fixed inset-x-0 top-20 z-40 overflow-y-auto border-t border-copper/15 bg-foreground px-6 py-10 text-background md:hidden"
+          className="fixed inset-x-0 top-20 z-40 overflow-y-auto border-t border-copper/15 bg-foreground px-5 py-8 text-background md:hidden"
         >
-          <nav className="flex flex-col space-y-8" aria-label="Mobile navigation">
-            <div className="space-y-4">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">Navigation</span>
-              <div className="flex flex-col space-y-4">
-                <Link key="treatments" to="/treatments" onClick={() => setOpen(false)} className="font-display text-3xl font-light text-background hover:text-copper-light transition-colors">
-                  Treatments & Rituals
+          <nav className="flex flex-col space-y-6" aria-label="Mobile navigation">
+            {/* Primary Links */}
+            <div className="space-y-3">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">
+                Main Menu
+              </span>
+              <div className="flex flex-col space-y-3">
+                {/* Mobile Treatments Accordion Button */}
+                <button
+                  type="button"
+                  onClick={() => setTreatmentsOpen((v) => !v)}
+                  className="w-full flex items-center justify-between text-left font-display text-2xl font-light text-background hover:text-copper-light transition-colors py-1"
+                >
+                  <span className="flex items-center gap-2">
+                    Treatments & Rituals Menu
+                    <span className="text-xs text-copper-light font-normal">({categoryPreviews.length} Collections)</span>
+                  </span>
+                  <ChevronRight
+                    className={cn(
+                      "size-5 text-copper-light transition-transform duration-300",
+                      treatmentsOpen && "rotate-90"
+                    )}
+                  />
+                </button>
+
+                {/* Mobile Expanded Treatments Mega Dropdown */}
+                {treatmentsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="border border-copper/30 bg-white/5 p-4 space-y-5 rounded-none"
+                  >
+                    {/* Category Selector Tabs */}
+                    <div className="space-y-2">
+                      <span className="text-[9px] uppercase tracking-[0.2em] text-copper-light font-semibold block">
+                        Select Ritual Category
+                      </span>
+                      <div className="grid grid-cols-2 gap-2">
+                        {categoryPreviews.map((cat, cIdx) => {
+                          const isCatSelected = cIdx === hoveredCategoryIndex;
+                          return (
+                            <button
+                              key={cat.title}
+                              type="button"
+                              onClick={() => {
+                                setHoveredCategoryIndex(cIdx);
+                                setHoveredServiceIndex(0);
+                              }}
+                              className={cn(
+                                "p-2.5 text-left text-xs font-light transition-all border flex flex-col justify-between h-16",
+                                isCatSelected
+                                  ? "border-copper-light bg-white/15 text-copper-light font-medium"
+                                  : "border-white/10 bg-white/5 text-background/80 hover:bg-white/10"
+                              )}
+                            >
+                              <span className="line-clamp-1">{cat.title}</span>
+                              <span className="text-[9px] text-copper-light/80 block">{cat.treatments.length} Services</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Active Category Treatments Carousel / Scroll */}
+                    <div className="space-y-2.5 pt-2 border-t border-white/10">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] uppercase tracking-wider text-copper-light font-semibold">
+                          {activeCategory.title} Menu
+                        </span>
+                        <Link
+                          to={activeCategory.href}
+                          onClick={() => {
+                            setOpen(false);
+                            setTreatmentsOpen(false);
+                          }}
+                          className="text-[10px] uppercase tracking-wider text-copper-light underline"
+                        >
+                          View Full Category →
+                        </Link>
+                      </div>
+
+                      <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
+                        {activeCategory.treatments.map((service, sIdx) => {
+                          const isServiceActive = sIdx === hoveredServiceIndex;
+                          return (
+                            <div
+                              key={service.name}
+                              onClick={() => setHoveredServiceIndex(sIdx)}
+                              className={cn(
+                                "p-2.5 text-xs transition-all border flex items-center justify-between cursor-pointer",
+                                isServiceActive
+                                  ? "border-copper/50 bg-white/15 text-background"
+                                  : "border-white/5 bg-white/5 text-background/80"
+                              )}
+                            >
+                              <div className="pr-2 truncate">
+                                <p className="font-medium truncate">{service.name}</p>
+                                {service.duration && (
+                                  <p className="text-[9px] text-background/60">{service.duration}</p>
+                                )}
+                              </div>
+                              <span className="text-[10px] text-copper-light font-semibold shrink-0">
+                                {service.price}
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Active Service Showcase Card */}
+                    <div className="border border-copper/30 bg-background/90 p-3 space-y-2">
+                      <div className="flex items-baseline justify-between gap-2">
+                        <h5 className="font-display text-sm text-background font-light truncate">
+                          {activeService.name}
+                        </h5>
+                        <span className="text-xs text-copper-light font-medium shrink-0">
+                          {activeService.price}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-background/70 leading-4 line-clamp-2">
+                        {activeCategory.description}
+                      </p>
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="w-full h-9 rounded-none border-copper-light bg-transparent text-[9px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper-light hover:text-foreground mt-1"
+                      >
+                        <Link
+                          to={activeCategory.href}
+                          onClick={() => {
+                            setOpen(false);
+                            setTreatmentsOpen(false);
+                          }}
+                        >
+                          Book {activeService.name}
+                        </Link>
+                      </Button>
+                    </div>
+                  </motion.div>
+                )}
+
+                <Link
+                  key="treatments-all"
+                  to="/treatments"
+                  onClick={() => setOpen(false)}
+                  className="font-display text-2xl font-light text-background hover:text-copper-light transition-colors py-1"
+                >
+                  Complete Menu Brochure
                 </Link>
-                <Link key="about" to="/about" onClick={() => setOpen(false)} className="font-display text-3xl font-light text-background hover:text-copper-light transition-colors">
+                <Link
+                  key="about"
+                  to="/about"
+                  onClick={() => setOpen(false)}
+                  className="font-display text-2xl font-light text-background hover:text-copper-light transition-colors py-1"
+                >
                   About Lumé
                 </Link>
-                <Link key="contact" to="/contact" onClick={() => setOpen(false)} className="font-display text-3xl font-light text-background hover:text-copper-light transition-colors">
+                <Link
+                  key="contact"
+                  to="/contact"
+                  onClick={() => setOpen(false)}
+                  className="font-display text-2xl font-light text-background hover:text-copper-light transition-colors py-1"
+                >
                   Contact Studio
                 </Link>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-white/10 space-y-4">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">Services Collections</span>
-              <div className="grid gap-3 sm:grid-cols-2">
+            {/* Quick Category Direct Links */}
+            <div className="pt-4 border-t border-white/10 space-y-3">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">
+                Direct Collections
+              </span>
+              <div className="grid gap-2 grid-cols-2">
                 {categoryPreviews.map((cat) => (
                   <Link
                     key={cat.title}
                     to={cat.href}
                     onClick={() => setOpen(false)}
-                    className="p-3 border border-copper/20 bg-white/5 hover:bg-white/10 text-xs font-light text-background flex items-center justify-between"
+                    className="p-2.5 border border-copper/20 bg-white/5 hover:bg-white/10 text-xs font-light text-background flex items-center justify-between"
                   >
-                    <span>{cat.title}</span>
-                    <ChevronRight className="size-3.5 text-copper-light" />
+                    <span className="truncate pr-1">{cat.title}</span>
+                    <ChevronRight className="size-3 text-copper-light shrink-0" />
                   </Link>
                 ))}
               </div>
             </div>
 
-            <div className="pt-6 border-t border-white/10 space-y-3">
-              <Button asChild variant="outline" className="w-full h-12 rounded-none border-copper-light bg-transparent text-xs uppercase tracking-[0.18em] text-copper-light hover:bg-copper-light hover:text-foreground">
+            {/* Call Studio Button */}
+            <div className="pt-4 border-t border-white/10 space-y-3">
+              <Button
+                asChild
+                variant="outline"
+                className="w-full h-12 rounded-none border-copper-light bg-transparent text-xs uppercase tracking-[0.18em] text-copper-light hover:bg-copper-light hover:text-foreground"
+              >
                 <a href="tel:+17804108278">Call Studio (780) 410-8278</a>
               </Button>
             </div>
