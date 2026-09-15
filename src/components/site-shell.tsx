@@ -285,15 +285,130 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-copper/20 bg-foreground text-background py-16 px-5 sm:px-8">
-      <div className="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
-        <div>
-          <h3 className="font-display text-2xl font-light text-background">Lumé Aesthetics</h3>
-          <p className="mt-1 text-xs text-background/60">Beautiful skin. Confidence within.</p>
+    <footer className="border-t border-copper/25 bg-foreground text-background">
+      <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
+        
+        {/* Main Footer Grid */}
+        <div className="grid gap-12 lg:grid-cols-12 items-start">
+          
+          {/* Brand & Mission Column */}
+          <div className="lg:col-span-4 space-y-6">
+            <Link to="/" aria-label="Lumé Aesthetics Home" className="inline-block">
+              <img
+                src="/lume-logo-full.svg"
+                alt="Lumé Aesthetics"
+                className="h-12 w-auto object-contain"
+              />
+            </Link>
+            <p className="text-xs leading-7 text-background/70 max-w-sm font-light">
+              A private beauty atelier in Sherwood Park, Alberta. Unhurried facial & body rituals, quietly polished beauty artistry, and consultation-led clinical aesthetics.
+            </p>
+            <div className="flex items-center gap-4 text-xs">
+              <a href="tel:+17804108278" className="text-copper-light hover:underline font-medium">
+                (780) 410-8278
+              </a>
+              <span className="text-background/30">•</span>
+              <a href="mailto:info@lumeaesthetics.co" className="text-copper-light hover:underline font-medium">
+                info@lumeaesthetics.co
+              </a>
+            </div>
+          </div>
+
+          {/* Service Links Column */}
+          <div className="lg:col-span-3 space-y-4">
+            <p className="eyebrow text-copper-light text-[10px] uppercase tracking-[0.2em] font-semibold">
+              Treatment Menu
+            </p>
+            <ul className="space-y-2.5 text-xs text-background/75">
+              <li>
+                <Link to="/services/skin-and-body-rituals" className="hover:text-copper-light transition-colors">
+                  Skin & Body Rituals
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/spa-packages" className="hover:text-copper-light transition-colors">
+                  Signature Spa Packages
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/beauty-atelier" className="hover:text-copper-light transition-colors">
+                  Beauty Atelier & Artistry
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/advanced-aesthetics" className="hover:text-copper-light transition-colors">
+                  Advanced Clinical Aesthetics
+                </Link>
+              </li>
+              <li>
+                <Link to="/treatments" className="hover:text-copper-light transition-colors">
+                  Full Treatment Brochure →
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Atelier Navigation Column */}
+          <div className="lg:col-span-2 space-y-4">
+            <p className="eyebrow text-copper-light text-[10px] uppercase tracking-[0.2em] font-semibold">
+              The Atelier
+            </p>
+            <ul className="space-y-2.5 text-xs text-background/75">
+              <li>
+                <Link to="/about" className="hover:text-copper-light transition-colors">
+                  About Philosophy
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-copper-light transition-colors">
+                  Location & Contact
+                </Link>
+              </li>
+              <li>
+                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-copper-light transition-colors">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-copper-light transition-colors">
+                  Facebook
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Location & Emblem Column */}
+          <div className="lg:col-span-3 space-y-5 border-l border-white/10 pl-0 lg:pl-8">
+            <div className="flex items-center gap-3">
+              <img src="/lume-emblem.svg" alt="Lumé Emblem" className="h-8 w-8 object-contain" />
+              <div>
+                <p className="text-xs text-background font-medium">Sherwood Park Studio</p>
+                <p className="text-[11px] text-background/60">Alberta, T8H 0Y6, Canada</p>
+              </div>
+            </div>
+            <p className="text-[11px] leading-5 text-background/60">
+              Hours of Care: Mon–Fri 10am–7pm | Sat 10am–5pm | Sun By Appointment
+            </p>
+            <Button
+              asChild
+              variant="outline"
+              className="w-full h-10 rounded-none border-copper-light bg-transparent text-[10px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper-light hover:text-foreground transition-all duration-300"
+            >
+              <a href="tel:+17804108278">Book Consultation</a>
+            </Button>
+          </div>
+
         </div>
-        <p className="text-xs text-background/50">
-          © {new Date().getFullYear()} Lumé Aesthetics. All rights reserved.
-        </p>
+
+        {/* Bottom Copyright Strip */}
+        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-background/50">
+          <p>© {new Date().getFullYear()} Lumé Aesthetics Atelier. All rights reserved.</p>
+          <div className="flex items-center gap-6">
+            <span>Bioline Jatò Professional Partner</span>
+            <span>Health Canada Clinical Hygiene Protocol</span>
+          </div>
+        </div>
+
       </div>
     </footer>
   );

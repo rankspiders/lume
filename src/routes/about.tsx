@@ -99,29 +99,62 @@ function AboutPage() {
       </section>
 
       {/* Core Standards */}
-      <section className="bg-foreground px-5 py-24 text-background sm:px-8">
-        <div className="mx-auto max-w-7xl">
-          <p className="eyebrow text-copper-light">Our Standards</p>
-          <div className="mt-10 grid gap-10 md:grid-cols-3">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-              <span className="font-display text-5xl text-copper-light">01</span>
-              <h3 className="mt-5 font-display text-3xl font-light">Clean & Sustainable</h3>
-              <p className="mt-3 text-sm leading-7 text-background/65">
-                We formulate with clean, high-purity botanicals and skin-identical active ingredients that respect skin barrier integrity.
+      <section className="bg-foreground px-5 py-24 text-background sm:px-8 relative overflow-hidden">
+        <div className="mx-auto max-w-7xl relative z-10">
+          <p className="eyebrow text-copper-light text-center sm:text-left">Our Core Philosophy</p>
+          <h2 className="mt-3 font-display text-4xl sm:text-5xl font-light text-background text-center sm:text-left">
+            Uncompromising Standards of Care
+          </h2>
+          
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="group border border-copper/30 bg-white/5 p-8 transition-all duration-300 hover:border-copper-light hover:bg-white/10 shadow-lg relative"
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-display text-5xl text-copper-light transition-transform duration-300 group-hover:scale-110">01</span>
+                <Sparkles className="size-5 text-copper-light opacity-60 group-hover:opacity-100 transition-opacity" />
+              </div>
+              <h3 className="mt-6 font-display text-3xl font-light text-background">Clean & Sustainable</h3>
+              <p className="mt-4 text-xs leading-7 text-background/70 font-light">
+                We formulate with clean, high-purity botanicals and skin-identical active ingredients that respect natural skin barrier integrity without compromise.
               </p>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }}>
-              <span className="font-display text-5xl text-copper-light">02</span>
-              <h3 className="mt-5 font-display text-3xl font-light">Tailored Precision</h3>
-              <p className="mt-3 text-sm leading-7 text-background/65">
-                Every detail—from custom facial peels to lash lifts and aesthetic placement—is executed with meticulous detail.
+
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="group border border-copper/30 bg-white/5 p-8 transition-all duration-300 hover:border-copper-light hover:bg-white/10 shadow-lg relative"
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-display text-5xl text-copper-light transition-transform duration-300 group-hover:scale-110">02</span>
+                <Sparkles className="size-5 text-copper-light opacity-60 group-hover:opacity-100 transition-opacity" />
+              </div>
+              <h3 className="mt-6 font-display text-3xl font-light text-background">Tailored Precision</h3>
+              <p className="mt-4 text-xs leading-7 text-background/70 font-light">
+                Every detail—from custom facial AHA peels to lash lifts, gel nail artistry, and aesthetic placement—is executed with meticulous clinical detail.
               </p>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.3 }}>
-              <span className="font-display text-5xl text-copper-light">03</span>
-              <h3 className="mt-5 font-display text-3xl font-light">Unhurried Sanctuary</h3>
-              <p className="mt-3 text-sm leading-7 text-background/65">
-                The studio atmosphere is calm by design, giving every appointment the time, privacy, and undivided attention it deserves.
+
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="group border border-copper/30 bg-white/5 p-8 transition-all duration-300 hover:border-copper-light hover:bg-white/10 shadow-lg relative"
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-display text-5xl text-copper-light transition-transform duration-300 group-hover:scale-110">03</span>
+                <Sparkles className="size-5 text-copper-light opacity-60 group-hover:opacity-100 transition-opacity" />
+              </div>
+              <h3 className="mt-6 font-display text-3xl font-light text-background">Unhurried Sanctuary</h3>
+              <p className="mt-4 text-xs leading-7 text-background/70 font-light">
+                The studio atmosphere is calm by design, giving every appointment the time, privacy, and undivided 1-on-1 attention it deserves.
               </p>
             </motion.div>
           </div>
