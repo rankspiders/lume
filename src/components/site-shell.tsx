@@ -15,36 +15,102 @@ const links = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [treatmentsOpen, setTreatmentsOpen] = useState(false);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-foreground/95 backdrop-blur-xl">
-      <div className="mx-auto flex h-20 max-w-[1480px] items-center justify-between px-5 sm:px-8">
+      <div className="relative mx-auto flex h-20 max-w-[1480px] items-center justify-between px-5 sm:px-8">
+        {/* Left: Full Brand Logo */}
         <Link to="/" aria-label="Lumé Aesthetics home" onClick={() => setOpen(false)} className="flex items-center gap-3">
           <img
             src="/lume-logo-full.svg"
             alt="Lumé Aesthetics"
-            className="h-12 w-auto sm:h-14 object-contain transition-opacity hover:opacity-90"
+            className="h-11 w-auto sm:h-13 object-contain transition-opacity hover:opacity-90"
           />
         </Link>
-        <nav aria-label="Primary navigation" className="hidden items-center gap-10 md:flex">
-          {links.map((link) => (
+
+        {/* Center: Centered Primary Navigation */}
+        <nav aria-label="Primary navigation" className="absolute left-1/2 -translate-x-1/2 hidden items-center gap-10 md:flex">
+          {/* Treatments Nav Item with Hover/Click Mega Menu */}
+          <div
+            className="relative py-6"
+            onMouseEnter={() => setTreatmentsOpen(true)}
+            onMouseLeave={() => setTreatmentsOpen(false)}
+          >
             <Link
-              key={link.to}
-              to={link.to}
-              className="text-[11px] font-semibold uppercase tracking-[0.14em] text-background/80 transition-colors hover:text-copper-light"
-              activeProps={{ className: "text-[11px] font-semibold uppercase tracking-[0.14em] text-copper-light" }}
+              to="/treatments"
+              className="text-[11px] font-semibold uppercase tracking-[0.16em] text-background/80 transition-colors hover:text-copper-light flex items-center gap-1.5"
+              activeProps={{ className: "text-[11px] font-semibold uppercase tracking-[0.16em] text-copper-light" }}
             >
-              {link.label}
+              Treatments
+              <span className="text-[8px] text-copper-light">▼</span>
             </Link>
-          ))}
+
+            {/* Treatments Mega Menu Dropdown */}
+            {treatmentsOpen && (
+              <div className="absolute top-16 -left-32 w-[680px] rounded-none border border-copper/30 bg-foreground/98 p-7 shadow-2xl backdrop-blur-2xl grid grid-cols-2 gap-7 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div>
+                  <p className="eyebrow text-copper-light text-[10px] pb-2 border-b border-white/10">01. Skin & Body Rituals</p>
+                  <ul className="mt-3 space-y-2 text-xs text-background/80">
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Aqua Luxe Facial ($125)</Link></li>
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Prima Glow ($135)</Link></li>
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Radiance C Facial ($145)</Link></li>
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Collagen Lifting Facial ($195)</Link></li>
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Aura Infusion Glass Skin ($199)</Link></li>
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Mocha Contour & Body Gua Sha ($145)</Link></li>
+                  </ul>
+                  
+                  <p className="eyebrow text-copper-light text-[10px] mt-5 pb-2 border-b border-white/10">02. Spa Packages</p>
+                  <ul className="mt-3 space-y-2 text-xs text-background/80">
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light font-medium transition-colors">You Deserve It! — 2 hrs ($265)</Link></li>
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light font-medium transition-colors">Queen For A Day! — 3 hrs ($395)</Link></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <p className="eyebrow text-copper-light text-[10px] pb-2 border-b border-white/10">03. Beauty Atelier</p>
+                  <ul className="mt-3 space-y-2 text-xs text-background/80">
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">The Glam Chapter (Makeup)</Link></li>
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Polished Nails ($65+)</Link></li>
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Lash Couture Lift & Tint ($99)</Link></li>
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Silk Waxing & Precision Threading</Link></li>
+                  </ul>
+
+                  <p className="eyebrow text-copper-light text-[10px] mt-5 pb-2 border-b border-white/10">04. Advanced Aesthetics</p>
+                  <ul className="mt-3 space-y-2 text-xs text-background/80">
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Lumé Botox® ($10/unit) & Dermal Fillers</Link></li>
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">PRP & Exosome Microneedling</Link></li>
+                    <li><Link to="/treatments" onClick={() => setTreatmentsOpen(false)} className="hover:text-copper-light transition-colors">Teeth Whitening ($199) & IV Therapies</Link></li>
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <Link
+            to="/about"
+            className="text-[11px] font-semibold uppercase tracking-[0.16em] text-background/80 transition-colors hover:text-copper-light"
+            activeProps={{ className: "text-[11px] font-semibold uppercase tracking-[0.16em] text-copper-light" }}
+          >
+            About
+          </Link>
+          <Link
+            to="/contact"
+            className="text-[11px] font-semibold uppercase tracking-[0.16em] text-background/80 transition-colors hover:text-copper-light"
+            activeProps={{ className: "text-[11px] font-semibold uppercase tracking-[0.16em] text-copper-light" }}
+          >
+            Contact
+          </Link>
         </nav>
+
+        {/* Right: Actions & Emblem Icon */}
         <div className="flex items-center gap-4">
           <div className="hidden md:block">
             <Button asChild variant="outline" className="h-11 rounded-none border-copper-light bg-transparent px-6 text-[11px] uppercase tracking-[0.18em] text-copper-light shadow-none hover:bg-copper-light hover:text-foreground">
               <a href="tel:+17804108278">Book a ritual</a>
             </Button>
           </div>
-          <Link to="/" aria-label="Lumé Aesthetics logo mark" onClick={() => setOpen(false)} className="flex items-center">
+          <Link to="/" aria-label="Lumé Aesthetics emblem icon" onClick={() => setOpen(false)} className="flex items-center">
             <img
               src="/lume-emblem.svg"
               alt="Lumé Aesthetics emblem"
