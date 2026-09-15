@@ -77,37 +77,70 @@ function TreatmentsPage() {
       description="Explore our complete treatment brochure with exact pricing. Select a category below or use the sidebar to jump into detailed service pages."
       activeCategoryHref="/treatments"
     >
-      {/* Clickable Service Category Cards Banner with Direct Redirection */}
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        {categoryShowcase.map((cat) => (
-          <Link
-            key={cat.title}
-            to={cat.href}
-            resetScroll={false}
-            className="group relative overflow-hidden border border-copper/30 bg-foreground text-background shadow-md transition-all duration-300 hover:border-copper"
-          >
-            <div className="overflow-hidden h-36 relative">
-              <img
-                src={cat.image}
-                alt={cat.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/40 to-transparent" />
-              <span className="absolute top-2 right-2 text-[9px] uppercase tracking-widest bg-copper/90 text-primary-foreground px-2 py-0.5 font-semibold">
-                {cat.count}
-              </span>
-            </div>
-            <div className="p-3.5 space-y-1">
-              <span className="text-[9px] uppercase tracking-widest text-copper-light block font-medium">{cat.eyebrow}</span>
-              <div className="flex items-center justify-between">
-                <h4 className="font-display text-base font-light text-background group-hover:text-copper-light transition-colors">
-                  {cat.title}
-                </h4>
-                <ArrowRight className="size-3.5 text-copper-light transition-transform group-hover:translate-x-1" />
-              </div>
-            </div>
-          </Link>
-        ))}
+      {/* 4 Featured Treatment Category Showcase Panels */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between border-b border-copper/20 pb-3">
+          <div>
+            <span className="eyebrow text-copper text-[10px]">Four Care Pillars</span>
+            <h3 className="font-display text-2xl font-light text-foreground">Explore Treatment Categories</h3>
+          </div>
+          <span className="text-[10px] uppercase tracking-widest text-muted-foreground hidden sm:block">Select a category</span>
+        </div>
+
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          {categoryShowcase.map((cat, idx) => (
+            <motion.div
+              key={cat.title}
+              custom={idx}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInVariant}
+            >
+              <Link
+                to={cat.href}
+                resetScroll={false}
+                className="group flex flex-col justify-between h-full overflow-hidden border border-copper/30 bg-foreground text-background shadow-md transition-all duration-500 hover:border-copper hover:shadow-xl"
+              >
+                <div>
+                  <div className="overflow-hidden h-44 relative">
+                    <img
+                      src={cat.image}
+                      alt={cat.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/30 to-transparent" />
+                    <span className="absolute top-3 right-3 text-[9px] uppercase tracking-widest bg-copper/90 text-primary-foreground px-2.5 py-1 font-semibold shadow-sm">
+                      {cat.count}
+                    </span>
+                    <span className="absolute bottom-3 left-4 text-[9px] uppercase tracking-[0.2em] text-copper-light font-semibold">
+                      {cat.eyebrow}
+                    </span>
+                  </div>
+                  
+                  <div className="p-5 space-y-2">
+                    <h4 className="font-display text-2xl font-light text-background group-hover:text-copper-light transition-colors">
+                      {cat.title}
+                    </h4>
+                    <p className="text-xs text-background/80 leading-5 line-clamp-4 font-light">
+                      {idx === 0 && "Custom 20% AHA botanical peels, Bioline hyaluronic facials, and Gua Sha body contouring."}
+                      {idx === 1 && "Multi-hour head-to-toe luxury experiences combining facials, body wraps, scalp care & foot rituals."}
+                      {idx === 2 && "Quietly polished event makeup, gel nail artistry, lash couture lifts & silk body waxing."}
+                      {idx === 3 && "Consultation-led clinical injectables, PRP microneedling, exosome therapy & IV infusions."}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-4 sm:p-5 pt-0 mt-auto">
+                  <div className="w-full h-10 border border-copper-light/40 flex items-center justify-between px-3 text-[10px] uppercase tracking-[0.1em] text-copper-light group-hover:bg-copper-light group-hover:text-foreground transition-all duration-300">
+                    <span className="whitespace-nowrap font-medium">Explore Rituals</span>
+                    <ArrowRight className="size-3.5 text-copper-light group-hover:text-foreground shrink-0 transition-transform group-hover:translate-x-1 ml-1" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       {/* 01. Signature Spa Packages */}

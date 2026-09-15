@@ -62,32 +62,81 @@ export function PageIntro({
   children: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden bg-secondary/80 px-5 pb-16 pt-28 sm:px-8 sm:pb-20 sm:pt-36">
+    <section className="relative overflow-hidden bg-secondary/80 px-5 pb-16 pt-28 sm:px-8 sm:pb-20 sm:pt-36 border-b border-copper/15">
       <div className="mx-auto max-w-7xl">
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="eyebrow text-copper"
-        >
-          {eyebrow}
-        </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-4 font-display text-4xl font-light leading-tight sm:text-6xl lg:text-7xl"
-        >
-          {title}
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-6 max-w-2xl text-sm leading-8 text-muted-foreground sm:text-base"
-        >
-          {children}
-        </motion.p>
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+          {/* Main Title & Description Column */}
+          <div className="lg:col-span-7">
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="eyebrow text-copper"
+            >
+              {eyebrow}
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="mt-4 font-display text-4xl font-light leading-tight sm:text-6xl lg:text-7xl"
+            >
+              {title}
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="mt-6 max-w-2xl text-sm leading-8 text-muted-foreground sm:text-base"
+            >
+              {children}
+            </motion.p>
+          </div>
+
+          {/* Right-Side Feature Banner & Quick Action (Fills empty right space) */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="lg:col-span-5 border border-copper/30 bg-background/60 backdrop-blur-sm p-6 space-y-4 shadow-sm"
+          >
+            <div className="flex items-center justify-between border-b border-copper/15 pb-3">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-copper font-semibold">
+                Lumé Clinical Atelier
+              </span>
+              <span className="text-[9px] uppercase tracking-widest text-muted-foreground bg-copper/10 text-copper px-2 py-0.5 font-medium">
+                Sherwood Park, AB
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <p className="font-display text-2xl font-light text-copper">24+ Rituals</p>
+                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-0.5">Custom Formulated</p>
+              </div>
+              <div>
+                <p className="font-display text-2xl font-light text-copper">Bioline Jatò</p>
+                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-0.5">Professional Partner</p>
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-copper/15 flex flex-col sm:flex-row items-center gap-3">
+              <Button
+                asChild
+                variant="outline"
+                className="w-full h-10 rounded-none border-copper bg-transparent text-[10px] uppercase tracking-[0.16em] text-copper hover:bg-copper hover:text-primary-foreground transition-all duration-300"
+              >
+                <a href="tel:+17804108278">Call Studio (780) 410-8278</a>
+              </Button>
+              <Button
+                asChild
+                className="w-full h-10 rounded-none bg-foreground text-background text-[10px] uppercase tracking-[0.16em] hover:bg-copper-light hover:text-foreground transition-all duration-300"
+              >
+                <a href="mailto:info@lumeaesthetics.co?subject=Consultation%20Enquiry">Consult Specialist</a>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -184,7 +233,7 @@ export function SiteHeader() {
                 </div>
 
                 {/* Col 2: Interactive Services List (Center) */}
-                <div className="col-span-4 border-r border-white/10 pr-4 space-y-1 overflow-y-auto max-h-[340px]">
+                <div className="col-span-4 border-r border-white/10 pr-4 space-y-1 overflow-y-auto max-h-[340px] custom-scrollbar">
                   <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-copper-light block mb-3 pl-2">
                     {activeCategory.title} Treatments
                   </span>
@@ -304,7 +353,7 @@ export function SiteHeader() {
           animate={{ opacity: 1, height: "calc(100dvh - 5rem)" }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.35, ease: "easeInOut" }}
-          className="fixed inset-x-0 top-20 z-40 overflow-y-auto border-t border-copper/15 bg-foreground px-5 py-8 text-background md:hidden"
+          className="fixed inset-x-0 top-20 z-40 overflow-y-auto border-t border-copper/15 bg-foreground px-5 py-8 text-background md:hidden custom-scrollbar"
         >
           <nav className="flex flex-col space-y-6" aria-label="Mobile navigation">
             {/* Primary Links */}
@@ -339,12 +388,12 @@ export function SiteHeader() {
                     transition={{ duration: 0.25 }}
                     className="border border-copper/30 bg-white/5 p-4 space-y-5 rounded-none"
                   >
-                    {/* Category Selector Tabs */}
+                    {/* 4-Panel Ritual Collections Selector */}
                     <div className="space-y-2">
-                      <span className="text-[9px] uppercase tracking-[0.2em] text-copper-light font-semibold block">
-                        Select Ritual Category
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">
+                        Ritual Collections
                       </span>
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="flex flex-col space-y-1.5 border border-copper/20 bg-black/20 p-1.5">
                         {categoryPreviews.map((cat, cIdx) => {
                           const isCatSelected = cIdx === hoveredCategoryIndex;
                           return (
@@ -356,14 +405,24 @@ export function SiteHeader() {
                                 setHoveredServiceIndex(0);
                               }}
                               className={cn(
-                                "p-2.5 text-left text-xs font-light transition-all border flex flex-col justify-between h-16",
+                                "w-full px-3.5 py-3 text-left transition-all duration-200 flex items-center justify-between group",
                                 isCatSelected
-                                  ? "border-copper-light bg-white/15 text-copper-light font-medium"
-                                  : "border-white/10 bg-white/5 text-background/80 hover:bg-white/10"
+                                  ? "bg-white/15 text-copper-light font-medium border-l-2 border-copper-light shadow-sm"
+                                  : "text-background/80 hover:text-background hover:bg-white/5 border-l-2 border-transparent"
                               )}
                             >
-                              <span className="line-clamp-1">{cat.title}</span>
-                              <span className="text-[9px] text-copper-light/80 block">{cat.treatments.length} Services</span>
+                              <div className="flex items-center gap-2.5">
+                                <span className="text-xs tracking-wide">{cat.title}</span>
+                                <span className="text-[9px] uppercase tracking-wider text-copper-light/70 bg-white/5 px-2 py-0.5">
+                                  {cat.treatments.length}
+                                </span>
+                              </div>
+                              <ChevronRight
+                                className={cn(
+                                  "size-4 transition-transform duration-200",
+                                  isCatSelected ? "translate-x-1 text-copper-light opacity-100" : "opacity-30 group-hover:opacity-70"
+                                )}
+                              />
                             </button>
                           );
                         })}
@@ -388,7 +447,7 @@ export function SiteHeader() {
                         </Link>
                       </div>
 
-                      <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
+                      <div className="space-y-2 max-h-56 overflow-y-auto pr-1 custom-scrollbar">
                         {activeCategory.treatments.map((service, sIdx) => {
                           const isServiceActive = sIdx === hoveredServiceIndex;
                           return (

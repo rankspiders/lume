@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, type Variants } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Sparkles } from "lucide-react";
 
 import { TreatmentSidebarLayout } from "@/components/treatment-sidebar-layout";
 import { Button } from "@/components/ui/button";
@@ -88,6 +88,27 @@ function SpaPackagesPage() {
             </div>
 
             <p className="text-xs leading-6 text-muted-foreground">{pkg.summary}</p>
+
+            {pkg.detailedDescription && (
+              <div className="border-t border-copper/15 pt-4 text-xs text-muted-foreground space-y-3">
+                <div className="font-medium text-[10px] uppercase tracking-[0.16em] text-copper flex items-center gap-2 select-none">
+                  <Sparkles className="size-3.5 text-copper" />
+                  <span>Full Package Experience Breakdown</span>
+                </div>
+                <p className="text-xs leading-6 text-foreground/90">{pkg.detailedDescription}</p>
+
+                {pkg.procedureSteps && (
+                  <div className="space-y-1.5 pt-1">
+                    <span className="text-[10px] uppercase tracking-wider font-semibold text-copper block">Package Ritual Progression</span>
+                    <ol className="space-y-1 text-[11px] text-muted-foreground list-decimal list-inside">
+                      {pkg.procedureSteps.map((step) => (
+                        <li key={step}>{step}</li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
+              </div>
+            )}
 
             {pkg.includedItems && (
               <div className="bg-background/80 p-5 border border-copper/15 space-y-3">

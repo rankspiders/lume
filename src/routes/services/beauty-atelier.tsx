@@ -91,6 +91,38 @@ function BeautyAtelierPage() {
                 <p className="text-[10px] text-muted-foreground uppercase tracking-widest mt-0.5">Duration: {treatment.duration}</p>
               )}
               <p className="mt-3 text-xs leading-6 text-muted-foreground">{treatment.summary}</p>
+
+              {treatment.detailedDescription && (
+                <div className="border-t border-copper/15 pt-3 mt-3 text-xs text-muted-foreground space-y-2">
+                  <div className="font-medium text-[10px] uppercase tracking-[0.16em] text-copper flex items-center gap-1.5 select-none">
+                    <Sparkles className="size-3 text-copper" />
+                    <span>Procedure Breakdown</span>
+                  </div>
+                  <p className="text-xs leading-5 text-foreground/90">{treatment.detailedDescription}</p>
+
+                  {treatment.keyBenefits && (
+                    <div className="space-y-1 pt-1">
+                      <span className="text-[9px] uppercase tracking-wider font-semibold text-copper block">Key Highlights</span>
+                      <ul className="grid grid-cols-1 gap-1 text-[11px] text-muted-foreground list-disc list-inside">
+                        {treatment.keyBenefits.map((b) => (
+                          <li key={b}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {treatment.procedureSteps && (
+                    <div className="space-y-1 pt-1">
+                      <span className="text-[9px] uppercase tracking-wider font-semibold text-copper block">Steps</span>
+                      <ol className="space-y-1 text-[11px] text-muted-foreground list-decimal list-inside">
+                        {treatment.procedureSteps.map((step) => (
+                          <li key={step}>{step}</li>
+                        ))}
+                      </ol>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
             <Button
               asChild

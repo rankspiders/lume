@@ -93,13 +93,13 @@ function SkinAndBodyPage() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInVariant}
-              className="group border border-copper/20 bg-background p-6 shadow-sm transition-all duration-300 hover:border-copper grid gap-6 sm:grid-cols-12 items-center"
+              className="group border border-copper/20 bg-background p-6 shadow-sm transition-all duration-300 hover:border-copper grid gap-6 sm:grid-cols-12 items-start"
             >
               <div className="sm:col-span-4 overflow-hidden border border-copper/15">
                 <img
                   src={t.image}
                   alt={t.name}
-                  className="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="sm:col-span-8 flex flex-col justify-between h-full space-y-3">
@@ -113,14 +113,50 @@ function SkinAndBodyPage() {
                   )}
                   <p className="mt-2 text-xs leading-6 text-muted-foreground">{t.summary}</p>
                 </div>
-                <div className="pt-2">
+
+                {/* Permanent Full Description & Procedure Breakdown */}
+                {t.detailedDescription && (
+                  <div className="border-t border-copper/15 pt-3 mt-2 text-xs text-muted-foreground">
+                    <div className="font-medium text-[10px] uppercase tracking-[0.16em] text-copper flex items-center gap-2 py-1 select-none">
+                      <Sparkles className="size-3.5 text-copper" />
+                      <span>Full Procedure & Treatment Breakdown</span>
+                    </div>
+                    <div className="mt-2 space-y-3 pt-2 text-xs text-foreground/90 leading-6 border-t border-copper/10">
+                      <p>{t.detailedDescription}</p>
+
+                      {t.keyBenefits && (
+                        <div className="space-y-1.5 pt-1">
+                          <span className="text-[10px] uppercase tracking-wider font-semibold text-copper block">Key Benefits</span>
+                          <ul className="grid grid-cols-1 gap-1 text-[11px] text-muted-foreground list-disc list-inside">
+                            {t.keyBenefits.map((b) => (
+                              <li key={b}>{b}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {t.procedureSteps && (
+                        <div className="space-y-1.5 pt-1">
+                          <span className="text-[10px] uppercase tracking-wider font-semibold text-copper block">Step-by-Step Procedure</span>
+                          <ol className="space-y-1 text-[11px] text-muted-foreground list-decimal list-inside">
+                            {t.procedureSteps.map((step) => (
+                              <li key={step}>{step}</li>
+                            ))}
+                          </ol>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                <div className="pt-2 flex items-center justify-between">
                   <Button
                     asChild
                     variant="outline"
                     className="h-9 rounded-none border-copper bg-transparent px-5 text-[9px] uppercase tracking-[0.16em] text-copper hover:bg-copper hover:text-primary-foreground transition-all duration-300"
                   >
                     <a href={`mailto:info@lumeaesthetics.co?subject=${encodeURIComponent(`Enquiry about ${t.name}`)}`}>
-                      Enquire Service
+                      Enquire Service ({t.price})
                     </a>
                   </Button>
                 </div>

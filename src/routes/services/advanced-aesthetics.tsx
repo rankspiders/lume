@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, type Variants } from "framer-motion";
-import { ShieldCheck, Stethoscope } from "lucide-react";
+import { ShieldCheck, Stethoscope, Sparkles } from "lucide-react";
 
 import { TreatmentSidebarLayout } from "@/components/treatment-sidebar-layout";
 import { Button } from "@/components/ui/button";
@@ -120,6 +120,39 @@ function AdvancedAestheticsPage() {
                   )}
                   <p className="mt-2 text-xs leading-6 text-muted-foreground">{t.summary}</p>
                 </div>
+
+                {t.detailedDescription && (
+                  <div className="border-t border-copper/15 pt-3 mt-2 text-xs text-muted-foreground space-y-2">
+                    <div className="font-medium text-[10px] uppercase tracking-[0.16em] text-copper flex items-center gap-1.5 select-none">
+                      <Sparkles className="size-3.5 text-copper" />
+                      <span>Full Procedure & Treatment Breakdown</span>
+                    </div>
+                    <p className="text-xs leading-5 text-foreground/90">{t.detailedDescription}</p>
+
+                    {t.keyBenefits && (
+                      <div className="space-y-1 pt-1">
+                        <span className="text-[10px] uppercase tracking-wider font-semibold text-copper block">Key Clinical Benefits</span>
+                        <ul className="grid grid-cols-1 gap-1 text-[11px] text-muted-foreground list-disc list-inside">
+                          {t.keyBenefits.map((b) => (
+                            <li key={b}>{b}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {t.procedureSteps && (
+                      <div className="space-y-1 pt-1">
+                        <span className="text-[10px] uppercase tracking-wider font-semibold text-copper block">Clinical Procedure Steps</span>
+                        <ol className="space-y-1 text-[11px] text-muted-foreground list-decimal list-inside">
+                          {t.procedureSteps.map((step) => (
+                            <li key={step}>{step}</li>
+                          ))}
+                        </ol>
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 <div>
                   <Button
                     asChild
@@ -127,7 +160,7 @@ function AdvancedAestheticsPage() {
                     className="h-9 rounded-none border-copper bg-transparent px-5 text-[9px] uppercase tracking-[0.16em] text-copper hover:bg-copper hover:text-primary-foreground transition-all duration-300"
                   >
                     <a href={`mailto:info@lumeaesthetics.co?subject=${encodeURIComponent(`Clinical Enquiry: ${t.name}`)}`}>
-                      Clinical Enquiry
+                      Clinical Enquiry ({t.price})
                     </a>
                   </Button>
                 </div>
