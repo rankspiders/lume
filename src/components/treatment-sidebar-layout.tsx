@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Sparkles, Phone, Calendar, ShieldCheck, ChevronRight } from "lucide-react";
+import { Sparkles, Phone, Calendar, ShieldCheck, ChevronRight, FileText } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { PageIntro } from "@/components/site-shell";
@@ -9,37 +9,37 @@ export const serviceCategories = [
   {
     id: "all",
     href: "/treatments",
-    title: "Complete Treatment Menu",
-    count: "All Rituals",
-    eyebrow: "00 — Full Brochure",
+    title: "Complete Menu Brochure",
+    count: "All 24+ Rituals",
+    eyebrow: "Brochure",
   },
   {
     id: "skin-and-body-rituals",
     href: "/services/skin-and-body-rituals",
     title: "Skin & Body Rituals",
     count: "10 Rituals",
-    eyebrow: "01 — Facials & Bodywork",
+    eyebrow: "Collection I",
   },
   {
     id: "spa-packages",
     href: "/services/spa-packages",
-    title: "Spa Packages",
+    title: "Signature Spa Packages",
     count: "2 Packages",
-    eyebrow: "02 — Signature Experiences",
+    eyebrow: "Collection II",
   },
   {
     id: "beauty-atelier",
     href: "/services/beauty-atelier",
     title: "Beauty Atelier",
     count: "6 Services",
-    eyebrow: "03 — Beauty & Artistry",
+    eyebrow: "Collection III",
   },
   {
     id: "advanced-aesthetics",
     href: "/services/advanced-aesthetics",
     title: "Advanced Aesthetics",
     count: "6 Clinicals",
-    eyebrow: "04 — Clinical Care",
+    eyebrow: "Collection IV",
   },
 ];
 
@@ -67,22 +67,20 @@ export function TreatmentSidebarLayout({
       <section className="px-5 py-12 sm:px-8 sm:py-20 bg-background min-h-screen">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-12 items-start">
-            
             {/* Persistent Sidebar (Top on mobile, Sticky on desktop) */}
             <aside className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
-              
               {/* Service Navigation Box */}
               <div className="border border-copper/30 bg-secondary/40 p-5 sm:p-6 shadow-sm">
-                <div className="flex items-center justify-between">
-                  <p className="eyebrow text-copper text-[10px] tracking-[0.2em] uppercase font-semibold">
-                    Service Categories
+                <div className="flex items-center justify-between border-b border-copper/15 pb-3">
+                  <p className="eyebrow text-copper text-[10px] tracking-[0.24em] uppercase font-semibold">
+                    Menu Navigation
                   </p>
-                  <span className="text-[10px] text-muted-foreground lg:hidden">Select to switch view</span>
+                  <span className="text-[10px] text-muted-foreground lg:hidden">Select view</span>
                 </div>
-                <h3 className="mt-1 font-display text-xl sm:text-2xl font-light text-foreground">
-                  Browse Treatment Menu
+                <h3 className="mt-3 font-display text-2xl font-light text-foreground">
+                  The Treatment Suites
                 </h3>
-                <nav className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2" aria-label="Treatment categories sidebar">
+                <nav className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5" aria-label="Treatment categories sidebar">
                   {serviceCategories.map((cat) => {
                     const isActive = activeCategoryHref === cat.href;
                     return (
@@ -90,26 +88,29 @@ export function TreatmentSidebarLayout({
                         key={cat.id}
                         to={cat.href}
                         resetScroll={false}
-                        className={`group flex items-center justify-between p-3 text-xs transition-all duration-200 border ${
+                        className={`group flex items-center justify-between p-3.5 text-xs transition-all duration-300 border ${
                           isActive
-                            ? "border-copper bg-copper text-primary-foreground font-medium shadow-sm"
-                            : "border-copper/15 bg-background text-foreground hover:border-copper/40 hover:bg-copper/5"
+                            ? "border-copper bg-foreground text-background font-medium shadow-md"
+                            : "border-copper/20 bg-background text-foreground hover:border-copper/50 hover:bg-copper/5"
                         }`}
                       >
                         <div className="flex items-center gap-2.5 truncate pr-2">
                           <ChevronRight
                             className={`size-3.5 shrink-0 transition-transform duration-200 ${
                               isActive
-                                ? "text-primary-foreground translate-x-0.5"
+                                ? "text-copper-light translate-x-1"
                                 : "text-copper group-hover:translate-x-1"
                             }`}
                           />
-                          <span className="truncate">{cat.title}</span>
+                          <div className="truncate">
+                            <span className="text-[9px] uppercase tracking-wider text-muted-foreground block">{cat.eyebrow}</span>
+                            <span className="truncate font-medium">{cat.title}</span>
+                          </div>
                         </div>
                         <span
                           className={`text-[9px] tracking-wider uppercase px-2 py-0.5 shrink-0 ${
                             isActive
-                              ? "bg-primary-foreground/20 text-primary-foreground"
+                              ? "bg-copper text-primary-foreground font-semibold"
                               : "bg-copper/10 text-copper"
                           }`}
                         >
@@ -119,25 +120,40 @@ export function TreatmentSidebarLayout({
                     );
                   })}
                 </nav>
+
+                {/* PDF Download Link */}
+                <div className="mt-5 pt-4 border-t border-copper/15">
+                  <a
+                    href="/Brochure.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center justify-between text-xs text-copper hover:underline p-2 font-medium"
+                  >
+                    <span className="flex items-center gap-2">
+                      <FileText className="size-3.5" /> Download PDF Brochure
+                    </span>
+                    <span className="text-[10px] text-muted-foreground">PDF</span>
+                  </a>
+                </div>
               </div>
 
               {/* Consultation & Booking Callout Widget */}
-              <div className="border border-copper/30 bg-foreground text-background p-6 sm:p-7 space-y-4 shadow-lg">
+              <div className="border border-copper/30 bg-[#131211] text-white p-6 sm:p-7 space-y-4 shadow-xl">
                 <div className="flex items-center gap-2 text-copper-light text-xs font-semibold uppercase tracking-widest">
                   <Sparkles className="size-4" />
-                  <span>Personal Consultation</span>
+                  <span>Bespoke Consultation</span>
                 </div>
-                <h4 className="font-display text-xl sm:text-2xl font-light text-background">
+                <h4 className="font-display text-2xl font-light text-white">
                   Unsure which ritual fits your skin?
                 </h4>
-                <p className="text-xs leading-5 text-background/75">
-                  Our clinical specialists offer bespoke 1-on-1 skin barrier consultations to design your personalized treatment plan.
+                <p className="text-xs leading-5 text-white/75 font-light">
+                  Our clinical specialists offer personalized 1-on-1 skin barrier consultations to curate your bespoke treatment roadmap.
                 </p>
-                <div className="pt-2 border-t border-background/15 space-y-2.5">
+                <div className="pt-3 border-t border-white/10 space-y-2.5">
                   <Button
                     asChild
                     variant="outline"
-                    className="w-full h-10 sm:h-11 rounded-none border-copper-light bg-transparent text-[10px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper-light hover:text-foreground transition-all duration-300"
+                    className="w-full h-11 rounded-none border-copper-light bg-transparent text-[10px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper-light hover:text-[#131211] transition-all duration-300"
                   >
                     <a href="tel:+17804108278" className="flex items-center justify-center gap-2">
                       <Phone className="size-3.5" /> Call Atelier: (780) 410-8278
@@ -145,7 +161,7 @@ export function TreatmentSidebarLayout({
                   </Button>
                   <Button
                     asChild
-                    className="w-full h-10 sm:h-11 rounded-none bg-copper text-primary-foreground text-[10px] uppercase tracking-[0.16em] hover:bg-copper/90 transition-all duration-300"
+                    className="w-full h-11 rounded-none bg-copper text-primary-foreground text-[10px] uppercase tracking-[0.16em] hover:bg-copper/90 transition-all duration-300"
                   >
                     <a
                       href="mailto:info@lumeaesthetics.co?subject=Requesting%20Treatment%20Consultation"
@@ -158,26 +174,25 @@ export function TreatmentSidebarLayout({
               </div>
 
               {/* Clinical Standard & Guarantee Badge */}
-              <div className="border border-copper/20 bg-background p-5 space-y-3 text-xs text-muted-foreground">
-                <div className="flex items-center gap-2.5 text-foreground font-medium">
+              <div className="border border-copper/20 bg-background p-5 space-y-2.5 text-xs text-muted-foreground">
+                <div className="flex items-center gap-2 text-foreground font-medium">
                   <ShieldCheck className="size-4 text-copper shrink-0" />
-                  <span>Bioline Jatò & Health Canada Approved</span>
+                  <span>Bioline Jatò Italy & Health Canada Protocol</span>
                 </div>
-                <p className="text-[11px] leading-5">
-                  All facial rituals feature authentic Bioline professional formulations. Advanced aesthetics treatments are performed under strict clinical hygiene protocols.
+                <p className="text-[11px] leading-5 font-light">
+                  All facial rituals feature authentic Bioline professional formulations. Advanced aesthetics treatments are performed by licensed clinical practitioners.
                 </p>
               </div>
-
             </aside>
 
             {/* Main Service Content Area */}
             <main className="lg:col-span-8 space-y-12">
               {children}
             </main>
-
           </div>
         </div>
       </section>
     </>
   );
 }
+

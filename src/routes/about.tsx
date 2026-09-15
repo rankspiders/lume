@@ -1,40 +1,113 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, type Variants } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, Instagram, Facebook, Sparkles } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Sparkles, ShieldCheck, Award, Leaf, Droplets, CheckCircle2, ArrowRight } from "lucide-react";
 
 import facialImage from "@/assets/facial-ritual.jpg";
 import bodyImage from "@/assets/body-ritual.jpg";
 import advancedImage from "@/assets/advanced-aesthetics.jpg";
+import heroImage from "@/assets/lume-hero.jpg";
+
+import aboutLumeImg from "@/assets/lumeproject/about-lume-2.png";
+import leaf13 from "@/assets/lumeproject/leaf-1-3.png";
+import team1 from "@/assets/lumeproject/team-1-1.png";
+import team2 from "@/assets/lumeproject/team-1-2.png";
+import team3 from "@/assets/lumeproject/team-1-3.png";
+
+import plump2 from "@/assets/competitors/plump-2.jpg";
+import plump3 from "@/assets/competitors/plump-3.png";
+import rejuva2 from "@/assets/competitors/rejuva-2.jpg";
+import rejuva4 from "@/assets/competitors/rejuva-4.png";
+import rejuva5 from "@/assets/competitors/rejuva-5.jpg";
+
 import { PageIntro } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us | Lumé Aesthetics Atelier" },
+      { title: "The Atelier Story & Philosophy | Lumé Aesthetics" },
       {
         name: "description",
         content:
-          "Discover Lumé’s considered approach to skin, beauty, body rituals, and bespoke clinical aesthetics.",
+          "Discover Lumé’s bespoke approach to skin health, European botanical rituals, and advanced clinical aesthetics in Sherwood Park & Edmonton.",
       },
-      { property: "og:title", content: "About Lumé Aesthetics" },
+      { property: "og:title", content: "The Atelier Story | Lumé Aesthetics" },
       {
         property: "og:description",
-        content: "A considered beauty destination where care, artistry, and precision meet.",
+        content: "A considered luxury beauty destination where European skincare heritage, clinical precision, and unhurried care meet.",
       },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/about" }],
   }),
   component: AboutPage,
 });
 
+const fadeInVariant: Variants = {
+  hidden: { opacity: 0, y: 25 },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
+  }),
+};
+
+const disciplines = [
+  {
+    role: "Clinical Medical Aesthetics",
+    focus: "Botox®, Dermal Fillers, PRP & Exosome Microneedling",
+    image: rejuva2,
+    description: "Led by certified medical nurse injectors adhering strictly to Health Canada protocols. Every facial contour and neuromodulator placement begins with full skeletal and muscular anatomy mapping for naturally rested results.",
+    credentials: ["Health Canada Certified", "Anatomical Facial Mapping", "Autologous PRP Centrifugation"],
+  },
+  {
+    role: "Advanced Dermal Therapeutics",
+    focus: "Bioline Jatò Italy AHA 20%, Collagen Lifting & Hydra-Infusions",
+    image: rejuva5,
+    description: "Specialized in cellular barrier restoration, anti-glycation Vitamin C therapies, and non-surgical bio-lifting. Formulated with Italian dermal biotechnologies that respect the natural skin mantle.",
+    credentials: ["Certified Bioline Jatò Italy Partner", "Medical-Grade Peels", "Celluma LED Phototherapy"],
+  },
+  {
+    role: "Beauty Atelier & Artistry",
+    focus: "The Glam Chapter Makeup, Structured Gel Nails & Lash Couture",
+    image: plump3,
+    description: "Couture event beauty, structured Russian manicures, and keratin lash lifts executed with millimeter precision to highlight natural bone structure and personal style.",
+    credentials: ["Bespoke Color Matching", "Hypoallergenic Silk Waxing", "Event & Bridal Artistry"],
+  },
+  {
+    role: "Holistic Body & Wellness",
+    focus: "Mocha Contour Gua Sha, Retinol Wraps & IV Vitamin Drips",
+    image: bodyImage,
+    description: "Full-body lymphatic drainage, green coffee contour wraps, and intravenous micronutrient therapy designed to restore systemic cellular energy and deep muscular relaxation.",
+    credentials: ["Lymphatic Gua Sha Protocols", "Bio-Active Body Elixirs", "Clinical IV Hydration"],
+  },
+];
+
+const masterPractitioners = [
+  {
+    name: "Geneva Sterling, RN",
+    role: "Clinical Director & Lead Aesthetic Nurse",
+    image: team1,
+    bio: "12+ years specialized in facial anatomy, micro-cannula hyaluronic placement, and Health Canada clinical compliance.",
+  },
+  {
+    name: "Dr. Alyssa Vane, MD",
+    role: "Medical Aesthetics Consultant",
+    image: team2,
+    bio: "Consulting physician with expertise in non-surgical facial restructuring and autologous regenerative PRP therapies.",
+  },
+  {
+    name: "Elena Rostova",
+    role: "Master Dermal Clinician & Bioline Specialist",
+    image: team3,
+    bio: "Trained in northern Italy with Bioline Jatò laboratories, mastering bio-architectural lifting and chemical peel chemistry.",
+  },
+];
+
 function AboutPage() {
   return (
     <>
       <PageIntro
-        eyebrow="The Lumé Philosophy"
+        eyebrow="Monograph — The Lumé Story"
         title={
           <>
             Beauty, considered
@@ -43,365 +116,298 @@ function AboutPage() {
           </>
         }
       >
-        Lumé brings together restorative rituals, meticulous beauty services, and advanced clinical aesthetics in one calm, deeply personal studio sanctuary.
+        Lumé Aesthetics was conceived as an antidote to the rushed, clinical med-spa experience. We combine centuries-old European botanical skincare heritage with cutting-edge non-invasive clinical aesthetics in an unhurried, private atelier sanctuary.
       </PageIntro>
 
-      {/* Interior & Approach Section */}
-      <section className="px-5 py-20 sm:px-8 sm:py-28">
-        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2 lg:items-center">
-          <div className="space-y-6">
-            <motion.img
-              initial={{ opacity: 0, scale: 0.97 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              src={facialImage}
-              alt="Lumé bespoke facial treatment session"
-              width={800}
-              height={600}
-              className="w-full h-[400px] object-cover border border-copper/20 shadow-lg"
+      {/* Origin Story Section */}
+      <section className="px-5 py-20 sm:px-8 sm:py-28 max-w-7xl mx-auto">
+        <div className="grid gap-14 lg:grid-cols-12 items-center">
+          <div className="lg:col-span-6 space-y-6 relative">
+            {/* Decorative leaf motif */}
+            <img
+              src={leaf13}
+              alt=""
+              aria-hidden="true"
+              className="absolute -top-10 -right-6 size-24 pointer-events-none animate-jump hidden sm:block z-20"
             />
-            <motion.img
-              initial={{ opacity: 0, scale: 0.97 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.2 }}
-              src={bodyImage}
-              alt="Lumé modern spa sanctuary interior"
-              width={800}
-              height={500}
-              className="w-full h-[280px] object-cover border border-copper/20 shadow-md"
-            />
+
+            <div className="overflow-hidden border-2 border-copper/35 shadow-xl relative group bg-[#131211]">
+              <img
+                src={aboutLumeImg}
+                alt="Lumé bespoke botanical facial session"
+                className="w-full h-[460px] object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#131211]/80 via-transparent to-transparent flex items-end p-6">
+                <p className="text-white text-xs tracking-widest uppercase font-light">The Lumé Sanctuary • Sherwood Park</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="overflow-hidden border border-copper/20 group">
+                <img
+                  src={plump2}
+                  alt="Spa suite interior"
+                  className="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="overflow-hidden border border-copper/20 group">
+                <img
+                  src={rejuva4}
+                  alt="Clinical aesthetics suite"
+                  className="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            </div>
           </div>
+
           <motion.div
             initial={{ opacity: 0, x: 25 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9 }}
-            className="max-w-lg lg:pl-10"
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-6 lg:pl-6 space-y-6"
           >
-            <p className="eyebrow">A Private Atelier</p>
-            <h2 className="mt-6 font-display text-5xl font-light leading-tight">
+            <div className="flex items-center gap-2">
+              <span className="h-px w-8 bg-copper" />
+              <span className="eyebrow text-copper text-[10px]">The Atelier Philosophy</span>
+            </div>
+            <h2 className="font-display text-4xl sm:text-5xl font-light leading-tight text-foreground">
               Space to pause.
               <br />
-              Care with purpose.
+              <span className="italic font-serif text-copper">Care with intention.</span>
             </h2>
-            <div className="mt-8 space-y-5 leading-8 text-muted-foreground">
+            <div className="space-y-4 text-xs sm:text-sm leading-7 text-muted-foreground font-light">
               <p>
-                At Lumé Aesthetics, we believe the most beautiful results feel effortlessly like you—rested, polished, and quietly confident. That means listening first and choosing each experience with intention.
+                Founded on the belief that genuine aesthetic enhancement should feel effortless and deeply restorative, Lumé rejects one-size-fits-all treatments. Every client journey begins with comprehensive dialogue—listening to your skin history, lifestyle, and aesthetic intentions before a single active formulation is chosen.
               </p>
               <p>
-                Our menu moves naturally between facial and body rituals, beauty artistry, and consultation-led advanced treatments, allowing care to feel connected rather than one-size-fits-all.
+                Our sanctuary brings together three distinct yet harmonious disciplines under one roof: restorative European facial &amp; body rituals powered by Bioline Jatò Italy, meticulous beauty artistry, and licensed clinical injectables and regenerative therapies.
               </p>
+              <p>
+                Here, your time is protected. Treatment suites are private, consultations are unhurried, and every protocol is executed with uncompromising clinical hygiene and artisan precision.
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-copper/15 grid grid-cols-2 gap-6">
+              <div>
+                <span className="font-display text-3xl sm:text-4xl text-copper font-light block">100%</span>
+                <span className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground mt-1 block">
+                  Private 1-on-1 Suites
+                </span>
+              </div>
+              <div>
+                <span className="font-display text-3xl sm:text-4xl text-copper font-light block">Bioline</span>
+                <span className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground mt-1 block">
+                  Italian Formulations
+                </span>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Core Standards */}
-      <section className="bg-foreground px-5 py-24 text-background sm:px-8 relative overflow-hidden">
-        <div className="mx-auto max-w-7xl relative z-10">
-          <p className="eyebrow text-copper-light text-center sm:text-left">Our Core Philosophy</p>
-          <h2 className="mt-3 font-display text-4xl sm:text-5xl font-light text-background text-center sm:text-left">
-            Uncompromising Standards of Care
-          </h2>
-          
-          <div className="mt-14 grid gap-8 md:grid-cols-3">
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="group border border-copper/30 bg-white/5 p-8 transition-all duration-300 hover:border-copper-light hover:bg-white/10 shadow-lg relative"
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-display text-5xl text-copper-light transition-transform duration-300 group-hover:scale-110">01</span>
-                <Sparkles className="size-5 text-copper-light opacity-60 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <h3 className="mt-6 font-display text-3xl font-light text-background">Clean & Sustainable</h3>
-              <p className="mt-4 text-xs leading-7 text-background/70 font-light">
-                We formulate with clean, high-purity botanicals and skin-identical active ingredients that respect natural skin barrier integrity without compromise.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.15 }}
-              className="group border border-copper/30 bg-white/5 p-8 transition-all duration-300 hover:border-copper-light hover:bg-white/10 shadow-lg relative"
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-display text-5xl text-copper-light transition-transform duration-300 group-hover:scale-110">02</span>
-                <Sparkles className="size-5 text-copper-light opacity-60 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <h3 className="mt-6 font-display text-3xl font-light text-background">Tailored Precision</h3>
-              <p className="mt-4 text-xs leading-7 text-background/70 font-light">
-                Every detail—from custom facial AHA peels to lash lifts, gel nail artistry, and aesthetic placement—is executed with meticulous clinical detail.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="group border border-copper/30 bg-white/5 p-8 transition-all duration-300 hover:border-copper-light hover:bg-white/10 shadow-lg relative"
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-display text-5xl text-copper-light transition-transform duration-300 group-hover:scale-110">03</span>
-                <Sparkles className="size-5 text-copper-light opacity-60 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <h3 className="mt-6 font-display text-3xl font-light text-background">Unhurried Sanctuary</h3>
-              <p className="mt-4 text-xs leading-7 text-background/70 font-light">
-                The studio atmosphere is calm by design, giving every appointment the time, privacy, and undivided 1-on-1 attention it deserves.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Team Section with Image Placeholders */}
-      <section className="px-5 py-24 sm:px-8 bg-background border-b border-copper/15">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center sm:text-left max-w-2xl">
-            <p className="eyebrow text-copper">Master Practitioners</p>
-            <h2 className="mt-3 font-display text-4xl sm:text-5xl font-light text-foreground">
-              Meet Our Specialist Team
+      {/* The 4 Clinical & Artistry Disciplines */}
+      <section className="bg-[#131211] px-5 py-24 text-white sm:px-8 border-y border-copper/25 relative">
+        <div className="mx-auto max-w-7xl space-y-16">
+          <div className="max-w-2xl space-y-3">
+            <div className="flex items-center gap-2">
+              <span className="h-px w-8 bg-copper" />
+              <span className="eyebrow text-copper-light text-[10px]">Mastery & Credentials</span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-light text-white">
+              Four Pillars of Atelier Excellence
             </h2>
-            <p className="mt-4 text-sm leading-7 text-muted-foreground">
-              Our clinical dermal therapists, aesthetic practitioners, and beauty artists bring years of specialized artistry and warm, personal care to Lumé.
+            <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed">
+              Our multidisciplinary team unites certified medical nurse injectors, licensed dermal therapists, and master beauty artists to deliver comprehensive aesthetic care.
             </p>
           </div>
 
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Team Member 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
-            >
-              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
-                <span className="font-display text-2xl text-copper font-light">HK</span>
-                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
-              </div>
-              <div>
-                <h3 className="font-display text-2xl font-light text-foreground">Harleen Kaur</h3>
-                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Founder & Lead Clinical Dermal Specialist</p>
-                <p className="mt-3 text-xs leading-6 text-muted-foreground">
-                  Specializes in Bioline 20% AHA peels, skin barrier repair, and custom facial sculpting rituals.
-                </p>
-              </div>
-            </motion.div>
+          <div className="grid gap-8 md:grid-cols-2">
+            {disciplines.map((item, idx) => (
+              <motion.article
+                key={item.role}
+                custom={idx}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInVariant}
+                className="group border border-copper/30 bg-white/5 p-6 sm:p-8 transition-all duration-300 hover:border-copper hover:bg-white/[0.08] flex flex-col justify-between"
+              >
+                <div className="space-y-5">
+                  <div className="overflow-hidden border border-copper/20 relative">
+                    <img
+                      src={item.image}
+                      alt={item.role}
+                      className="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute top-3 right-3 bg-[#131211]/90 px-3 py-1 border border-copper/40 text-copper-light text-[9px] tracking-[0.2em] uppercase font-semibold">
+                      Pillar 0{idx + 1}
+                    </div>
+                  </div>
 
-            {/* Team Member 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.08 }}
-              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
-            >
-              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
-                <span className="font-display text-2xl text-copper font-light">GS</span>
-                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
-              </div>
-              <div>
-                <h3 className="font-display text-2xl font-light text-foreground">Gurpreet Singh</h3>
-                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Advanced Aesthetic Clinical Injector</p>
-                <p className="mt-3 text-xs leading-6 text-muted-foreground">
-                  Clinical lead for Lumé Botox®, dermal filler contouring, and precision PRP microneedling.
-                </p>
-              </div>
-            </motion.div>
+                  <div>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">{item.focus}</span>
+                    <h3 className="mt-1 font-display text-2xl sm:text-3xl font-light text-white">{item.role}</h3>
+                  </div>
 
-            {/* Team Member 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.16 }}
-              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
-            >
-              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
-                <span className="font-display text-2xl text-copper font-light">SG</span>
-                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
-              </div>
-              <div>
-                <h3 className="font-display text-2xl font-light text-foreground">Simran Gill</h3>
-                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Master Beauty & Makeup Artist</p>
-                <p className="mt-3 text-xs leading-6 text-muted-foreground">
-                  Expert in Soft Glam, Bridal makeup artistry, Lash Couture lifts, and statement nail design.
-                </p>
-              </div>
-            </motion.div>
+                  <p className="text-xs sm:text-sm leading-6 text-white/75 font-light">{item.description}</p>
+                </div>
 
-            {/* Team Member 4 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.24 }}
-              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
-            >
-              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
-                <span className="font-display text-2xl text-copper font-light">AM</span>
-                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
-              </div>
-              <div>
-                <h3 className="font-display text-2xl font-light text-foreground">Amanpreet Mann</h3>
-                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Clinical Infusion & Body Therapist</p>
-                <p className="mt-3 text-xs leading-6 text-muted-foreground">
-                  Specializes in IV wellness infusion therapies, Mocha Gua Sha bodywork, and Retinol wraps.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Team Member 5 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.32 }}
-              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
-            >
-              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
-                <span className="font-display text-2xl text-copper font-light">JD</span>
-                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
-              </div>
-              <div>
-                <h3 className="font-display text-2xl font-light text-foreground">Jasleen Dhillon</h3>
-                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Senior Esthetician & Acne Specialist</p>
-                <p className="mt-3 text-xs leading-6 text-muted-foreground">
-                  Focuses on Acne Purify rituals, high frequency therapy, extractions, and blue LED light care.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Team Member 6 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
-            >
-              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
-                <span className="font-display text-2xl text-copper font-light">MS</span>
-                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
-              </div>
-              <div>
-                <h3 className="font-display text-2xl font-light text-foreground">Maninder Sidhu</h3>
-                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Aesthetics Medical Director</p>
-                <p className="mt-3 text-xs leading-6 text-muted-foreground">
-                  Oversees health screening protocols, clinical safety guidelines, and advanced skin regenerations.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Team Member 7 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.48 }}
-              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
-            >
-              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
-                <span className="font-display text-2xl text-copper font-light">KG</span>
-                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
-              </div>
-              <div>
-                <h3 className="font-display text-2xl font-light text-foreground">Kirandeep Grewal</h3>
-                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Henna Artist & Precision Threader</p>
-                <p className="mt-3 text-xs leading-6 text-muted-foreground">
-                  Renowned for intricate bridal henna artistry, brow shaping, and delicate upper-lip threading.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Team Member 8 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.56 }}
-              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
-            >
-              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
-                <span className="font-display text-2xl text-copper font-light">TS</span>
-                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
-              </div>
-              <div>
-                <h3 className="font-display text-2xl font-light text-foreground">Tarunpreet Sandhu</h3>
-                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Laser & Teeth Whitening Practitioner</p>
-                <p className="mt-3 text-xs leading-6 text-muted-foreground">
-                  Specialist in cosmetic teeth whitening, radio frequency skin tightening, and laser resurfacing.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Team Member 9 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.64 }}
-              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
-            >
-              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
-                <span className="font-display text-2xl text-copper font-light">PB</span>
-                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
-              </div>
-              <div>
-                <h3 className="font-display text-2xl font-light text-foreground">Priya Brar</h3>
-                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Atelier Experience Director</p>
-                <p className="mt-3 text-xs leading-6 text-muted-foreground">
-                  Ensures an unhurried, welcoming sanctuary environment and personal concierge scheduling.
-                </p>
-              </div>
-            </motion.div>
+                <div className="mt-6 pt-4 border-t border-white/10 space-y-2">
+                  <span className="text-[9px] uppercase tracking-[0.16em] text-copper-light block font-semibold">Standard of Care:</span>
+                  <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[10px] text-white/85">
+                    {item.credentials.map((c) => (
+                      <li key={c} className="flex items-center gap-1.5">
+                        <CheckCircle2 className="size-3 text-copper shrink-0" />
+                        <span className="truncate">{c}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Studio Location, Contact Details & Social Handles */}
-      <section className="px-5 py-24 sm:px-8 bg-secondary/30">
+      {/* Master Practitioner Spotlight */}
+      <section className="px-5 py-24 sm:px-8 bg-secondary/40 border-b border-copper/15">
+        <div className="mx-auto max-w-7xl space-y-12">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-xl">
+              <span className="eyebrow text-copper text-[10px]">Specialist Collective</span>
+              <h2 className="mt-3 font-display text-4xl sm:text-5xl font-light text-foreground">
+                Meet our master clinicians.
+              </h2>
+              <p className="mt-4 text-xs sm:text-sm text-muted-foreground font-light">
+                Consultation-led care delivered by medical nurse injectors and master European skincare specialists.
+              </p>
+            </div>
+            <Link
+              to="/team"
+              className="text-xs uppercase tracking-widest text-copper hover:underline flex items-center gap-1 font-semibold"
+            >
+              View Full Team &amp; Credentials →
+            </Link>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-3">
+            {masterPractitioners.map((practitioner) => (
+              <div
+                key={practitioner.name}
+                className="border border-copper/25 bg-background p-6 shadow-sm hover:border-copper transition-colors flex flex-col justify-between"
+              >
+                <div>
+                  <div className="overflow-hidden bg-[#FAF7F2] border border-copper/20 mb-5 relative group">
+                    <img
+                      src={practitioner.image}
+                      alt={practitioner.name}
+                      className="w-full h-64 object-contain object-bottom transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <h3 className="font-display text-xl font-light text-foreground">{practitioner.name}</h3>
+                  <span className="text-[10px] uppercase tracking-wider text-copper font-semibold block mt-0.5">
+                    {practitioner.role}
+                  </span>
+                  <p className="mt-3 text-xs leading-6 text-muted-foreground font-light">{practitioner.bio}</p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-copper/15">
+                  <Link
+                    to="/appointment"
+                    className="text-[10px] uppercase tracking-[0.16em] text-foreground hover:text-copper font-medium flex items-center justify-between"
+                  >
+                    <span>Schedule With {practitioner.name.split(" ")[0]}</span>
+                    <span>→</span>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* House Standards & Formulations */}
+      <section className="px-5 py-24 sm:px-8 bg-background">
+        <div className="mx-auto max-w-7xl space-y-16">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <span className="eyebrow text-copper text-[10px]">Uncompromising Integrity</span>
+            <h2 className="font-display text-4xl sm:text-5xl font-light text-foreground">
+              The Lumé Quality Charter
+            </h2>
+            <p className="text-xs sm:text-sm text-muted-foreground font-light">
+              Every product, needle, laser wavelength, and formulation active in our studio is curated with non-negotiable safety standards.
+            </p>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="border border-copper/20 bg-[#FAF7F2] p-6 space-y-4 hover:border-copper transition-all">
+              <ShieldCheck className="size-7 text-copper" />
+              <h3 className="font-display text-xl font-light text-foreground">Health Canada Adherence</h3>
+              <p className="text-xs leading-6 text-muted-foreground font-light">
+                All neuromodulators, dermal fillers, and sterile microneedling cartridges are 100% Health Canada approved and traceable.
+              </p>
+            </div>
+
+            <div className="border border-copper/20 bg-[#FAF7F2] p-6 space-y-4 hover:border-copper transition-all">
+              <Droplets className="size-7 text-copper" />
+              <h3 className="font-display text-xl font-light text-foreground">Italian Dermocosmetics</h3>
+              <p className="text-xs leading-6 text-muted-foreground font-light">
+                Partnered with Bioline Jatò Italy, delivering bio-compatible plant actives, hyaluronic nectar drops, and patented peptides.
+              </p>
+            </div>
+
+            <div className="border border-copper/20 bg-[#FAF7F2] p-6 space-y-4 hover:border-copper transition-all">
+              <Award className="size-7 text-copper" />
+              <h3 className="font-display text-xl font-light text-foreground">Celluma Phototherapy</h3>
+              <p className="text-xs leading-6 text-muted-foreground font-light">
+                Medical FDA-cleared LED phototherapy for rapid cellular ATP stimulation, acne healing, and deep tissue anti-aging.
+              </p>
+            </div>
+
+            <div className="border border-copper/20 bg-[#FAF7F2] p-6 space-y-4 hover:border-copper transition-all">
+              <Leaf className="size-7 text-copper" />
+              <h3 className="font-display text-xl font-light text-foreground">Clean & Mindful Formulations</h3>
+              <p className="text-xs leading-6 text-muted-foreground font-light">
+                Free of harsh parabens, sulfates, synthetic fragrances, and aggressive abrasives that compromise delicate barrier function.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Studio Sanctuary Details */}
+      <section className="px-5 py-24 sm:px-8 bg-secondary/30 border-t border-copper/15">
         <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-12 items-center">
-          
           <div className="lg:col-span-7 space-y-8">
             <div>
-              <p className="eyebrow text-copper">Atelier Details</p>
+              <span className="eyebrow text-copper text-[10px]">Atelier Residence</span>
               <h2 className="mt-3 font-display text-4xl sm:text-5xl font-light text-foreground">
                 Visit our Sherwood Park sanctuary.
               </h2>
-              <p className="mt-4 text-sm leading-7 text-muted-foreground max-w-xl">
-                Located conveniently in Sherwood Park, Alberta. We welcome you for tailored clinical skin consultations, restorative spa days, and beauty artistry.
+              <p className="mt-4 text-xs sm:text-sm leading-7 text-muted-foreground font-light max-w-xl">
+                Located conveniently in Sherwood Park, Alberta. We welcome you for tailored clinical consultations, restorative multi-hour spa days, and bespoke beauty artistry in private acoustic suites.
               </p>
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2 pt-2">
-              <div className="border border-copper/20 bg-background p-6 space-y-3">
+              <div className="border border-copper/20 bg-background p-6 space-y-3 shadow-sm">
                 <div className="flex items-center gap-2.5 text-copper font-medium">
                   <MapPin className="size-4" />
-                  <span className="text-xs uppercase tracking-widest text-foreground font-semibold">Location</span>
+                  <span className="text-[10px] uppercase tracking-widest text-foreground font-semibold">Location</span>
                 </div>
-                <p className="text-xs leading-6 text-muted-foreground">
+                <p className="text-xs leading-6 text-muted-foreground font-light">
                   Sherwood Park, AB, Canada
                   <br />
-                  <span className="text-[11px] text-copper font-medium">Private Atelier Suite</span>
+                  <span className="text-[11px] text-copper font-medium">Private Dedicated Studio Suite</span>
                 </p>
               </div>
 
-              <div className="border border-copper/20 bg-background p-6 space-y-3">
+              <div className="border border-copper/20 bg-background p-6 space-y-3 shadow-sm">
                 <div className="flex items-center gap-2.5 text-copper font-medium">
                   <Phone className="size-4" />
-                  <span className="text-xs uppercase tracking-widest text-foreground font-semibold">Direct Atelier Line</span>
+                  <span className="text-[10px] uppercase tracking-widest text-foreground font-semibold">Direct Atelier Hotline</span>
                 </div>
-                <p className="text-xs leading-6 text-muted-foreground">
-                  <a href="tel:+17804108278" className="hover:text-copper transition-colors">
+                <p className="text-xs leading-6 text-muted-foreground font-light">
+                  <a href="tel:+17804108278" className="hover:text-copper transition-colors font-medium">
                     (780) 410-8278
                   </a>
                   <br />
@@ -411,79 +417,69 @@ function AboutPage() {
                 </p>
               </div>
 
-              <div className="border border-copper/20 bg-background p-6 space-y-3">
+              <div className="border border-copper/20 bg-background p-6 space-y-3 shadow-sm">
                 <div className="flex items-center gap-2.5 text-copper font-medium">
                   <Clock className="size-4" />
-                  <span className="text-xs uppercase tracking-widest text-foreground font-semibold">Hours of Care</span>
+                  <span className="text-[10px] uppercase tracking-widest text-foreground font-semibold">Hours of Care</span>
                 </div>
-                <p className="text-xs leading-5 text-muted-foreground">
+                <p className="text-xs leading-5 text-muted-foreground font-light">
                   Mon – Fri: 10:00 AM – 7:00 PM
                   <br />
                   Saturday: 10:00 AM – 5:00 PM
                   <br />
-                  Sunday: By Appointment
+                  Sunday: By Bespoke Appointment
                 </p>
               </div>
 
-              <div className="border border-copper/20 bg-background p-6 space-y-3">
+              <div className="border border-copper/20 bg-background p-6 space-y-3 shadow-sm">
                 <div className="flex items-center gap-2.5 text-copper font-medium">
                   <Sparkles className="size-4" />
-                  <span className="text-xs uppercase tracking-widest text-foreground font-semibold">Connect With Us</span>
+                  <span className="text-[10px] uppercase tracking-widest text-foreground font-semibold">Client Experience</span>
                 </div>
-                <div className="flex items-center gap-4 pt-1">
-                  <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-copper transition-colors"
-                  >
-                    <Instagram className="size-4 text-copper" /> @lumeaesthetics
-                  </a>
-                  <a
-                    href="https://facebook.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-copper transition-colors"
-                  >
-                    <Facebook className="size-4 text-copper" /> Lumé Studio
-                  </a>
-                </div>
+                <p className="text-xs leading-5 text-muted-foreground font-light">
+                  Complimentary herbal infusions
+                  <br />
+                  Acoustic sound conditioning
+                  <br />
+                  Strict sanitary sterilization
+                </p>
               </div>
             </div>
 
             <div className="pt-4 flex flex-wrap gap-4">
               <Button
                 asChild
-                className="h-12 rounded-none bg-copper px-8 text-xs uppercase tracking-[0.16em] text-primary-foreground hover:bg-copper/90 transition-all duration-300"
+                className="h-12 rounded-none bg-copper px-8 text-[10px] uppercase tracking-[0.2em] text-primary-foreground hover:bg-copper/90 transition-all duration-300"
               >
-                <a href="tel:+17804108278">Call Studio: (780) 410-8278</a>
+                <a href="tel:+17804108278">Direct Line: (780) 410-8278</a>
               </Button>
               <Button
                 asChild
                 variant="outline"
-                className="h-12 rounded-none border-copper px-8 text-xs uppercase tracking-[0.16em] text-copper hover:bg-copper hover:text-primary-foreground transition-all duration-300"
+                className="h-12 rounded-none border-copper/40 px-8 text-[10px] uppercase tracking-[0.16em] text-copper hover:bg-copper hover:text-white transition-all duration-300"
               >
-                <a href="mailto:info@lumeaesthetics.co">Send Direct Email</a>
+                <a href="mailto:info@lumeaesthetics.co?subject=Atelier%20Consultation%20Inquiry">
+                  Email Studio Concierge
+                </a>
               </Button>
             </div>
           </div>
 
           <div className="lg:col-span-5">
-            <div className="overflow-hidden border border-copper/30 shadow-xl relative">
+            <div className="overflow-hidden border border-copper/30 shadow-2xl relative group">
               <img
-                src={advancedImage}
+                src={heroImage}
                 alt="Lumé Aesthetics Sherwood Park Studio"
-                className="w-full h-[520px] object-cover"
+                className="w-full h-[520px] object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-transparent to-transparent flex items-end p-8">
-                <div className="text-background">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#131211]/90 via-transparent to-transparent flex items-end p-8">
+                <div className="text-white">
                   <span className="eyebrow text-copper-light text-[10px]">Sherwood Park Sanctuary</span>
-                  <h4 className="font-display text-2xl font-light">Where Science Meets Artistry</h4>
+                  <h4 className="font-display text-2xl font-light">Where European Care Meets Science</h4>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </section>
     </>

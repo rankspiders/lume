@@ -11,7 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AppointmentRouteImport } from './routes/appointment'
+import { Route as BlogsRouteImport } from './routes/blogs'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as PricePlanRouteImport } from './routes/price-plan'
+import { Route as ServiceDetailsRouteImport } from './routes/service-details'
+import { Route as TeamRouteImport } from './routes/team'
 import { Route as TreatmentsRouteImport } from './routes/treatments'
 import { Route as ServicesAdvancedAestheticsRouteImport } from './routes/services/advanced-aesthetics'
 import { Route as ServicesBeautyAtelierRouteImport } from './routes/services/beauty-atelier'
@@ -28,9 +34,39 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppointmentRoute = AppointmentRouteImport.update({
+  id: '/appointment',
+  path: '/appointment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogsRoute = BlogsRouteImport.update({
+  id: '/blogs',
+  path: '/blogs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricePlanRoute = PricePlanRouteImport.update({
+  id: '/price-plan',
+  path: '/price-plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiceDetailsRoute = ServiceDetailsRouteImport.update({
+  id: '/service-details',
+  path: '/service-details',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TreatmentsRoute = TreatmentsRouteImport.update({
@@ -64,7 +100,13 @@ const ServicesSpaPackagesRoute = ServicesSpaPackagesRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/appointment': typeof AppointmentRoute
+  '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/price-plan': typeof PricePlanRoute
+  '/service-details': typeof ServiceDetailsRoute
+  '/team': typeof TeamRoute
   '/treatments': typeof TreatmentsRoute
   '/services/advanced-aesthetics': typeof ServicesAdvancedAestheticsRoute
   '/services/beauty-atelier': typeof ServicesBeautyAtelierRoute
@@ -74,7 +116,13 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/appointment': typeof AppointmentRoute
+  '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/price-plan': typeof PricePlanRoute
+  '/service-details': typeof ServiceDetailsRoute
+  '/team': typeof TeamRoute
   '/treatments': typeof TreatmentsRoute
   '/services/advanced-aesthetics': typeof ServicesAdvancedAestheticsRoute
   '/services/beauty-atelier': typeof ServicesBeautyAtelierRoute
@@ -85,7 +133,13 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/appointment': typeof AppointmentRoute
+  '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/price-plan': typeof PricePlanRoute
+  '/service-details': typeof ServiceDetailsRoute
+  '/team': typeof TeamRoute
   '/treatments': typeof TreatmentsRoute
   '/services/advanced-aesthetics': typeof ServicesAdvancedAestheticsRoute
   '/services/beauty-atelier': typeof ServicesBeautyAtelierRoute
@@ -97,7 +151,13 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/appointment'
+    | '/blogs'
     | '/contact'
+    | '/gallery'
+    | '/price-plan'
+    | '/service-details'
+    | '/team'
     | '/treatments'
     | '/services/advanced-aesthetics'
     | '/services/beauty-atelier'
@@ -107,7 +167,13 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/appointment'
+    | '/blogs'
     | '/contact'
+    | '/gallery'
+    | '/price-plan'
+    | '/service-details'
+    | '/team'
     | '/treatments'
     | '/services/advanced-aesthetics'
     | '/services/beauty-atelier'
@@ -117,7 +183,13 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/appointment'
+    | '/blogs'
     | '/contact'
+    | '/gallery'
+    | '/price-plan'
+    | '/service-details'
+    | '/team'
     | '/treatments'
     | '/services/advanced-aesthetics'
     | '/services/beauty-atelier'
@@ -128,7 +200,13 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AppointmentRoute: typeof AppointmentRoute
+  BlogsRoute: typeof BlogsRoute
   ContactRoute: typeof ContactRoute
+  GalleryRoute: typeof GalleryRoute
+  PricePlanRoute: typeof PricePlanRoute
+  ServiceDetailsRoute: typeof ServiceDetailsRoute
+  TeamRoute: typeof TeamRoute
   TreatmentsRoute: typeof TreatmentsRoute
   ServicesAdvancedAestheticsRoute: typeof ServicesAdvancedAestheticsRoute
   ServicesBeautyAtelierRoute: typeof ServicesBeautyAtelierRoute
@@ -152,11 +230,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/appointment': {
+      id: '/appointment'
+      path: '/appointment'
+      fullPath: '/appointment'
+      preLoaderRoute: typeof AppointmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blogs': {
+      id: '/blogs'
+      path: '/blogs'
+      fullPath: '/blogs'
+      preLoaderRoute: typeof BlogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/price-plan': {
+      id: '/price-plan'
+      path: '/price-plan'
+      fullPath: '/price-plan'
+      preLoaderRoute: typeof PricePlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/service-details': {
+      id: '/service-details'
+      path: '/service-details'
+      fullPath: '/service-details'
+      preLoaderRoute: typeof ServiceDetailsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/treatments': {
@@ -200,7 +320,13 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AppointmentRoute: AppointmentRoute,
+  BlogsRoute: BlogsRoute,
   ContactRoute: ContactRoute,
+  GalleryRoute: GalleryRoute,
+  PricePlanRoute: PricePlanRoute,
+  ServiceDetailsRoute: ServiceDetailsRoute,
+  TeamRoute: TeamRoute,
   TreatmentsRoute: TreatmentsRoute,
   ServicesAdvancedAestheticsRoute: ServicesAdvancedAestheticsRoute,
   ServicesBeautyAtelierRoute: ServicesBeautyAtelierRoute,

@@ -1,19 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, type Variants } from "framer-motion";
-import { ShieldCheck, Stethoscope, Sparkles } from "lucide-react";
+import { ShieldCheck, Stethoscope, Sparkles, CheckCircle2 } from "lucide-react";
 
+import rejuva2 from "@/assets/competitors/rejuva-2.jpg";
 import { TreatmentSidebarLayout } from "@/components/treatment-sidebar-layout";
 import { Button } from "@/components/ui/button";
-import { STITCH_ASSETS } from "@/lib/stitch-assets";
 import { treatmentGroups } from "@/lib/treatments";
 
 export const Route = createFileRoute("/services/advanced-aesthetics")({
   head: () => ({
     meta: [
-      { title: "Advanced Aesthetics | Lumé Aesthetics" },
+      { title: "Advanced Clinical Aesthetics | Lumé Aesthetics" },
       {
         name: "description",
-        content: "Consultation-led clinical aesthetics including Lumé Botox® ($10/unit), Dermal Fillers, PRP & Exosome microneedling, teeth whitening, and IV therapies.",
+        content: "Consultation-led clinical aesthetics in Edmonton & Sherwood Park including Lumé Botox® ($10/unit), Dermal Fillers, PRP & Exosome microneedling, teeth whitening, and IV wellness infusions.",
       },
     ],
   }),
@@ -21,29 +21,20 @@ export const Route = createFileRoute("/services/advanced-aesthetics")({
 });
 
 const fadeInVariant: Variants = {
-  hidden: { opacity: 0, y: 25 },
+  hidden: { opacity: 0, y: 20 },
   visible: (i: number = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay: i * 0.08, ease: "easeInOut" },
+    transition: { duration: 0.6, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] },
   }),
 };
-
-const clinicalImages = [
-  STITCH_ASSETS.advancedTherapy,
-  STITCH_ASSETS.team1,
-  STITCH_ASSETS.team2,
-  STITCH_ASSETS.team3,
-  STITCH_ASSETS.aboutPrice,
-  STITCH_ASSETS.blog3,
-];
 
 function AdvancedAestheticsPage() {
   const group = treatmentGroups[2];
 
   return (
     <TreatmentSidebarLayout
-      eyebrow="Category 04 — Advanced Aesthetics"
+      eyebrow="Collection IV — Advanced Aesthetics"
       title={
         <>
           Where science
@@ -51,35 +42,42 @@ function AdvancedAestheticsPage() {
           <em>meets beauty.</em>
         </>
       }
-      description="Personalized clinical services beginning with an in-depth consultation, individual facial assessment, and natural-looking targeted treatments."
+      description="Personalized clinical medical services beginning with a comprehensive in-depth facial anatomy assessment, medical health screening, and natural-looking targeted enhancements."
       activeCategoryHref="/services/advanced-aesthetics"
     >
       {/* Visual Header Banner */}
-      <div className="overflow-hidden border border-copper/30 shadow-lg relative">
-        <img src={STITCH_ASSETS.advancedTherapy} alt="Advanced Aesthetics" className="w-full h-[300px] sm:h-[400px] object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/20 to-transparent flex items-end p-6 sm:p-8">
-          <div className="text-background">
-            <span className="eyebrow text-copper-light text-[10px]">Clinical Standards</span>
-            <h3 className="font-display text-2xl sm:text-3xl font-light">Consultation-led medical aesthetics & injectables</h3>
+      <div className="overflow-hidden border border-copper/30 shadow-lg relative group">
+        <img
+          src={rejuva2}
+          alt="Advanced Clinical Aesthetics"
+          className="w-full h-[320px] sm:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#131211]/90 via-black/35 to-transparent flex items-end p-6 sm:p-8">
+          <div className="text-white">
+            <span className="eyebrow text-copper-light text-[10px]">Medical Precision & Safety Standards</span>
+            <h3 className="font-display text-2xl sm:text-3xl font-light">Consultation-Led Injectables, PRP & Exosome Therapies</h3>
           </div>
         </div>
       </div>
 
       {/* Clinical Integrity Card */}
-      <div className="border border-copper/25 bg-foreground text-background p-6 sm:p-8 space-y-4">
-        <span className="eyebrow text-copper-light text-[10px]">Safety & Authenticity</span>
-        <h4 className="font-display text-2xl font-light text-background">Refined clinical care & consultation</h4>
-        <p className="text-xs leading-6 text-background/75">
-          Every injectable, microneedling session, and IV therapy is performed by licensed clinical practitioners adhering strictly to Health Canada approved protocols.
+      <div className="border border-copper/30 bg-[#131211] text-white p-6 sm:p-8 space-y-4">
+        <div className="flex items-center gap-2">
+          <span className="h-px w-6 bg-copper" />
+          <span className="eyebrow text-copper-light text-[10px]">Safety & Authenticity Protocols</span>
+        </div>
+        <h4 className="font-display text-2xl font-light text-white">Refined clinical care & anatomy mapping</h4>
+        <p className="text-xs leading-6 text-white/75 font-light">
+          Every neuromodulator injection, dermal filler contour, PRP centrifugation, and exosome infusion is administered strictly by licensed, certified clinical practitioners adhering to Health Canada approved safety protocols.
         </p>
-        <div className="pt-2 border-t border-background/15 flex flex-wrap gap-6 text-xs text-background/90">
+        <div className="pt-3 border-t border-white/10 flex flex-wrap gap-6 text-xs text-white/90">
           <div className="flex items-center gap-2">
-            <Stethoscope className="size-4 text-copper-light" />
-            <span>Licensed Medical Practitioners</span>
+            <Stethoscope className="size-4 text-copper" />
+            <span className="tracking-wide">Licensed Medical Injectors</span>
           </div>
           <div className="flex items-center gap-2">
-            <ShieldCheck className="size-4 text-copper-light" />
-            <span>Health Canada Approved Products</span>
+            <ShieldCheck className="size-4 text-copper" />
+            <span className="tracking-wide">Health Canada Approved Formulations</span>
           </div>
         </div>
       </div>
@@ -87,11 +85,11 @@ function AdvancedAestheticsPage() {
       {/* Treatments List with Visual Cards */}
       <div className="space-y-6">
         <div className="flex justify-between items-baseline border-b border-copper/15 pb-3">
-          <h3 className="font-display text-2xl font-light text-foreground">Clinical Aesthetics Menu</h3>
-          <span className="text-xs uppercase tracking-widest text-muted-foreground">{group?.treatments.length} Clinicals</span>
+          <h3 className="font-display text-2xl font-light text-foreground">Clinical Aesthetic Formulations</h3>
+          <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{group?.treatments.length} Procedures</span>
         </div>
 
-        <div className="grid gap-6">
+        <div className="grid gap-6 sm:grid-cols-2">
           {group?.treatments.map((t, idx) => (
             <motion.article
               key={t.name}
@@ -100,71 +98,70 @@ function AdvancedAestheticsPage() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInVariant}
-              className="group border border-copper/20 bg-background p-6 shadow-sm transition-all duration-300 hover:border-copper grid gap-6 sm:grid-cols-12 items-center"
+              className="group flex flex-col justify-between border border-copper/25 bg-background p-6 shadow-sm transition-all duration-300 hover:border-copper"
             >
-              <div className="sm:col-span-4 overflow-hidden border border-copper/15">
-                <img
-                  src={clinicalImages[idx % clinicalImages.length]}
-                  alt={t.name}
-                  className="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <div className="sm:col-span-8 flex flex-col justify-between h-full space-y-3">
-                <div>
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <h4 className="font-display text-2xl font-light text-foreground">{t.name}</h4>
-                    <span className="font-display text-xl font-light text-copper">{t.price}</span>
-                  </div>
-                  {t.duration && (
-                    <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-0.5">Duration: {t.duration}</p>
-                  )}
-                  <p className="mt-2 text-xs leading-6 text-muted-foreground">{t.summary}</p>
+              <div>
+                <div className="overflow-hidden mb-5 border-b border-copper/15 -mx-6 -mt-6">
+                  <img
+                    src={t.image}
+                    alt={t.name}
+                    className="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
+                <div className="flex justify-between items-baseline gap-2 border-b border-copper/15 pb-2">
+                  <h4 className="font-display text-2xl font-light text-foreground">{t.name}</h4>
+                  <span className="font-display text-xl font-light text-copper">{t.price}</span>
+                </div>
+                {t.duration && (
+                  <p className="text-[10px] text-muted-foreground uppercase tracking-widest mt-1">Duration: {t.duration}</p>
+                )}
+                <p className="mt-3 text-xs leading-6 text-muted-foreground font-light">{t.summary}</p>
 
                 {t.detailedDescription && (
-                  <div className="border-t border-copper/15 pt-3 mt-2 text-xs text-muted-foreground space-y-2">
+                  <div className="border-t border-copper/15 pt-3 mt-3 text-xs text-muted-foreground space-y-2">
                     <div className="font-medium text-[10px] uppercase tracking-[0.16em] text-copper flex items-center gap-1.5 select-none">
-                      <Sparkles className="size-3.5 text-copper" />
-                      <span>Full Procedure & Treatment Breakdown</span>
+                      <Sparkles className="size-3 text-copper" />
+                      <span>Clinical Protocol & Methodology</span>
                     </div>
-                    <p className="text-xs leading-5 text-foreground/90">{t.detailedDescription}</p>
+                    <p className="text-xs leading-5 text-foreground/90 font-light">{t.detailedDescription}</p>
 
                     {t.keyBenefits && (
                       <div className="space-y-1 pt-1">
                         <span className="text-[10px] uppercase tracking-wider font-semibold text-copper block">Key Clinical Benefits</span>
-                        <ul className="grid grid-cols-1 gap-1 text-[11px] text-muted-foreground list-disc list-inside">
+                        <ul className="space-y-1 text-[11px] text-muted-foreground">
                           {t.keyBenefits.map((b) => (
-                            <li key={b}>{b}</li>
+                            <li key={b} className="flex items-center gap-1.5">
+                              <CheckCircle2 className="size-3 text-copper shrink-0" />
+                              <span>{b}</span>
+                            </li>
                           ))}
                         </ul>
                       </div>
                     )}
 
                     {t.procedureSteps && (
-                      <div className="space-y-1 pt-1">
-                        <span className="text-[10px] uppercase tracking-wider font-semibold text-copper block">Clinical Procedure Steps</span>
+                      <div className="space-y-1 pt-2 border-t border-copper/10">
+                        <span className="text-[10px] uppercase tracking-wider font-semibold text-copper block">Procedure Steps</span>
                         <ol className="space-y-1 text-[11px] text-muted-foreground list-decimal list-inside">
                           {t.procedureSteps.map((step) => (
-                            <li key={step}>{step}</li>
+                            <li key={step} className="font-light">{step}</li>
                           ))}
                         </ol>
                       </div>
                     )}
                   </div>
                 )}
-
-                <div>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="h-9 rounded-none border-copper bg-transparent px-5 text-[9px] uppercase tracking-[0.16em] text-copper hover:bg-copper hover:text-primary-foreground transition-all duration-300"
-                  >
-                    <a href={`mailto:info@lumeaesthetics.co?subject=${encodeURIComponent(`Clinical Enquiry: ${t.name}`)}`}>
-                      Clinical Enquiry ({t.price})
-                    </a>
-                  </Button>
-                </div>
               </div>
+
+              <Button
+                asChild
+                variant="outline"
+                className="mt-6 h-10 w-full rounded-none border-copper/40 text-[9px] uppercase tracking-[0.16em] text-copper hover:bg-copper hover:text-primary-foreground transition-all duration-300"
+              >
+                <a href={`mailto:info@lumeaesthetics.co?subject=${encodeURIComponent(`Clinical Consultation: ${t.name}`)}`}>
+                  Book Consultation ({t.price})
+                </a>
+              </Button>
             </motion.article>
           ))}
         </div>

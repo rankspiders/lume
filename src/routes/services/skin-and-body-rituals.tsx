@@ -4,6 +4,7 @@ import { ShieldCheck, Sparkles } from "lucide-react";
 
 import facialImage from "@/assets/facial-ritual.jpg";
 import bodyImage from "@/assets/body-ritual.jpg";
+import aboutLumeImg from "@/assets/lumeproject/about-lume-2.png";
 import { TreatmentSidebarLayout } from "@/components/treatment-sidebar-layout";
 import { Button } from "@/components/ui/button";
 import { treatmentGroups } from "@/lib/treatments";
@@ -49,7 +50,7 @@ function SkinAndBodyPage() {
       {/* Visual Header Feature Banner */}
       <div className="overflow-hidden border border-copper/30 shadow-lg relative group">
         <img
-          src={facialImage}
+          src={aboutLumeImg}
           alt="Facial & Body Rituals"
           className="w-full h-[320px] sm:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105"
         />

@@ -32,6 +32,14 @@ import imgIVInfusion from "@/assets/treatments/iv-infusion.jpg";
 import imgYouDeserveIt from "@/assets/treatments/you-deserve-it.jpg";
 import imgQueenForADay from "@/assets/treatments/queen-for-a-day.jpg";
 
+import plump2 from "@/assets/competitors/plump-2.jpg";
+import plump3 from "@/assets/competitors/plump-3.png";
+import rejuva2 from "@/assets/competitors/rejuva-2.jpg";
+import rejuva4 from "@/assets/competitors/rejuva-4.png";
+import rejuva5 from "@/assets/competitors/rejuva-5.jpg";
+import price1Img from "@/assets/lumeproject/price-1-1.jpg";
+import aboutLumeImg from "@/assets/lumeproject/about-lume-2.png";
+
 export type Treatment = {
   name: string;
   duration?: string;
@@ -78,7 +86,7 @@ export const spaPackages: Treatment[] = [
       "Luxe Foot Ritual",
       "Celluma LED Therapy",
     ],
-    image: imgQueenForADay,
+    image: price1Img,
   },
 ];
 
@@ -96,7 +104,7 @@ export const treatmentGroups: TreatmentGroup[] = [
         detailedDescription: "Designed for skin requiring intensive moisture restoration. This soothing ritual combines multi-molecular weight hyaluronic acid formulations with Bioline's signature nectar drop facial massage to penetrate deep skin layers, repair lipid barriers, and eliminate dehydration lines.",
         keyBenefits: ["Deep cellular hydration & barrier repair", "Instant plumping of fine dehydration lines", "Nectar drop lymphatic facial massage"],
         procedureSteps: ["Bioline Gentle Cleansing & Tonal Balance", "Warm Steamed Botanical Exfoliation", "Hyaluronic Nectar Drop Dermal Massage", "Hydra-Surge Cream Mask Application", "Finishing Moisture Lock & SPF Protection"],
-        image: imgAquaLuxe,
+        image: aboutLumeImg,
       },
       {
         name: "Lumé Prima Glow",
@@ -106,7 +114,7 @@ export const treatmentGroups: TreatmentGroup[] = [
         detailedDescription: "A gentle yet highly efficacious chemical resurfacing treatment utilizing 20% Alpha Hydroxy Acids (AHA) derived from glycolic, lactic, and mandelic botanicals. Safely dissolves surface dead skin cells to reveal glowing, uniform complexion.",
         keyBenefits: ["Targeted hyperpigmentation & dark spot fading", "Refined skin texture & reduced pore visibility", "Safe resurfacing suitable even for sensitive barrier profiles"],
         procedureSteps: ["Deep Pore Enzyme Pre-Purify", "20% Bioline AHA Resurfacing Solution Application", "Calming Neutralizing Thermal Compress", "Cellular Repair Conditioning Serum", "Restorative Barrier Cream & Broad-Spectrum Sunscreen"],
-        image: imgPrimaGlow,
+        image: rejuva5,
       },
       {
         name: "Lumé Radiance C Facial",
@@ -222,7 +230,7 @@ export const treatmentGroups: TreatmentGroup[] = [
         detailedDescription: "A gentle keratine-infused lifting treatment that curls and darkens natural eyelashes from root to tip, giving the appearance of longer, fuller lashes for 6-8 weeks.",
         keyBenefits: ["Maintenance-free beauty with zero mascara needed", "Nutrient keratine infusion strengthens natural lashes", "Lasts 6 to 8 weeks"],
         procedureSteps: ["Eye Area Cleansing & Shield Placement", "Gentle Lash Curvature Lift Solution", "Keratin Tint & Color Enhancement", "Nourishing Botanical Conditioning Serum"],
-        image: imgLashCouture,
+        image: plump3,
       },
       {
         name: "Lumé Silk Body Waxing",
@@ -265,7 +273,7 @@ export const treatmentGroups: TreatmentGroup[] = [
         detailedDescription: "Medical-grade neuromodulator injections administered by certified nurse injectors to soften forehead furrows, crow's feet, and frown lines while preserving natural expression.",
         keyBenefits: ["Softens dynamic wrinkles & expression lines", "Prevents deep permanent crease formation", "Quick 15-minute treatment with zero downtime"],
         procedureSteps: ["Facial Muscle Assessment & Mapping", "Targeted Micro-Injections", "Post-Care Guidance & 2-Week Follow-Up"],
-        image: imgBotox,
+        image: rejuva2,
       },
       {
         name: "Lumé Dermal Fillers",
@@ -284,7 +292,7 @@ export const treatmentGroups: TreatmentGroup[] = [
         detailedDescription: "AKA Vampire Facial. Utilizes autologous Platelet-Rich Plasma (PRP) harvested from your blood, infused via medical microneedling to trigger intense collagen regeneration.",
         keyBenefits: ["Harnesses your body's natural growth factors", "Dramatically improves acne scars & pore size", "Smooths skin texture & fine lines"],
         procedureSteps: ["Comfort Numbing Cream Application", "Centrifugation & PRP Plasma Preparation", "Medical Microneedling & PRP Infusion", "Cooling PRP Hydrogel Mask"],
-        image: imgPRPMicroneedling,
+        image: rejuva4,
       },
       {
         name: "Lumé Exosome Microneedling",

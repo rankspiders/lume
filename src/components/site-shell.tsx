@@ -1,6 +1,24 @@
 import { Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { Menu, X, ArrowRight, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Menu,
+  X,
+  ArrowRight,
+  ChevronDown,
+  ChevronRight,
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Sparkles,
+  ShieldCheck,
+  Search,
+  Calendar,
+  DollarSign,
+  Users,
+  Image as ImageIcon,
+  FileText,
+} from "lucide-react";
 import { useState, useEffect, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -11,44 +29,42 @@ import advancedImage from "@/assets/advanced-aesthetics.jpg";
 import heroImage from "@/assets/lume-hero.jpg";
 import { treatmentGroups, spaPackages } from "@/lib/treatments";
 
-const links = [
-  { to: "/treatments" as const, label: "Treatments" },
-  { to: "/about" as const, label: "About" },
-  { to: "/contact" as const, label: "Contact" },
-];
-
-const categoryPreviews = [
+const serviceCategories = [
+  {
+    title: "All Services Menu",
+    eyebrow: "Complete Menu",
+    href: "/treatments" as const,
+    description: "Browse all 24+ facial, body, spa, beauty, and clinical aesthetics.",
+  },
+  {
+    title: "Service Details",
+    eyebrow: "Clinical Protocols",
+    href: "/service-details" as const,
+    description: "In-depth procedural steps, ingredients, and step-by-step journeys.",
+  },
   {
     title: "Skin & Body Rituals",
-    eyebrow: "Category 01",
+    eyebrow: "Collection I",
     href: "/services/skin-and-body-rituals" as const,
-    image: facialImage,
-    description: "Tailored 20% AHA peels, Bioline facial rituals, and Mocha Gua Sha body contouring.",
-    treatments: treatmentGroups[0]?.treatments ?? [],
+    description: "Bioline 20% AHA peels, Aqua Luxe hydration, and Mocha Gua Sha bodywork.",
   },
   {
-    title: "Spa Packages",
-    eyebrow: "Category 02",
+    title: "Signature Spa Packages",
+    eyebrow: "Collection II",
     href: "/services/spa-packages" as const,
-    image: heroImage,
-    description: "Multi-hour head-to-toe luxury experiences combining facials, body wraps & scalp treatments.",
-    treatments: spaPackages,
+    description: "Multi-hour luxury sanctuary experiences (You Deserve It! & Queen For A Day!).",
   },
   {
-    title: "Beauty Atelier",
-    eyebrow: "Category 03",
+    title: "Beauty Atelier & Artistry",
+    eyebrow: "Collection III",
     href: "/services/beauty-atelier" as const,
-    image: bodyImage,
-    description: "Quietly polished makeup, gel nail artistry, lash couture lifts & silk waxing.",
-    treatments: treatmentGroups[1]?.treatments ?? [],
+    description: "The Glam Chapter makeup, structured gel nails, lash couture, and silk waxing.",
   },
   {
-    title: "Advanced Aesthetics",
-    eyebrow: "Category 04",
+    title: "Advanced Clinical Aesthetics",
+    eyebrow: "Collection IV",
     href: "/services/advanced-aesthetics" as const,
-    image: advancedImage,
-    description: "Consultation-led clinical injectables, PRP microneedling & IV wellness therapies.",
-    treatments: treatmentGroups[2]?.treatments ?? [],
+    description: "Botox® ($10/unit), Dermal Fillers, autologous PRP, and exosome microneedling.",
   },
 ];
 
@@ -62,77 +78,80 @@ export function PageIntro({
   children: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden bg-secondary/80 px-5 pb-16 pt-28 sm:px-8 sm:pb-20 sm:pt-36 border-b border-copper/15">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#F5EBE4] via-[#FAF7F2] to-[#FAF7F2] px-5 pb-16 pt-32 sm:px-8 sm:pb-20 sm:pt-40 border-b border-copper/20">
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-copper/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="mx-auto max-w-7xl relative z-10">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           {/* Main Title & Description Column */}
           <div className="lg:col-span-7">
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="eyebrow text-copper"
+              className="flex items-center gap-3"
             >
-              {eyebrow}
-            </motion.p>
+              <span className="eyebrow text-copper">{eyebrow}</span>
+              <span className="h-px w-8 bg-copper/30" />
+            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="mt-4 font-display text-4xl font-light leading-tight sm:text-6xl lg:text-7xl"
+              className="mt-4 font-display text-4xl font-light leading-[1.05] sm:text-6xl lg:text-7xl text-foreground text-balance"
             >
               {title}
             </motion.h1>
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="mt-6 max-w-2xl text-sm leading-8 text-muted-foreground sm:text-base"
+              className="mt-6 max-w-2xl text-xs leading-6 sm:text-sm sm:leading-7 text-muted-foreground font-light"
             >
               {children}
-            </motion.p>
+            </motion.div>
           </div>
 
-          {/* Right-Side Feature Banner & Quick Action (Fills empty right space) */}
+          {/* Right-Side Feature Atelier Badge */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:col-span-5 border border-copper/30 bg-background/60 backdrop-blur-sm p-6 space-y-4 shadow-sm"
+            className="lg:col-span-5 border border-copper/30 bg-background/90 backdrop-blur-md p-6 sm:p-7 space-y-4 shadow-sm"
           >
             <div className="flex items-center justify-between border-b border-copper/15 pb-3">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-copper font-semibold">
+              <span className="text-[10px] uppercase tracking-[0.22em] text-copper font-semibold">
                 Lumé Clinical Atelier
               </span>
-              <span className="text-[9px] uppercase tracking-widest text-muted-foreground bg-copper/10 text-copper px-2 py-0.5 font-medium">
+              <span className="text-[9px] uppercase tracking-widest text-copper bg-copper/10 px-2.5 py-1 font-medium">
                 Sherwood Park, AB
               </span>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4 pt-1">
               <div>
-                <p className="font-display text-2xl font-light text-copper">24+ Rituals</p>
-                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-0.5">Custom Formulated</p>
+                <p className="font-display text-2xl font-light text-foreground">24+ Rituals</p>
+                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-0.5">Bespoke Formulations</p>
               </div>
               <div>
-                <p className="font-display text-2xl font-light text-copper">Bioline Jatò</p>
-                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-0.5">Professional Partner</p>
+                <p className="font-display text-2xl font-light text-foreground">Bioline Jatò</p>
+                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-0.5">Italy Certified Partner</p>
               </div>
             </div>
 
-            <div className="pt-2 border-t border-copper/15 flex flex-col sm:flex-row items-center gap-3">
+            <div className="pt-3 border-t border-copper/15 flex flex-col sm:flex-row items-center gap-3">
               <Button
                 asChild
                 variant="outline"
-                className="w-full h-10 rounded-none border-copper bg-transparent text-[10px] uppercase tracking-[0.16em] text-copper hover:bg-copper hover:text-primary-foreground transition-all duration-300"
+                className="w-full h-10 rounded-none border-copper/50 bg-transparent text-[10px] uppercase tracking-[0.16em] text-copper hover:bg-copper hover:text-white transition-all duration-300"
               >
-                <a href="tel:+17804108278">Call Studio (780) 410-8278</a>
+                <a href="tel:+17804108278">Direct Line: (780) 410-8278</a>
               </Button>
               <Button
                 asChild
-                className="w-full h-10 rounded-none bg-foreground text-background text-[10px] uppercase tracking-[0.16em] hover:bg-copper-light hover:text-foreground transition-all duration-300"
+                className="w-full h-10 rounded-none bg-foreground text-background text-[10px] uppercase tracking-[0.16em] hover:bg-copper hover:text-white transition-all duration-300"
               >
-                <a href="mailto:info@lumeaesthetics.co?subject=Consultation%20Enquiry">Consult Specialist</a>
+                <Link to="/appointment">Book Appointment</Link>
               </Button>
             </div>
           </motion.div>
@@ -144,9 +163,8 @@ export function PageIntro({
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const [treatmentsOpen, setTreatmentsOpen] = useState(false);
-  const [hoveredCategoryIndex, setHoveredCategoryIndex] = useState(0);
-  const [hoveredServiceIndex, setHoveredServiceIndex] = useState(0);
+  const [serviceMenuOpen, setServiceMenuOpen] = useState(false);
+  const [pagesMenuOpen, setPagesMenuOpen] = useState(false);
 
   // Lock body scroll on mobile when menu drawer is open
   useEffect(() => {
@@ -163,424 +181,352 @@ export function SiteHeader() {
     };
   }, [open]);
 
-  const activeCategory = categoryPreviews[hoveredCategoryIndex] || categoryPreviews[0]!;
-  const activeService = (activeCategory.treatments[hoveredServiceIndex] || activeCategory.treatments[0])!;
-
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-foreground/95 backdrop-blur-xl">
-      <div className="relative mx-auto flex h-20 max-w-[1480px] items-center justify-between px-5 sm:px-8">
-        {/* Left: Full Brand Logo */}
+    <header className="fixed inset-x-0 top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-xl border-b border-copper/20 transition-all duration-300 shadow-sm">
+      {/* Top Global Atelier Announcement Strip */}
+      <div className="bg-[#131211] text-copper-light py-1.5 px-5 sm:px-8 text-center text-[10px] tracking-[0.2em] uppercase font-medium flex items-center justify-center gap-3 border-b border-copper/15">
+        <span className="flex items-center gap-1.5">
+          <Sparkles className="size-3 text-copper-light" />
+          <span>Bespoke Medispa Atelier</span>
+          <span className="text-white/30">|</span>
+          <span className="text-white/80">Sherwood Park, AB</span>
+        </span>
+        <span className="hidden md:inline text-white/30">•</span>
+        <span className="hidden md:inline text-white/80">
+          Direct Line:{" "}
+          <a href="tel:+17804108278" className="text-copper-light underline hover:text-white transition-colors">
+            (780) 410-8278
+          </a>
+        </span>
+        <span className="hidden lg:inline text-white/30">•</span>
+        <span className="hidden lg:inline text-white/70">100% Private Suites</span>
+      </div>
+
+      <div className="relative mx-auto flex h-16 sm:h-20 max-w-[1480px] items-center justify-between px-5 sm:px-8">
+        {/* Left: Brand Logo */}
         <Link to="/" aria-label="Lumé Aesthetics home" onClick={() => setOpen(false)} className="flex items-center gap-3">
           <img
             src="/lume-logo-full.svg"
             alt="Lumé Aesthetics"
-            className="h-10 w-auto sm:h-13 object-contain transition-opacity hover:opacity-90"
+            className="h-8 w-auto sm:h-11 object-contain transition-opacity hover:opacity-90"
           />
         </Link>
 
-        {/* Center: Centered Primary Navigation (Desktop) */}
-        <nav aria-label="Primary navigation" className="absolute left-1/2 -translate-x-1/2 hidden items-center gap-10 md:flex">
-          {/* Treatments Nav Item with BMW-Style 3-Column Hover Mega Menu */}
+        {/* Center: Exact Navigation matching the user requested screenshot:
+            HOME | ABOUT US | SERVICE ⌵ | BLOGS | PAGES ⌵ | CONTACT US */}
+        <nav aria-label="Primary navigation" className="hidden items-center gap-8 lg:flex">
+          {/* 1. HOME */}
+          <Link
+            to="/"
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#131211] transition-colors hover:text-copper"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper" }}
+          >
+            HOME
+          </Link>
+
+          {/* 2. ABOUT US */}
+          <Link
+            to="/about"
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#131211] transition-colors hover:text-copper"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper" }}
+          >
+            ABOUT US
+          </Link>
+
+          {/* 3. SERVICE ⌵ Dropdown */}
           <div
             className="relative py-6"
-            onMouseEnter={() => setTreatmentsOpen(true)}
-            onMouseLeave={() => setTreatmentsOpen(false)}
+            onMouseEnter={() => setServiceMenuOpen(true)}
+            onMouseLeave={() => setServiceMenuOpen(false)}
           >
             <Link
               to="/treatments"
-              className="text-[11px] font-semibold uppercase tracking-[0.16em] text-background/80 transition-colors hover:text-copper-light flex items-center gap-1.5"
-              activeProps={{ className: "text-[11px] font-semibold uppercase tracking-[0.16em] text-copper-light" }}
+              className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#131211] transition-colors hover:text-copper flex items-center gap-1"
+              activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper" }}
             >
-              Treatments
-              <span className="text-[8px] text-copper-light">▼</span>
+              <span>SERVICE</span>
+              <ChevronDown className="size-3 text-copper" />
             </Link>
 
-            {/* BMW-Style 3-Column Mega Menu */}
-            {treatmentsOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
-                className="absolute top-16 -left-72 w-[980px] rounded-none border border-copper/30 bg-foreground p-6 shadow-2xl backdrop-blur-2xl grid grid-cols-12 gap-5 text-background"
-              >
-                
-                {/* Col 1: Categories (Left) */}
-                <div className="col-span-3 border-r border-white/10 pr-4 space-y-1">
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-copper-light block mb-3 pl-2">
-                    Ritual Collections
-                  </span>
-                  {categoryPreviews.map((cat, cIdx) => {
-                    const isCatHovered = cIdx === hoveredCategoryIndex;
-                    return (
-                      <div
-                        key={cat.title}
-                        onMouseEnter={() => {
-                          setHoveredCategoryIndex(cIdx);
-                          setHoveredServiceIndex(0);
-                        }}
-                        className={`p-3 transition-all duration-200 cursor-pointer flex items-center justify-between group ${
-                          isCatHovered ? "bg-white/10 text-copper-light font-medium" : "text-background/80 hover:text-background hover:bg-white/5"
-                        }`}
-                      >
-                        <Link to={cat.href} onClick={() => setTreatmentsOpen(false)} className="w-full flex items-center justify-between">
-                          <span className="text-xs tracking-wide">{cat.title}</span>
-                          <ChevronRight className={`size-3.5 transition-transform ${isCatHovered ? "translate-x-1 text-copper-light" : "opacity-0"}`} />
-                        </Link>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {/* Col 2: Interactive Services List (Center) */}
-                <div className="col-span-4 border-r border-white/10 pr-4 space-y-1 overflow-y-auto max-h-[340px] custom-scrollbar">
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-copper-light block mb-3 pl-2">
-                    {activeCategory.title} Treatments
-                  </span>
-                  <div className="space-y-1">
-                    {activeCategory.treatments.map((service, sIdx) => {
-                      const isServiceHovered = sIdx === hoveredServiceIndex;
-                      return (
-                        <div
-                          key={service.name}
-                          onMouseEnter={() => setHoveredServiceIndex(sIdx)}
-                          className={`p-2.5 transition-all duration-200 cursor-pointer flex items-center justify-between text-xs border ${
-                            isServiceHovered
-                              ? "border-copper/40 bg-white/10 text-background font-medium shadow-sm"
-                              : "border-transparent text-background/75 hover:text-background hover:bg-white/5"
-                          }`}
-                        >
-                          <Link to={activeCategory.href} onClick={() => setTreatmentsOpen(false)} className="w-full flex items-center justify-between">
-                            <span className="truncate pr-2">{service.name}</span>
-                            <span className="text-[10px] text-copper-light font-semibold shrink-0">{service.price}</span>
-                          </Link>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Col 3: Detailed Image & Feature Focus (Right) */}
-                <div className="col-span-5 flex flex-col justify-between pl-3 space-y-4">
-                  <div>
-                    <div className="overflow-hidden border border-copper/30 h-48 mb-4 relative group">
-                      <img
-                        src={activeService.image || activeCategory.image}
-                        alt={activeService.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-foreground via-transparent to-transparent flex items-end p-4">
-                        <div>
-                          <span className="text-[9px] uppercase tracking-widest text-copper-light font-semibold block">
-                            {activeCategory.eyebrow}
-                          </span>
-                          <h4 className="font-display text-lg text-background font-light">{activeService.name}</h4>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <div className="flex items-baseline justify-between">
-                        <h4 className="font-display text-xl font-light text-background">{activeService.name}</h4>
-                        <span className="font-display text-lg text-copper-light font-light">{activeService.price}</span>
-                      </div>
-                      <p className="text-xs text-background/75 leading-5">{activeCategory.description}</p>
-                    </div>
-                  </div>
-
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="w-full h-10 rounded-none border-copper-light bg-transparent text-[10px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper-light hover:text-foreground transition-all duration-300"
-                  >
-                    <Link to={activeCategory.href} onClick={() => setTreatmentsOpen(false)}>
-                      Book {activeService.name}
+            <AnimatePresence>
+              {serviceMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-16 left-0 w-80 rounded-none border border-copper/35 bg-[#131211] p-4 shadow-2xl backdrop-blur-3xl space-y-2 text-white"
+                >
+                  {serviceCategories.map((item) => (
+                    <Link
+                      key={item.title}
+                      to={item.href}
+                      onClick={() => setServiceMenuOpen(false)}
+                      className="p-3 border border-copper/15 bg-white/5 hover:bg-white/10 text-xs text-white block transition-colors group"
+                    >
+                      <span className="text-[9px] uppercase tracking-wider text-copper-light block font-semibold">
+                        {item.eyebrow}
+                      </span>
+                      <span className="text-xs font-medium text-white group-hover:text-copper-light transition-colors">
+                        {item.title}
+                      </span>
+                      <p className="text-[11px] text-white/60 font-light mt-0.5 line-clamp-1">{item.description}</p>
                     </Link>
-                  </Button>
-                </div>
-
-              </motion.div>
-            )}
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
+          {/* 4. BLOGS */}
           <Link
-            to="/about"
-            className="text-[11px] font-semibold uppercase tracking-[0.16em] text-background/80 transition-colors hover:text-copper-light"
-            activeProps={{ className: "text-[11px] font-semibold uppercase tracking-[0.16em] text-copper-light" }}
+            to="/blogs"
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#131211] transition-colors hover:text-copper"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper" }}
           >
-            About
+            BLOGS
           </Link>
+
+          {/* 5. PAGES ⌵ Mega Menu */}
+          <div
+            className="relative py-6"
+            onMouseEnter={() => setPagesMenuOpen(true)}
+            onMouseLeave={() => setPagesMenuOpen(false)}
+          >
+            <button
+              type="button"
+              className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#131211] transition-colors hover:text-copper flex items-center gap-1"
+            >
+              <span>PAGES</span>
+              <ChevronDown className="size-3 text-copper" />
+            </button>
+
+            <AnimatePresence>
+              {pagesMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.22 }}
+                  className="absolute top-16 -left-48 w-[680px] rounded-none border border-copper/35 bg-[#131211] p-6 shadow-2xl backdrop-blur-3xl grid grid-cols-3 gap-6 text-white"
+                >
+                  {/* Column 1: The Atelier Story */}
+                  <div className="space-y-3 border-r border-white/10 pr-4">
+                    <span className="text-[9px] uppercase tracking-[0.24em] text-copper-light font-semibold block">
+                      01 • Sanctuary &amp; Editorial
+                    </span>
+                    <ul className="space-y-2 text-xs font-light">
+                      <li>
+                        <Link to="/about" onClick={() => setPagesMenuOpen(false)} className="text-white/80 hover:text-copper-light transition-colors block py-0.5">
+                          Our Story &amp; Philosophy
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/blogs" onClick={() => setPagesMenuOpen(false)} className="text-white/80 hover:text-copper-light transition-colors block py-0.5">
+                          Skincare &amp; Clinical Journal
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/team" onClick={() => setPagesMenuOpen(false)} className="text-white/80 hover:text-copper-light transition-colors block py-0.5">
+                          Master Clinicians &amp; Team
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Column 2: Reservations & Menus */}
+                  <div className="space-y-3 border-r border-white/10 pr-4">
+                    <span className="text-[9px] uppercase tracking-[0.24em] text-copper-light font-semibold block">
+                      02 • Reservations &amp; Menus
+                    </span>
+                    <ul className="space-y-2 text-xs font-light">
+                      <li>
+                        <Link to="/appointment" onClick={() => setPagesMenuOpen(false)} className="text-white/80 hover:text-copper-light transition-colors block py-0.5">
+                          Reserve Appointment
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/price-plan" onClick={() => setPagesMenuOpen(false)} className="text-white/80 hover:text-copper-light transition-colors block py-0.5">
+                          Price Plan &amp; Investment
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/service-details" onClick={() => setPagesMenuOpen(false)} className="text-white/80 hover:text-copper-light transition-colors block py-0.5">
+                          Protocol Monograph &amp; Steps
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Column 3: Lookbook & Concierge */}
+                  <div className="space-y-3">
+                    <span className="text-[9px] uppercase tracking-[0.24em] text-copper-light font-semibold block">
+                      03 • Lookbook &amp; Concierge
+                    </span>
+                    <ul className="space-y-2 text-xs font-light">
+                      <li>
+                        <Link to="/gallery" onClick={() => setPagesMenuOpen(false)} className="text-white/80 hover:text-copper-light transition-colors block py-0.5">
+                          Visual Lookbook &amp; Portfolio
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/contact" onClick={() => setPagesMenuOpen(false)} className="text-white/80 hover:text-copper-light transition-colors block py-0.5">
+                          Direct Studio Concierge
+                        </Link>
+                      </li>
+                      <li>
+                        <a href="/Brochure.pdf" target="_blank" rel="noreferrer" className="text-copper-light hover:underline block py-0.5 font-medium flex items-center justify-between">
+                          <span>Official Brochure (PDF)</span>
+                          <span className="text-[9px] bg-copper/20 px-1.5 py-0.5 rounded-none border border-copper/30">Download</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* 6. CONTACT US */}
           <Link
             to="/contact"
-            className="text-[11px] font-semibold uppercase tracking-[0.16em] text-background/80 transition-colors hover:text-copper-light"
-            activeProps={{ className: "text-[11px] font-semibold uppercase tracking-[0.16em] text-copper-light" }}
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#131211] transition-colors hover:text-copper"
+            activeProps={{ className: "text-[11px] font-bold uppercase tracking-[0.18em] text-copper" }}
           >
-            Contact
+            CONTACT US
           </Link>
         </nav>
 
-        {/* Right: Actions & Emblem Icon */}
+        {/* Right: Book Button & Mobile Toggle */}
         <div className="flex items-center gap-3 sm:gap-4">
-          <div className="hidden sm:block">
-            <Button asChild variant="outline" className="h-10 sm:h-11 rounded-none border-copper-light bg-transparent px-4 sm:px-6 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-copper-light shadow-none hover:bg-copper-light hover:text-foreground">
-              <a href="tel:+17804108278">Book a ritual</a>
-            </Button>
-          </div>
-          <Link to="/" aria-label="Lumé Aesthetics emblem icon" onClick={() => setOpen(false)} className="flex items-center">
-            <img
-              src="/lume-emblem.svg"
-              alt="Lumé Aesthetics emblem"
-              className="h-8 w-8 sm:h-10 sm:w-10 object-contain transition-transform duration-300 hover:scale-105"
-            />
-          </Link>
+          <Button asChild className="h-10 sm:h-11 rounded-none bg-[#131211] text-white px-5 sm:px-7 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] shadow-md hover:bg-copper hover:text-white transition-all duration-300">
+            <Link to="/appointment">Book Appointment</Link>
+          </Button>
+
           <Button
             variant="ghost"
             size="icon"
             aria-label={open ? "Close navigation" : "Open navigation"}
             aria-expanded={open}
             onClick={() => setOpen((value) => !value)}
-            className="rounded-none text-background hover:bg-white/10 hover:text-background md:hidden"
+            className="rounded-none text-[#131211] hover:bg-copper/10 lg:hidden"
           >
             {open ? <X className="size-6" /> : <Menu className="size-6" />}
           </Button>
         </div>
       </div>
 
-      {/* Mobile Animated Menu Drawer */}
-      {open && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "calc(100dvh - 5rem)" }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.35, ease: "easeInOut" }}
-          className="fixed inset-x-0 top-20 z-40 overflow-y-auto border-t border-copper/15 bg-foreground px-5 py-8 text-background md:hidden custom-scrollbar"
-        >
-          <nav className="flex flex-col space-y-6" aria-label="Mobile navigation">
-            {/* Primary Links */}
-            <div className="space-y-3">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">
-                Main Menu
-              </span>
-              <div className="flex flex-col space-y-3">
-                {/* Mobile Treatments Accordion Button */}
-                <button
-                  type="button"
-                  onClick={() => setTreatmentsOpen((v) => !v)}
-                  className="w-full flex items-center justify-between text-left font-display text-2xl font-light text-background hover:text-copper-light transition-colors py-1"
-                >
-                  <span className="flex items-center gap-2">
-                    Treatments & Rituals Menu
-                    <span className="text-xs text-copper-light font-normal">({categoryPreviews.length} Collections)</span>
-                  </span>
-                  <ChevronRight
-                    className={cn(
-                      "size-5 text-copper-light transition-transform duration-300",
-                      treatmentsOpen && "rotate-90"
-                    )}
-                  />
-                </button>
-
-                {/* Mobile Expanded Treatments Mega Dropdown */}
-                {treatmentsOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="border border-copper/30 bg-white/5 p-4 space-y-5 rounded-none"
-                  >
-                    {/* 4-Panel Ritual Collections Selector */}
-                    <div className="space-y-2">
-                      <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">
-                        Ritual Collections
-                      </span>
-                      <div className="flex flex-col space-y-1.5 border border-copper/20 bg-black/20 p-1.5">
-                        {categoryPreviews.map((cat, cIdx) => {
-                          const isCatSelected = cIdx === hoveredCategoryIndex;
-                          return (
-                            <button
-                              key={cat.title}
-                              type="button"
-                              onClick={() => {
-                                setHoveredCategoryIndex(cIdx);
-                                setHoveredServiceIndex(0);
-                              }}
-                              className={cn(
-                                "w-full px-3.5 py-3 text-left transition-all duration-200 flex items-center justify-between group",
-                                isCatSelected
-                                  ? "bg-white/15 text-copper-light font-medium border-l-2 border-copper-light shadow-sm"
-                                  : "text-background/80 hover:text-background hover:bg-white/5 border-l-2 border-transparent"
-                              )}
-                            >
-                              <div className="flex items-center gap-2.5">
-                                <span className="text-xs tracking-wide">{cat.title}</span>
-                                <span className="text-[9px] uppercase tracking-wider text-copper-light/70 bg-white/5 px-2 py-0.5">
-                                  {cat.treatments.length}
-                                </span>
-                              </div>
-                              <ChevronRight
-                                className={cn(
-                                  "size-4 transition-transform duration-200",
-                                  isCatSelected ? "translate-x-1 text-copper-light opacity-100" : "opacity-30 group-hover:opacity-70"
-                                )}
-                              />
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* Active Category Treatments Carousel / Scroll */}
-                    <div className="space-y-2.5 pt-2 border-t border-white/10">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] uppercase tracking-wider text-copper-light font-semibold">
-                          {activeCategory.title} Menu
-                        </span>
-                        <Link
-                          to={activeCategory.href}
-                          onClick={() => {
-                            setOpen(false);
-                            setTreatmentsOpen(false);
-                          }}
-                          className="text-[10px] uppercase tracking-wider text-copper-light underline"
-                        >
-                          View Full Category →
-                        </Link>
-                      </div>
-
-                      <div className="space-y-2 max-h-56 overflow-y-auto pr-1 custom-scrollbar">
-                        {activeCategory.treatments.map((service, sIdx) => {
-                          const isServiceActive = sIdx === hoveredServiceIndex;
-                          return (
-                            <div
-                              key={service.name}
-                              onClick={() => setHoveredServiceIndex(sIdx)}
-                              className={cn(
-                                "p-2.5 text-xs transition-all border flex items-center justify-between cursor-pointer",
-                                isServiceActive
-                                  ? "border-copper/50 bg-white/15 text-background"
-                                  : "border-white/5 bg-white/5 text-background/80"
-                              )}
-                            >
-                              <div className="pr-2 truncate">
-                                <p className="font-medium truncate">{service.name}</p>
-                                {service.duration && (
-                                  <p className="text-[9px] text-background/60">{service.duration}</p>
-                                )}
-                              </div>
-                              <span className="text-[10px] text-copper-light font-semibold shrink-0">
-                                {service.price}
-                              </span>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* Active Service Showcase Card */}
-                    <div className="border border-copper/40 bg-foreground/95 p-3.5 space-y-2 text-background shadow-lg">
-                      <div className="flex items-baseline justify-between gap-2 border-b border-white/10 pb-2">
-                        <h5 className="font-display text-sm text-copper-light font-medium truncate">
-                          {activeService.name}
-                        </h5>
-                        <span className="text-xs text-copper-light font-semibold shrink-0">
-                          {activeService.price}
-                        </span>
-                      </div>
-                      <p className="text-[11px] text-background/80 leading-4 line-clamp-2 font-light">
-                        {activeCategory.description}
-                      </p>
-                      <Button
-                        asChild
-                        variant="outline"
-                        className="w-full h-9 rounded-none border-copper-light bg-transparent text-[9px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper-light hover:text-foreground mt-1"
-                      >
-                        <Link
-                          to={activeCategory.href}
-                          onClick={() => {
-                            setOpen(false);
-                            setTreatmentsOpen(false);
-                          }}
-                        >
-                          Book {activeService.name}
-                        </Link>
-                      </Button>
-                    </div>
-                  </motion.div>
-                )}
-
+      {/* Mobile Navigation Drawer */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "calc(100dvh - 5.5rem)" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="fixed inset-x-0 top-[5.5rem] z-40 overflow-y-auto border-t border-copper/20 bg-[#131211] px-6 py-8 text-white lg:hidden custom-scrollbar"
+          >
+            <nav className="flex flex-col space-y-6" aria-label="Mobile navigation">
+              <div className="space-y-4">
                 <Link
-                  key="treatments-all"
-                  to="/treatments"
+                  to="/"
                   onClick={() => setOpen(false)}
-                  className="font-display text-2xl font-light text-background hover:text-copper-light transition-colors py-1"
+                  className="font-display text-2xl font-light text-white hover:text-copper-light transition-colors block"
                 >
-                  Complete Menu Brochure
+                  HOME
                 </Link>
                 <Link
-                  key="about"
                   to="/about"
                   onClick={() => setOpen(false)}
-                  className="font-display text-2xl font-light text-background hover:text-copper-light transition-colors py-1"
+                  className="font-display text-2xl font-light text-white hover:text-copper-light transition-colors block"
                 >
-                  About Lumé
+                  ABOUT US
                 </Link>
+
+                <div className="border-y border-white/10 py-3 space-y-2">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">
+                    SERVICES &amp; PROTOCOLS
+                  </span>
+                  <div className="grid grid-cols-2 gap-2 text-xs font-light">
+                    <Link to="/treatments" onClick={() => setOpen(false)} className="p-2 bg-white/5 border border-white/10 hover:border-copper">
+                      All Treatments (24+)
+                    </Link>
+                    <Link to="/service-details" onClick={() => setOpen(false)} className="p-2 bg-white/5 border border-white/10 hover:border-copper">
+                      Service Details
+                    </Link>
+                    <Link to="/services/skin-and-body-rituals" onClick={() => setOpen(false)} className="p-2 bg-white/5 border border-white/10 hover:border-copper">
+                      Skin &amp; Body Rituals
+                    </Link>
+                    <Link to="/services/spa-packages" onClick={() => setOpen(false)} className="p-2 bg-white/5 border border-white/10 hover:border-copper">
+                      Spa Packages
+                    </Link>
+                    <Link to="/services/beauty-atelier" onClick={() => setOpen(false)} className="p-2 bg-white/5 border border-white/10 hover:border-copper">
+                      Beauty Atelier
+                    </Link>
+                    <Link to="/services/advanced-aesthetics" onClick={() => setOpen(false)} className="p-2 bg-white/5 border border-white/10 hover:border-copper">
+                      Advanced Aesthetics
+                    </Link>
+                  </div>
+                </div>
+
                 <Link
-                  key="contact"
+                  to="/blogs"
+                  onClick={() => setOpen(false)}
+                  className="font-display text-2xl font-light text-white hover:text-copper-light transition-colors block"
+                >
+                  BLOGS
+                </Link>
+
+                <div className="border-b border-white/10 pb-3 space-y-2">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">
+                    ALL PAGES
+                  </span>
+                  <div className="grid grid-cols-2 gap-2 text-xs font-light">
+                    <Link to="/appointment" onClick={() => setOpen(false)} className="p-2 bg-white/5 border border-white/10 hover:border-copper">
+                      Appointment Booking
+                    </Link>
+                    <Link to="/price-plan" onClick={() => setOpen(false)} className="p-2 bg-white/5 border border-white/10 hover:border-copper">
+                      Price Plan &amp; Menu
+                    </Link>
+                    <Link to="/gallery" onClick={() => setOpen(false)} className="p-2 bg-white/5 border border-white/10 hover:border-copper">
+                      Portfolio / Gallery
+                    </Link>
+                    <Link to="/team" onClick={() => setOpen(false)} className="p-2 bg-white/5 border border-white/10 hover:border-copper">
+                      Practitioners &amp; Team
+                    </Link>
+                  </div>
+                </div>
+
+                <Link
                   to="/contact"
                   onClick={() => setOpen(false)}
-                  className="font-display text-2xl font-light text-background hover:text-copper-light transition-colors py-1"
+                  className="font-display text-2xl font-light text-white hover:text-copper-light transition-colors block"
                 >
-                  Contact Studio
+                  CONTACT US
                 </Link>
               </div>
-            </div>
 
-            {/* Quick Category Direct Links */}
-            <div className="pt-4 border-t border-white/10 space-y-3">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">
-                Direct Collections
-              </span>
-              <div className="grid gap-2 grid-cols-2">
-                {categoryPreviews.map((cat) => (
-                  <Link
-                    key={cat.title}
-                    to={cat.href}
-                    onClick={() => setOpen(false)}
-                    className="p-2.5 border border-copper/20 bg-white/5 hover:bg-white/10 text-xs font-light text-background flex items-center justify-between"
-                  >
-                    <span className="truncate pr-1">{cat.title}</span>
-                    <ChevronRight className="size-3 text-copper-light shrink-0" />
-                  </Link>
-                ))}
+              {/* Mobile Direct Line Callout */}
+              <div className="pt-4 border-t border-white/10 space-y-3">
+                <Button asChild className="w-full h-12 rounded-none bg-copper text-white text-xs uppercase tracking-[0.18em]">
+                  <a href="tel:+17804108278">Call Studio: (780) 410-8278</a>
+                </Button>
               </div>
-            </div>
-
-            {/* Call Studio Button */}
-            <div className="pt-4 border-t border-white/10 space-y-3">
-              <Button
-                asChild
-                variant="outline"
-                className="w-full h-12 rounded-none border-copper-light bg-transparent text-xs uppercase tracking-[0.18em] text-copper-light hover:bg-copper-light hover:text-foreground"
-              >
-                <a href="tel:+17804108278">Call Studio (780) 410-8278</a>
-              </Button>
-            </div>
-          </nav>
-        </motion.div>
-      )}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-copper/25 bg-foreground text-background">
+    <footer className="border-t border-copper/25 bg-[#131211] text-white">
       <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
-        
-        {/* Main Footer Grid */}
         <div className="grid gap-12 lg:grid-cols-12 items-start">
           
-          {/* Brand & Mission Column */}
+          {/* Brand & About Column */}
           <div className="lg:col-span-4 space-y-6">
             <Link to="/" aria-label="Lumé Aesthetics Home" className="inline-block">
               <img
@@ -589,115 +535,137 @@ export function SiteFooter() {
                 className="h-12 w-auto object-contain"
               />
             </Link>
-            <p className="text-xs leading-7 text-background/70 max-w-sm font-light">
-              A private beauty atelier in Sherwood Park, Alberta. Unhurried facial & body rituals, quietly polished beauty artistry, and consultation-led clinical aesthetics.
+            <p className="text-xs leading-7 text-white/70 max-w-sm font-light">
+              A private beauty atelier in Sherwood Park, Alberta. Unhurried facial &amp; body rituals, quietly polished beauty artistry, and consultation-led clinical aesthetics.
             </p>
-            <div className="flex items-center gap-4 text-xs">
-              <a href="tel:+17804108278" className="text-copper-light hover:underline font-medium">
-                (780) 410-8278
-              </a>
-              <span className="text-background/30">•</span>
-              <a href="mailto:info@lumeaesthetics.co" className="text-copper-light hover:underline font-medium">
-                info@lumeaesthetics.co
-              </a>
+            <div className="flex flex-col gap-2 text-xs pt-1">
+              <div className="flex items-center gap-2 text-copper-light">
+                <Phone className="size-3.5" />
+                <a href="tel:+17804108278" className="hover:underline font-medium">
+                  (780) 410-8278
+                </a>
+              </div>
+              <div className="flex items-center gap-2 text-copper-light">
+                <Mail className="size-3.5" />
+                <a href="mailto:info@lumeaesthetics.co" className="hover:underline font-medium">
+                  info@lumeaesthetics.co
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Service Links Column */}
+          {/* Important Links Column (matching lumeproject footer layout) */}
           <div className="lg:col-span-3 space-y-4">
-            <p className="eyebrow text-copper-light text-[10px] uppercase tracking-[0.2em] font-semibold">
-              Treatment Menu
+            <p className="eyebrow text-copper-light text-[10px] uppercase tracking-[0.22em] font-semibold">
+              Important Links
             </p>
-            <ul className="space-y-2.5 text-xs text-background/75">
-              <li>
-                <Link to="/services/skin-and-body-rituals" className="hover:text-copper-light transition-colors">
-                  Skin & Body Rituals
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/spa-packages" className="hover:text-copper-light transition-colors">
-                  Signature Spa Packages
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/beauty-atelier" className="hover:text-copper-light transition-colors">
-                  Beauty Atelier & Artistry
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/advanced-aesthetics" className="hover:text-copper-light transition-colors">
-                  Advanced Clinical Aesthetics
-                </Link>
-              </li>
+            <ul className="space-y-2 text-xs text-white/75 font-light">
               <li>
                 <Link to="/treatments" className="hover:text-copper-light transition-colors">
-                  Full Treatment Brochure →
+                  All Services Menu
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          {/* Atelier Navigation Column */}
-          <div className="lg:col-span-2 space-y-4">
-            <p className="eyebrow text-copper-light text-[10px] uppercase tracking-[0.2em] font-semibold">
-              The Atelier
-            </p>
-            <ul className="space-y-2.5 text-xs text-background/75">
               <li>
                 <Link to="/about" className="hover:text-copper-light transition-colors">
-                  About Philosophy
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/price-plan" className="hover:text-copper-light transition-colors">
+                  Price Plan &amp; Packages
+                </Link>
+              </li>
+              <li>
+                <Link to="/appointment" className="hover:text-copper-light transition-colors">
+                  Appointment Booking
+                </Link>
+              </li>
+              <li>
+                <Link to="/gallery" className="hover:text-copper-light transition-colors">
+                  Portfolio Gallery
+                </Link>
+              </li>
+              <li>
+                <Link to="/blogs" className="hover:text-copper-light transition-colors">
+                  Our Blogs &amp; Journals
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="hover:text-copper-light transition-colors">
-                  Location & Contact
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Categories Column (matching lumeproject footer layout) */}
+          <div className="lg:col-span-2 space-y-4">
+            <p className="eyebrow text-copper-light text-[10px] uppercase tracking-[0.22em] font-semibold">
+              Categories
+            </p>
+            <ul className="space-y-2 text-xs text-white/75 font-light">
+              <li>
+                <Link to="/services/skin-and-body-rituals" className="hover:text-copper-light transition-colors">
+                  Skin &amp; Body Rituals
                 </Link>
               </li>
               <li>
-                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-copper-light transition-colors">
-                  Instagram
-                </a>
+                <Link to="/services/spa-packages" className="hover:text-copper-light transition-colors">
+                  Spa Packages
+                </Link>
               </li>
               <li>
-                <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-copper-light transition-colors">
-                  Facebook
+                <Link to="/services/beauty-atelier" className="hover:text-copper-light transition-colors">
+                  Beauty Atelier
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/advanced-aesthetics" className="hover:text-copper-light transition-colors">
+                  Advanced Clinical
+                </Link>
+              </li>
+              <li>
+                <Link to="/service-details" className="hover:text-copper-light transition-colors">
+                  Service Details
+                </Link>
+              </li>
+              <li>
+                <a href="/Brochure.pdf" target="_blank" rel="noreferrer" className="hover:text-copper-light transition-colors text-copper-light font-medium">
+                  Brochure (PDF)
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Location & Emblem Column */}
+          {/* Studio Hours & Location Column */}
           <div className="lg:col-span-3 space-y-5 border-l border-white/10 pl-0 lg:pl-8">
             <div className="flex items-center gap-3">
               <img src="/lume-emblem.svg" alt="Lumé Emblem" className="h-8 w-8 object-contain" />
               <div>
-                <p className="text-xs text-background font-medium">Sherwood Park Studio</p>
-                <p className="text-[11px] text-background/60">Alberta, T8H 0Y6, Canada</p>
+                <p className="text-xs text-white font-medium">Sherwood Park Atelier</p>
+                <p className="text-[11px] text-white/60">2457 Broadmoor Blvd #121, AB</p>
               </div>
             </div>
-            <p className="text-[11px] leading-5 text-background/60">
+            <p className="text-[11px] leading-5 text-white/60">
               Hours of Care: Mon–Fri 10am–7pm | Sat 10am–5pm | Sun By Appointment
             </p>
             <Button
               asChild
-              variant="outline"
-              className="w-full h-10 rounded-none border-copper-light bg-transparent text-[10px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper-light hover:text-foreground transition-all duration-300"
+              className="w-full h-10 rounded-none bg-copper text-white text-[10px] uppercase tracking-[0.16em] hover:bg-copper/90 transition-all duration-300"
             >
-              <a href="tel:+17804108278">Book Consultation</a>
+              <Link to="/appointment">Book Appointment</Link>
             </Button>
           </div>
-
         </div>
 
         {/* Bottom Copyright Strip */}
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-background/50">
-          <p>© {new Date().getFullYear()} Lumé Aesthetics Atelier. All rights reserved.</p>
+        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-white/50 font-light">
+          <p>© {new Date().getFullYear()} Lumé Aesthetics. Design inspired by Lumé Project.</p>
           <div className="flex items-center gap-6">
-            <span>Bioline Jatò Professional Partner</span>
-            <span>Health Canada Clinical Hygiene Protocol</span>
+            <span className="flex items-center gap-1.5"><ShieldCheck className="size-3 text-copper-light" /> Bioline Jatò Italy Partner</span>
+            <span>Health Canada Approved Clinicals</span>
           </div>
         </div>
-
       </div>
     </footer>
   );
