@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import { Leaf, ShieldCheck, Sparkles, Award, ArrowRight } from "lucide-react";
 
 import advancedImage from "@/assets/advanced-aesthetics.jpg";
@@ -72,12 +73,28 @@ const pillars = [
   },
 ];
 
+const fadeInVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      delay: i * 0.15,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  }),
+};
+
 function Index() {
   return (
     <>
       {/* Hero Section */}
       <header className="relative flex min-h-[85svh] items-center justify-center overflow-hidden px-5 pb-16 pt-24 text-center sm:min-h-[92svh] sm:px-8 sm:pt-28">
-        <img
+        <motion.img
+          initial={{ scale: 1.08, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.8, ease: "easeOut" }}
           src={heroImage}
           alt="Skincare serum on warm sculpted stone"
           width={1920}
@@ -85,7 +102,12 @@ function Index() {
           className="absolute inset-0 -z-20 h-full w-full object-cover"
         />
         <div className="absolute inset-0 -z-10 bg-background/65 sm:bg-background/55" />
-        <div className="mx-auto max-w-5xl animate-rise">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+          className="mx-auto max-w-5xl"
+        >
           <p className="eyebrow text-copper font-medium tracking-[0.25em]">Lumé Aesthetics · Sanctuary of Renewal</p>
           <h1 className="mt-7 font-display text-6xl font-light leading-[0.91] text-foreground text-balance sm:text-8xl lg:text-[7.5rem]">
             Beautiful skin.
@@ -99,31 +121,39 @@ function Index() {
             <Button
               asChild
               variant="outline"
-              className="h-12 rounded-none border-copper bg-background/80 px-8 text-[11px] uppercase tracking-[0.18em] text-copper shadow-none backdrop-blur-sm hover:bg-copper hover:text-primary-foreground"
+              className="h-12 rounded-none border-copper bg-background/80 px-8 text-[11px] uppercase tracking-[0.18em] text-copper shadow-none backdrop-blur-sm hover:bg-copper hover:text-primary-foreground transition-all duration-300"
             >
               <Link to="/treatments">Explore Treatments & Menu</Link>
             </Button>
             <Button
               asChild
-              className="h-12 rounded-none bg-foreground px-8 text-[11px] uppercase tracking-[0.18em] text-background hover:bg-copper-light hover:text-foreground"
+              className="h-12 rounded-none bg-foreground px-8 text-[11px] uppercase tracking-[0.18em] text-background hover:bg-copper-light hover:text-foreground transition-all duration-300"
             >
               <a href="tel:+17804108278">Book Appointment</a>
             </Button>
           </div>
-        </div>
-        <span className="absolute bottom-8 text-[9px] uppercase tracking-[0.3em] text-foreground/50">Scroll to discover</span>
+        </motion.div>
+        <span className="absolute bottom-8 text-[9px] uppercase tracking-[0.3em] text-foreground/50 animate-pulse">Scroll to discover</span>
       </header>
 
       {/* Brand Pillars / Values */}
       <section className="border-b border-copper/15 bg-secondary/50 px-5 py-16 sm:px-8 sm:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {pillars.map((pillar) => (
-              <div key={pillar.title} className="flex flex-col items-start bg-background p-7 border border-copper/15">
+            {pillars.map((pillar, idx) => (
+              <motion.div
+                key={pillar.title}
+                custom={idx}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={fadeInVariants}
+                className="flex flex-col items-start bg-background p-7 border border-copper/15 transition-shadow hover:shadow-md"
+              >
                 <div className="mb-4">{pillar.icon}</div>
                 <h3 className="font-display text-xl font-light text-foreground">{pillar.title}</h3>
                 <p className="mt-2 text-xs leading-6 text-muted-foreground">{pillar.copy}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -132,7 +162,13 @@ function Index() {
       {/* Treatment Highlights */}
       <section className="px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-7xl">
-          <div className="grid items-end gap-10 md:grid-cols-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid items-end gap-10 md:grid-cols-12"
+          >
             <div className="md:col-span-7">
               <p className="font-display text-2xl italic text-copper">Curated Experiences</p>
               <h2 className="mt-4 font-display text-4xl font-light leading-tight sm:text-6xl">
@@ -144,11 +180,17 @@ function Index() {
             <p className="max-w-lg leading-7 text-muted-foreground md:col-span-5">
               From Bioline facial rituals to body sculpting, lash lifts, and advanced injectables, every Lumé experience is selected with intention and delivered with exacting care.
             </p>
-          </div>
+          </motion.div>
+
           <div className="mt-20 grid gap-6 md:grid-cols-3">
             {highlights.map((item, index) => (
-              <article
+              <motion.article
                 key={item.label}
+                custom={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={fadeInVariants}
                 className={
                   index === 0
                     ? "bg-secondary"
@@ -164,7 +206,7 @@ function Index() {
                     loading="lazy"
                     width={800}
                     height={1000}
-                    className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-[1.025]"
+                    className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
                   />
                 </div>
                 <div className="p-7 sm:p-8">
@@ -181,7 +223,7 @@ function Index() {
                     <Link to="/treatments">View Treatments Menu →</Link>
                   </Button>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>
@@ -190,17 +232,31 @@ function Index() {
       {/* Spa Packages Feature Banner */}
       <section className="bg-secondary/80 border-y border-copper/20 px-5 py-24 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-7xl">
-          <div className="text-center max-w-2xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-2xl mx-auto"
+          >
             <p className="eyebrow text-copper">Head-to-Toe Luxury</p>
             <h2 className="mt-3 font-display text-4xl font-light sm:text-6xl">Featured Spa Packages</h2>
             <p className="mt-4 text-sm leading-7 text-muted-foreground">
               Indulge in our signature multi-treatment packages crafted for special occasions and total body transformation.
             </p>
-          </div>
+          </motion.div>
 
           <div className="mt-14 grid gap-8 md:grid-cols-2">
-            {spaPackages.map((pkg) => (
-              <div key={pkg.name} className="flex flex-col justify-between border border-copper/25 bg-background p-8 sm:p-10 shadow-sm">
+            {spaPackages.map((pkg, idx) => (
+              <motion.div
+                key={pkg.name}
+                custom={idx}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInVariants}
+                className="flex flex-col justify-between border border-copper/25 bg-background p-8 sm:p-10 shadow-sm transition-all duration-300 hover:border-copper"
+              >
                 <div>
                   <div className="flex justify-between items-baseline border-b border-copper/15 pb-4">
                     <h3 className="font-display text-3xl font-light">{pkg.name}</h3>
@@ -212,7 +268,7 @@ function Index() {
                 <Button asChild variant="outline" className="mt-8 h-11 w-full rounded-none border-copper bg-transparent text-[10px] uppercase tracking-[0.18em] text-copper hover:bg-copper hover:text-primary-foreground">
                   <Link to="/treatments">View Menu & Book</Link>
                 </Button>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -232,14 +288,22 @@ function Index() {
           </div>
 
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            {teamMembers.map((member) => (
-              <div key={member.name} className="border border-copper/20 bg-background p-6 flex flex-col justify-between">
+            {teamMembers.map((member, idx) => (
+              <motion.div
+                key={member.name}
+                custom={idx}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInVariants}
+                className="border border-copper/20 bg-background p-6 flex flex-col justify-between transition-colors duration-300 hover:border-copper"
+              >
                 <div>
                   <span className="text-[10px] uppercase tracking-widest text-copper font-medium">{member.role}</span>
                   <h3 className="mt-2 font-display text-2xl font-light text-foreground">{member.name}</h3>
                   <p className="mt-2 text-xs font-medium text-muted-foreground">{member.specialty}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -247,7 +311,13 @@ function Index() {
 
       {/* Philosophy Banner */}
       <section className="bg-foreground px-5 py-24 text-background sm:px-8 sm:py-32">
-        <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9 }}
+          className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-center"
+        >
           <div>
             <p className="eyebrow text-copper-light">The Lumé Philosophy</p>
             <h2 className="mt-6 font-display text-5xl font-light leading-[1.02] sm:text-7xl">
@@ -264,12 +334,18 @@ function Index() {
               <Link to="/about">Our Approach & Standards →</Link>
             </Button>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Call to Action */}
       <section className="px-5 py-24 text-center sm:px-8 sm:py-32">
-        <div className="mx-auto max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mx-auto max-w-3xl"
+        >
           <p className="eyebrow">Your Time at Lumé</p>
           <h2 className="mt-7 font-display text-5xl font-light sm:text-7xl">Begin with a conversation.</h2>
           <p className="mx-auto mt-6 max-w-xl leading-7 text-muted-foreground">
@@ -278,7 +354,7 @@ function Index() {
           <Button asChild className="mt-9 h-12 rounded-none px-10 text-[11px] uppercase tracking-[0.18em]">
             <a href="tel:+17804108278">Call to Book Appointment</a>
           </Button>
-        </div>
+        </motion.div>
       </section>
     </>
   );

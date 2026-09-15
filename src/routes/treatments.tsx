@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import { Sparkles, CheckCircle2 } from "lucide-react";
 
 import { PageIntro } from "@/components/site-shell";
@@ -23,6 +24,19 @@ export const Route = createFileRoute("/treatments")({
   component: TreatmentsPage,
 });
 
+const fadeInVariant = {
+  hidden: { opacity: 0, y: 25 },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      delay: i * 0.1,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  }),
+};
+
 function TreatmentsPage() {
   return (
     <>
@@ -42,7 +56,13 @@ function TreatmentsPage() {
       {/* Spa Packages Highlight */}
       <section className="border-b border-copper/20 bg-secondary/80 px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end"
+          >
             <div>
               <p className="eyebrow flex items-center gap-2 text-copper">
                 <Sparkles className="size-4" /> Signature Experiences
@@ -52,13 +72,18 @@ function TreatmentsPage() {
             <p className="max-w-md text-sm leading-6 text-muted-foreground">
               Curated combinations designed for total body rejuvenation, special occasions, or a deep sensory reset.
             </p>
-          </div>
+          </motion.div>
 
           <div className="mt-14 grid gap-8 lg:grid-cols-2">
-            {spaPackages.map((pkg) => (
-              <article
+            {spaPackages.map((pkg, idx) => (
+              <motion.article
                 key={pkg.name}
-                className="relative flex flex-col justify-between border border-copper/30 bg-background p-8 shadow-sm transition-all hover:border-copper sm:p-10"
+                custom={idx}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInVariant}
+                className="relative flex flex-col justify-between border border-copper/30 bg-background p-8 shadow-sm transition-all duration-300 hover:border-copper sm:p-10"
               >
                 <div>
                   <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-copper/15 pb-6">
@@ -92,13 +117,13 @@ function TreatmentsPage() {
                 <Button
                   asChild
                   variant="outline"
-                  className="mt-8 h-12 w-full rounded-none border-copper bg-transparent text-[11px] uppercase tracking-[0.18em] text-copper hover:bg-copper hover:text-primary-foreground"
+                  className="mt-8 h-12 w-full rounded-none border-copper bg-transparent text-[11px] uppercase tracking-[0.18em] text-copper hover:bg-copper hover:text-primary-foreground transition-all duration-300"
                 >
                   <a href={`mailto:info@lumeaesthetics.co?subject=${encodeURIComponent(`Booking Spa Package: ${pkg.name}`)}`}>
                     Reserve Package — {pkg.price}
                   </a>
                 </Button>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>
@@ -117,7 +142,12 @@ function TreatmentsPage() {
           }
         >
           <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[0.7fr_1.3fr]">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -25 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
               <p className={groupIndex === 2 ? "eyebrow text-copper-light" : "eyebrow"}>{group.eyebrow}</p>
               <h2 className="mt-5 font-display text-4xl font-light sm:text-5xl">{group.title}</h2>
               <p
@@ -129,7 +159,7 @@ function TreatmentsPage() {
               >
                 {group.introduction}
               </p>
-            </div>
+            </motion.div>
             <div
               className={
                 groupIndex === 2
@@ -139,12 +169,17 @@ function TreatmentsPage() {
                     : "divide-y divide-copper/15 border-t border-copper/15"
               }
             >
-              {group.treatments.map((treatment) => (
-                <article
+              {group.treatments.map((treatment, itemIdx) => (
+                <motion.article
                   key={treatment.name}
+                  custom={itemIdx}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-30px" }}
+                  variants={fadeInVariant}
                   className={
                     groupIndex === 1
-                      ? "flex flex-col justify-between border border-copper/20 bg-background p-6 transition-all hover:border-copper"
+                      ? "flex flex-col justify-between border border-copper/20 bg-background p-6 transition-all duration-300 hover:border-copper"
                       : "grid gap-5 py-7 sm:grid-cols-[1fr_auto] sm:gap-8"
                   }
                 >
@@ -180,17 +215,17 @@ function TreatmentsPage() {
                     variant="outline"
                     className={
                       groupIndex === 2
-                        ? "h-10 self-end rounded-none border-copper-light bg-transparent px-4 text-[10px] uppercase tracking-[0.14em] text-copper-light hover:bg-copper-light hover:text-foreground"
+                        ? "h-10 self-end rounded-none border-copper-light bg-transparent px-4 text-[10px] uppercase tracking-[0.14em] text-copper-light hover:bg-copper-light hover:text-foreground transition-all duration-300"
                         : groupIndex === 1
-                          ? "mt-6 h-10 self-start rounded-none border-copper bg-transparent px-4 text-[10px] uppercase tracking-[0.14em] text-copper hover:bg-copper hover:text-primary-foreground"
-                          : "h-10 self-end rounded-none border-copper bg-transparent px-4 text-[10px] uppercase tracking-[0.14em] text-copper hover:bg-copper hover:text-primary-foreground"
+                          ? "mt-6 h-10 self-start rounded-none border-copper bg-transparent px-4 text-[10px] uppercase tracking-[0.14em] text-copper hover:bg-copper hover:text-primary-foreground transition-all duration-300"
+                          : "h-10 self-end rounded-none border-copper bg-transparent px-4 text-[10px] uppercase tracking-[0.14em] text-copper hover:bg-copper hover:text-primary-foreground transition-all duration-300"
                     }
                   >
                     <a href={`mailto:info@lumeaesthetics.co?subject=${encodeURIComponent(`Enquiry about ${treatment.name}`)}`}>
                       Enquire about this
                     </a>
                   </Button>
-                </article>
+                </motion.article>
               ))}
             </div>
           </div>
@@ -203,8 +238,16 @@ function TreatmentsPage() {
           <p className="eyebrow">Thoughtful additions</p>
           <h2 className="mt-3 font-display text-4xl font-light sm:text-5xl">Treatment Add-Ons</h2>
           <div className="mt-8 grid gap-px bg-copper/20 md:grid-cols-2">
-            {addOns.map((item) => (
-              <article className="flex flex-col justify-between bg-background p-7 sm:p-10" key={item.name}>
+            {addOns.map((item, idx) => (
+              <motion.article
+                key={item.name}
+                custom={idx}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInVariant}
+                className="flex flex-col justify-between bg-background p-7 sm:p-10"
+              >
                 <div>
                   <div className="flex flex-wrap items-baseline justify-between gap-4">
                     <h3 className="font-display text-3xl font-light">{item.name}</h3>
@@ -217,13 +260,13 @@ function TreatmentsPage() {
                 <Button
                   asChild
                   variant="outline"
-                  className="mt-6 h-10 self-start rounded-none border-copper bg-transparent px-4 text-[10px] uppercase tracking-[0.14em] text-copper hover:bg-copper hover:text-primary-foreground"
+                  className="mt-6 h-10 self-start rounded-none border-copper bg-transparent px-4 text-[10px] uppercase tracking-[0.14em] text-copper hover:bg-copper hover:text-primary-foreground transition-all duration-300"
                 >
                   <a href={`mailto:info@lumeaesthetics.co?subject=${encodeURIComponent(`Enquiry about ${item.name}`)}`}>
                     Add to treatment
                   </a>
                 </Button>
-              </article>
+              </motion.article>
             ))}
           </div>
 
