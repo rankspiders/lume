@@ -19,8 +19,12 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-foreground/95 backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-[1480px] items-center justify-between px-5 sm:px-8">
-        <Link to="/" aria-label="Lumé Aesthetics home" onClick={() => setOpen(false)}>
-          <img src={logoWordmark.url} alt="Lumé Aesthetics" className="h-11 w-auto sm:h-12" />
+        <Link to="/" aria-label="Lumé Aesthetics home" onClick={() => setOpen(false)} className="flex items-center gap-3">
+          <img
+            src="/lume-logo-full.svg"
+            alt="Lumé Aesthetics"
+            className="h-12 w-auto sm:h-14 object-contain transition-opacity hover:opacity-90"
+          />
         </Link>
         <nav aria-label="Primary navigation" className="hidden items-center gap-10 md:flex">
           {links.map((link) => (
@@ -41,7 +45,11 @@ export function SiteHeader() {
             </Button>
           </div>
           <Link to="/" aria-label="Lumé Aesthetics logo mark" onClick={() => setOpen(false)} className="flex items-center">
-            <img src={logoMark.url} alt="Lumé Aesthetics emblem logo" className="h-10 w-10 transition-transform duration-300 hover:scale-105" />
+            <img
+              src="/lume-emblem.svg"
+              alt="Lumé Aesthetics emblem"
+              className="h-10 w-10 object-contain transition-transform duration-300 hover:scale-105"
+            />
           </Link>
           <Button
             variant="ghost"
@@ -73,71 +81,71 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-copper/15 bg-background px-5 py-16 sm:px-8">
+    <footer className="border-t border-copper/20 bg-foreground text-background px-5 py-16 sm:px-8">
       <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-4">
         <div className="md:col-span-1">
-          <img src={logoMark.url} alt="Lumé Aesthetics" className="h-14 w-14" />
-          <p className="mt-4 font-display text-2xl font-light italic text-foreground">
+          <img src="/lume-logo-full.svg" alt="Lumé Aesthetics" className="h-16 w-auto object-contain" />
+          <p className="mt-4 font-display text-2xl font-light italic text-background">
             Beautiful skin.
             <br />
-            Confidence within.
+            <span className="text-copper-light">Confidence within.</span>
           </p>
-          <p className="mt-4 text-xs leading-6 text-muted-foreground">
+          <p className="mt-4 text-xs leading-6 text-background/65">
             A sanctuary of bespoke skincare, body rituals, and consultation-led advanced aesthetics.
           </p>
         </div>
 
         <div>
-          <p className="eyebrow text-copper">Open Hours</p>
-          <p className="mt-4 text-sm leading-7 text-muted-foreground">
+          <p className="eyebrow text-copper-light">Open Hours</p>
+          <p className="mt-4 text-sm leading-7 text-background/70">
             Monday to Saturday
             <br />
-            <strong className="font-semibold text-foreground">9:00 AM – 6:00 PM</strong>
+            <strong className="font-semibold text-background">9:00 AM – 6:00 PM</strong>
             <br />
             Sunday by appointment
           </p>
         </div>
 
         <div>
-          <p className="eyebrow text-copper">Location & Contact</p>
-          <address className="mt-4 text-sm not-italic leading-7 text-muted-foreground">
+          <p className="eyebrow text-copper-light">Location & Contact</p>
+          <address className="mt-4 text-sm not-italic leading-7 text-background/70">
             2457 Broadmoor Blvd #121
             <br />
             Sherwood Park, AB T8H 0Y6, Canada
           </address>
-          <div className="mt-3 space-y-1 text-sm">
-            <a className="block hover:text-copper transition-colors" href="tel:+17804108278">
+          <div className="mt-3 space-y-1 text-sm text-background/80">
+            <a className="block hover:text-copper-light transition-colors" href="tel:+17804108278">
               +1 780-410-8278
             </a>
-            <a className="block hover:text-copper transition-colors" href="tel:+919872325444">
+            <a className="block hover:text-copper-light transition-colors" href="tel:+919872325444">
               +91 9872325444
             </a>
-            <a className="block hover:text-copper transition-colors" href="mailto:info@lumeaesthetics.co">
+            <a className="block hover:text-copper-light transition-colors" href="mailto:info@lumeaesthetics.co">
               info@lumeaesthetics.co
             </a>
           </div>
         </div>
 
         <div>
-          <p className="eyebrow text-copper">Categories</p>
-          <ul className="mt-4 space-y-2 text-xs uppercase tracking-widest text-muted-foreground">
+          <p className="eyebrow text-copper-light">Categories</p>
+          <ul className="mt-4 space-y-2 text-xs uppercase tracking-widest text-background/70">
             <li>
-              <Link to="/treatments" className="hover:text-copper transition-colors">
+              <Link to="/treatments" className="hover:text-copper-light transition-colors">
                 Skincare & Facials
               </Link>
             </li>
             <li>
-              <Link to="/treatments" className="hover:text-copper transition-colors">
+              <Link to="/treatments" className="hover:text-copper-light transition-colors">
                 Body Rituals & Sculpting
               </Link>
             </li>
             <li>
-              <Link to="/treatments" className="hover:text-copper transition-colors">
+              <Link to="/treatments" className="hover:text-copper-light transition-colors">
                 Beauty Atelier & Nails
               </Link>
             </li>
             <li>
-              <Link to="/treatments" className="hover:text-copper transition-colors">
+              <Link to="/treatments" className="hover:text-copper-light transition-colors">
                 Advanced Aesthetics & IV
               </Link>
             </li>
@@ -145,7 +153,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="mx-auto mt-14 flex max-w-7xl flex-col gap-3 border-t border-copper/15 pt-7 text-[10px] uppercase tracking-[0.16em] text-muted-foreground sm:flex-row sm:justify-between">
+      <div className="mx-auto mt-14 flex max-w-7xl flex-col gap-3 border-t border-background/15 pt-7 text-[10px] uppercase tracking-[0.16em] text-background/50 sm:flex-row sm:justify-between">
         <span>© 2026 Lumé Aesthetics. All rights reserved.</span>
         <span>Relax · Rejuvenate · Glow</span>
       </div>
