@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { Menu, X, ArrowRight, ChevronRight } from "lucide-react";
+import { useState, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -22,7 +22,13 @@ const categoryPreviews = [
     href: "/services/skin-and-body-rituals" as const,
     image: facialImage,
     description: "Tailored 20% AHA peels, Bioline facial rituals, and Mocha Gua Sha body contouring.",
-    treatments: ["Lumé Aqua Luxe ($125)", "Prima Glow 20% AHA ($135)", "Radiance C ($145)", "Collagen Lifting ($195)", "Mocha Contour ($145)"],
+    treatments: [
+      { name: "Lumé Aqua Luxe Facial", price: "$125" },
+      { name: "Lumé Prima Glow 20% AHA", price: "$135" },
+      { name: "Lumé Radiance C Facial", price: "$145" },
+      { name: "Lumé Collagen Lifting Facial", price: "$195" },
+      { name: "Lumé Mocha Contour", price: "$145" },
+    ],
   },
   {
     title: "Spa Packages",
@@ -30,7 +36,10 @@ const categoryPreviews = [
     href: "/services/spa-packages" as const,
     image: heroImage,
     description: "Multi-hour head-to-toe luxury experiences combining facials, body wraps & scalp treatments.",
-    treatments: ["You Deserve It! — 2 hrs ($265)", "Queen For A Day! — 3 hrs ($395)"],
+    treatments: [
+      { name: "You Deserve It!", price: "$265" },
+      { name: "Queen For A Day!", price: "$395" },
+    ],
   },
   {
     title: "Beauty Atelier",
@@ -38,7 +47,12 @@ const categoryPreviews = [
     href: "/services/beauty-atelier" as const,
     image: bodyImage,
     description: "Quietly polished makeup, gel nail artistry, lash couture lifts & silk waxing.",
-    treatments: ["The Glam Chapter ($110+)", "Polished Gel Nails ($65+)", "Lash Couture ($99)", "Silk Body Waxing"],
+    treatments: [
+      { name: "The Glam Chapter", price: "$110+" },
+      { name: "Lumé Polished Nails", price: "$65+" },
+      { name: "Lumé Lash Couture", price: "$99" },
+      { name: "Lumé Silk Body Waxing", price: "$45+" },
+    ],
   },
   {
     title: "Advanced Aesthetics",
@@ -46,16 +60,47 @@ const categoryPreviews = [
     href: "/services/advanced-aesthetics" as const,
     image: advancedImage,
     description: "Consultation-led clinical injectables, PRP microneedling & IV wellness therapies.",
-    treatments: ["Lumé Botox® ($10/unit)", "Dermal Fillers ($550+)", "PRP Microneedling ($450)", "Exosome Therapy ($550)"],
+    treatments: [
+      { name: "Lumé Botox®", price: "$10/unit" },
+      { name: "Lumé Dermal Fillers", price: "$550+" },
+      { name: "Lumé PRP Microneedling", price: "$450" },
+      { name: "Lumé Exosome Microneedling", price: "$550" },
+    ],
   },
 ] as const;
+
+export function PageIntro({
+  eyebrow,
+  title,
+  children,
+}: {
+  eyebrow: string;
+  title: ReactNode;
+  children: ReactNode;
+}) {
+  return (
+    <section className="relative overflow-hidden bg-secondary/80 px-5 pb-16 pt-28 sm:px-8 sm:pb-20 sm:pt-36">
+      <div className="mx-auto max-w-7xl">
+        <p className="eyebrow text-copper">{eyebrow}</p>
+        <h1 className="mt-4 font-display text-4xl font-light leading-tight sm:text-6xl lg:text-7xl">
+          {title}
+        </h1>
+        <p className="mt-6 max-w-2xl text-sm leading-8 text-muted-foreground sm:text-base">
+          {children}
+        </p>
+      </div>
+    </section>
+  );
+}
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [treatmentsOpen, setTreatmentsOpen] = useState(false);
-  const [hoveredIndex, setHoveredIndex] = useState(0);
+  const [hoveredCategoryIndex, setHoveredCategoryIndex] = useState(0);
+  const [hoveredServiceIndex, setHoveredServiceIndex] = useState(0);
 
-  const activeCategory = categoryPreviews[hoveredIndex] ?? categoryPreviews[0];
+  const activeCategory = categoryPreviews[hoveredCategoryIndex] ?? categoryPreviews[0];
+  const activeService = activeCategory.treatments[hoveredServiceIndex] ?? activeCategory.treatments[0];
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-foreground/95 backdrop-blur-xl">
@@ -71,7 +116,7 @@ export function SiteHeader() {
 
         {/* Center: Centered Primary Navigation */}
         <nav aria-label="Primary navigation" className="absolute left-1/2 -translate-x-1/2 hidden items-center gap-10 md:flex">
-          {/* Treatments Nav Item with Interactive Hover Mega Menu */}
+          {/* Treatments Nav Item with BMW-Style 3-Column Hover Mega Menu */}
           <div
             className="relative py-6"
             onMouseEnter={() => setTreatmentsOpen(true)}
@@ -86,50 +131,34 @@ export function SiteHeader() {
               <span className="text-[8px] text-copper-light">▼</span>
             </Link>
 
-            {/* Enhanced Mega Menu Dropdown with Dynamic Hover Preview Image */}
+            {/* BMW-Style 3-Column Mega Menu */}
             {treatmentsOpen && (
-              <div className="absolute top-16 -left-64 w-[840px] rounded-none border border-copper/30 bg-foreground p-7 shadow-2xl backdrop-blur-2xl grid grid-cols-12 gap-7 animate-in fade-in slide-in-from-top-2 duration-200 text-background">
+              <div className="absolute top-16 -left-72 w-[980px] rounded-none border border-copper/30 bg-foreground p-6 shadow-2xl backdrop-blur-2xl grid grid-cols-12 gap-5 animate-in fade-in slide-in-from-top-2 duration-200 text-background">
                 
-                {/* 4 Category Column List */}
-                <div className="col-span-7 space-y-3">
-                  <div className="flex justify-between items-center pb-2 border-b border-white/10">
-                    <p className="eyebrow text-copper-light text-[10px] tracking-[0.2em] uppercase font-semibold">
-                      Service Categories
-                    </p>
-                    <Link
-                      to="/treatments"
-                      onClick={() => setTreatmentsOpen(false)}
-                      className="text-[9px] uppercase tracking-wider text-copper-light hover:underline flex items-center gap-1"
-                    >
-                      All Rituals →
-                    </Link>
-                  </div>
-
-                  <div className="space-y-2">
+                {/* Col 1: Categories (Left) */}
+                <div className="col-span-3 border-r border-white/10 pr-4 space-y-2">
+                  <p className="eyebrow text-copper-light text-[9px] tracking-[0.18em] uppercase font-semibold pb-2 border-b border-white/10">
+                    Categories
+                  </p>
+                  <div className="space-y-1">
                     {categoryPreviews.map((cat, idx) => {
-                      const isHovered = hoveredIndex === idx;
+                      const isHovered = hoveredCategoryIndex === idx;
                       return (
                         <div
                           key={cat.title}
-                          onMouseEnter={() => setHoveredIndex(idx)}
-                          className={`group p-3 border transition-all duration-200 cursor-pointer ${
+                          onMouseEnter={() => {
+                            setHoveredCategoryIndex(idx);
+                            setHoveredServiceIndex(0);
+                          }}
+                          className={`p-2.5 transition-all duration-200 cursor-pointer flex items-center justify-between text-xs border ${
                             isHovered
-                              ? "border-copper bg-copper/15 shadow-sm"
-                              : "border-white/5 bg-white/5 hover:border-copper/40"
+                              ? "border-copper bg-copper/20 text-copper-light font-medium"
+                              : "border-transparent text-background/70 hover:text-background hover:bg-white/5"
                           }`}
                         >
-                          <Link
-                            to={cat.href}
-                            onClick={() => setTreatmentsOpen(false)}
-                            className="flex items-center justify-between"
-                          >
-                            <div>
-                              <span className="text-[9px] uppercase tracking-widest text-copper-light">{cat.eyebrow}</span>
-                              <h4 className="font-display text-lg font-light text-background group-hover:text-copper-light transition-colors">
-                                {cat.title}
-                              </h4>
-                            </div>
-                            <ArrowRight className={`size-4 transition-transform duration-200 ${isHovered ? "text-copper-light translate-x-1" : "text-background/40"}`} />
+                          <Link to={cat.href} onClick={() => setTreatmentsOpen(false)} className="w-full flex items-center justify-between">
+                            <span>{cat.title}</span>
+                            <ChevronRight className={`size-3.5 transition-transform ${isHovered ? "translate-x-1 text-copper-light" : "opacity-40"}`} />
                           </Link>
                         </div>
                       );
@@ -137,41 +166,78 @@ export function SiteHeader() {
                   </div>
                 </div>
 
-                {/* Live Dynamic Preview Card Column */}
-                <div className="col-span-5 flex flex-col justify-between border-l border-white/10 pl-7 space-y-4">
+                {/* Col 2: Services List under Active Category (Middle) */}
+                <div className="col-span-4 border-r border-white/10 pr-4 space-y-2">
+                  <div className="flex items-center justify-between pb-2 border-b border-white/10">
+                    <p className="eyebrow text-copper-light text-[9px] tracking-[0.18em] uppercase font-semibold">
+                      {activeCategory.title}
+                    </p>
+                    <Link
+                      to={activeCategory.href}
+                      onClick={() => setTreatmentsOpen(false)}
+                      className="text-[9px] uppercase tracking-wider text-copper-light hover:underline"
+                    >
+                      View All →
+                    </Link>
+                  </div>
+                  <div className="space-y-1">
+                    {activeCategory.treatments.map((service, sIdx) => {
+                      const isServiceHovered = hoveredServiceIndex === sIdx;
+                      return (
+                        <div
+                          key={service.name}
+                          onMouseEnter={() => setHoveredServiceIndex(sIdx)}
+                          className={`p-2.5 transition-all duration-200 cursor-pointer flex items-center justify-between text-xs border ${
+                            isServiceHovered
+                              ? "border-copper/40 bg-white/10 text-background font-medium shadow-sm"
+                              : "border-transparent text-background/75 hover:text-background hover:bg-white/5"
+                          }`}
+                        >
+                          <Link to={activeCategory.href} onClick={() => setTreatmentsOpen(false)} className="w-full flex items-center justify-between">
+                            <span className="truncate pr-2">{service.name}</span>
+                            <span className="text-[10px] text-copper-light font-semibold shrink-0">{service.price}</span>
+                          </Link>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Col 3: Detailed Image & Feature Focus (Right) */}
+                <div className="col-span-5 flex flex-col justify-between pl-3 space-y-4">
                   <div>
-                    <div className="overflow-hidden border border-copper/30 h-44 mb-3 relative group">
+                    <div className="overflow-hidden border border-copper/30 h-48 mb-4 relative group">
                       <img
                         src={activeCategory.image}
-                        alt={activeCategory.title}
+                        alt={activeService.name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-foreground via-transparent to-transparent flex items-end p-3">
-                        <span className="text-[10px] uppercase tracking-wider text-copper-light font-semibold">
-                          {activeCategory.eyebrow}
-                        </span>
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground via-transparent to-transparent flex items-end p-4">
+                        <div>
+                          <span className="text-[9px] uppercase tracking-widest text-copper-light font-semibold block">
+                            {activeCategory.eyebrow}
+                          </span>
+                          <h4 className="font-display text-lg text-background font-light">{activeService.name}</h4>
+                        </div>
                       </div>
                     </div>
-                    <h4 className="font-display text-xl font-light text-background">{activeCategory.title}</h4>
-                    <p className="mt-1 text-xs text-background/70 leading-5">{activeCategory.description}</p>
-                    
-                    <ul className="mt-3 space-y-1 text-[11px] text-copper-light">
-                      {activeCategory.treatments.slice(0, 3).map((item) => (
-                        <li key={item} className="flex items-center gap-1.5">
-                          <span className="size-1 bg-copper-light rounded-full shrink-0" />
-                          <span className="truncate">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+
+                    <div className="space-y-2">
+                      <div className="flex items-baseline justify-between">
+                        <h4 className="font-display text-xl font-light text-background">{activeService.name}</h4>
+                        <span className="font-display text-lg text-copper-light font-light">{activeService.price}</span>
+                      </div>
+                      <p className="text-xs text-background/75 leading-5">{activeCategory.description}</p>
+                    </div>
                   </div>
 
                   <Button
                     asChild
                     variant="outline"
-                    className="w-full h-9 rounded-none border-copper-light bg-transparent text-[9px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper-light hover:text-foreground transition-all duration-300"
+                    className="w-full h-10 rounded-none border-copper-light bg-transparent text-[10px] uppercase tracking-[0.16em] text-copper-light hover:bg-copper-light hover:text-foreground transition-all duration-300"
                   >
                     <Link to={activeCategory.href} onClick={() => setTreatmentsOpen(false)}>
-                      Explore {activeCategory.title}
+                      Book {activeService.name}
                     </Link>
                   </Button>
                 </div>
