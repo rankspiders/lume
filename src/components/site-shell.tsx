@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import { Menu, X, ArrowRight, ChevronRight } from "lucide-react";
 import { useState, type ReactNode } from "react";
 
@@ -63,13 +64,30 @@ export function PageIntro({
   return (
     <section className="relative overflow-hidden bg-secondary/80 px-5 pb-16 pt-28 sm:px-8 sm:pb-20 sm:pt-36">
       <div className="mx-auto max-w-7xl">
-        <p className="eyebrow text-copper">{eyebrow}</p>
-        <h1 className="mt-4 font-display text-4xl font-light leading-tight sm:text-6xl lg:text-7xl">
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="eyebrow text-copper"
+        >
+          {eyebrow}
+        </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="mt-4 font-display text-4xl font-light leading-tight sm:text-6xl lg:text-7xl"
+        >
           {title}
-        </h1>
-        <p className="mt-6 max-w-2xl text-sm leading-8 text-muted-foreground sm:text-base">
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mt-6 max-w-2xl text-sm leading-8 text-muted-foreground sm:text-base"
+        >
           {children}
-        </p>
+        </motion.p>
       </div>
     </section>
   );
@@ -92,11 +110,11 @@ export function SiteHeader() {
           <img
             src="/lume-logo-full.svg"
             alt="Lumé Aesthetics"
-            className="h-11 w-auto sm:h-13 object-contain transition-opacity hover:opacity-90"
+            className="h-10 w-auto sm:h-13 object-contain transition-opacity hover:opacity-90"
           />
         </Link>
 
-        {/* Center: Centered Primary Navigation */}
+        {/* Center: Centered Primary Navigation (Desktop) */}
         <nav aria-label="Primary navigation" className="absolute left-1/2 -translate-x-1/2 hidden items-center gap-10 md:flex">
           {/* Treatments Nav Item with BMW-Style 3-Column Hover Mega Menu */}
           <div
@@ -115,56 +133,49 @@ export function SiteHeader() {
 
             {/* BMW-Style 3-Column Mega Menu */}
             {treatmentsOpen && (
-              <div className="absolute top-16 -left-72 w-[980px] rounded-none border border-copper/30 bg-foreground p-6 shadow-2xl backdrop-blur-2xl grid grid-cols-12 gap-5 animate-in fade-in slide-in-from-top-2 duration-200 text-background">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="absolute top-16 -left-72 w-[980px] rounded-none border border-copper/30 bg-foreground p-6 shadow-2xl backdrop-blur-2xl grid grid-cols-12 gap-5 text-background"
+              >
                 
                 {/* Col 1: Categories (Left) */}
-                <div className="col-span-3 border-r border-white/10 pr-4 space-y-2">
-                  <p className="eyebrow text-copper-light text-[9px] tracking-[0.18em] uppercase font-semibold pb-2 border-b border-white/10">
-                    Categories
-                  </p>
-                  <div className="space-y-1">
-                    {categoryPreviews.map((cat, idx) => {
-                      const isHovered = hoveredCategoryIndex === idx;
-                      return (
-                        <div
-                          key={cat.title}
-                          onMouseEnter={() => {
-                            setHoveredCategoryIndex(idx);
-                            setHoveredServiceIndex(0);
-                          }}
-                          className={`p-2.5 transition-all duration-200 cursor-pointer flex items-center justify-between text-xs border ${
-                            isHovered
-                              ? "border-copper bg-copper/20 text-copper-light font-medium"
-                              : "border-transparent text-background/70 hover:text-background hover:bg-white/5"
-                          }`}
-                        >
-                          <Link to={cat.href} onClick={() => setTreatmentsOpen(false)} className="w-full flex items-center justify-between">
-                            <span>{cat.title}</span>
-                            <ChevronRight className={`size-3.5 transition-transform ${isHovered ? "translate-x-1 text-copper-light" : "opacity-40"}`} />
-                          </Link>
-                        </div>
-                      );
-                    })}
-                  </div>
+                <div className="col-span-3 border-r border-white/10 pr-4 space-y-1">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-copper-light block mb-3 pl-2">
+                    Ritual Collections
+                  </span>
+                  {categoryPreviews.map((cat, cIdx) => {
+                    const isCatHovered = cIdx === hoveredCategoryIndex;
+                    return (
+                      <div
+                        key={cat.title}
+                        onMouseEnter={() => {
+                          setHoveredCategoryIndex(cIdx);
+                          setHoveredServiceIndex(0);
+                        }}
+                        className={`p-3 transition-all duration-200 cursor-pointer flex items-center justify-between group ${
+                          isCatHovered ? "bg-white/10 text-copper-light font-medium" : "text-background/80 hover:text-background hover:bg-white/5"
+                        }`}
+                      >
+                        <Link to={cat.href} onClick={() => setTreatmentsOpen(false)} className="w-full flex items-center justify-between">
+                          <span className="text-xs tracking-wide">{cat.title}</span>
+                          <ChevronRight className={`size-3.5 transition-transform ${isCatHovered ? "translate-x-1 text-copper-light" : "opacity-0"}`} />
+                        </Link>
+                      </div>
+                    );
+                  })}
                 </div>
 
-                {/* Col 2: Services List under Active Category (Middle) */}
-                <div className="col-span-4 border-r border-white/10 pr-4 space-y-2">
-                  <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                    <p className="eyebrow text-copper-light text-[9px] tracking-[0.18em] uppercase font-semibold">
-                      {activeCategory.title}
-                    </p>
-                    <Link
-                      to={activeCategory.href}
-                      onClick={() => setTreatmentsOpen(false)}
-                      className="text-[9px] uppercase tracking-wider text-copper-light hover:underline"
-                    >
-                      View All →
-                    </Link>
-                  </div>
+                {/* Col 2: Interactive Services List (Center) */}
+                <div className="col-span-4 border-r border-white/10 pr-4 space-y-1 overflow-y-auto max-h-[340px]">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-copper-light block mb-3 pl-2">
+                    {activeCategory.title} Treatments
+                  </span>
                   <div className="space-y-1">
                     {activeCategory.treatments.map((service, sIdx) => {
-                      const isServiceHovered = hoveredServiceIndex === sIdx;
+                      const isServiceHovered = sIdx === hoveredServiceIndex;
                       return (
                         <div
                           key={service.name}
@@ -224,7 +235,7 @@ export function SiteHeader() {
                   </Button>
                 </div>
 
-              </div>
+              </motion.div>
             )}
           </div>
 
@@ -245,9 +256,9 @@ export function SiteHeader() {
         </nav>
 
         {/* Right: Actions & Emblem Icon */}
-        <div className="flex items-center gap-4">
-          <div className="hidden md:block">
-            <Button asChild variant="outline" className="h-11 rounded-none border-copper-light bg-transparent px-6 text-[11px] uppercase tracking-[0.18em] text-copper-light shadow-none hover:bg-copper-light hover:text-foreground">
+        <div className="flex items-center gap-3 sm:gap-4">
+          <div className="hidden sm:block">
+            <Button asChild variant="outline" className="h-10 sm:h-11 rounded-none border-copper-light bg-transparent px-4 sm:px-6 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-copper-light shadow-none hover:bg-copper-light hover:text-foreground">
               <a href="tel:+17804108278">Book a ritual</a>
             </Button>
           </div>
@@ -255,7 +266,7 @@ export function SiteHeader() {
             <img
               src="/lume-emblem.svg"
               alt="Lumé Aesthetics emblem"
-              className="h-10 w-10 object-contain transition-transform duration-300 hover:scale-105"
+              className="h-8 w-8 sm:h-10 sm:w-10 object-contain transition-transform duration-300 hover:scale-105"
             />
           </Link>
           <Button
@@ -266,19 +277,61 @@ export function SiteHeader() {
             onClick={() => setOpen((value) => !value)}
             className="rounded-none text-background hover:bg-white/10 hover:text-background md:hidden"
           >
-            {open ? <X /> : <Menu />}
+            {open ? <X className="size-6" /> : <Menu className="size-6" />}
           </Button>
         </div>
       </div>
-      <div className={cn("fixed inset-x-0 top-20 z-40 h-[calc(100dvh-5rem)] overflow-y-auto border-t border-copper/15 bg-background px-8 py-12 md:hidden", open ? "block" : "hidden")}>
-        <nav className="flex flex-col gap-8" aria-label="Mobile navigation">
-          {links.map((link) => (
-            <Link key={link.to} to={link.to} onClick={() => setOpen(false)} className="group font-display text-4xl font-light leading-none text-foreground transition-colors hover:text-copper">
-              <span className="inline-block border-b border-transparent pb-1 transition-colors group-hover:border-copper">{link.label}</span>
-            </Link>
-          ))}
-        </nav>
-      </div>
+
+      {/* Mobile Animated Menu Drawer */}
+      {open && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "calc(100dvh - 5rem)" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.35, ease: "easeInOut" }}
+          className="fixed inset-x-0 top-20 z-40 overflow-y-auto border-t border-copper/15 bg-foreground px-6 py-10 text-background md:hidden"
+        >
+          <nav className="flex flex-col space-y-8" aria-label="Mobile navigation">
+            <div className="space-y-4">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">Navigation</span>
+              <div className="flex flex-col space-y-4">
+                <Link key="treatments" to="/treatments" onClick={() => setOpen(false)} className="font-display text-3xl font-light text-background hover:text-copper-light transition-colors">
+                  Treatments & Rituals
+                </Link>
+                <Link key="about" to="/about" onClick={() => setOpen(false)} className="font-display text-3xl font-light text-background hover:text-copper-light transition-colors">
+                  About Lumé
+                </Link>
+                <Link key="contact" to="/contact" onClick={() => setOpen(false)} className="font-display text-3xl font-light text-background hover:text-copper-light transition-colors">
+                  Contact Studio
+                </Link>
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-white/10 space-y-4">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-copper-light font-semibold block">Services Collections</span>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {categoryPreviews.map((cat) => (
+                  <Link
+                    key={cat.title}
+                    to={cat.href}
+                    onClick={() => setOpen(false)}
+                    className="p-3 border border-copper/20 bg-white/5 hover:bg-white/10 text-xs font-light text-background flex items-center justify-between"
+                  >
+                    <span>{cat.title}</span>
+                    <ChevronRight className="size-3.5 text-copper-light" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-white/10 space-y-3">
+              <Button asChild variant="outline" className="w-full h-12 rounded-none border-copper-light bg-transparent text-xs uppercase tracking-[0.18em] text-copper-light hover:bg-copper-light hover:text-foreground">
+                <a href="tel:+17804108278">Call Studio (780) 410-8278</a>
+              </Button>
+            </div>
+          </nav>
+        </motion.div>
+      )}
     </header>
   );
 }

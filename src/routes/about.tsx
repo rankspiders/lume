@@ -161,6 +161,212 @@ function AboutPage() {
         </div>
       </section>
 
+      {/* Our Team Section with Image Placeholders */}
+      <section className="px-5 py-24 sm:px-8 bg-background border-b border-copper/15">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center sm:text-left max-w-2xl">
+            <p className="eyebrow text-copper">Master Practitioners</p>
+            <h2 className="mt-3 font-display text-4xl sm:text-5xl font-light text-foreground">
+              Meet Our Specialist Team
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground">
+              Our clinical dermal therapists, aesthetic practitioners, and beauty artists bring years of specialized artistry and warm, personal care to Lumé.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Team Member 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
+            >
+              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
+                <span className="font-display text-2xl text-copper font-light">HK</span>
+                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-light text-foreground">Harleen Kaur</h3>
+                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Founder & Lead Clinical Dermal Specialist</p>
+                <p className="mt-3 text-xs leading-6 text-muted-foreground">
+                  Specializes in Bioline 20% AHA peels, skin barrier repair, and custom facial sculpting rituals.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Team Member 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.08 }}
+              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
+            >
+              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
+                <span className="font-display text-2xl text-copper font-light">GS</span>
+                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-light text-foreground">Gurpreet Singh</h3>
+                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Advanced Aesthetic Clinical Injector</p>
+                <p className="mt-3 text-xs leading-6 text-muted-foreground">
+                  Clinical lead for Lumé Botox®, dermal filler contouring, and precision PRP microneedling.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Team Member 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.16 }}
+              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
+            >
+              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
+                <span className="font-display text-2xl text-copper font-light">SG</span>
+                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-light text-foreground">Simran Gill</h3>
+                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Master Beauty & Makeup Artist</p>
+                <p className="mt-3 text-xs leading-6 text-muted-foreground">
+                  Expert in Soft Glam, Bridal makeup artistry, Lash Couture lifts, and statement nail design.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Team Member 4 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.24 }}
+              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
+            >
+              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
+                <span className="font-display text-2xl text-copper font-light">AM</span>
+                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-light text-foreground">Amanpreet Mann</h3>
+                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Clinical Infusion & Body Therapist</p>
+                <p className="mt-3 text-xs leading-6 text-muted-foreground">
+                  Specializes in IV wellness infusion therapies, Mocha Gua Sha bodywork, and Retinol wraps.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Team Member 5 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.32 }}
+              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
+            >
+              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
+                <span className="font-display text-2xl text-copper font-light">JD</span>
+                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-light text-foreground">Jasleen Dhillon</h3>
+                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Senior Esthetician & Acne Specialist</p>
+                <p className="mt-3 text-xs leading-6 text-muted-foreground">
+                  Focuses on Acne Purify rituals, high frequency therapy, extractions, and blue LED light care.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Team Member 6 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
+            >
+              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
+                <span className="font-display text-2xl text-copper font-light">MS</span>
+                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-light text-foreground">Maninder Sidhu</h3>
+                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Aesthetics Medical Director</p>
+                <p className="mt-3 text-xs leading-6 text-muted-foreground">
+                  Oversees health screening protocols, clinical safety guidelines, and advanced skin regenerations.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Team Member 7 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.48 }}
+              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
+            >
+              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
+                <span className="font-display text-2xl text-copper font-light">KG</span>
+                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-light text-foreground">Kirandeep Grewal</h3>
+                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Henna Artist & Precision Threader</p>
+                <p className="mt-3 text-xs leading-6 text-muted-foreground">
+                  Renowned for intricate bridal henna artistry, brow shaping, and delicate upper-lip threading.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Team Member 8 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.56 }}
+              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
+            >
+              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
+                <span className="font-display text-2xl text-copper font-light">TS</span>
+                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-light text-foreground">Tarunpreet Sandhu</h3>
+                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Laser & Teeth Whitening Practitioner</p>
+                <p className="mt-3 text-xs leading-6 text-muted-foreground">
+                  Specialist in cosmetic teeth whitening, radio frequency skin tightening, and laser resurfacing.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Team Member 9 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.64 }}
+              className="border border-copper/25 bg-secondary/20 p-7 flex flex-col items-center text-center space-y-4 group hover:border-copper transition-all duration-300"
+            >
+              <div className="w-28 h-28 rounded-full border-2 border-dashed border-copper/40 bg-secondary flex flex-col items-center justify-center text-muted-foreground group-hover:border-copper transition-colors">
+                <span className="font-display text-2xl text-copper font-light">PB</span>
+                <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Photo Placeholder</span>
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-light text-foreground">Priya Brar</h3>
+                <p className="text-[11px] uppercase tracking-wider text-copper font-semibold mt-1">Atelier Experience Director</p>
+                <p className="mt-3 text-xs leading-6 text-muted-foreground">
+                  Ensures an unhurried, welcoming sanctuary environment and personal concierge scheduling.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Studio Location, Contact Details & Social Handles */}
       <section className="px-5 py-24 sm:px-8 bg-secondary/30">
         <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-12 items-center">
