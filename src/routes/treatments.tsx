@@ -297,19 +297,20 @@ function TreatmentsPage() {
             { id: "advanced", label: "Advanced Clinical (6)" },
             { id: "addons", label: "Add-Ons (2)" },
           ].map((tab) => (
-            <button
+            <motion.button
               key={tab.id}
               type="button"
+              whileTap={{ scale: 0.95 }}
               onClick={() => setActiveFilter(tab.id as FilterType)}
               className={cn(
-                "px-4 py-1.5 text-xs rounded-full transition-all border font-semibold",
+                "px-4 py-1.5 text-xs rounded-full transition-all border font-semibold cursor-pointer",
                 activeFilter === tab.id
                   ? "bg-gradient-to-r from-[#8F4954] via-[#B76E79] to-[#8F4954] text-white border-transparent shadow-xs"
                   : "bg-[#FAF5F3] text-[#5E5054] border-[#B76E79]/20 hover:border-[#B76E79]/40 hover:bg-[#FAF0F0] hover:text-[#2A2124]"
               )}
             >
               {tab.label}
-            </button>
+            </motion.button>
           ))}
         </div>
       </SpotlightCard>
@@ -327,21 +328,23 @@ function TreatmentsPage() {
           </span>
         </div>
 
-        <div className="grid gap-6">
-          {filteredTreatments.map(({ treatment: t, category, categoryHref }, idx) => (
-            <motion.div
-              key={t.name}
-              custom={idx}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeInVariant}
-            >
-              <SpotlightCard
-                spotlightColor="rgba(183, 110, 121, 0.12)"
-                borderColor="rgba(183, 110, 121, 0.22)"
-                className="bg-white p-6 sm:p-7 shadow-soft-card rounded-2xl transition-all duration-300 hover:border-[#B76E79]/50 hover:shadow-lg grid gap-6 sm:grid-cols-12 items-start border border-[#B76E79]/20 text-[#2A2124]"
+        <motion.div layout className="grid gap-6">
+          <AnimatePresence mode="popLayout">
+            {filteredTreatments.map(({ treatment: t, category, categoryHref }, idx) => (
+              <motion.div
+                key={t.name}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.4, delay: Math.min(idx * 0.03, 0.25), ease: [0.16, 1, 0.3, 1] }}
               >
+                <SpotlightCard
+                  spotlightColor="rgba(183, 110, 121, 0.12)"
+                  borderColor="rgba(183, 110, 121, 0.22)"
+                  className="bg-white p-6 sm:p-7 shadow-soft-card rounded-2xl transition-all duration-300 hover:border-[#B76E79]/50 hover:shadow-lg hover:-translate-y-1 grid gap-6 sm:grid-cols-12 items-start border border-[#B76E79]/20 text-[#2A2124]"
+                >
+
                 <div className="sm:col-span-4 overflow-hidden rounded-xl border border-[#B76E79]/20 relative shadow-xs">
                   <img
                     src={t.image}
@@ -423,7 +426,8 @@ function TreatmentsPage() {
               </SpotlightCard>
             </motion.div>
           ))}
-        </div>
+          </AnimatePresence>
+        </motion.div>
       </div>
     </TreatmentSidebarLayout>
   );

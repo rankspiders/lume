@@ -18,9 +18,12 @@ export function AuroraGlow({
       ? "linear-gradient(135deg, #FAF5F3 0%, #F5EAE7 30%, #EEDCD9 60%, #FAF5F3 100%)"
       : "linear-gradient(135deg, #FAF5F3 0%, #F4E8E5 25%, #E8C5C8 50%, #F8F3ED 75%, #FAF5F3 100%)";
 
+  const isLightSurface = variant !== "dark";
+
   return (
     <div
-      className={`relative overflow-hidden animate-aurora ${className}`}
+      className={`relative overflow-hidden animate-aurora ${isLightSurface ? "lume-light-surface" : ""} ${className}`}
+      data-surface={isLightSurface ? "light" : "dark"}
       style={{
         backgroundImage: gradient,
       }}

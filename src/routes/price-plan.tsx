@@ -214,20 +214,20 @@ function PricePlanPage() {
                     </span>
                   </div>
 
-                  <p className="mt-4 text-xs leading-6 font-normal text-[#5E5054]">
+                  <p className="mt-4 text-xs leading-6 font-normal text-[#5E5054] dark:text-white">
                     {pkg.summary}
                   </p>
 
                   {pkg.includedItems && (
-                    <div className="mt-6 pt-5 border-t border-[#B76E79]/15 space-y-2.5">
-                      <span className="text-[10px] uppercase tracking-wider font-semibold block text-[#8F4954]">
+                    <div className="mt-6 pt-5 border-t border-[#B76E79]/15 dark:border-[#B76E79]/30 space-y-2.5">
+                      <span className="text-[10px] uppercase tracking-wider font-semibold block text-[#8F4954] dark:text-white">
                         Full Ceremony Inclusions:
                       </span>
                       <ul className="space-y-2 text-xs">
                         {pkg.includedItems.map((item) => (
                           <li key={item} className="flex items-center gap-2">
-                            <CheckCircle2 className="size-4 shrink-0 text-[#B76E79]" />
-                            <span className="text-[#3A3033] font-normal">{item}</span>
+                            <CheckCircle2 className="size-4 shrink-0 text-[#B76E79] dark:text-[#E7B2A9]" />
+                            <span className="text-[#3A3033] dark:text-white font-normal">{item}</span>
                           </li>
                         ))}
                       </ul>

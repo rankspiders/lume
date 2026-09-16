@@ -68,7 +68,17 @@ import imgPRPMicroneedling from "@/assets/treatments/prp-microneedling.jpg";
 
 import { RotatingBadge } from "@/components/rotating-badge";
 import { Button } from "@/components/ui/button";
-import { HauteMarquee, LiveSuiteClock, BeforeAfterInteractive } from "@/components/luxury-motion";
+import {
+  HauteMarquee,
+  LiveSuiteClock,
+  BeforeAfterInteractive,
+  ScrollReveal,
+  StaggerContainer,
+  StaggerItem,
+  LuxuryTiltCard,
+  FloatingOrb,
+} from "@/components/luxury-motion";
+
 import {
   SpotlightCard,
   ShinyText,
@@ -302,9 +312,18 @@ function IndexPage() {
     <div className="bg-[#FAF5F3] text-[#2A2124] overflow-hidden">
       {/* 1. HERO SECTION: Dusty Pink Ambiance with Pure White Furniture Cards & Rose Gold Accents */}
       <section className="relative pt-32 sm:pt-40 lg:pt-44 pb-20 sm:pb-28 border-b border-[#B76E79]/20 bg-gradient-to-b from-[#FAF5F3] via-[#F4E8E5] to-[#EEDBD7]">
-        {/* Soft atmospheric ambient glow */}
-        <div className="absolute top-0 right-1/3 w-[42rem] h-[42rem] rounded-full blur-3xl pointer-events-none bg-[#E8C5C8]/40 -mr-20 -mt-20" />
-        <div className="absolute bottom-0 left-10 w-96 h-96 rounded-full blur-3xl pointer-events-none bg-white/60" />
+        {/* Soft atmospheric ambient glowing orbs */}
+        <FloatingOrb
+          className="absolute top-0 right-1/3 w-[42rem] h-[42rem] bg-[#E8C5C8]/40 -mr-20 -mt-20"
+          duration={11}
+          distance={20}
+        />
+        <FloatingOrb
+          className="absolute bottom-0 left-10 w-96 h-96 bg-white/60"
+          duration={9}
+          delay={2}
+          distance={16}
+        />
 
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 relative z-10">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
@@ -348,63 +367,68 @@ function IndexPage() {
                 Experience bespoke facials, Italian Bioline Jatò 20% AHA peels, multi-hour sanctuary spa packages, and consultation-led clinical aesthetics ($10/unit Botox®) in private suites.
               </p>
 
-              {/* 2 Floating Overlaid Hero Treatment Cards in Pure Crisp White */}
+              {/* 2 Floating Overlaid Hero Treatment Cards with Luxury 3D Tilt & Specular Sheen */}
               <div className="grid sm:grid-cols-2 gap-4 pt-2">
                 {/* Plan Card 1: Aqua Luxe */}
-                <div className="bg-white border border-[#B76E79]/20 p-5 shadow-md hover:shadow-xl hover:border-[#B76E79] relative group transition-all duration-300">
-                  <div className="flex items-start justify-between border-b border-[#B76E79]/15 pb-3">
-                    <div>
-                      <p className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold">Skin &amp; Facial Ritual</p>
-                      <h3 className="font-display text-lg font-medium text-[#2A2124]">Aqua Luxe Facial</h3>
+                <LuxuryTiltCard maxTilt={5}>
+                  <div className="bg-white border border-[#B76E79]/20 p-5 shadow-md hover:shadow-xl hover:border-[#B76E79] relative group transition-all duration-300">
+                    <div className="flex items-start justify-between border-b border-[#B76E79]/15 pb-3">
+                      <div>
+                        <p className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold">Skin &amp; Facial Ritual</p>
+                        <h3 className="font-display text-lg font-medium text-[#2A2124]">Aqua Luxe Facial</h3>
+                      </div>
+                      <div className="text-right">
+                        <span className="font-display text-2xl font-light text-[#B76E79]">$125</span>
+                        <p className="text-[9px] uppercase tracking-widest text-[#7D6F73]">65 min</p>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <span className="font-display text-2xl font-light text-[#B76E79]">$125</span>
-                      <p className="text-[9px] uppercase tracking-widest text-[#7D6F73]">65 min</p>
+                    <p className="mt-3 text-xs leading-relaxed text-[#5E5054] font-normal line-clamp-2">
+                      Multi-molecular hyaluronic acid infusion with Bioline nectar drop dermal massage for instant bounce.
+                    </p>
+                    <div className="mt-4 pt-3 border-t border-[#B76E79]/15 flex items-center justify-between">
+                      <span className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold">Bioline Italy</span>
+                      <Link
+                        to="/services/skin-and-body-rituals"
+                        className="text-[10px] uppercase tracking-[0.16em] text-[#B76E79] hover:text-[#8F4954] font-bold flex items-center gap-1"
+                      >
+                        Reserve Ritual →
+                      </Link>
                     </div>
                   </div>
-                  <p className="mt-3 text-xs leading-relaxed text-[#5E5054] font-normal line-clamp-2">
-                    Multi-molecular hyaluronic acid infusion with Bioline nectar drop dermal massage for instant bounce.
-                  </p>
-                  <div className="mt-4 pt-3 border-t border-[#B76E79]/15 flex items-center justify-between">
-                    <span className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold">Bioline Italy</span>
-                    <Link
-                      to="/services/skin-and-body-rituals"
-                      className="text-[10px] uppercase tracking-[0.16em] text-[#B76E79] hover:text-[#8F4954] font-bold flex items-center gap-1"
-                    >
-                      Reserve Ritual →
-                    </Link>
-                  </div>
-                </div>
+                </LuxuryTiltCard>
 
                 {/* Plan Card 2: Clinical Botox ($10/unit) */}
-                <div className="bg-white border border-[#B76E79]/30 p-5 shadow-md hover:shadow-xl hover:border-[#B76E79] relative group transition-all duration-300">
-                  <div className="absolute top-0 right-0 bg-[#B76E79] text-white text-[8px] uppercase tracking-[0.2em] px-2.5 py-0.5 font-bold">
-                    Specialist Rate
-                  </div>
-                  <div className="flex items-start justify-between border-b border-[#B76E79]/15 pb-3">
-                    <div>
-                      <p className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold">Doctor-Led Aesthetic</p>
-                      <h3 className="font-display text-lg font-medium text-[#2A2124]">Botox® Neuromodulators</h3>
+                <LuxuryTiltCard maxTilt={5}>
+                  <div className="bg-white border border-[#B76E79]/30 p-5 shadow-md hover:shadow-xl hover:border-[#B76E79] relative group transition-all duration-300">
+                    <div className="absolute top-0 right-0 bg-[#B76E79] text-white text-[8px] uppercase tracking-[0.2em] px-2.5 py-0.5 font-bold">
+                      Specialist Rate
                     </div>
-                    <div className="text-right">
-                      <span className="font-display text-2xl font-light text-[#B76E79]">$10<span className="text-xs">/u</span></span>
-                      <p className="text-[9px] uppercase tracking-widest text-[#7D6F73]">Consult + Care</p>
+                    <div className="flex items-start justify-between border-b border-[#B76E79]/15 pb-3">
+                      <div>
+                        <p className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold">Doctor-Led Aesthetic</p>
+                        <h3 className="font-display text-lg font-medium text-[#2A2124]">Botox® Neuromodulators</h3>
+                      </div>
+                      <div className="text-right">
+                        <span className="font-display text-2xl font-light text-[#B76E79]">$10<span className="text-xs">/u</span></span>
+                        <p className="text-[9px] uppercase tracking-widest text-[#7D6F73]">Consult + Care</p>
+                      </div>
+                    </div>
+                    <p className="mt-3 text-xs leading-relaxed text-[#5E5054] font-normal line-clamp-2">
+                      Anatomical facial mapping and natural wrinkle smoothing administered by licensed medical practitioners.
+                    </p>
+                    <div className="mt-4 pt-3 border-t border-[#B76E79]/15 flex items-center justify-between">
+                      <span className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold">Health Canada</span>
+                      <Link
+                        to="/services/advanced-aesthetics"
+                        className="text-[10px] uppercase tracking-[0.16em] text-[#B76E79] hover:text-[#8F4954] font-bold flex items-center gap-1"
+                      >
+                        Book Consult →
+                      </Link>
                     </div>
                   </div>
-                  <p className="mt-3 text-xs leading-relaxed text-[#5E5054] font-normal line-clamp-2">
-                    Anatomical facial mapping and natural wrinkle smoothing administered by licensed medical practitioners.
-                  </p>
-                  <div className="mt-4 pt-3 border-t border-[#B76E79]/15 flex items-center justify-between">
-                    <span className="text-[10px] uppercase tracking-wider text-[#B76E79] font-bold">Health Canada</span>
-                    <Link
-                      to="/services/advanced-aesthetics"
-                      className="text-[10px] uppercase tracking-[0.16em] text-[#B76E79] hover:text-[#8F4954] font-bold flex items-center gap-1"
-                    >
-                      Book Consult →
-                    </Link>
-                  </div>
-                </div>
+                </LuxuryTiltCard>
               </div>
+
 
               {/* Action Buttons & Hotline */}
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
@@ -620,53 +644,49 @@ function IndexPage() {
             </p>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {categorySuites.map((suite, idx) => (
-              <motion.div
-                key={suite.title}
-                custom={idx}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInVariants}
-              >
-                <div className="bg-white border border-[#B76E79]/20 p-6 flex flex-col justify-between h-full shadow-md hover:border-[#B76E79] hover:shadow-xl transition-all duration-300">
-                  <div>
-                    <div className="overflow-hidden h-48 border border-[#B76E79]/20 mb-6 relative">
-                      <img
-                        src={suite.image}
-                        alt={suite.title}
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                      />
-                      <div className="absolute top-3 left-3 bg-white/95 text-[#B76E79] text-[9px] uppercase tracking-widest px-2.5 py-0.5 font-bold border border-[#B76E79]/30">
-                        {suite.roman}
+          <StaggerContainer className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {categorySuites.map((suite) => (
+              <StaggerItem key={suite.title}>
+                <LuxuryTiltCard maxTilt={5} className="h-full">
+                  <div className="bg-white border border-[#B76E79]/20 p-6 flex flex-col justify-between h-full shadow-md hover:border-[#B76E79] hover:shadow-xl transition-all duration-300">
+                    <div>
+                      <div className="overflow-hidden h-48 border border-[#B76E79]/20 mb-6 relative">
+                        <img
+                          src={suite.image}
+                          alt={suite.title}
+                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        />
+                        <div className="absolute top-3 left-3 bg-white/95 text-[#B76E79] text-[9px] uppercase tracking-widest px-2.5 py-0.5 font-bold border border-[#B76E79]/30">
+                          {suite.roman}
+                        </div>
+                        <div className="absolute bottom-3 right-3 bg-[#B76E79] text-white text-[9px] uppercase tracking-widest px-2.5 py-0.5 font-bold">
+                          {suite.count}
+                        </div>
                       </div>
-                      <div className="absolute bottom-3 right-3 bg-[#B76E79] text-white text-[9px] uppercase tracking-widest px-2.5 py-0.5 font-bold">
-                        {suite.count}
-                      </div>
+
+                      <h3 className="font-display text-2xl font-light text-[#2A2124] group-hover:text-[#B76E79] transition-colors">
+                        {suite.title}
+                      </h3>
+                      <p className="mt-3 text-xs leading-relaxed text-[#5E5054] font-normal">
+                        {suite.copy}
+                      </p>
                     </div>
 
-                    <h3 className="font-display text-2xl font-light text-[#2A2124] group-hover:text-[#B76E79] transition-colors">
-                      {suite.title}
-                    </h3>
-                    <p className="mt-3 text-xs leading-relaxed text-[#5E5054] font-normal">
-                      {suite.copy}
-                    </p>
+                    <div className="mt-6 pt-4 border-t border-[#B76E79]/15">
+                      <Link
+                        to={suite.href as any}
+                        className="text-[10px] uppercase tracking-[0.18em] text-[#B76E79] font-bold flex items-center justify-between hover:underline"
+                      >
+                        <span>Explore Collection</span>
+                        <span>→</span>
+                      </Link>
+                    </div>
                   </div>
-
-                  <div className="mt-6 pt-4 border-t border-[#B76E79]/15">
-                    <Link
-                      to={suite.href as any}
-                      className="text-[10px] uppercase tracking-[0.18em] text-[#B76E79] font-bold flex items-center justify-between hover:underline"
-                    >
-                      <span>Explore Collection</span>
-                      <span>→</span>
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
+                </LuxuryTiltCard>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
+
         </div>
       </section>
 
@@ -958,128 +978,133 @@ function IndexPage() {
 
           <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
             {/* Package 1: You Deserve It! */}
-            <div className="bg-white border border-[#B76E79]/25 p-8 sm:p-10 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300">
-              <div>
-                <div className="flex justify-between items-baseline border-b border-[#B76E79]/15 pb-4">
-                  <div>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#8F4954] font-bold">
-                      2 Hour Ceremony
+            <LuxuryTiltCard maxTilt={5} className="h-full">
+              <div className="bg-white border border-[#B76E79]/25 p-8 sm:p-10 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 h-full">
+                <div>
+                  <div className="flex justify-between items-baseline border-b border-[#B76E79]/15 pb-4">
+                    <div>
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-[#8F4954] font-bold">
+                        2 Hour Ceremony
+                      </span>
+                      <h3 className="font-display text-3xl font-light text-[#2A2124] mt-1">You Deserve It!</h3>
+                    </div>
+                    <div className="text-right">
+                      <span className="font-display text-4xl font-semibold text-[#8F4954]">$265</span>
+                    </div>
+                  </div>
+
+                  <p className="mt-4 text-xs leading-relaxed text-[#5E5054] font-normal">
+                    A deeply restorative head-to-toe package combining custom facial therapy, green coffee body contouring, and therapeutic LED light.
+                  </p>
+
+                  <div className="mt-6 pt-5 border-t border-[#B76E79]/15 space-y-3">
+                    <span className="text-[10px] uppercase tracking-wider text-[#8F4954] font-bold block">
+                      Included In Package:
                     </span>
-                    <h3 className="font-display text-3xl font-light text-[#2A2124] mt-1">You Deserve It!</h3>
-                  </div>
-                  <div className="text-right">
-                    <span className="font-display text-4xl font-semibold text-[#8F4954]">$265</span>
+                    <ul className="space-y-2.5 text-xs text-[#2A2124]">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
+                        <span>Custom Bioline Facial (1 Hour)</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
+                        <span>Coffee Shape Body Treatment (1 Hour)</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
+                        <span>Celluma LED Light Healing Therapy</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
+                        <span>Complimentary Organic Herbal Tea Service</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
 
-                <p className="mt-4 text-xs leading-relaxed text-[#5E5054] font-normal">
-                  A deeply restorative head-to-toe package combining custom facial therapy, green coffee body contouring, and therapeutic LED light.
-                </p>
-
-                <div className="mt-6 pt-5 border-t border-[#B76E79]/15 space-y-3">
-                  <span className="text-[10px] uppercase tracking-wider text-[#8F4954] font-bold block">
-                    Included In Package:
-                  </span>
-                  <ul className="space-y-2.5 text-xs text-[#2A2124]">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
-                      <span>Custom Bioline Facial (1 Hour)</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
-                      <span>Coffee Shape Body Treatment (1 Hour)</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
-                      <span>Celluma LED Light Healing Therapy</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
-                      <span>Complimentary Organic Herbal Tea Service</span>
-                    </li>
-                  </ul>
+                <div className="mt-8 pt-6 border-t border-[#B76E79]/15">
+                  <MagneticButton strength={0.2} pullStrength={0.2}>
+                    <Button
+                      asChild
+                      className="w-full h-12 rounded-none bg-[#8F4954] hover:bg-[#682230] text-white text-[10px] uppercase tracking-[0.18em] font-bold transition-all duration-300 shadow-md"
+                    >
+                      <Link to="/appointment">
+                        Reserve Package ($265)
+                      </Link>
+                    </Button>
+                  </MagneticButton>
                 </div>
               </div>
-
-              <div className="mt-8 pt-6 border-t border-[#B76E79]/15">
-                <MagneticButton strength={0.2} pullStrength={0.2}>
-                  <Button
-                    asChild
-                    className="w-full h-12 rounded-none bg-[#8F4954] hover:bg-[#682230] text-white text-[10px] uppercase tracking-[0.18em] font-bold transition-all duration-300 shadow-md"
-                  >
-                    <Link to="/appointment">
-                      Reserve Package ($265)
-                    </Link>
-                  </Button>
-                </MagneticButton>
-              </div>
-            </div>
+            </LuxuryTiltCard>
 
             {/* Package 2: Queen For A Day! */}
-            <div className="bg-white border-2 border-[#B76E79]/40 p-8 sm:p-10 flex flex-col justify-between shadow-xl relative">
-              <div className="absolute top-0 right-0 bg-[#8F4954] text-white text-[9px] uppercase tracking-[0.2em] px-3 py-1 font-bold">
-                Royal Flagship
-              </div>
-              <div>
-                <div className="flex justify-between items-baseline border-b border-[#B76E79]/15 pb-4">
-                  <div>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#8F4954] font-bold">
-                      3 Hour Luxury Ritual
+            <LuxuryTiltCard maxTilt={5} className="h-full">
+              <div className="bg-white border-2 border-[#B76E79]/40 p-8 sm:p-10 flex flex-col justify-between shadow-xl relative h-full">
+                <div className="absolute top-0 right-0 bg-[#8F4954] text-white text-[9px] uppercase tracking-[0.2em] px-3 py-1 font-bold z-10">
+                  Royal Flagship
+                </div>
+                <div>
+                  <div className="flex justify-between items-baseline border-b border-[#B76E79]/15 pb-4">
+                    <div>
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-[#8F4954] font-bold">
+                        3 Hour Luxury Ritual
+                      </span>
+                      <h3 className="font-display text-3xl font-light text-[#2A2124] mt-1">Queen For A Day!</h3>
+                    </div>
+                    <div className="text-right">
+                      <span className="font-display text-4xl font-semibold text-[#8F4954]">$395</span>
+                    </div>
+                  </div>
+
+                  <p className="mt-4 text-xs leading-relaxed text-[#5E5054] font-normal">
+                    The ultimate Lumé sanctuary experience. Three unhurried hours of complete head-to-toe sensory pampering and visible facial lift.
+                  </p>
+
+                  <div className="mt-6 pt-5 border-t border-[#B76E79]/15 space-y-3">
+                    <span className="text-[10px] uppercase tracking-wider text-[#8F4954] font-bold block">
+                      Included In Package:
                     </span>
-                    <h3 className="font-display text-3xl font-light text-[#2A2124] mt-1">Queen For A Day!</h3>
-                  </div>
-                  <div className="text-right">
-                    <span className="font-display text-4xl font-semibold text-[#8F4954]">$395</span>
+                    <ul className="space-y-2.5 text-xs text-[#2A2124]">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
+                        <span>Seasonal Botanical Body Exfoliating Wrap</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
+                        <span>Bioline Lifting Code Non-Surgical Facelift</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
+                        <span>Therapeutic Warm Oil Scalp Treatment</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
+                        <span>Luxe Foot Reflexology Exfoliation</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
+                        <span>Full-Spectrum Celluma LED Phototherapy</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
 
-                <p className="mt-4 text-xs leading-relaxed text-[#5E5054] font-normal">
-                  The ultimate Lumé sanctuary experience. Three unhurried hours of complete head-to-toe sensory pampering and visible facial lift.
-                </p>
-
-                <div className="mt-6 pt-5 border-t border-[#B76E79]/15 space-y-3">
-                  <span className="text-[10px] uppercase tracking-wider text-[#8F4954] font-bold block">
-                    Included In Package:
-                  </span>
-                  <ul className="space-y-2.5 text-xs text-[#2A2124]">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
-                      <span>Seasonal Botanical Body Exfoliating Wrap</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
-                      <span>Bioline Lifting Code Non-Surgical Facelift</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
-                      <span>Therapeutic Warm Oil Scalp Treatment</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
-                      <span>Luxe Foot Reflexology Exfoliation</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="size-4 text-[#8F4954] shrink-0" />
-                      <span>Full-Spectrum Celluma LED Phototherapy</span>
-                    </li>
-                  </ul>
+                <div className="mt-8 pt-6 border-t border-[#B76E79]/15">
+                  <MagneticButton strength={0.25} pullStrength={0.25}>
+                    <Button
+                      asChild
+                      className="w-full h-12 rounded-none bg-gradient-to-r from-[#8F4954] via-[#A35260] to-[#7A2838] hover:from-[#7A2838] hover:to-[#682230] text-white text-[10px] uppercase tracking-[0.18em] hover:opacity-95 shadow-lg font-bold transition-all duration-300"
+                    >
+                      <Link to="/appointment">
+                        Reserve Royal Day ($395)
+                      </Link>
+                    </Button>
+                  </MagneticButton>
                 </div>
               </div>
-
-              <div className="mt-8 pt-6 border-t border-[#B76E79]/15">
-                <MagneticButton strength={0.25} pullStrength={0.25}>
-                  <Button
-                    asChild
-                    className="w-full h-12 rounded-none bg-gradient-to-r from-[#8F4954] via-[#A35260] to-[#7A2838] hover:from-[#7A2838] hover:to-[#682230] text-white text-[10px] uppercase tracking-[0.18em] hover:opacity-95 shadow-lg font-bold transition-all duration-300"
-                  >
-                    <Link to="/appointment">
-                      Reserve Royal Day ($395)
-                    </Link>
-                  </Button>
-                </MagneticButton>
-              </div>
-            </div>
+            </LuxuryTiltCard>
           </div>
+
         </div>
       </section>
 
@@ -1108,36 +1133,44 @@ function IndexPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-7 grid gap-6">
+            <StaggerContainer className="lg:col-span-7 grid gap-6">
               {clientStories.map((story) => (
-                <div
-                  key={story.author}
-                  className="bg-[#FAF5F3] border border-[#B76E79]/25 p-6 sm:p-7 space-y-3 relative shadow-md"
-                >
-                  <div className="flex items-center gap-1 text-[#8F4954]">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="size-3.5 fill-[#8F4954] text-[#8F4954]" />
-                    ))}
-                  </div>
-                  <p className="text-xs sm:text-sm leading-relaxed text-[#2A2124] font-normal italic">
-                    "{story.quote}"
-                  </p>
-                  <div className="flex items-center justify-between pt-3 border-t border-[#B76E79]/15 text-xs">
-                    <span className="font-bold text-[#2A2124]">{story.author}</span>
-                    <span className="text-[10px] uppercase tracking-wider text-[#8F4954] font-bold">
-                      {story.ritual}
-                    </span>
-                  </div>
-                </div>
+                <StaggerItem key={story.author}>
+                  <LuxuryTiltCard maxTilt={3}>
+                    <div className="bg-[#FAF5F3] border border-[#B76E79]/25 p-6 sm:p-7 space-y-3 relative shadow-md hover:shadow-xl hover:border-[#B76E79]/50 transition-all duration-300">
+                      <div className="flex items-center gap-1 text-[#8F4954]">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="size-3.5 fill-[#8F4954] text-[#8F4954]" />
+                        ))}
+                      </div>
+                      <p className="text-xs sm:text-sm leading-relaxed text-[#2A2124] font-normal italic">
+                        "{story.quote}"
+                      </p>
+                      <div className="flex items-center justify-between pt-3 border-t border-[#B76E79]/15 text-xs">
+                        <span className="font-bold text-[#2A2124]">{story.author}</span>
+                        <span className="text-[10px] uppercase tracking-wider text-[#8F4954] font-bold">
+                          {story.ritual}
+                        </span>
+                      </div>
+                    </div>
+                  </LuxuryTiltCard>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </div>
       </section>
 
       {/* 9. CTA BANNER in Dusty Pink & Rose Gold */}
-      <section className="relative px-5 py-24 text-center sm:px-8 sm:py-32 bg-gradient-to-b from-[#FAF5F3] via-[#F4E8E5] to-[#EEDBD7] text-[#2A2124] border-t border-[#B76E79]/20">
-        <div className="mx-auto max-w-3xl space-y-6 relative z-10">
+      <section className="relative px-5 py-24 text-center sm:px-8 sm:py-32 bg-gradient-to-b from-[#FAF5F3] via-[#F4E8E5] to-[#EEDBD7] text-[#2A2124] border-t border-[#B76E79]/20 overflow-hidden">
+        {/* Floating atmospheric glow */}
+        <FloatingOrb
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[38rem] h-[38rem] bg-[#E8C5C8]/35"
+          duration={10}
+          distance={20}
+        />
+
+        <ScrollReveal direction="up" className="mx-auto max-w-3xl space-y-6 relative z-10">
           <RotatingBadge
             text="RESERVE SANCTUARY • LUMÉ AESTHETICS • "
             href="tel:+17804108278"
@@ -1172,8 +1205,9 @@ function IndexPage() {
               <Link to="/contact">Book Atelier Visit</Link>
             </Button>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
+
     </div>
   );
 }

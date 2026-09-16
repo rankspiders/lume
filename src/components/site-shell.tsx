@@ -120,8 +120,20 @@ export function PageIntro({
 }) {
   return (
     <section className="relative overflow-hidden px-5 pb-16 pt-32 sm:px-8 sm:pb-24 sm:pt-40 border-b border-[#B76E79]/20 bg-gradient-to-b from-[#FAF5F3] via-[#F4E8E5] to-[#EEDBD7] text-[#2A2124]">
-      {/* Ambient background glow */}
-      <div className="absolute top-0 right-1/4 w-[36rem] h-[36rem] rounded-full blur-3xl pointer-events-none bg-[#E8C5C8]/40" />
+      {/* Ambient background glow with gentle breathing float */}
+      <motion.div
+        animate={{
+          y: [-12, 12, -12],
+          scale: [1, 1.05, 1],
+        }}
+        transition={{
+          duration: 9,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+        className="absolute top-0 right-1/4 w-[36rem] h-[36rem] rounded-full blur-3xl pointer-events-none bg-[#E8C5C8]/40"
+      />
 
       <div className="mx-auto max-w-7xl relative z-10">
         <div className={`grid gap-10 ${rightSlot ? "lg:grid-cols-12 lg:items-end" : "max-w-4xl"}`}>
@@ -129,21 +141,31 @@ export function PageIntro({
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="flex items-center gap-3"
             >
               <span className="eyebrow text-xs sm:text-sm font-bold tracking-[0.2em] text-[#B76E79]">{eyebrow}</span>
-              <span className="h-px w-8 bg-[#B76E79]/50" />
+              <motion.span
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="h-px w-10 bg-[#B76E79]/50 origin-left"
+              />
               {badgeText && (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-[#B76E79]/30 text-[#B76E79] text-[10px] tracking-widest uppercase font-mono shadow-sm">
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-[#B76E79]/30 text-[#B76E79] text-[10px] tracking-widest uppercase font-mono shadow-sm"
+                >
                   {badgeText}
-                </span>
+                </motion.span>
               )}
             </motion.div>
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
+              transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="mt-4 font-display text-4xl font-light leading-[1.08] sm:text-6xl lg:text-7xl text-[#2A2124] text-balance"
             >
               {title}
@@ -151,7 +173,7 @@ export function PageIntro({
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className={`mt-6 text-sm leading-relaxed sm:text-base sm:leading-7 font-normal ${
                 rightSlot ? "max-w-2xl" : "max-w-3xl"
               } text-[#5E5054]`}
@@ -162,9 +184,9 @@ export function PageIntro({
 
           {rightSlot && (
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5"
             >
               {rightSlot}
@@ -175,6 +197,7 @@ export function PageIntro({
     </section>
   );
 }
+
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);

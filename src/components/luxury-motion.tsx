@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import { Sparkles, Clock, Check, ArrowRight, Shield, Star, Compass } from "lucide-react";
+import { cn } from "@/lib/utils";
+
 
 export function HauteMarquee({
   items,
@@ -289,3 +291,263 @@ export function BeforeAfterInteractive({
     </div>
   );
 }
+
+export function ScrollReveal({
+  children,
+  className = "",
+  direction = "up",
+  delay = 0,
+  duration = 0.75,
+  distance = 28,
+  scale = 1,
+}: {
+  children: ReactNode;
+  className?: string;
+  direction?: "up" | "down" | "left" | "right" | "none";
+  delay?: number;
+  duration?: number;
+  distance?: number;
+  scale?: number;
+}) {
+  const directions = {
+    up: { y: distance, x: 0 },
+    down: { y: -distance, x: 0 },
+    left: { x: distance, y: 0 },
+    right: { x: -distance, y: 0 },
+    none: { x: 0, y: 0 },
+  };
+
+  const initial = {
+    opacity: 0,
+    ...directions[direction],
+    scale: scale !== 1 ? scale : 1,
+  };
+
+  return (
+    <motion.div
+      initial={initial}
+      whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{
+        duration,
+        delay,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function StaggerContainer({
+  children,
+  className = "",
+  staggerDelay = 0.08,
+  delayChildren = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  staggerDelay?: number;
+  delayChildren?: number;
+}) {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: staggerDelay,
+            delayChildren,
+          },
+        },
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function StaggerItem({
+  children,
+  className = "",
+  distance = 24,
+}: {
+  children: ReactNode;
+  className?: string;
+  distance?: number;
+}) {
+  return (
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: distance },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 0.65,
+            ease: [0.16, 1, 0.3, 1],
+          },
+        },
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function LuxuryTiltCard({
+  children,
+  className = "",
+  maxTilt = 6,
+  glare = true,
+}: {
+  children: ReactNode;
+  className?: string;
+  maxTilt?: number;
+  glare?: boolean;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const xPct = (x / rect.width) * 100;
+    const yPct = (y / rect.height) * 100;
+
+    const rX = ((y - rect.height / 2) / (rect.height / 2)) * -maxTilt;
+    const rY = ((x - rect.width / 2) / (rect.width / 2)) * maxTilt;
+
+    setRotateX(rX);
+    setRotateY(rY);
+    setMousePos({ x: xPct, y: yPct });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setRotateX(0);
+    setRotateY(0);
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      animate={{
+        rotateX,
+        rotateY,
+        transformPerspective: 1000,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 320,
+        damping: 24,
+      }}
+      className={cn("relative transition-shadow duration-300", className)}
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      {children}
+
+      {glare && (
+        <div
+          className="pointer-events-none absolute inset-0 rounded-inherit opacity-0 transition-opacity duration-300 z-20"
+          style={{
+            opacity: isHovered ? 1 : 0,
+            background: `radial-gradient(circle 260px at ${mousePos.x}% ${mousePos.y}%, rgba(231, 178, 169, 0.16), transparent 70%)`,
+          }}
+        />
+      )}
+    </motion.div>
+  );
+}
+
+export function FloatingOrb({
+  className = "",
+  delay = 0,
+  duration = 8,
+  distance = 16,
+}: {
+  className?: string;
+  delay?: number;
+  duration?: number;
+  distance?: number;
+}) {
+  return (
+    <motion.div
+      animate={{
+        y: [-distance / 2, distance / 2, -distance / 2],
+        scale: [1, 1.04, 1],
+      }}
+      transition={{
+        duration,
+        repeat: Infinity,
+        repeatType: "mirror",
+        ease: "easeInOut",
+        delay,
+      }}
+      className={cn("pointer-events-none rounded-full blur-3xl", className)}
+    />
+  );
+}
+
+export function AnimatedCounter({
+  from = 0,
+  to,
+  duration = 1.6,
+  prefix = "",
+  suffix = "",
+}: {
+  from?: number;
+  to: number;
+  duration?: number;
+  prefix?: string;
+  suffix?: string;
+}) {
+  const [value, setValue] = useState(from);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-20px" });
+
+  useEffect(() => {
+    if (!isInView) return;
+    let startTime: number | null = null;
+    let animationFrame: number;
+
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      setValue(Math.floor(from + (to - from) * easeProgress));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(step);
+      } else {
+        setValue(to);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [isInView, from, to, duration]);
+
+  return (
+    <span ref={ref}>
+      {prefix}
+      {value}
+      {suffix}
+    </span>
+  );
+}
+

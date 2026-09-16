@@ -378,7 +378,9 @@
   }
 
   /* Typography */
-  & .text-\[\#2A2124\] {
+  & .text-\[\#2A2124\],
+  & .text-\[\#3A3033\],
+  & [class*="text-[#3A3033]"] {
     color: #FAF4F2 !important;
   }
   & .text-\[\#5E5054\] {
@@ -449,6 +451,136 @@
   & [class*="border-[#B76E79]"] {
     border-color: rgba(231, 178, 169, 0.22);
   }
+
+  /* ==========================================================================
+     Preservation for Lighter Banner Sections in Dark Mode (e.g. AuroraGlow)
+     Ensures text on lighter parts remains deep espresso plum (#2A2124),
+     rich rose-gold gradient (Image 5 Considered Beauty), and crisp slate (#5E5054)
+     ========================================================================== */
+  & .lume-light-surface,
+  & [data-surface="light"] {
+    color: #2A2124 !important;
+
+    /* Headings on light surfaces */
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & .font-display,
+    & .text-\[\#2A2124\] {
+      color: #2A2124 !important;
+    }
+
+    /* Paragraphs & subtext */
+    & p,
+    & .text-\[\#5E5054\] {
+      color: #5E5054 !important;
+    }
+
+    /* Eyebrows, badges, and accents */
+    & .eyebrow,
+    & .text-\[\#8F4954\],
+    & [class*="text-[#8F4954]"] {
+      color: #8F4954 !important;
+    }
+
+    & .text-\[\#7A6B6E\],
+    & .text-\[\#7D6F73\] {
+      color: #7A6B6E !important;
+    }
+
+    & .text-\[\#B76E79\] {
+      color: #B76E79 !important;
+    }
+
+    /* Rose-gold & Gold Gradient Text identical to Image 5 "Considered Beauty." */
+    & .gold-gradient-text,
+    & .rose-gold-gradient-text,
+    & [class*="gold-gradient-text"],
+    & [class*="rose-gold-gradient-text"] {
+      background: linear-gradient(135deg, #682230 0%, #8F4954 30%, #A35260 60%, #682230 100%) !important;
+      background-clip: text !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+
+    /* ShinyText animated shine on light surfaces */
+    & .animate-shine {
+      background: linear-gradient(120deg, #682230 0%, #8F4954 30%, #B76E79 50%, #682230 80%, #8F4954 100%) !important;
+      background-size: 200% 100% !important;
+      background-clip: text !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+
+    /* Badges & Pills on light surfaces */
+    & .bg-white\/80,
+    & .bg-white\/70,
+    & [class*="bg-white/80"],
+    & [class*="bg-white/70"],
+    & .sensory-badge {
+      background-color: rgba(255, 255, 255, 0.92) !important;
+      color: #5E5054 !important;
+      border-color: rgba(183, 110, 121, 0.35) !important;
+      box-shadow: 0 2px 8px rgba(183, 110, 121, 0.1) !important;
+    }
+
+    & .bg-\[\#FAF5F3\],
+    & [class*="bg-[#FAF5F3]"] {
+      background-color: #FAF5F3 !important;
+      color: #8F4954 !important;
+    }
+
+    /* Photo frames and cards on light surfaces (e.g. Clinician & Lookbook right frames) */
+    & .bg-white {
+      background-color: #FFFFFF !important;
+      border-color: rgba(183, 110, 121, 0.3) !important;
+    }
+
+    /* RotatingBadge center button & SVG text fill on light surfaces */
+    & a.bg-white,
+    & button.bg-white,
+    & div.bg-white {
+      background-color: #FFFFFF !important;
+      color: #8F4954 !important;
+      border-color: rgba(183, 110, 121, 0.4) !important;
+    }
+
+    & svg text {
+      fill: #8F4954 !important;
+    }
+
+    /* Outline callout buttons on light surfaces */
+    & .border-\[\#B76E79\].bg-white,
+    & .border-\[\#B76E79\]\/40.bg-white {
+      background-color: #FFFFFF !important;
+      color: #8F4954 !important;
+      border-color: #B76E79 !important;
+    }
+    & .border-\[\#B76E79\].bg-white:hover,
+    & .border-\[\#B76E79\]\/40.bg-white:hover {
+      background-color: #FAF5F3 !important;
+      color: #682230 !important;
+      border-color: #8F4954 !important;
+    }
+
+    /* LiveSuiteClock on light surfaces */
+    & .bg-white.text-\[\#2A2124\] {
+      background-color: #FFFFFF !important;
+      color: #2A2124 !important;
+      border-color: rgba(183, 110, 121, 0.4) !important;
+    }
+
+    /* Hairlines and dividers */
+    & .bg-\[\#B76E79\]\/40,
+    & .bg-\[\#B76E79\]\/20 {
+      background-color: rgba(183, 110, 121, 0.3) !important;
+    }
+    & .border-\[\#B76E79\]\/20,
+    & .border-\[\#B76E79\]\/30 {
+      border-color: rgba(183, 110, 121, 0.25) !important;
+    }
+  }
 }
 
 
@@ -483,11 +615,30 @@
   100% { background-position: -100%; }
 }
 
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.5deg); }
+}
+
+@keyframes breathGlow {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.06); }
+}
+
+.animate-float-gentle {
+  animation: floatGentle 6s ease-in-out infinite;
+}
+
+.animate-breath-glow {
+  animation: breathGlow 8s ease-in-out infinite;
+}
+
 .animate-shine {
   animation: shine 4s linear infinite;
 }
 
 .animate-spin-slow {
+
   animation: spinSlow 20s linear infinite;
 }
 
